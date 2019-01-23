@@ -32,3 +32,17 @@ hostsファイルに以下を追記
 ```
 127.0.0.1	localhost.admin
 ```
+
+# 運用
+
+### ローカル更新
+
+##### 最新の状態に更新
+```
+$ sh containers/app/deploy.sh
+```
+
+##### フロントエンド監視
+```
+$ sh containers/app/front_watch.sh
+```

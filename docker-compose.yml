@@ -25,7 +25,7 @@ services:
       context: .
       dockerfile: ./containers/db/Dockerfile
     environment:
-      MYSQL_PASSWORD: campbug
+      MYSQL_DATABASE: campbug
       MYSQL_ROOT_PASSWORD: secret
     volumes:
       - ./containers/db/conf.d:/etc/mysql/conf.d
