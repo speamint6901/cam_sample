@@ -1,0 +1,50 @@
+@import "impoprt_setting";
+
+//******************************* impoprt partial /
+
+
+.p-ContactForm{
+ max-width: 720px;
+ margin: auto;
+ &_Wrap{
+  max-width: 480px;
+  margin: auto;
+  margin-bottom: $common_mr-bt;
+ }//_Wrap
+}//.p-ContactForm
+
+
+.c-Form{
+ &_Btn{
+  &_Submit{
+   display: block;
+   margin: auto;
+   @include common_radius;
+   padding: 0.8em 2.5em;
+   //border: 1px solid $main-color;
+   background-color: palettes(text,base);
+   margin: auto;
+   margin-top: $base_grid *6;
+
+   //color:$base-color ;
+  }//_Submit
+ }//_Btn
+}//.c-Form
+
+
+
+
+.tablet { //tablet setting **********************
+ //Gyro setting --------------------------------
+ @media screen and (orientation: portrait) { } //portrait
+ @media screen and (orientation: landscape) { }//landscape
+ //end Gyro setting ----------------------------
+} //tablet end **********************************
+
+
+.mobile { //mobile setting **********************
+ //Gyro setting --------------------------------
+ @media screen and (orientation: portrait) { }//portrait
+ @media screen and (orientation: landscape) { }//landscape
+ //end Gyro setting ----------------------------
+} //mobile end **********************************

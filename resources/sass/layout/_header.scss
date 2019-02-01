@@ -1,0 +1,87 @@
+.header {
+ //@include site-size;
+ //@include liquidsize;
+ overflow: hidden;
+ position: relative;
+
+
+ .branding {
+  width: 90px;
+  position: absolute;
+  top: calc(50% - (45px / 2) );
+ }//.branding
+
+ .language_switch{
+  display: inline-block;
+  a{
+   width: 100%;
+   //border-radius: $button_radius;
+   padding: 4px 24px;
+   //background-color: $link-color;
+   color: $text-color;
+   text-align: center;
+   cursor: pointer;
+   border: 1px solid;
+   a{color:$text-color;}
+  }
+ }
+
+
+} //header
+
+
+
+.mobile { //mobile setting **********************
+ .header {
+
+ .drawer{
+  padding-bottom: $base_grid *2;
+
+  .submenu{
+   text-align: center;
+   padding-bottom: $base_grid *4;
+   i{
+    width: 32px;
+    display: inline-block;
+   }
+
+  }//submenu
+ }
+
+
+ //Gyro setting --------------------------------
+ @media screen and (orientation: portrait) { }//portrait
+ @media screen and (orientation: landscape) { }//landscape
+ //end Gyro setting ----------------------------
+
+} //header
+} //mobile end **********************************
+
+.tablet { //tablet setting **********************
+ .header{
+
+  .branding{
+   //left: $contents-padding;
+   width: 70px;
+   //top: calc(50% - (35px / 2) );
+  }
+
+
+  @include MQ(M) {
+   .branding {
+    left: auto;
+   }//.branding
+  }//breakpoints (M) -------------------------
+
+
+ //Gyro setting --------------------------------
+ @media screen and (orientation: portrait) { } //portrait
+ @media screen and (orientation: landscape) {
+  .branding {
+   left: auto;
+  }//.branding
+  }//landscape
+ //end Gyro setting ----------------------------
+
+ } //header
+} //tablet end **********************************

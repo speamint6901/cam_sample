@@ -1,0 +1,275 @@
+.tabAccordion {
+ $menu_num:9;
+
+ margin: 0 auto;
+ width: 100%;
+ height: 400px;
+ font-size: 12px;
+ border:  1px solid $line-color;
+ position: relative;
+
+ dl {
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: absolute;
+
+  dt {
+   top: 0;
+   left: 0;
+   width: (100% / #{$menu_num});
+   position: absolute;
+   border-right:  1px solid $line-color;
+   border-bottom: 1px solid $line-color;
+   background: #f0f0f0;
+
+   a {
+    padding: 15px 0;
+    display: block;
+    text-align: center;
+    -moz-transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+   }
+
+   &.btnAcv {
+    border-bottom: none;
+    background: #fff;
+    a{
+     font-weight: bold;
+    }//a
+   }//.btnAcv
+
+  }//dt
+
+
+  @mixin tabmenuNum($num) {
+   $multi_num: $num - 1;
+   &:nth-child(#{$num}) dt {
+    left: calc( (100% / #{$menu_num}) * #{$multi_num} );
+   }
+  }//@tabmenuNum
+  &:nth-child(2) dt {
+   left: (100% / #{$menu_num});
+  }
+  @include tabmenuNum(3);
+  @include tabmenuNum(4);
+  @include tabmenuNum(5);
+  @include tabmenuNum(6);
+  @include tabmenuNum(7);
+  @include tabmenuNum(8);
+  @include tabmenuNum(9);
+  &:last-child dt {
+   border-right: none;
+  }
+
+  dd {
+   $innner_height:350px;
+
+   top: $base_grid *10;
+   left: 0;
+   padding: 0 30px 30px 30px;
+   margin-top: $base_grid *3;
+   width: 100%;
+   height: $innner_height - 30px;
+   text-align: left;
+   overflow-y: auto;
+   display: none;
+   position: absolute;
+
+  }//dd
+ }//dl
+}//.tabAccordion
+
+
+
+.inner_tab{
+ $menu_num:6;
+ height: auto;
+ border: none;
+ margin: 0 auto;
+ width: 100%;
+ position: relative;
+ dl {
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: absolute;
+
+  dt{
+   width: (100% / #{$menu_num});
+   top: 0;
+   left: 0;
+   position: absolute;
+border: none;
+   background-color: transparent;
+   border-bottom: 1px solid $line-color;
+   a {
+    padding: 6px 0;
+    display: block;
+    text-align: center;
+    -moz-transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+   }//a
+   &.btnAcv {
+    border-bottom: none;
+    //background: #fff;
+    border-bottom: 2px solid $text-color;
+    a{
+     font-weight: bold;
+    }
+   }//.btnAcv
+  }//dt
+  dd{
+  height: auto;
+  }//dd
+
+  @mixin  SubtabmenuNum($num) {
+   $multi_num: $num - 1;
+   &:nth-child(#{$num}) dt {
+    left: calc( (100% / #{$menu_num}) * #{$multi_num} );
+   }
+  }//@tabmenuNum
+
+  &:first-child dt {
+  left: 0;
+  }
+  &:nth-child(2) dt {
+   left: (100% / #{$menu_num});
+  }
+  @include SubtabmenuNum(3);
+  @include SubtabmenuNum(4);
+  @include SubtabmenuNum(5);
+  @include SubtabmenuNum(6);
+  @include SubtabmenuNum(7);
+  @include SubtabmenuNum(8);
+  @include SubtabmenuNum(9);
+  &:last-child dt {
+   border-right: none;
+  }
+
+
+ }//dl
+}//.inner_tab
+
+
+@media only screen and (min-width: 768px) {
+
+ .tabAccordion dl dt:hover > a {
+  background: #fff;
+ }
+
+}//@media only screen and (min-width: 768px)
+
+
+
+
+
+
+
+
+/* ------------------------------
+MEDIAQUERIES[SP]LAYOUT
+------------------------------ */
+@media only screen and (max-width: 768px) {
+
+
+ .tabAccordion, .tabAccordion.inner_tab{
+  width: 100%;
+  height: auto;
+  border: none;
+
+  dl {
+   top: auto;
+   left: auto;
+   width: 100%;
+   position: relative;
+
+   dt {
+    top: auto;
+    left: auto;
+    width: 100%;
+    position: relative;
+    border-bottom:  1px solid $line-color;
+    border-right: none;
+    border: 1px solid $line-color;
+    @include common_radius();
+
+    a {
+     padding: 20px;
+     height: auto;
+     line-height: 1em;
+     text-align: left;
+
+     &:after {
+      content: '';
+      margin-top: -4px;
+      top: 50%;
+      right: 15px;
+      width: 8px;
+      height: 8px;
+      font-size: 1em;
+      font-weight: bold;
+      line-height: 1.2em;
+      display: block;
+      position: absolute;
+      border-top: 2px solid #666;
+      border-right: 2px solid #666;
+      -moz-transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+      transform: rotate(135deg);
+     }
+    }//a
+
+    &.btnAcv {
+     border-bottom:  1px solid $line-color;
+     background: #bbb;
+
+     a:after {
+      content: none;
+     }
+
+    }//.btnAcv
+
+
+   }//dt
+
+
+   &:first-child dt {
+    border-top: #999 1px solid;
+   }
+
+   &:nth-child(2) dt,
+   &:nth-child(3) dt,
+   &:nth-child(4) dt,
+   &:nth-child(5) dt,
+   &:nth-child(6) dt,
+   &:nth-child(7) dt,
+   &:nth-child(8) dt,
+   &:nth-child(9) dt,{
+    left: auto;
+   }
+
+   dd {
+    top: auto;
+    left: auto;
+    padding: 20px 0;
+    width: 100%;
+    height: auto;
+    position: relative;
+    //border-bottom: #999 1px solid;
+   }
+
+   &:last-child dt {
+    border-right: 1px solid #999;
+   }
+
+  }//dl
+
+
+ }//tabAccordion
+
+
+
+}

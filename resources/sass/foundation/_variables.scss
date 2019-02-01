@@ -1,0 +1,117 @@
+//******************************* ID Class Name
+$name: contents-name;
+//ex.  ##{$name} .#{$name}
+
+//******************************* root
+$cssimg_path: "img/";
+$page_cssimg_path: "../img";
+$img_path: "../img/";
+
+$FoundationPath: 'foundation/';
+$ComponentPath: 'object/component/';
+$Project_Path: "object/project/";
+$Vendors_Path: "object/vendors/";
+
+
+//******************************* breakpoints
+$BreakPoint-XS:    320px;
+$BreakPoint-S:     600px;
+$BreakPoint-M:     768px;
+$BreakPoint-L:     1024px;
+$BreakPoint-XL:    1280px;
+$BreakPoint-maxL:    $BreakPoint-L + 1px;
+
+
+
+//******************************* Layer
+$z-index:(
+ // ↑レイヤー上
+ child,
+ pulldown,
+ nav,
+ drawer-navbar,
+ header,
+ overlay,
+ gototop,
+ swiper-caption,
+ GlobalNavHome,
+ swiper,
+ Lv2Contents,
+ Lv1Contents,
+ // ↓レイヤー下
+);
+
+//リストを逆転させる
+@function list-reverse($map) {
+ $result: ();
+ @for $i from length($map)*-1 through -1 {
+  $result: append($result, nth($map, abs($i)), comma);
+ }
+ @return $result;
+}
+$z-index: list-reverse($z-index);
+
+@function z($name) {
+ @return index($z-index, $name);
+}
+//ex.  .child { z-index: z(child); // 4 }
+
+
+
+//******************************* Layout /
+$SiteSize:        $BreakPoint-XL;
+$commoncontents:  $BreakPoint-M;
+$textcontents:    $BreakPoint-M;
+$articlecontents: $BreakPoint-S;
+$modal_size:      $BreakPoint-S;
+$postcontents:    $BreakPoint-XL;
+$formcontents:    $BreakPoint-S;
+
+
+$base_grid: 6px;
+
+$button_radius:20px;
+$modal_side-pd:60px;
+$modal_updown-pd:$base_grid *6;
+$common_mr-bt:$base_grid *4;//下に切り替えする
+
+$Common_MarginBottom:$base_grid *4;
+$Common_MarginBottom-MB:$base_grid *4;
+
+$ContentsPadding:$base_grid *5;
+$ContentsMargin:auto $ContentsPadding $Common_MarginBottom $ContentsPadding;
+
+$ContentsPadding-MB:$base_grid *3;
+$ContentsMargin-MB:auto $ContentsPadding-MB $Common_MarginBottom-MB $ContentsPadding-MB;
+
+
+$subcontents_width:200px;
+$header_height : 82px;
+$header_height-MB:82px;
+
+
+$ArticlePad:0 $base_grid *10;
+
+
+//******************************* Font /
+$Base_FontSIze:12;
+
+
+
+//******************************* Responsive width /
+$responsive-width:100%;
+
+//******************************* px width → % width /
+$main-width:1000px;
+$conv_article: 600px / $main-width * 100%;
+
+
+//******************************* Input mini width /
+$input-mini-width:20%;
+
+//******************************* ArticleCard Val /
+$card_size:200px;
+$S-card_size:200px;//SP時のカードサイズ
+
+$ArticleCard-Wc-num:5;
+$ArticleCard-Wc-max:220px;

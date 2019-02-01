@@ -1,0 +1,79 @@
+.card,.listbox,.item_card {
+ .squarebox{
+
+  margin: auto;
+  img{
+   width: $card_size;
+   height: $card_size;
+  }
+ }//squarebox
+}//card
+
+.xx_card{
+ .squarebox{
+  width: 150px;
+  height: 150px;
+  margin: auto;
+ }//squarebox
+}//result_card
+
+.item_card{
+ .squarebox{
+  margin: auto;
+  img{
+   width: 150px;
+   height: 150px;
+  }
+ }//squarebox
+}//card_membaer
+
+
+
+//breakpoints -------------------------------
+@include MQ(maxL) { }//breakpoints (maxL) -------------------------
+@include MQ(M) { }//breakpoints (M) -------------------------
+
+@include MQ(S) {
+
+ .card,.listbox,.item_card {
+  .squarebox{
+   width: $S-card_size;
+   height: $S-card_size;
+  }//squarebox
+
+ }//item_card
+
+ .card{
+ &.card_membaer{
+  .squarebox{
+   width: 150px;
+   height: 150px;
+   margin: auto;
+  }//squarebox
+ }//card_membaer
+ }
+
+}//breakpoints (S) -------------------------
+
+
+.mobile { //mobile setting **********************
+
+
+ //Gyro setting --------------------------------
+ @media screen and (orientation: portrait) { }//portrait
+ @media screen and (orientation: landscape) { }//landscape
+ //end Gyro setting ----------------------------
+
+
+} //mobile end **********************************
+
+.tablet { //tablet setting **********************
+
+
+ //Gyro setting --------------------------------
+ @media screen and (orientation: portrait) { } //portrait
+ @media screen and (orientation: landscape) { }//landscape
+ //end Gyro setting ----------------------------
+
+
+} //tablet end **********************************
