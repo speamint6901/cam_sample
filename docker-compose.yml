@@ -16,6 +16,7 @@ services:
     build:
       context: .
       dockerfile: ./containers/app/Dockerfile
+    working_dir: /var/www/html/campbug
     volumes:
       - .:/var/www/html/campbug/
     links:
