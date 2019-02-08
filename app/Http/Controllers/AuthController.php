@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
  
+use App\Http\Requests\StoreUserPost;
+
 class AuthController extends Controller
 {
     function login() {
@@ -12,7 +14,11 @@ class AuthController extends Controller
  
         return $this->respondWithToken($token);
     }
- 
+
+    public function create(StoreUserPost $request) {
+        var_dump("aaaaaaaaaaaaaab"); 
+    }
+
     public function logout()
     {
         auth()->logout();

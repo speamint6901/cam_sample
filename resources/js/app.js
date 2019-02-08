@@ -8,7 +8,7 @@
 require('./bootstrap');
 
 import Vue from 'vue';
-import store from './store';
+import store from './store/index.js';
 import router from './router';
 
 window.state = store.state;
@@ -21,5 +21,6 @@ Vue.component('app', require('./App.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 const app = new Vue({
+    store,
     router
 }).$mount('#app');
