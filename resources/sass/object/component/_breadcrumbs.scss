@@ -1,0 +1,59 @@
+.c-Breadcrumbs{
+ padding-top: $header_height;
+ margin:0 0 $Common_MarginBottom 0;
+ &_List{
+  display: table;
+  table-layout: fixed;
+  &_Item{
+   display: table-cell;
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+   max-width: 480px;
+   border: 1px solid;
+   font-size: 1rem;
+   background: palettes(gray,light_lv2);
+   padding: 0.5em 1em;
+   @include mq(S,max) {
+    max-width: 120px;
+   }
+   a{
+    display: block;
+    &:hover{text-decoration: none;}
+   }//a
+   &.--separator{
+    font-size: 1.4rem;
+    padding: 0 $base_grid;
+    border: none;
+    background-color: transparent;
+   }//--separator
+
+   &.--Last{
+    background-color: transparent;
+   }//.--Last
+
+   &.--Top{
+   }//.--Top
+
+  }//_Item
+ }//_List
+
+}//c-Breadcrumbs
+
+
+
+.mobile { //mobile setting **********************
+
+ //Gyro setting --------------------------------
+ @media screen and (orientation: portrait) { }//portrait
+ @media screen and (orientation: landscape) { }//landscape
+ //end Gyro setting ----------------------------
+} //mobile end **********************************
+
+.tablet { //tablet setting **********************
+ //Gyro setting --------------------------------
+ @media screen and (orientation: portrait) { } //portrait
+ @media screen and (orientation: landscape) { }//landscape
+ //end Gyro setting ----------------------------
+} //tablet end **********************************
+

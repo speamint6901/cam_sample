@@ -1,15 +1,38 @@
 <template>
-    <div>
-        <p v-show="isError">登録に失敗しました。</p>
-        <form @submit.prevent="register">
-            <h1>新規登録</h1>
-            <p>メールアドレス: <input type="email" v-model="email"></p>
-            <p>名前: <input type="text" v-model="name"></p>
-            <p>パスワード: <input type="password" v-model="password"></p>
-            <p>パスワード確認: <input type="password" v-model="password_confirmation"></p>
-            <button type="submit" class="btn btn-primary">登録</button>
-        </form>
-    </div>
+
+ <article>
+
+  <h1 class="u-Title_Article">新規登録</h1>
+
+  <p class="" v-show="isError">登録に失敗しました。</p>
+
+  <form @submit.prevent="register">
+
+   <div class="c-Form_Parts">
+    <label class="c-Form_Label" for="UserMail">メールアドレス</label>
+    <input type="email" name="usermail" id="UserMail" class="c-Form_Input" v-model="email">
+   </div>
+
+   <div class="c-Form_Parts">
+    <label class="c-Form_Label" for="UserName">ユーザーネーム</label>
+    <input type="text" name="username" id="UserName" class="c-Form_Input" v-model="name">
+   </div>
+
+   <div class="c-Form_Parts">
+    <label class="c-Form_Label" for="Password">パスワード</label>
+    <input type="password" name="password" id="Password" class="c-Form_Input" v-model="password">
+   </div>
+
+   <div class="c-Form_Parts">
+    <label class="c-Form_Label" for="PasswordConfirmation">パスワード確認</label>
+    <input type="password" name="password_confirmation" id="PasswordConfirmation" class="c-Form_Input" v-model="password_confirmation">
+   </div>
+
+   <button type="submit" class="">登録</button>
+
+  </form>
+ </article>
+
 </template>
  
 <script>

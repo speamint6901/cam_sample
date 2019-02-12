@@ -1,0 +1,78 @@
+
+
+$palettes: (
+ Theme:(
+  Main:#727C60,
+  Sub:#a3a3a3,
+  Third:#ededed,
+  Base:#FCFBF9,
+  Back:#ffffff,
+ ),
+ gray: (
+  base: #4A4A4A,
+ ),
+ black: (
+  base: #161517,
+  light: #333333,
+  dark: #000000,
+ ),
+ text:(
+  base:#4A4A4A,
+  main_color:#727C60,
+  hilight:#C9C9C9,
+ ),
+ link:(
+  base:#3935D7,
+  text:#4A4A4A,
+  main_color:#727C60,
+ ),
+);
+
+@function palettes($key, $tone: base) {
+ @return map-get( map-get($palettes, $key), $tone);
+}
+//  color: palettes(gray,base);
+
+
+//--
+$base-color: #f5f5f1;//下地の色
+$text-color: #2da7df;//本文とか下地に載る色
+$link-color: #acacac;//#6facff;
+$sublink-color: #7e7e7e; //強調しないlinkcolor
+$line-color: #a3a3a3;
+$warning-color:#f00;
+$ct-background:rgba(255, 255, 255, 0.88);
+
+
+$imguptext:#FFFFFF;
+$imglayer:rgba(66, 39, 31, 0.5);
+
+
+$disable-color:#c4c4c4;
+$disable-color_quote: darken($disable-color, 10%);
+
+$default-color:#fff;
+$default-color_quote: darken($default-color, 10%);
+
+$primary-color:#337AB7;
+$primary-color_quote: darken($primary-color, 10%);
+$primary_light-color: lighten( $primary-color, 35% );
+
+$success-color:#5CB85C;
+$success-color_quote: darken($success-color, 10%);
+$success_light-color: lighten( $success-color, 35% );
+
+$info-color:#31B0D5;
+$info-color_quote: darken($info-color, 10%);
+$info_light-color: lighten( $info-color, 35% );
+
+$danger-color:#C9302C;
+$danger-color_quote: darken($danger-color, 10%);
+
+$warning-color:#F0AD4E;
+$warning-color_quote: darken($warning-color, 10%);
+
+$inverse-color:#000;
+$inverse-color_quote: darken($inverse-color, 10%);
+
+$ghost-color:transparent;

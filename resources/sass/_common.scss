@@ -1,0 +1,47 @@
+html {
+ overflow: auto;
+}
+
+body {
+ overflow: hidden;
+ counter-reset:count-step;
+ word-wrap: break-word;
+}
+::selection { background: palettes(gray,base); /* Safari */}
+::-moz-selection {  background: palettes(gray,base); /* Firefox */}
+img,video {
+ width: 100%;
+ height: auto;
+ vertical-align: middle;
+ a{  width: 100%;    height: auto;}
+}
+a{
+ text-decoration:none;
+ color:palettes(link,base);
+ cursor:pointer;
+ &:hover{
+  opacity:0.7;
+  filter:alpha(opacity=70);
+  -ms-filter: "alpha( opacity=70 )";
+ }
+}//a
+
+
+
+.mobile { //mobile setting **********************
+
+ //Gyro setting --------------------------------
+ @media screen and (orientation: portrait) { }//portrait
+ @media screen and (orientation: landscape) { }//landscape
+ //end Gyro setting ----------------------------
+
+} //mobile end **********************************
+
+.tablet { //tablet setting **********************
+
+ //Gyro setting --------------------------------
+ @media screen and (orientation: portrait) { } //portrait
+ @media screen and (orientation: landscape) { }//landscape
+ //end Gyro setting ----------------------------
+
+} //tablet end **********************************

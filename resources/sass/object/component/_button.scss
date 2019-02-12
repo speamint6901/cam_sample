@@ -1,0 +1,128 @@
+.button {
+ width: 100%;
+ border-radius: $button_radius;
+ @include txt-03;
+ padding: 6px 20px;
+ //background-color: $link-color;
+ background-color: transparent;
+ color: $text-color;
+ text-align: center;
+ border: 1px solid $main-color;
+ cursor: pointer;
+ //border: none;
+ //display: block;//暫定
+ a{color:$text-color;}
+}//button========================== */
+
+
+/*----------------- button size -----------------*/
+.btn_size-S{
+ &.button{
+  width: 40%;
+  margin: 10px auto;
+  max-width: 200px;
+ }
+}
+.btn_size-M{
+ &.button{
+  width: 60%;
+  margin: 10px auto;
+  max-width: 300px;
+ }
+}
+.btn_size-L{
+ &.button{
+  width: 80%;
+  margin: 10px auto;
+ }
+}
+
+
+
+
+//Color Pattern === Color change → color.scss
+.default-b{
+ color:$inverse-color;
+ background-color: $default-color;
+ border-color: $default-color_quote;
+}
+.primary-b{
+ color:$base-color;
+ background-color: $primary-color;
+ border-color: $primary-color_quote;
+}
+.success-b{
+ color:$base-color;
+ background-color: $success-color;
+ border-color: $success-color_quote;
+}
+.info-b{
+ color:$base-color;
+ background-color: $info-color;
+ border-color: $info-color_quote;
+}
+.danger-b{
+ color:$base-color;
+ background-color: $danger-color;
+ border-color: $danger-color_quote;
+}
+.warning-b{
+ color:$base-color;
+ background-color: $warning-color;
+ border-color: $warning-color_quote;
+}
+.inverse-b{
+ color:$base-color;
+ background-color: $inverse-color;
+ border-color: $inverse-color_quote;
+}
+.disable-b{
+ color:$base-color;
+ background-color: $disable-color;
+ border-color: $disable-color_quote;
+ cursor: auto;
+ &:hover {
+  position: relative;
+  top: 0px;
+ }
+}
+.ghost-b{
+ color:$main-color;
+ background-color: $ghost-color;
+ border:1px solid $main-color;
+ a{color:$main-color;}
+}
+
+.glass-b {
+ display: inline-block;
+ //line-height: 40px;
+ padding: 0 20px;
+ background-color: rgba(0, 0, 0, 0.3);
+ box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.3);
+ //border-radius: 20px;
+ //font-size: 13px;
+ text-transform: uppercase;
+ //letter-spacing: 1px;
+ }
+
+
+@include MQ(S) { //-------------------------
+ .btn_size-S{
+  &.button{
+   width: 100%;
+   max-width: 280px;
+  }
+ }
+ .btn_size-M{
+  &.button{
+   width: 100%;
+   max-width: 280px;
+  }
+ }
+ .btn_size-L{
+  &.button{
+   max-width: 280px;
+  }
+ }
+
+}//breakpoints (S) -------------------------
