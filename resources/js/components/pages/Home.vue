@@ -1,5 +1,5 @@
 <template>
-    <div>
-        HOME
-    </div>
+ <div class="l-Contents">
+  HOME
+ </div><!--//l-Contents-->
 </template>
