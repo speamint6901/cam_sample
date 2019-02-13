@@ -10,7 +10,7 @@ const state = {
 
 
 const mutations = {
-    register (state, formData) {
+    register (state, {formData, errors}) {
         state.formData = formData
     }
 };
@@ -28,11 +28,10 @@ const actions = {
             password: formData.password,
             password_confirmation: formData.password_confirmation
         }).then(res => {
-            commit('register', res);
+            commit('register', res, []);
             console.log(res);
         }).catch(error => {
-            commit('register', error.response.data.errors);
-            //errors: error.response.data.errors;
+            commit('register', [], error.response.data.errors);
         });
     }
 };

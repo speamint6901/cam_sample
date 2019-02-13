@@ -41,6 +41,7 @@
     export default {
         data () {
             return {
+                errors: state.errors,
                 isError: false,
                 email: this.email,
                 name: this.name,
@@ -50,14 +51,13 @@
         },
         methods: {
             register() {
-                console.log(this.$store);
                 this.$store.dispatch('register', {
                     email: this.email,
                     name: this.name,
                     password: this.password,
                     password_confirmation: this.password_confirmation
                 });
-            }
+            },
         }
     }
 </script>
