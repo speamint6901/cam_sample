@@ -1,18 +1,13 @@
 <template id="">
  <div>
-  <ul class="">
-   <li class=""><router-link to="/">ホーム</router-link></li>
-   <li><router-link to="/login">ログイン</router-link></li>
-   <li><router-link to="/register">ユーザー登録</router-link></li>
-   <li><router-link to="/user">ユーザー情報</router-link></li>
-  </ul>
-  <hr>
+  <page-header></page-header>
   <router-view></router-view>
  </div>
 </template>
  
  
 <script>
+Vue.component('page-header', require('./components/partial/Header.vue').default);
 /*
     export default {
         methods: {

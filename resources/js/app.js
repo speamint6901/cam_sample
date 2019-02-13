@@ -12,6 +12,7 @@ import store from './store/index.js';
 import router from './router';
 
 window.state = store.state;
+window.Vue = Vue;
 
 Vue.component('app', require('./App.vue').default);
 
