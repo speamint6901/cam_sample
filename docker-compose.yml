@@ -30,5 +30,6 @@ services:
       MYSQL_ROOT_PASSWORD: secret
     volumes:
       - ./containers/db/conf.d:/etc/mysql/conf.d
+      - ./containers/db/mysql_data:/var/lib/mysql
     ports:
       - "3314:3306"

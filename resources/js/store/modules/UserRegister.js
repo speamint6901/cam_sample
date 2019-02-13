@@ -1,5 +1,6 @@
 const state = {
     isError: false,
+    errors: [],
     message: '',
     name: '',
     email: '',
@@ -15,22 +16,23 @@ const mutations = {
 };
 
 
-const getters = {};
+const getters = {
+};
 
 
 const actions = {
     register ({ commit }, formData) {
-        console.log(formData);
         axios.post('/api/register', {
             email: formData.email,
             name: formData.name,
             password: formData.password,
             password_confirmation: formData.password_confirmation
         }).then(res => {
-            commit('register', res.data);
+            commit('register', res);
             console.log(res);
         }).catch(error => {
-            console.log(error);
+            commit('register', error.response.data.errors);
+            //errors: error.response.data.errors;
         });
     }
 };
