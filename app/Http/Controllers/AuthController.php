@@ -1,10 +1,15 @@
 <?php
 namespace App\Http\Controllers;
  
+use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Requests\StoreUserPost;
+use App\Models\User;
 
 class AuthController extends Controller
 {
+
+    use RegistersUsers;
+
     function login() {
         $credentials = request(['email', 'password']);
  
@@ -15,8 +20,16 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
-    public function create(StoreUserPost $request) {
-        var_dump("aaaaaaaaaaaaaab"); 
+    public function register(StoreUserPost $request) {
+        event(new Registered($user = $this->create($request->all())));
+    }
+
+    public function create(array $data) {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
     }
 
     public function logout()
