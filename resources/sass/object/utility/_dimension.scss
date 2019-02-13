@@ -7,3 +7,10 @@
 .u-Quarter { width: 25%;}
 .u-Third { width: 33.33%;}
 .u-TwoThirds { width: 66.66%;}
+
+
+
+.u-SiteSize{
+ max-width: $SiteSize;
+ margin: auto;
+}//u-SiteSize

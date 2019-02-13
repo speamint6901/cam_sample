@@ -1,15 +1,32 @@
-.c-FooterNavi {
+.c-Footer {
 
- &_Menu{
- display: flex;
-  justify-content: flex-start;
-  &_Item{
-  margin-right: 1em;
-   &-Link{}//-Link
-  }//_Item
- }//Menu
 
-} //c-FooterNavi
+
+ &_Branding{
+ width: 108px;
+ }//_Branding
+
+
+ &_Navi{
+  //margin: auto;
+  margin-left: 3em;
+  &_Menu{
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   &_Item{
+    @include MainTxt-S;
+    margin-right: 2em;
+    &-Link{
+     color: palettes(link,main_color);
+    }//-Link
+   }//_Item
+  }//_Menu
+ }//_Navi
+
+} //c-Footer
+
+
 
 
 .mobile { //mobile setting **********************
