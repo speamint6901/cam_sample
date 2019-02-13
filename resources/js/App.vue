@@ -1,13 +1,15 @@
-<template id="">
- <div>
+<template>
+ <div class="l-Container">
   <page-header></page-header>
   <router-view></router-view>
- </div>
+  <page-footer></page-footer>
+ </div><!--//l-Container-->
 </template>
  
  
 <script>
-Vue.component('page-header', require('./components/partial/Header.vue').default);
+Vue.component('page-header', require('./components/object/component/Header.vue').default);
+Vue.component('page-footer', require('./components/object/component/Footer.vue').default);
 /*
     export default {
         methods: {
