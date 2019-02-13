@@ -72,7 +72,7 @@ display: flex;
 
  &_WcArticle{
   > .c-Wc_ArticleCard{
-   @include ArticleCard_Size($ArticleCard-Wc-num,$ArticleCard-Wc-max)
+   @include ArticleCard_Size($ArticleCard-Wc-num,$ArticleCard-Wc-max);
    max-height: initial;
    height: auto;
    margin:0 $base_grid*2 $base_grid*2 $base_grid*2;
