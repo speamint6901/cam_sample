@@ -11,11 +11,13 @@
    <div class="c-Form_Parts">
     <label class="c-Form_Label" for="UserMail">メールアドレス</label>
     <input type="email" name="usermail" id="UserMail" class="c-Form_Input" v-model="email">
+    <p>{{ getErrors.email }}</p>
    </div>
 
    <div class="c-Form_Parts">
     <label class="c-Form_Label" for="UserName">ユーザーネーム</label>
     <input type="text" name="username" id="UserName" class="c-Form_Input" v-model="name">
+    <p>{{ getErrors }}</p>
    </div>
 
    <div class="c-Form_Parts">
@@ -36,12 +38,12 @@
 </template>
  
 <script>
-    import { mapActions } from 'vuex';
+    import { mapState } from 'vuex';
 
     export default {
         data () {
             return {
-                errors: state.errors,
+                errors: [],
                 isError: false,
                 email: this.email,
                 name: this.name,
@@ -58,6 +60,12 @@
                     password_confirmation: this.password_confirmation
                 });
             },
-        }
+        },
+        computed: {
+            getErrors () {
+                return this.$store.getters.getErrors
+            }
+        },
+
     }
 </script>
