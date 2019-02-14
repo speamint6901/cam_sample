@@ -6,10 +6,10 @@
 
 .l-Header{
  width: 100%;
- padding: 0 $ContentsPadding;
+ padding: $base_grid*2 0;
  overflow: hidden;
- position: fixed;
- z-index: z(header);
+ //position: fixed;
+ //z-index: z(header);
 
  + .l-Contents{
   padding-top: $header_height;
@@ -18,9 +18,8 @@
 
 
 .l-Contents{
- @include ContentsBlock;
- max-width: $SiteSize;
  margin: auto;
+ @include ContentsBlock;
  background-color:palettes(Theme,Base);
 }//l-Contents
 
@@ -32,17 +31,15 @@
  display: flex;
  justify-content: space-between;
  flex-wrap: wrap;
- margin:$ContentsMargin;
- &_Wrap{}//_Wrap
 }//.l-Feed
 
 .l-SideContents{
-
+ width: 100%;
 }//.l-SideContents
 
 
 .l-Footer{
- padding: $base_grid *4 $ContentsPadding;
+ padding: $base_grid 0;
 }//l-footer
 
 
@@ -55,6 +52,7 @@
 
 margin:$ContentsMargin;
 display: flex;
+flex-wrap: wrap;
 
 >.l-Article,>.l-Feed{width: $Contentswidth; margin-right: $LayoutMargin;}
 >.l-SideContents{width:$SideContents-Width;}
@@ -68,23 +66,6 @@ display: flex;
  >.u-Flex>.c-ArticleCard{
   @include ArticleCard_Size(4,200px);
    }//.c-ArticleCard
-
-
- &_WcArticle{
-  > .c-Wc_ArticleCard{
-   @include ArticleCard_Size($ArticleCard-Wc-num,$ArticleCard-Wc-max);
-   max-height: initial;
-   height: auto;
-   margin:0 $base_grid*2 $base_grid*2 $base_grid*2;
-
-   @include mq(S,max) {
-    max-height: initial;
-    height: auto;
-    margin:0 auto $base_grid*2 auto;
-   }//mq-S
-
-  }//.c-Wc_ArticleCard
- }//_WcArticle
 
 }//.l-Feed
 

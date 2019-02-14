@@ -82,6 +82,7 @@ body{
   &_Sub{
    @include MainTxt-S;
    line-height: 1em;
+   color: palettes(link,text);
   }//_Sub
  }//_Article
 

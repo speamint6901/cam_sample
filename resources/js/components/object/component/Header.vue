@@ -1,6 +1,6 @@
 <template>
 
- <header class="l-Header c-Header">
+ <header class="l-Header c-Header u-SiteSize">
 
   <div class="c-Header_Block u-Half">
    <nav class="c-GlobalNavi" role="navigation">
