@@ -3,7 +3,7 @@ input.radiobtn{
  &:checked + label{
   &:before {
   background: #fff;
-   border: 1px solid $main-color;
+   border: 1px solid palettes(Theme,Main);
  }
   &:after {
    opacity: 1;
@@ -51,7 +51,7 @@ input.radiobtn{
    width: 8px;
    height: 8px;
    margin-top: -4px;
-   background: $main-color;
+   background: palettes(Theme,Main);
    -webkit-transform: scale(2);
    transform: scale(2);
   }

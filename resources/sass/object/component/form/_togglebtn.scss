@@ -50,7 +50,7 @@ input.togglebtn {
   }//label
 
   &:checked+label{
-   background-color: $main-color;
+   background-color: palettes(Theme,Main);
    &:before {
    content: attr(data-on-label);
     left: $on-dist-x;

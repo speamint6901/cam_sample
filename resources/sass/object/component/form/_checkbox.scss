@@ -3,7 +3,7 @@ input.checkbox{
  &:checked + label{
   &:before {
   background: #fff;
-  border: 1px solid $main-color;
+   border: 1px solid palettes(Theme,Main);
  }
   &:after {
    opacity: 1;
@@ -46,14 +46,14 @@ input.checkbox{
    width: 8px;
    height: 4px;
    margin-top: -4px;
-   border-left: 2px solid $main-color;
-   border-bottom: 2px solid $main-color;
+   border-left: 2px solid  palettes(Theme,Main);
+   border-bottom: 2px solid  palettes(Theme,Main);
    -webkit-transform: rotate(-45deg) scale(.5);
    transform: rotate(-45deg) scale(.5);
   }
 
   &:hover {
-   color: $main-color;
+   color:  palettes(Theme,Main);
    cursor: pointer;
    &:before {
     background: #fff;

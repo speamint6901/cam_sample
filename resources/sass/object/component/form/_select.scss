@@ -4,7 +4,7 @@
  width: 100%;
  //background: #fff;
  @include common_radius;
- border: 1px solid $line-color;
+ border: 1px solid palettes(line,base);
  margin-bottom: $common_mr-bt;
 
  &:before {
@@ -17,7 +17,7 @@
   height: 0;
   margin: -2px 0 0 0;
   border: 5px solid transparent;
-  border-top: 7px solid $main-color;
+  border-top: 7px solid  palettes(Theme,Main);
  }
 }//selectform
 
