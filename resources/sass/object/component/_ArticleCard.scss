@@ -60,6 +60,10 @@
    padding: 0.2em 2em;
    background-color: palettes(gray,Lv4);
    //color: palettes(text,white);
+   &.-Active{
+    color: palettes(text,White);
+    background-color: palettes(Theme,Main);
+   }//
   }//-Like
  }//_Btn
 

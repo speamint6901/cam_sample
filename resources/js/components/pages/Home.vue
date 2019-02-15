@@ -65,7 +65,7 @@
        <img class="c-ArticleCard_Heading-Img u-ObjectFitImg" src="https://camp-mania.com/wp/wp-content/uploads/cm-fjs-1-720x540.jpg" alt="GearName" />
       </a>
 
-      <div class="c-ArticleCard_Header_Info u-Flex _AlignItem-Center">
+      <div class="c-ArticleCard_Header_Info">
        <div class="c-UserIcon u-Flex _AlignItem-Center">
         <div class="c-UserIcon_Thumb">
          <a href="">
@@ -74,7 +74,7 @@
         </div><!--//.c-UserIcon_Thumb-->
         <p class="c-UserIcon_Name u-Text_Main-XS u-TxtColor_White">UserName</p><!--//.c-UserIcon_Name-->
        </div><!--//.c-UserIcon-->
-       <button type="button" name="like_btn" value="" class="c-ArticleCard_Btn -Like">
+       <button type="button" name="like_btn" value="" class="c-ArticleCard_Btn -Like -Active">
         LIKE
        </button>
       </div>
