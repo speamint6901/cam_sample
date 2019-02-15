@@ -8,6 +8,11 @@
   <meta name="format-detection" content="telephone=no">
   <link rel="stylesheet" href="https://use.typekit.net/vtq3xtc.css">
   <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+  <script type="text/javascript">
+    window.Laravel = window.Laravel || {};
+    window.Laravel.csrfToken = "{{csrf_token()}}";
+    window.Laravel.domain = "{{ url('/') }}";
+  </script>
   @yield('p-css')
   @yield('p-js')
   <meta name="csrf-token" content="{{ csrf_token() }}">

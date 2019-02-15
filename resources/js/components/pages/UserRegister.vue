@@ -4,20 +4,18 @@
 
   <h1 class="u-Title_Article">新規登録</h1>
 
-  <p class="" v-show="isError">登録に失敗しました。</p>
-
   <form @submit.prevent="register">
 
    <div class="c-Form_Parts">
     <label class="c-Form_Label" for="UserMail">メールアドレス</label>
     <input type="email" name="usermail" id="UserMail" class="c-Form_Input" v-model="email">
-    <p>{{ getErrors.email }}</p>
+    <span class="help-block" v-if="errors">{{ errors }}</span>{{ errors }}</span>
    </div>
 
    <div class="c-Form_Parts">
     <label class="c-Form_Label" for="UserName">ユーザーネーム</label>
     <input type="text" name="username" id="UserName" class="c-Form_Input" v-model="name">
-    <p>{{ getErrors }}</p>
+    <span class="help-block" v-if="errors">{{ errors }}</span>{{ errors }}</span>
    </div>
 
    <div class="c-Form_Parts">
@@ -41,16 +39,7 @@
     import { mapState } from 'vuex';
 
     export default {
-        data () {
-            return {
-                errors: [],
-                isError: false,
-                email: this.email,
-                name: this.name,
-                password: this.password,
-                password_confirmation: this.password_confirmation
-            }
-        },
+        name: 'UserRegister',
         methods: {
             register() {
                 this.$store.dispatch('register', {
@@ -62,9 +51,25 @@
             },
         },
         computed: {
-            getErrors () {
-                return this.$store.getters.getErrors
-            }
+            email: {
+                get: function () { return this.$store.getters.email },
+                set: function (val) { this.$store.commit('updateEmail', val) }
+            },
+            name: {
+                get: function () { return this.$store.getters.name },
+                set: function (val) { this.$store.commit('updateName', val) }
+            },
+            password: {
+                get: function () { return this.$store.getters.password },
+                set: function (val) { this.$store.commit('updatePassword', val) }
+            },
+            password_confirmation: {
+                get: function () { return this.$store.getters.password_confirmation },
+                set: function (val) { this.$store.commit('updatePasswordConfirmation', val) }
+            },
+            ...mapState({
+                errors: state => state.UserRegister.errors
+            }),
         },
 
     }
