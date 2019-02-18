@@ -7,7 +7,7 @@
 
    <p v-show="isError">認証に失敗しました。</p>
 
-   <form @submit.prevent="login">
+   <form @submit.prevent="login"  class="l-Contents_Block-S">
 
     <div class="c-Form_Parts">
      <label class="c-Form_Label" for="UserMail">メールアドレス</label>

@@ -7,7 +7,7 @@
 
    <h1 class="c-Aricle_Hedding u-Hedding_Page u-TxAlign-Center">新規登録</h1>
 
-   <form @submit.prevent="register">
+   <form @submit.prevent="register" class="l-Contents_Block-S">
 
     <div class="c-Form_Parts">
      <label class="c-Form_Label" for="UserMail">メールアドレス</label>
