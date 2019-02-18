@@ -1,8 +1,13 @@
 <?php
 namespace App\Http\Controllers;
  
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreUserPost;
+use App\Mail\StoreUserConfirm;
+
 use App\Models\User;
 
 class AuthController extends Controller
@@ -21,7 +26,22 @@ class AuthController extends Controller
     }
 
     public function register(StoreUserPost $request) {
-        event(new Registered($user = $this->create($request->all())));
+
+        \DB::beginTransaction();
+        try {
+            event(new Registered($user = $this->create($request->all())));
+            Mail::to($user)->send(new StoreUserConfirm($user));
+            \DB::commit();
+        } catch (Exception $e) {
+            \DB::rollback();
+            report($e);
+            return response()->json(['message' => 'エラーが発生しました']);
+        }
+        return response()->json(['message' => 'メールを送信しました']);
+    }
+
+    public function showComplete() {
+        return response()->json(['message' => 'メールを送信しました']);
     }
 
     public function create(array $data) {

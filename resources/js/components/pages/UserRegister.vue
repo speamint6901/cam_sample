@@ -9,23 +9,25 @@
    <div class="c-Form_Parts">
     <label class="c-Form_Label" for="UserMail">メールアドレス</label>
     <input type="email" name="usermail" id="UserMail" class="c-Form_Input" v-model="email">
-    <span class="help-block" v-if="errors">{{ errors }}</span>{{ errors }}</span>
+    <span class="help-block" v-if="errors && errors.email">{{ errors.email[0] }}</span>
    </div>
 
    <div class="c-Form_Parts">
     <label class="c-Form_Label" for="UserName">ユーザーネーム</label>
     <input type="text" name="username" id="UserName" class="c-Form_Input" v-model="name">
-    <span class="help-block" v-if="errors">{{ errors }}</span>{{ errors }}</span>
+    <span class="help-block" v-if="errors && errors.name">{{ errors.name[0] }}</span>
    </div>
 
    <div class="c-Form_Parts">
     <label class="c-Form_Label" for="Password">パスワード</label>
     <input type="password" name="password" id="Password" class="c-Form_Input" v-model="password">
+    <span class="help-block" v-if="errors && errors.password">{{ errors.password[0] }}</span>
    </div>
 
    <div class="c-Form_Parts">
     <label class="c-Form_Label" for="PasswordConfirmation">パスワード確認</label>
     <input type="password" name="password_confirmation" id="PasswordConfirmation" class="c-Form_Input" v-model="password_confirmation">
+    <span class="help-block" v-if="errors && errors.password_confirmation">{{ errors.password_confirmation[0] }}</span>
    </div>
 
    <button type="submit" class="">登録</button>

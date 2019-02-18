@@ -40,7 +40,8 @@ const actions = {
             password: formData.password,
             password_confirmation: formData.password_confirmation
         }).then(res => {
-            commit('register', res);
+            location.href = "/register/complete";
+            resolve();
         }).catch(error => {
             commit('errors', error);
         });
