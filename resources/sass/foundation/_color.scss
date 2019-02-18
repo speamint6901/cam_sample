@@ -4,12 +4,15 @@ $palettes: (
  Theme:(
   Main:#727C60,
   Sub:#a3a3a3,
-  Third:#ededed,
+  Third:#D9712F,
   Base:#FCFBF9,
-  Back:#ffffff,
+  Light:#ffffff,
  ),
  gray: (
-  base: #4A4A4A,
+  Base: #4A4A4A,
+  Lv2: #5D5D5D,
+  Lv3: #919191,
+  Lv4: #E3E3E2,
  ),
  black: (
   base: #161517,
@@ -20,10 +23,15 @@ $palettes: (
   base:#4A4A4A,
   main_color:#727C60,
   hilight:#C9C9C9,
+  white:#ffffff,
  ),
  link:(
   base:#3935D7,
   text:#4A4A4A,
+  main_color:#727C60,
+ ),
+ line:(
+  base:#a3a3a3,
   main_color:#727C60,
  ),
 );

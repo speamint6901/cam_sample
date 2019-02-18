@@ -108,7 +108,9 @@ body{
   &-XXL{@include MainTxt-XL;}//-XL
  }//_Main
 
- &_Article{}//_Article
+ &_ArticleCard{
+  &-UserName{}
+ }//_ArticleCard
 
  &_Feed{
   @include MainTxt-S;
@@ -162,6 +164,7 @@ body{
 .u-TxtColor{
  &_Main{color: palettes(text,main_color);}//_Main
  &_Txt{color: palettes(text,base);}//_Txt
+ &_White{color: palettes(text,White);}//_White
 }//-TxtColor
 .u-TextOverflow {//テキストが表示領域をオーバーフローした際に「…」を表示
  overflow: hidden;

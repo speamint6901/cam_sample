@@ -2,7 +2,24 @@
  width: calc(100vw / 5);
  min-width: 190px;
  margin-bottom: $base_grid *4;
- &_Header{ }//Header
+ &_Header{
+ position: relative;
+
+  &_Info{
+   width: 100%;
+   position: absolute;
+   bottom: $base_grid;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 $base_grid;
+   >.c-UserIcon{
+    > .c-UserIcon_Name{margin-left: 1em;}
+   }//c-UserIcon
+  }//_Info
+
+
+ }//Header
 
  &_Heading{
   margin-bottom: $base_grid *2;
@@ -36,8 +53,36 @@
  }//_Status
 
 
+ &_Btn{
+  font-family: itc-american-typewriter, serif;
+  cursor: pointer;
+  &.-Like{
+   padding: 0.2em 2em;
+   background-color: palettes(gray,Lv4);
+   //color: palettes(text,white);
+   &.-Active{
+    color: palettes(text,White);
+    background-color: palettes(Theme,Main);
+   }//
+  }//-Like
+ }//_Btn
+
  &_Footer{
  }//_Footer
+
+
+ &_Rating{
+  display: flex;
+  align-items: center;
+  &-Thunder{
+   width: 35%;
+  }//Thunder
+  &-Score{
+   margin-left: 1em;
+   color:  palettes(Theme,Main);
+  }//-Score
+ }//_Rating
+
 
 }//.c-ArticleCard
 
