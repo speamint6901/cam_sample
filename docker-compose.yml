@@ -33,3 +33,17 @@ services:
       - ./containers/db/mysql_data:/var/lib/mysql
     ports:
       - "3314:3306"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: secret
+    restart: always
+    links:
+      - db
+    ports:
+      - "8080:80"
+    volumes:
+      - ./containers/db/mysql_data:/var/lib/mysql
