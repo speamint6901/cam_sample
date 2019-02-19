@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
  
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Mail;
@@ -44,11 +46,38 @@ class AuthController extends Controller
         return response()->json(['message' => 'メールを送信しました']);
     }
 
+    public function confirmMail(Request $request) {
+        \DB::beginTransaction();
+        try {
+            $verified = $request->input('verified');
+            if (is_null($verified)) {
+                abort(500, 'パラメータが不正です');
+            }
+            $user = User::where('mail_verified_hash', $verified)->first();
+            if (is_null($user)) {
+                abort(500, '登録情報が見つかりませんでした');
+            }
+            if (!is_null($user->email_verified_at)) {
+                abort(404);
+            }
+            $user->email_verified_at = \Carbon\Carbon::now();
+            $user->save();
+            \DB::commit();
+        } catch (Exception $e) {
+            \DB::rollback();
+            report($e);
+            return response()->json(['message' => 'エラーが発生しました']);
+        }
+        $this->guard()->login($user);
+        return redirect('/');
+    }
+
     public function create(array $data) {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'mail_verified_hash' => (string) Str::uuid(),
         ]);
     }
 

@@ -1,6 +1,7 @@
 <template>
-
- <article>
+ <div>
+ <div v-show="loading">Loading..</div>
+ <article v-show="!loading">
 
   <h1 class="u-Title_Article">新規登録</h1>
 
@@ -34,7 +35,7 @@
 
   </form>
  </article>
-
+ </div>
 </template>
  
 <script>
@@ -44,6 +45,7 @@
         name: 'UserRegister',
         methods: {
             register() {
+                this.loading = true;
                 this.$store.dispatch('register', {
                     email: this.email,
                     name: this.name,
@@ -68,6 +70,10 @@
             password_confirmation: {
                 get: function () { return this.$store.getters.password_confirmation },
                 set: function (val) { this.$store.commit('updatePasswordConfirmation', val) }
+            },
+            loading: {
+                get: function () { return this.$store.getters.loading },
+                set: function (val) { this.$store.commit('updateLoading', val) }
             },
             ...mapState({
                 errors: state => state.UserRegister.errors

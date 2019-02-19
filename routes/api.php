@@ -17,6 +17,7 @@ Route::post('/login', 'AuthController@login');
 Route::get('/register', 'AuthController@showRegisterForm');
 Route::post('/register', 'AuthController@register');
 Route::get('/register/complete', 'AuthController@showComplete');
+Route::get('/register/confirm_mail', 'AuthController@confirmMail')->name('register.confirm.mail');
  
 Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/me', 'AuthController@me');

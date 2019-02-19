@@ -1,4 +1,5 @@
 import * as config from './../../config';
+import router from '../../router';
 
 const state = {
     errors: null,
@@ -7,6 +8,7 @@ const state = {
     email: '',
     password: '',
     password_confirmation: '',
+    loading: false,
 };
 
 
@@ -15,6 +17,7 @@ const mutations = {
     updateName: function (state, payload) { state.name = payload   },
     updatePassword: function (state, payload) { state.password = payload   },
     updatePasswordConfirmation: function (state, payload) { state.password_confirmation = payload   },
+    updateLoading: function (state, payload) { state.loading = payload },
     register (state, formData) {
         state.formData = formData
     },
@@ -29,6 +32,7 @@ const getters = {
     name: function (state) { return state.name },
     password: function (state) { return state.password },
     password_confirmation: function (state) { return state.password_confirmation },
+    loading: function (state) { return state.loading },
 };
 
 
@@ -40,8 +44,8 @@ const actions = {
             password: formData.password,
             password_confirmation: formData.password_confirmation
         }).then(res => {
-            location.href = "/register/complete";
-            resolve();
+            commit('updateLoading', false);
+            router.push({'path': '/register/complete'});
         }).catch(error => {
             commit('errors', error);
         });
