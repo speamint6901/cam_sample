@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p v-show="isError">認証に失敗しました。</p>
+        <p v-show="isError">メールアドレスまたはパスワードが違います</p>
         <form @submit.prevent="login">
             <h1>ログイン</h1>
             メールアドレス: <input type="email" v-model="email">
@@ -11,30 +11,30 @@
 </template>
  
 <script>
-/*
+
 export default {
-    data () {
-        return {
-            isError: false,
-            email: '',
-            password: '',
-        }
-    },
+    computed: {
+        email: {
+            get: function () { return this.$store.getters.email },
+            set: function (val) { this.$store.commit('updateEmail', val) }
+        },
+        password: {
+            get: function () { return this.$store.getters.password },
+            set: function (val) { this.$store.commit('updatePassword', val) }
+        },
+        loading: {
+            get: function () { return this.$store.getters.loading },
+            set: function (val) { this.$store.commit('updateLoading', val) }
+        },
+    },
     methods: {
         login() {
-            axios.post('/api/login', {
-                email: this.email,
-                password: this.password
-            }).then(res => {
-                const token = res.data.access_token;
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                state.isLogin = true;
-                this.$router.push({path: '/'});
-            }).catch(error => {
-                this.isError = true;
-            });
-        }
-    }
+            this.loading = true;
+            this.$store.dispatch('login', {
+                    email: this.email,
+                    password: this.password,
+            });
+        },
+    },
 }
-*/
 </script>
