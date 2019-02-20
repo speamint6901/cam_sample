@@ -32,21 +32,27 @@
 export default {
     computed: {
         email: {
-            get: function () { return this.$store.getters.email },
+            get: function () { return this.$store.getters.loginEmail },
             set: function (val) { this.$store.commit('updateEmail', val) }
         },
         password: {
-            get: function () { return this.$store.getters.password },
+            get: function () { return this.$store.getters.loginPassword },
             set: function (val) { this.$store.commit('updatePassword', val) }
         },
+        /*
         loading: {
-            get: function () { return this.$store.getters.loading },
+            get: function () { return this.$store.Login.getters.loading },
             set: function (val) { this.$store.commit('updateLoading', val) }
+        },
+        */
+        isError: {
+            get: function () { return this.$store.getters.isError },
+            set: function (val) { this.$store.commit('isError', val) }
         },
     },
     methods: {
         login() {
-            this.loading = true;
+            //this.loading = true;
             this.$store.dispatch('login', {
                 email: this.email,
                 password: this.password,

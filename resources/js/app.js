@@ -19,8 +19,7 @@ window.Vue = Vue;
 axios.interceptors.request.use(config => {
     config.headers['X-CSRF-TOKEN']     = window.Laravel.csrfToken;
     config.headers['X-Requested-With'] = 'XMLHttpRequest';
-    config.headers['Authorization']    = `Bearer ${localStorage.getItem('jwt-token')}`;
-    console.log(config.headers);
+    config.headers['Authorization']    = `Bearer ${localStorage.getItem('jwt_token')}`;
     return config;
 }, error => {
     return Promise.reject(error);
