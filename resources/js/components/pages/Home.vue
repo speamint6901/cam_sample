@@ -1,5 +1,4 @@
 <template>
- <div class="l-Contents u-SiteSize">
 
   <div class="l-Contents_Block">
    <div class="l-Feed">
@@ -121,5 +120,4 @@
    </div><!--//.l-Feed-->
   </div><!-- /.l-Contents_Block -->
 
- </div><!--//l-Contents-->
 </template>

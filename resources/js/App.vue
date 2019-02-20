@@ -1,7 +1,11 @@
 <template>
  <div class="l-Container">
   <page-header></page-header>
-  <router-view></router-view>
+
+  <div class="l-Contents u-SiteSize">
+   <router-view></router-view>
+  </div>
+
   <page-footer></page-footer>
  </div><!--//l-Container-->
 </template>
