@@ -53,7 +53,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-
+    'admin_url' => env('ADMIN_URL', 'http://localhost.admin'),
     'asset_url' => env('ASSET_URL', null),
 
     /*
@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+	JeroenNoten\LaravelAdminLte\ServiceProvider::class,
 
         /*
          * Application Service Providers...
