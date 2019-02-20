@@ -37,6 +37,7 @@ const actions = {
             password: formData.password,
         }).then(res => {
             commit('doLogin', res.data.access_token);
+            commit('updateLoading', false);
             router.push({'path': '/'});
         }).catch(error => {
             commit('isError', true);
