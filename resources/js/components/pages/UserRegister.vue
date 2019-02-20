@@ -48,46 +48,46 @@
 </template>
  
 <script>
-    import { mapState } from 'vuex';
+import { mapState } from 'vuex';
 
-    export default {
-        name: 'UserRegister',
-        methods: {
-            register() {
-                this.loading = true;
-                this.$store.dispatch('register', {
-                    email: this.email,
-                    name: this.name,
-                    password: this.password,
-                    password_confirmation: this.password_confirmation
-                });
-            },
+export default {
+    name: 'UserRegister',
+    methods: {
+        register() {
+            this.loading = true;
+            this.$store.dispatch('register', {
+                email: this.email,
+                name: this.name,
+                password: this.password,
+                password_confirmation: this.password_confirmation
+            });
         },
-        computed: {
-            email: {
-                get: function () { return this.$store.getters.email },
-                set: function (val) { this.$store.commit('updateEmail', val) }
-            },
-            name: {
-                get: function () { return this.$store.getters.name },
-                set: function (val) { this.$store.commit('updateName', val) }
-            },
-            password: {
-                get: function () { return this.$store.getters.password },
-                set: function (val) { this.$store.commit('updatePassword', val) }
-            },
-            password_confirmation: {
-                get: function () { return this.$store.getters.password_confirmation },
-                set: function (val) { this.$store.commit('updatePasswordConfirmation', val) }
-            },
-            loading: {
-                get: function () { return this.$store.getters.loading },
-                set: function (val) { this.$store.commit('updateLoading', val) }
-            },
-            ...mapState({
-                errors: state => state.UserRegister.errors
-            }),
+    },
+    computed: {
+        email: {
+            get: function () { return this.$store.getters.email },
+            set: function (val) { this.$store.commit('updateEmail', val) }
         },
+        name: {
+            get: function () { return this.$store.getters.name },
+            set: function (val) { this.$store.commit('updateName', val) }
+        },
+        password: {
+            get: function () { return this.$store.getters.password },
+            set: function (val) { this.$store.commit('updatePassword', val) }
+        },
+        password_confirmation: {
+            get: function () { return this.$store.getters.password_confirmation },
+            set: function (val) { this.$store.commit('updatePasswordConfirmation', val) }
+        },
+        loading: {
+            get: function () { return this.$store.getters.loading },
+            set: function (val) { this.$store.commit('updateLoading', val) }
+        },
+        ...mapState({
+            errors: state => state.UserRegister.errors
+        }),
+    },
 
-    }
+}
 </script>

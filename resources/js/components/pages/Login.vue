@@ -5,7 +5,7 @@
   <div class="l-Contents_Block">
    <h1 class="c-Aricle_Hedding u-Hedding_Page u-TxAlign-Center">ログイン</h1>
 
-   <p v-show="isError">認証に失敗しました。</p>
+   <p v-show="isError">メールアドレスまたはパスワードが違います</p>
 
    <form @submit.prevent="login"  class="l-Contents_Block-S">
 
@@ -28,30 +28,36 @@
 </template>
  
 <script>
-/*
+
 export default {
-    data () {
-        return {
-            isError: false,
-            email: '',
-            password: '',
-        }
-    },
+    computed: {
+        email: {
+            get: function () { return this.$store.getters.loginEmail },
+            set: function (val) { this.$store.commit('updateEmail', val) }
+        },
+        password: {
+            get: function () { return this.$store.getters.loginPassword },
+            set: function (val) { this.$store.commit('updatePassword', val) }
+        },
+        /*
+        loading: {
+            get: function () { return this.$store.Login.getters.loading },
+            set: function (val) { this.$store.commit('updateLoading', val) }
+        },
+        */
+        isError: {
+            get: function () { return this.$store.getters.isError },
+            set: function (val) { this.$store.commit('isError', val) }
+        },
+    },
     methods: {
         login() {
-            axios.post('/api/login', {
-                email: this.email,
-                password: this.password
-            }).then(res => {
-                const token = res.data.access_token;
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                state.isLogin = true;
-                this.$router.push({path: '/'});
-            }).catch(error => {
-                this.isError = true;
-            });
-        }
-    }
+            //this.loading = true;
+            this.$store.dispatch('login', {
+                email: this.email,
+                password: this.password,
+            });
+        },
+    },
 }
-*/
 </script>
