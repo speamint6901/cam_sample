@@ -2,12 +2,12 @@
 
  &-BulletPoint{
   list-style-type: disc;
-  >li{margin-left: 1.5em;}
+  >li{margin-left: 1.5em; margin-bottom: 0.5em;}
  }//BulletPoint
 
  &-Number{
   list-style-type: decimal;
-  >li{margin-left: 1.5em;}
+  >li{margin-left: 1.5em; margin-bottom: 0.5em;}
  }//list_number
 
 }//.u-ListStyle
