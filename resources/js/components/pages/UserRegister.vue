@@ -2,7 +2,8 @@
 
  <div>
 
- <div v-show="loading">Loading..</div>
+  <div v-show="loading" class="c-Loader05">Loading..</div>
+
 
  <article v-show="!loading">
 
