@@ -76,7 +76,7 @@ body{
  }//_Feed
 
  &_Card{
-  @include MainTxt-S;
+  @include MainTxt;
   line-height: 1em;
   @include mq(S,max){  }//Media(S)
   &_Sub{

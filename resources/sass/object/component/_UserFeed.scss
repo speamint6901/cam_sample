@@ -6,13 +6,17 @@
   align-items: center;
   border: 1px solid palettes(line,base);
   padding: $base_grid*3;
-  &_Block{
+  margin-bottom: $Common_MarginBottom;
+
+  &_Header{
    width: 220px;
-   &-Text{
-    width: calc(100% - 220px);
-    @include MainTxt-S;
-   }//-Text
-  }//_Block
+  }//_Header
+
+  &_Overview{
+   width: calc(100% - 220px);
+   @include MainTxt-S;
+  }//_Overview
+
 
   &_UserIcon{
    display: flex;
