@@ -12,13 +12,14 @@
  //z-index: z(header);
 
  + .l-Contents{
-  padding-top: $header_height;
+  //padding-top: $header_height;
  }
 }//l-header
 
 
 .l-Contents{
  margin: auto;
+ padding: $base_grid*5 0;
  @include ContentsBlock;
  background-color:palettes(Theme,Base);
 }//l-Contents

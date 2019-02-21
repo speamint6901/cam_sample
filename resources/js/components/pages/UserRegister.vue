@@ -2,8 +2,9 @@
 
  <div>
 
-  <div v-show="loading" class="c-Loader05">Loading..</div>
-
+  <div class="l-Contents_Block u-Dsp-Initial">
+   <div v-show="loading" class="c-Loader05">Loading..</div>
+  </div><!-- /.l-Contents_Block -->
 
  <article v-show="!loading">
 
