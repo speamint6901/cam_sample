@@ -4,6 +4,7 @@
  &_Block{
   margin:$ContentsMargin;
   @include mq(S,max){margin:$ContentsMargin-MB}
+  &-XS{max-width: 300px;margin: auto;}
   &-S{max-width: 480px;margin: auto;}
   &-M{max-width: 600px;margin: auto;}
   &-L{max-width: 800px;margin: auto;}

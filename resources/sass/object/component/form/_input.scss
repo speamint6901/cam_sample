@@ -5,7 +5,7 @@ input[type="number"]
 {
  $input_width:300px;
 
- margin-bottom:25px;
+ margin-bottom:1.5em;
  display: inline-block;
  position: relative;
  width:$input_width;
@@ -42,6 +42,56 @@ input[type="number"]
  }//label
 
 }// input[type="text"], input[type="password"]
+
+
+.c-Form{
+
+ &_Input{
+  background: $base-color;
+  width: 100%;
+
+  &.-Text{
+   position: relative;
+   transition: all .2s;
+   &:focus {
+    padding-left: 0.8em;
+    &:placeholder,
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,{
+     color: transparent;
+    }
+   }
+   &:disabled {
+    background-color: #eee;
+    cursor: not-allowed;
+   }
+
+   @mixin placeholderColor($color) {
+    &:placeholder-shown {color: $color;}
+    &::-webkit-input-placeholder {color:$color;}
+    &:-moz-placeholder { color:$color; opacity: 1;}
+    &::-moz-placeholder { color:$color; opacity: 1;}
+    &:-ms-input-placeholder { color:$color;}
+   }
+
+  }//-Text
+
+  &.-Email{ @extend .-Text; }//-Email
+  &.-Password{ @extend .-Text; }//-Password
+  &.-Tel{@extend .-Text;}//-Tel
+
+ }//_Input
+
+ &_Button{}
+ &_Submit{
+  background: palettes(Theme,Main);
+  color:palettes(Theme,Base);
+  padding: 0.5em 2em;
+  cursor: pointer;
+ }
+ &_Reset{}
+
+}//c-Form
 
 
 //:placeholder-shown { color: $second-color;}
