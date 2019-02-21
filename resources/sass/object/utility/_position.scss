@@ -122,6 +122,7 @@
   &-base04{padding-top: $base_grid *4;}
   &-base10{padding-top: $base_grid *10;}
   &-base20{padding-top: $base_grid *20;}
+  &-per25{padding-top: 25%;}
  }
  &_pdRight{
   &-base01{padding-right: $base_grid;}
@@ -141,6 +142,7 @@
   &-base08{padding-bottom: $base_grid *8;}
   &-base10{padding-bottom: $base_grid *10;}
   &-base20{padding-bottom: $base_grid *20;}
+  &-per25{padding-bottom: 25%;}
  }
  &_pdLeft{
   &-base01{padding-left: $base_grid;}

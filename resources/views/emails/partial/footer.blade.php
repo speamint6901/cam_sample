@@ -9,26 +9,23 @@
    <div class="content">
     <table>
      <tr>
-      <td align="center" class="footerbrand"><img src="{{ asset('images/mail/brand.png') }}" alt="hammocks" width="124px"></td>
+      <td align="center" class="footerbrand"><img src="{{ asset('img/mail/brand.png') }}" alt="campbug" width="124px"></td>
      </tr>
 
      <tr>
 
       <td  align="center" class="snsicon">
        <a href="">
-        <img src="{{ asset('images/mail/ico-facebook-8.png') }}" alt="facebook" width="42">
+        <img src="{{ asset('img/mail/ico-facebook-8.png') }}" alt="facebook" width="42">
        </a>
        <a href="">
-        <img src="{{ asset('images/mail/ico-twitter-8.png') }}" alt="twitter" width="42">
+        <img src="{{ asset('img/mail/ico-twitter-8.png') }}" alt="twitter" width="42">
+       </a>
+       <a href="https://www.instagram.com/camp_bug/">
+        <img src="{{ asset('img/mail/ico-insta-8.png') }}" alt="instagram" width="42">
        </a>
        <a href="">
-        <img src="{{ asset('images/mail/ico-insta-8.png') }}" alt="instagram" width="42">
-       </a>
-       <a href="">
-        <img src="{{ asset('images/mail/ico-google-p-8.png') }}" alt="google+" width="42">
-       </a>
-       <a href="">
-        <img src="{{ asset('images/mail/ico-pinterest-8.png') }}" alt="pinterest" width="42">
+        <img src="{{ asset('img/mail/ico-pinterest-8.png') }}" alt="pinterest" width="42">
        </a>
       </td>
      </tr>
