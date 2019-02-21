@@ -17,6 +17,7 @@
     <div class="c-Form_Parts u-Margin _mgBottom-base05">
      <label class="c-Form_Label" for="Password">パスワード</label>
      <input type="password" name="password" id="Password" class="c-Form_Input" v-model="password" placeholder="Password">
+     <a href="" class="u-Text_Main-S u-TxtColor_Main u-Fill">パスワードを忘れてしまった方はこちら</a>
     </div>
 
     <div class="c-Form_Parts u-Flex _Justify-Center u-Margin _mgBottom-base05">
@@ -28,7 +29,7 @@
      新規登録の方はこちら
     </router-link>
 
-    <a href="" class="u-Text_Main-S u-TxAlign-Center u-TxtColor_Main u-Fill">パスワードを忘れてしまった方はこちら</a>
+
 
    </form>        
   </div><!-- /.l-Contents_Block -->
