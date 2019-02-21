@@ -1,11 +1,15 @@
 .c-Footer {
 
+ display: flex;
+ align-items: center;
 
+ @include mq(XL, max){
+  margin:auto $ContentsPadding auto $ContentsPadding;
+ }
 
  &_Branding{
  width: 108px;
  }//_Branding
-
 
  &_Navi{
   //margin: auto;
