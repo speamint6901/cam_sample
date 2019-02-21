@@ -1,0 +1,38 @@
+.c-UserFeed{
+
+ &-Comment{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid palettes(line,base);
+  padding: $base_grid*3;
+  &_Block{
+   width: 220px;
+   &-Text{
+    width: calc(100% - 220px);
+    @include MainTxt-S;
+   }//-Text
+  }//_Block
+
+  &_UserIcon{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   margin-bottom: $Common_MarginBottom;
+  }//_UserIcon
+
+  &_Rating{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   &-Thunder{
+   width: 25%;
+   }//-Thunder
+  }//_Rating
+
+ }//-Comment
+
+
+}//.c-UserFeed
+

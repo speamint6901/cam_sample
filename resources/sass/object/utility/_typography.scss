@@ -40,6 +40,7 @@ body{
  @include MainTxt;
  word-break: normal;
  letter-spacing: 0.05rem;
+ color: palettes(text,base);
 }
 
 
@@ -56,7 +57,7 @@ body{
 
  &_Page{
   text-align: center;
-  @include fontsize(14);
+  @include fontsize(16);
   line-height: 1.5em;
   margin-bottom:$common_mr-bt *2;
  }
