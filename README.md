@@ -35,9 +35,14 @@ hostsファイルに以下を追記
 
 # 運用
 
+### 管理ツールユーザー作成コマンド
+```
+$ sh containers/app/create_admin_account.sh
+```
+
 ### ローカル更新
 
-##### 最新の状態に更新
+##### 最新の状態に更新(作業開始時毎回）
 ```
 $ sh containers/app/deploy.sh
 ```
@@ -45,4 +50,9 @@ $ sh containers/app/deploy.sh
 ##### フロントエンド監視
 ```
 $ sh containers/app/front_watch.sh
+```
+
+##### DBリフレッシュ(サーバーエラー時などで試す）
+```
+$ sh containers/app/data_refresh.sh
 ```
