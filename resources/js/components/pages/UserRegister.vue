@@ -12,7 +12,7 @@
 
    <h1 class="c-Aricle_Hedding u-Hedding_Page u-TxAlign-Center">新規登録</h1>
 
-   <form @submit.prevent="register" class="l-Contents_Block-S">
+   <form @submit.prevent="register" class="l-Contents_Block-XS">
 
     <div class="c-Form_Parts">
      <label class="c-Form_Label" for="UserMail">メールアドレス</label>
@@ -32,13 +32,22 @@
      <span class="help-block" v-if="errors && errors.password">{{ errors.password[0] }}</span>
     </div>
 
-    <div class="c-Form_Parts">
+    <div class="c-Form_Parts u-Margin _mgBottom-base05">
      <label class="c-Form_Label" for="PasswordConfirmation">パスワード確認</label>
      <input type="password" name="password_confirmation" id="PasswordConfirmation" class="c-Form_Input" v-model="password_confirmation">
      <span class="help-block" v-if="errors && errors.password_confirmation">{{ errors.password_confirmation[0] }}</span>
     </div>
 
-    <button type="submit" class="">登録</button>
+    <div class="c-Form_Parts">
+     <input type="checkbox" name="" id="idch01" value="" class="c-Form_Input -Checkbox">
+     <label class="c-Form_Label -CheckBox u-Text_Main-S" for="idch01">
+      <a href="" class="u-TxtColor_Main">利用規約</a>と<a href="" class="u-TxtColor_Main">プライバシーポリシー</a>に同意する
+     </label>
+    </div>
+
+    <div class="c-Form_Parts u-Flex _Justify-Center">
+     <button type="submit" class="c-Form_Submit">登録</button>
+    </div>
 
    </form>
 

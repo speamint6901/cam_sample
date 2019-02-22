@@ -7,19 +7,29 @@
 
    <p v-show="isError">メールアドレスまたはパスワードが違います</p>
 
-   <form @submit.prevent="login"  class="l-Contents_Block-S">
+   <form @submit.prevent="login"  class="l-Contents_Block-XS">
 
     <div class="c-Form_Parts">
      <label class="c-Form_Label" for="UserMail">メールアドレス</label>
-     <input type="email" name="usermail" id="UserMail" class="c-Form_Input" v-model="email">
+     <input type="email" name="usermail" id="UserMail" class="c-Form_Input" v-model="email" placeholder="Mail">
     </div>
 
-    <div class="c-Form_Parts">
+    <div class="c-Form_Parts u-Margin _mgBottom-base05">
      <label class="c-Form_Label" for="Password">パスワード</label>
-     <input type="password" name="password" id="Password" class="c-Form_Input" v-model="password">
+     <input type="password" name="password" id="Password" class="c-Form_Input" v-model="password" placeholder="Password">
+     <a href="" class="u-Text_Main-S u-TxtColor_Main u-Fill">パスワードを忘れてしまった方はこちら</a>
     </div>
 
-    <button type="submit" class="">ログイン</button>
+    <div class="c-Form_Parts u-Flex _Justify-Center u-Margin _mgBottom-base05">
+    <button type="submit" class="c-Form_Submit">Login</button>
+    </div>
+
+
+    <router-link to="/register" class="u-Text_Main-S u-TxAlign-Center u-TxtColor_Main u-Fill">
+     新規登録の方はこちら
+    </router-link>
+
+
 
    </form>        
   </div><!-- /.l-Contents_Block -->

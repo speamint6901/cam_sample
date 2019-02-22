@@ -1,65 +1,45 @@
-input.checkbox{
- display: none;
- &:checked + label{
-  &:before {
-  background: #fff;
-   border: 1px solid palettes(Theme,Main);
- }
-  &:after {
-   opacity: 1;
-   -webkit-transform: rotate(-45deg) scale(1);
-   transform: rotate(-45deg) scale(1);
-  }
- }//checked
+$line:1px;
+$Size:18px;
+
+.c-Form{
+
+ &_Input{
+  &.-Checkbox{
+   display: none;
+   &:checked + label{
+    &:before {
+     background: palettes(Theme,Main);
+     border: $line solid palettes(Theme,Main);
+    }//:before
+   }//:checked
+  }//-Checkbox
+ }//_Input
 
 
- &+ label {
-  position: relative;
-  display: inline-block;
-  padding: 3px 3px 3px 22px;
-  cursor: pointer;
-  -webkit-transition: all .2s;
-  transition: all .2s;
-
-  &:before,&:after {
-   position: absolute;
-   content: '';
-   -webkit-transition: all .2s;
-   transition: all .2s;
-  }
-
-  &:before {
-   top: 50%;
-   left: 0;
-   width: 14px;
-   height: 14px;
-   margin-top: -8px;
-   background: #f4f4f4;
-   border: 1px solid #ccc;
-   border-radius: 3px;
-  }
-
-  &:after {
-   opacity: 0;
-   top: 50%;
-   left: 3px;
-   width: 8px;
-   height: 4px;
-   margin-top: -4px;
-   border-left: 2px solid  palettes(Theme,Main);
-   border-bottom: 2px solid  palettes(Theme,Main);
-   -webkit-transform: rotate(-45deg) scale(.5);
-   transform: rotate(-45deg) scale(.5);
-  }
-
-  &:hover {
-   color:  palettes(Theme,Main);
+ &_Label{
+  &.-CheckBox{
+   line-height: $line + $line + $Size;
+   position: relative;
+   display: inline-block;
+   overflow: hidden;
+   padding: 0em 0em 0em 2.5em;
    cursor: pointer;
-   &:before {
-    background: #fff;
+   transition: all 0.15s ease;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+   margin-bottom: 1em;
+   &:before{
+    position: absolute;
+    top: 0em;
+    left: 0em;
+    width: $Size;
+    height: $Size;
+    content: '';
+    border: $line solid palettes(line,base);
+    //background: palettes(Theme,Light);
    }
-  }//hover
+  }//.-CheckBox
 
- }//label
+ }//_Label
 
-}//type=checkbox
+}//c-Form
