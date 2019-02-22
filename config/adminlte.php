@@ -110,17 +110,17 @@ return [
     'menu' => [
         [
             'text' => 'ユーザー管理',
-            'url'  => '/',
+            'url'  => "users",
             'icon' => 'user',
         ],
         [
             'text' => 'ギア管理',
-            'url'  => '/',
+            'url'  => 'gears',
             'icon' => 'user',
         ],
         [
             'text' => 'アカウント管理',
-            'url'  => '/',
+            'url'  => 'accounts',
             'icon' => 'user',
         ],
         /*

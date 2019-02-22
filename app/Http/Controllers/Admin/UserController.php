@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
-class UserController extends Controller
+class UserController extends BaseController
 {
+
+    const ITEM_PER_PAGE = 20;
+
     /**
      * Display a listing of the resource.
      *
@@ -14,28 +18,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.users.index', $this->data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function dataIndex(Request $request) {
+        $query = User::query();
+        return datatables()->eloquent($query)->toJson();
     }
 
     /**
@@ -46,30 +34,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        $this->data['user'] = User::find($id);
+        if (is_null($this->data['user'])) {
+            abort(404);
+        }
+        return view('admin.users.show', $this->data);
     }
 
     /**
@@ -81,5 +50,21 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::find($id);
+        if (is_null($user)) {
+            abort(404);
+        }
+
+        \DB::beginTransaction();
+        try {
+            $user->delete();
+            \DB::commit();
+        } catch (\Exception $e) {
+            \DB::rollback();
+            abort(500);
+        }
+
+        $message = "ユーザーを削除しました";
+        return redirect(route('users.index'))->with('notice', $message);
     }
 }
