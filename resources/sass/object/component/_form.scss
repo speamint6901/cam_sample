@@ -115,7 +115,50 @@ input[type=date]{
 }//type=date
 
 
+.c-Form{
 
+ &_Block{
+  margin-bottom: 1em;
+  &._Border{
+   border-bottom: 4px solid #ED9324;
+   padding-bottom: 60px;
+   margin-bottom: 60px;
+   &-White{border-color: $base-color;}
+  }//._Border
+ }//_Block
+
+ &_Parts{
+  @include mq(S,max) {
+   margin-bottom: $base_grid *2;
+   &.u-Half { width: 100%; }
+   &.u-Quarter { width: 100%;  }
+   &.u-Third { width: 100%;  }
+   &.u-TwoThirds {width: 100%; }
+  }//mq-S
+ }//_Parts
+
+ &_Label{
+  display: block;
+  text-align: left;
+  margin-bottom: 0.5em;
+ }//_Label
+
+ &_Btn{
+  &_Submit{
+   display: block;
+   margin: auto;
+   @include common_radius;
+   padding: 0.8em 2.5em;
+   //border: 1px solid $main-color;
+   background-color: palettes(text,base);
+   margin: auto;
+   margin-top: $base_grid *6;
+
+   //color:$base-color ;
+  }//_Submit
+ }//_Btn
+
+}//c-Form
 
 //#########ここまでフォーム基本設定
 

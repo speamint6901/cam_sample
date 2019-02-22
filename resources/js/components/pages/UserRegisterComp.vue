@@ -6,7 +6,7 @@
 
   <div class="l-Contents_Block-M">
 
-   <p class="u-Margin _mgBottom-base10">
+   <p class="u-Margin _mgBottom-base10 u-TxAlign-Center">
     指定のメールアドレスへ確認のメールを送信いたしました。<br>
     確認メールにあります手順に従って本登録の完了をお願いします。
    </p>
