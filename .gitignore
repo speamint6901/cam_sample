@@ -5,7 +5,11 @@
 /public/css
 /storage/*.key
 /vendor
+/containers/db/mysql_data
 .env
 .phpunit.result.cache
 npm-debug.log
 yarn-error.log
+
+package.json
+package-lock.json
