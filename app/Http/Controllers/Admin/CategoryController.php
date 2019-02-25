@@ -3,14 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreGearPost;
-use App\Traits\FileUpload;
-use App\Models\Gear;
+use App\Http\Requests\StoreCategoryPost;
+use App\Models\Category;
 
-class GearController extends BaseController
+class CategoryController extends BaseController
 {
-
-    use FileUpload;
 
     const ITEM_PER_PAGE = 20;
 
@@ -21,16 +18,14 @@ class GearController extends BaseController
      */
     public function index()
     {
-        return view('admin.gears.index', $this->data);
+        return view('admin.categories.index', $this->data);
     }
 
     public function dataIndex(Request $request) {
-        $query = Gear::query();
+        $query = Category::query();
         return datatables()->eloquent($query)
-            ->addColumn('brand', function(Gear $gear) {
-                return optional($gear->brand)->name;
-            })->addColumn('genre', function(Gear $gear) {
-                return optional($gear->genre)->name;
+            ->addColumn('big_category', function(Category $category) {
+                return optional($category->big_category)->name;
             })
             ->toJson();
     }
@@ -42,7 +37,7 @@ class GearController extends BaseController
      */
     public function create()
     {
-        return view('admin.gears.create', $this->data);
+        return view('admin.categories.create', $this->data);
     }
 
     /**
@@ -51,13 +46,12 @@ class GearController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreGearPost $request)
+    public function store(StoreCategoryPost $request)
     {
         $params = $request->input();
         \DB::beginTransaction();
         try {
-            $params = $this->putFile($request, $params);
-            $gear = Gear::create($params);
+            $category = Category::create($params);
             \DB::commit();
         } catch (\Exception $e) {
             \DB::rollback();
@@ -65,8 +59,8 @@ class GearController extends BaseController
             //abort(500);
         }
 
-        $message = "ギアを登録しました";
-        return redirect(route('gears.index'))->with('notice', $message);
+        $message = "カテゴリを登録しました";
+        return redirect(route('categories.index'))->with('notice', $message);
     }
 
     /**
@@ -77,11 +71,11 @@ class GearController extends BaseController
      */
     public function show($id)
     {
-        $this->data['gear'] = Gear::find($id);
-        if (is_null($this->data['gear'])) {
+        $this->data['category'] = Category::find($id);
+        if (is_null($this->data['category'])) {
             abort(404);
         }
-        return view('admin.gears.show', $this->data);
+        return view('admin.categories.show', $this->data);
     }
 
     /**
@@ -92,11 +86,11 @@ class GearController extends BaseController
      */
     public function edit($id)
     {
-        $this->data['gear'] = Gear::find($id);
-        if (is_null($this->data['gear'])) {
+        $this->data['category'] = Category::find($id);
+        if (is_null($this->data['category'])) {
             abort(404);
         }
-        return view('admin.gears.edit', $this->data);
+        return view('admin.categories.edit', $this->data);
     }
 
     /**
@@ -106,29 +100,28 @@ class GearController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreGearPost $request, $id)
+    public function update(StoreCategoryPost $request, $id)
     {
         $params = $request->input();
-        $gear = Gear::find($id);
-        if (is_null($gear)) {
+        $category = Category::find($id);
+        if (is_null($category)) {
             abort(404);
         }
 
         \DB::beginTransaction();
         try {
-            $params = $this->putFile($request, $params);
             $params = collect($params)->filter(function($value, $key) {
                 return !is_null($value);
             })->toArray();
-            $gear->fill($params)->save();
+            $category->fill($params)->save();
             \DB::commit();
         } catch (\Exception $e) {
             \DB::rollback();
             abort(500);
         }
 
-        $message = "ギアを更新しました";
-        return redirect(route('gears.index'))->with('notice', $message);
+        $message = "カテゴリを更新しました";
+        return redirect(route('categories.index'))->with('notice', $message);
     }
 
     /**
@@ -139,21 +132,21 @@ class GearController extends BaseController
      */
     public function destroy($id)
     {
-        $gear = Gear::find($id);
-        if (is_null($gear)) {
+        $category = Category::find($id);
+        if (is_null($category)) {
             abort(404);
         }
 
         \DB::beginTransaction();
         try {
-            $gear->delete();
+            $category->delete();
             \DB::commit();
         } catch (\Exception $e) {
             \DB::rollback();
             abort(500);
         }
 
-        $message = "ギアを削除しました";
-        return redirect(route('gears.index'))->with('notice', $message);
+        $message = "カテゴリを削除しました";
+        return redirect(route('categories.index'))->with('notice', $message);
     }
 }

@@ -1,7 +1,8 @@
 #!/bin/bash
 
-docker-compose exec app /usr/local/bin/composer.phar install
 docker-compose exec app cp .env.example .env
+docker-compose exec app php artisan storage:link
+docker-compose exec app /usr/local/bin/composer.phar install
 docker-compose exec app php artisan key:generate
 docker-compose exec app php artisan migrate:refresh
 docker-compose exec app npm install

@@ -94,6 +94,18 @@
                       <a href="{{ route('gears.index') }}"><i class="ion ion-ios-people "></i><span>ギア管理</span></a>
                     </li>
                     <li class="">
+                      <a href="{{ route('brands.index') }}"><i class="ion ion-ios-people "></i><span>ブランド管理</span></a>
+                    </li>
+                    <li class="">
+                      <a href="{{ route('genres.index') }}"><i class="ion ion-ios-people "></i><span>ジャンル管理</span></a>
+                    </li>
+                    <li class="">
+                      <a href="{{ route('categories.index') }}"><i class="ion ion-ios-people "></i><span>カテゴリ管理</span></a>
+                    </li>
+                    <li class="">
+                      <a href="{{ route('big_categories.index') }}"><i class="ion ion-ios-people "></i><span>大カテゴリ管理</span></a>
+                    </li>
+                    <li class="">
                       <a href="{{ route('accounts.index') }}"><i class="ion ion-person-add "></i><span>アカウント管理</span></a>
                     </li>
                   </ul>

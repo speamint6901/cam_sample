@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGearTable extends Migration
+class CreateBigCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateGearTable extends Migration
      */
     public function up()
     {
-        Schema::create('gears', function (Blueprint $table) {
+        Schema::create('big_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('brand_id');
-            $table->integer('genre_id');
             $table->string('name');
-            $table->text('discription');
-            $table->string('gear_image');
-            $table->string('site_url')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -33,6 +28,6 @@ class CreateGearTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gears');
+        Schema::dropIfExists('big_categories');
     }
 }
