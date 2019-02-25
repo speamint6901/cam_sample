@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class UserController extends BaseController
@@ -64,7 +63,7 @@ class UserController extends BaseController
             abort(500);
         }
 
-        $message = "ユーザーを削除しました";
+        $message = "ユーザーをバンしました";
         return redirect(route('users.index'))->with('notice', $message);
     }
 }

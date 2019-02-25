@@ -56,3 +56,8 @@ $ sh containers/app/front_watch.sh
 ```
 $ sh containers/app/data_refresh.sh
 ```
+
+##### 画像ストレージ参照コマンド
+```
+$ docker-compose exec app php artisan storage:link
+```
