@@ -13,12 +13,17 @@
        </router-link>
       </li>
 
-      <li class="c-GlobalNavi_Menu_Item">
+      <li class="c-GlobalNavi_Menu_Item" v-show="!auth">
        <router-link to="/login" class="c-GlobalNavi_Menu_Item-Link">
         LOGIN
        </router-link>
       </li>
 
+      <li class="c-GlobalNavi_Menu_Item" v-show="auth">
+       <router-link to="/logout" class="c-GlobalNavi_Menu_Item-Link">
+        LOGOUT
+       </router-link>
+      </li>
       <li class="c-GlobalNavi_Menu_Item">
        <router-link to="/register" class="c-GlobalNavi_Menu_Item-Link">
         ユーザー登録
@@ -51,6 +56,18 @@
       <img class="c-UserIcon_Thumb-Img u-ObjectFitImg" src="/img/user01.png" alt="UserName" />
      </div><!--//.c-UserIcon_Thumb-->
     </div><!--//.c-UserIcon-->
+    <div id="dd-menu">
+      <ul class="list">
+        <li class="list-item">
+          <a href="#" @click="dropdown()">menu</a>
+          <ul v-if="active">
+            <li v-for="item in sublistlabel" class="sublist-item">
+              <a href="#" v-bind:label="item">{{item}}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
 
    </div><!-- /.c-Header_Block -->
 
@@ -58,3 +75,79 @@
  </header>
 
 </template>
+
+<script>
+ 
+import { mapState } from 'vuex';
+export default {
+
+  data() {
+  	return {
+        sublistlabel:{
+            "Cloth":"",
+            "Pants":"",
+            "Shoes":"",
+            "Goods":""
+        },
+        active:false
+    }
+  },
+  computed: {
+    ...mapState({
+        auth: state => state.AuthUser.authenticated
+    }),
+  },
+  methods: {
+  	dropdown(list){
+        console.log(this.active);
+    	this.active = this.active ? false:true;
+    }
+  }
+
+}
+
+</script>
+
+<style>
+#dd-menu{
+  width:300px;
+}
+ul{
+  padding: 0;
+}
+li{
+  list-style:none;
+}
+a{
+  color:#333;
+  text-decoration:none;
+}
+.list{
+  padding: 0;
+  border:solid 1px #ccc;
+}
+.list-item a{
+  position: relative;
+  padding: 8px;
+  border-bottom:solid 1px #ccc;
+}
+.list-item a{
+  display: block;
+}
+.list-item:last-of-type a{
+  border-bottom:none;
+}
+.list-item > a::after{
+  content:"▼";
+  position: absolute;
+  top:12px;
+  right:10px;
+  font-size:10px;
+}
+.list-item >a.active::after{
+  content:"▲";
+}
+.sublist-item{
+  font-size:0.75rem;
+}
+</style>

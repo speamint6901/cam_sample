@@ -7,13 +7,13 @@ const state = {
     email: '',
     password: '',
     loading: false,
+    authUser: null
 };
 
 
 const mutations = {
     updateEmail: function (state, payload) { state.email = payload   },
     updatePassword: function (state, payload) { state.password = payload   },
-    updateLoading: function (state, payload) { state.loading = payload },
     doLogin: function (state, payload) {
         state.isError = null;
         jwtToken.setToken(payload);
@@ -35,13 +35,21 @@ const actions = {
             email: formData.email,
             password: formData.password,
         }).then(res => {
+            console.log(res.data);
             commit('doLogin', res.data.access_token);
-            commit('updateLoading', false);
             router.push({'path': '/'});
         }).catch(error => {
             commit('isError', true);
         });
-    }
+    },
+    logoutRequest: ({dispatch}) => {
+        jwtToken.removeToken();
+        router.push({'path': '/login'});
+        return new Promise((resolve, reject) => {
+            dispatch('unsetAuthUser');
+            resolve();
+        });
+    },
 };
 
 export default {

@@ -2,7 +2,8 @@
  <div class="l-Container">
   <page-header></page-header>
 
-  <div class="l-Contents u-SiteSize">
+  <div v-show="isLoading" class="c-Loader05">Loading..</div>
+  <div class="l-Contents u-SiteSize" v-show="!isLoading">
    <router-view></router-view>
   </div>
 
@@ -14,16 +15,15 @@
 <script>
 Vue.component('page-header', require('./components/object/component/Header.vue').default);
 Vue.component('page-footer', require('./components/object/component/Footer.vue').default);
-/*
-    export default {
-        methods: {
-            logout() {
-                axios.get('/api/logout').then(res => {
-                    state.isLogin = false;
-                    this.$router.push({path: '/'});
-                });
-            }
-        }
-    }
-*/
+
+export default {
+    created() {
+        this.$store.dispatch('setAuthUser')
+    },
+    computed: {
+        isLoading: {
+            get: function () { return this.$store.getters.isLoading }
+        }
+    }
+}
 </script>
