@@ -49,12 +49,6 @@ export default {
             get: function () { return this.$store.getters.loginPassword },
             set: function (val) { this.$store.commit('updatePassword', val) }
         },
-        /*
-        loading: {
-            get: function () { return this.$store.Login.getters.loading },
-            set: function (val) { this.$store.commit('updateLoading', val) }
-        },
-        */
         isError: {
             get: function () { return this.$store.getters.isError },
             set: function (val) { this.$store.commit('isError', val) }
@@ -62,7 +56,6 @@ export default {
     },
     methods: {
         login() {
-            //this.loading = true;
             this.$store.dispatch('login', {
                 email: this.email,
                 password: this.password,

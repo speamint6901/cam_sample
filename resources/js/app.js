@@ -12,6 +12,7 @@ import axios from 'axios';
 import store from './store/index.js';
 import router from './router';
 import * as config from './config';
+import http from './http';
 
 window.state = store.state;
 window.Vue = Vue;
@@ -27,6 +28,8 @@ axios.interceptors.request.use(config => {
 
 
 Vue.component('app', require('./App.vue').default);
+
+Vue.use(http, { store });
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

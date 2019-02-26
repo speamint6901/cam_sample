@@ -29,7 +29,7 @@ class StoreGearPost extends FormRequest
             'brand_id' => 'required',
             'genre_id' => 'required',           
             'discription' => 'required|max:5000',
-            'gear_image' => 'required|mimes:jpg,png,gif',
+            'gear_image' => 'required|mimes:jpg,jpeg,png,gif',
             'site_url' => 'nullable',
         ];
     }

@@ -100,4 +100,11 @@ class AuthController extends Controller
             'expires_in' => auth("api")->factory()->getTTL() * 60
         ]);
     }
+
+    public function getCurrentUser() {
+       return response()->json([
+           'authenticated' => \Auth::guard('api')->check(),
+           'user' => \Auth::guard('api')->user(),
+       ]);
+    }
 }
