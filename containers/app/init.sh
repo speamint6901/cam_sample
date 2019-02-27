@@ -9,3 +9,4 @@ docker-compose exec app npm install
 docker-compose exec app npm install vuex --save
 docker-compose exec app npm install vue-router
 docker-compose exec app npm run dev
+docker-compose exec app service supervisor start

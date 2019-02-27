@@ -13,6 +13,9 @@ RUN apt-get update && apt-get clean
 RUN apt-get install -y git libzip-dev zip
 RUN docker-php-ext-configure zip -with-libzip
 RUN docker-php-ext-install pdo pdo_mysql zip
+RUN apt-get install -y supervisor
+
+RUN service supervisor start
 
 # install node npm
 RUN apt-get install -y gnupg
