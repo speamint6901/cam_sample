@@ -19,8 +19,10 @@ services:
     working_dir: /var/www/html/campbug
     volumes:
       - .:/var/www/html/campbug/
+      - ./containers/app/laravel-worker.conf:/etc/supervisor/conf.d/laravel-worker.conf
     links:
       - db
+      - redis
   db:
     build:
       context: .
@@ -33,6 +35,10 @@ services:
       - ./containers/db/mysql_data:/var/lib/mysql
     ports:
       - "3314:3306"
+  redis:
+    image: redis:5.0
+    ports:
+      - "6379:6379"
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
