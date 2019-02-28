@@ -156,7 +156,7 @@ class BrandController extends BaseController
         return redirect(route('brands.index'))->with('notice', "ブランドをインポートしました");
     }
 
-    public function import(Request $request) {
+    public function importGroups(Request $request) {
         BrandGroup::truncate();
         $file = $request->file('excel_import_groups');
         Excel::import(new BrandGroupImport, $file);
