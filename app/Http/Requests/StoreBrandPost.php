@@ -26,7 +26,8 @@ class StoreBrandPost extends FormRequest
         return [
             //
             'name' => 'required|string|max:255',
-            'name_group' => 'required',
+            'name_katakana' => 'required',
+            'name_category' => 'required',
         ];
     }
 }

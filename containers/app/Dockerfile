@@ -10,9 +10,9 @@ COPY ./containers/app/php.ini /usr/local/etc/php/
 
 RUN apt-get update && apt-get clean
 
-RUN apt-get install -y git libzip-dev zip
+RUN apt-get install -y git libzip-dev zip libpng-dev libjpeg-dev
 RUN docker-php-ext-configure zip -with-libzip
-RUN docker-php-ext-install pdo pdo_mysql zip
+RUN docker-php-ext-install pdo pdo_mysql zip gd
 RUN apt-get install -y supervisor
 
 RUN service supervisor start

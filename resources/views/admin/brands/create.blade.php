@@ -18,14 +18,21 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="name_katakana-text" class="col-sm-2 control-label">ブランド名(カナ)</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="name_katakana" id="name_katakana-text" value="{{ old('name_katakana') }}" placeholder="ブランド名(カナ)">
+            <p class="text-danger"><strong>{{ $errors->first('name_katakana') }}</strong></p>
+          </div>
+        </div>
+        <div class="form-group">
           <label for="body-text" class="col-sm-2 control-label">アルファベットグループ</label>
           <div class="col-sm-10">
-            <select name="name_group">
+            <select name="name_category">
             @foreach (\App\Models\Brand::alphaSelectbox() as $value)
                <option value="{{ $value }}">{{ $value }}</option> 
             @endforeach
             </select>
-            <p class="text-danger"><strong>{{ $errors->first('name_group') }}</strong></p>
+            <p class="text-danger"><strong>{{ $errors->first('name_category') }}</strong></p>
           </div>
         </div>
       </div>

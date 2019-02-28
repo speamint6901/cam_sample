@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreBrandPost;
 use App\Models\Brand;
+use App\Imports\BrandImport;
 
 class BrandController extends BaseController
 {
@@ -145,5 +147,19 @@ class BrandController extends BaseController
 
         $message = "ブランドを削除しました";
         return redirect(route('brands.index'))->with('notice', $message);
+    }
+
+    public function import(Request $request) {
+        Brand::truncate();
+        $file = $request->file('excel_import');
+        Excel::import(new BrandImport, $file);
+        return redirect(route('brands.index'))->with('notice', "ブランドをインポートしました");
+    }
+
+    public function import(Request $request) {
+        BrandGroup::truncate();
+        $file = $request->file('excel_import_groups');
+        Excel::import(new BrandGroupImport, $file);
+        return redirect(route('brands.index'))->with('notice', "ブランドグループをインポートしました");
     }
 }
