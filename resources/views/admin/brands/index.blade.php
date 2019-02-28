@@ -18,6 +18,19 @@
             </div>
           </form>
           --}}
+
+          <div class="pull-right">
+            <form method="post" action="{{ route('admin.brands.import') }}" enctype="multipart/form-data">
+                @csrf
+                <input type="file" class="form-control" name="excel_import" id="gear_image-text" value="">
+                <button type="submit">ブランドポート実行</button>
+            </form>
+            <form method="post" action="{{ route('admin.brand_groups.import') }}" enctype="multipart/form-data">
+                @csrf
+                <input type="file" class="form-control" name="excel_import_groups" id="gear_image-text" value="">
+                <button type="submit">ブランドグループインポート実行</button>
+            </form>
+          </div>
           <div class="pull-right">
             <a href="{{ route('brands.create') }}" class="btn btn-primary">新規作成</a>
           </div>
@@ -30,8 +43,9 @@
         <thead>
         <tr>
           <th>ID</th>
+          <th>アルファベットグループID</th>
           <th>名前</th>
-          <th>アルファベットグループ名</th>
+          <th>カタカナ</th>
           <th>操作</th>
         </tr>
         </thead>

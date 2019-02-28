@@ -19,6 +19,13 @@
           </form>
           --}}
           <div class="pull-right">
+            <form method="post" action="{{ route('admin.big_categories.import') }}" enctype="multipart/form-data">
+                @csrf
+                <input type="file" class="form-control" name="excel_import" id="gear_image-text" value="">
+                <button type="submit">データインポート</button>
+            </form>
+          </div>
+          <div class="pull-right">
             <a href="{{ route('big_categories.create') }}" class="btn btn-primary">新規作成</a>
           </div>
         </div>

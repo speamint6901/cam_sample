@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreCategoryPost;
 use App\Models\Category;
+use App\Imports\CategoryImport;
 
 class CategoryController extends BaseController
 {
@@ -148,5 +150,12 @@ class CategoryController extends BaseController
 
         $message = "カテゴリを削除しました";
         return redirect(route('categories.index'))->with('notice', $message);
+    }
+
+    public function import(Request $request) {
+        Category::truncate();
+        $file = $request->file('excel_import');
+        Excel::import(new CategoryImport, $file);
+        return redirect(route('categories.index'))->with('notice', "カテゴリをインポートしました");
     }
 }

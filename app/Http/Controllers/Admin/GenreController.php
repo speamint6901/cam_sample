@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreGenrePost;
 use App\Models\Genre;
+use App\Imports\GenreImport;
 
 class GenreController extends BaseController
 {
@@ -148,5 +150,12 @@ class GenreController extends BaseController
 
         $message = "ジャンルを削除しました";
         return redirect(route('genres.index'))->with('notice', $message);
+    }
+
+    public function import(Request $request) {
+        Genre::truncate();
+        $file = $request->file('excel_import');
+        Excel::import(new GenreImport, $file);
+        return redirect(route('genres.index'))->with('notice', "ジャンルをインポートしました");
     }
 }

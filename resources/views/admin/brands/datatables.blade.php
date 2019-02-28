@@ -34,8 +34,9 @@ $(function() {
         },
         columns : [
             { "data": "id", orderable: true },
+            { "data": "brand_group_id", orderable: false },
             { "data": "name", orderable: false },
-            { "data": "name_group", orderable: false },
+            { "data": "name_katakana", orderable: false },
             { "data": 'id', orderable: false },
         ],
         // 操作セルカスタムコールバック
@@ -43,11 +44,11 @@ $(function() {
             var addHtml = "";
             var editUrl = "{{ url('brands') }}";
             var showUrl = "{{ url('brands') }}";
-            var deleteUrl = "{{ url('brands/destroy') }}";
+            var deleteUrl = "{{ url('brands') }}";
             addHtml = '<a class="btn btn-primary" style="margin-right:5px;" href="' + showUrl + '/' + aData.id + '">詳細</a>';
             addHtml += '<a class="btn btn-warning" style="margin-right:5px;" href="' + editUrl + '/' + aData.id + '/edit">編集</a>';
             addHtml += '<button type="button" class="btn btn-danger delete-button" data-toggle="modal" data-target="#delete-confirm" data-route="' + deleteUrl + '/' + aData.id + '">削除</button>';
-            $('td:eq(3)', nRow).html(addHtml);
+            $('td:eq(4)', nRow).html(addHtml);
         }
     } ); 
 

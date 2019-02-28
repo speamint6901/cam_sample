@@ -5,29 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Brand extends Model 
+class BrandGroup extends Model 
 {
 
     use SoftDeletes;
 
     protected $fillable = [
         'name',
-        'brand_group_id',
-        'name_katakana',
     ];
 
-    // brand_group belongs to
-    public function brand() {
-        return $this->belongsTo('\App\Models\BrandGroup');
-    }
-
-    // gear has many
-    public function gears() {
-        return $this->hasMany('\App\Models\Gear');
-    }
-
-    public static function alphaSelectbox() {
-        return self::$alphbetGroup;
+    // brand has many
+    public function brands() {
+        return $this->hasMany('\App\Models\Brand');
     }
 
     // セレクトボックス生成
