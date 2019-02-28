@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreBigCategoryPost;
 use App\Models\BigCategory;
+use App\Imports\BigCategoryImport;
 
 class BigCategoryController extends BaseController
 {
@@ -145,5 +147,12 @@ class BigCategoryController extends BaseController
 
         $message = "大カテゴリを削除しました";
         return redirect(route('big_categories.index'))->with('notice', $message);
+    }
+
+    public function import(Request $request) {
+        BigCategory::truncate();
+        $file = $request->file('excel_import');
+        Excel::import(new BigCategoryImport, $file);
+        return redirect(route('big_categories.index'))->with('notice', "大カテゴリをインポートしました");
     }
 }

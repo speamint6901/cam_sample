@@ -45,7 +45,7 @@ $(function() {
             var deleteUrl = "{{ url('genres/destroy') }}";
             addHtml += '<a class="btn btn-warning" style="margin-right:5px;" href="' + editUrl + '/' + aData.id + '/edit">編集</a>';
             addHtml += '<button type="button" class="btn btn-danger delete-button" data-toggle="modal" data-target="#delete-confirm" data-route="' + deleteUrl + '/' + aData.id + '">削除</button>';
-            $('td:eq(4)', nRow).html(addHtml);
+            $('td:eq(3)', nRow).html(addHtml);
         }
     } ); 
 
