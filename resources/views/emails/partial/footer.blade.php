@@ -15,16 +15,16 @@
      <tr>
 
       <td  align="center" class="snsicon">
-       <a href="">
+       <a href="https://www.facebook.com/campbug.outdoor/">
         <img src="{{ asset('img/mail/ico-facebook-8.png') }}" alt="facebook" width="42">
        </a>
-       <a href="">
+       <a href="https://twitter.com/Campbug_Outdoor">
         <img src="{{ asset('img/mail/ico-twitter-8.png') }}" alt="twitter" width="42">
        </a>
        <a href="https://www.instagram.com/camp_bug/">
         <img src="{{ asset('img/mail/ico-insta-8.png') }}" alt="instagram" width="42">
        </a>
-       <a href="">
+       <a href="https://www.pinterest.jp/campbug_outdoor/">
         <img src="{{ asset('img/mail/ico-pinterest-8.png') }}" alt="pinterest" width="42">
        </a>
       </td>
