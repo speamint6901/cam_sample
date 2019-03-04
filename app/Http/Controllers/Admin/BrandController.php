@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreBrandPost;
 use App\Models\Brand;
+use App\Models\BrandGroup;
 use App\Imports\BrandImport;
+use App\Imports\BrandGroupImport;
 
 class BrandController extends BaseController
 {
