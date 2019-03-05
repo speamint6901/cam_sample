@@ -15,9 +15,10 @@ class BigCategoryImport implements ToModel,WithHeadingRow
     */
     public function model(array $row)
     {
-        return new BigCategory([
-            //
-            "name" => $row["name"],
-        ]);
+        if (!is_null($row["name"])) {
+            return new BigCategory([
+                "name" => $row["name"],
+            ]);
+        }
     }
 }

@@ -15,10 +15,11 @@ class CategoryImport implements ToModel,WithHeadingRow
     */
     public function model(array $row)
     {
-        return new Category([
-            //
-            "big_category_id" => $row["big_category_id"],
-            "name" => $row["name"],
-        ]);
+        if (!is_null($row["big_category_id"])) {
+            return new Category([
+                "big_category_id" => $row["big_category_id"],
+                "name" => $row["name"],
+            ]);
+        }
     }
 }

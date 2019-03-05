@@ -15,9 +15,10 @@ class BrandGroupImport implements ToModel,WithHeadingRow
     */
     public function model(array $row)
     {
-        return new BrandGroup([
-            //
-            "name" => $row["name"],
-        ]);
+        if (is_null($row["name"])) {
+            return new BrandGroup([
+                "name" => $row["name"],
+            ]);
+        }
     }
 }
