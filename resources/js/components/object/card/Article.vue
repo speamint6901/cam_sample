@@ -1,60 +1,63 @@
 <template>
 
-    <!--通常のArticleCard-->
-    <div>
-    <article class="c-ArticleCard" v-for="gear in gears">
+ <!--通常のArticleCard-->
+ <div class="l-Feed">
 
-     <header class="c-ArticleCard_Header">
-      <a href="">
-       <figure>
-        <img class="c-ArticleCard_Heading-Img u-ObjectFitImg" src="https://www.goldwin.co.jp/ec/img/l/NP71877.jpg" alt="GearName" />
-       </figure>
-      </a>
-     </header>
+  <article class="c-ArticleCard" v-for="gear in gears">
 
-
-     <div class="c-ArticleCard_Overview">
-      <a class="c-ArticleCard_SubTtile u-Hedding_Card_Sub">
-       BrandName
-      </a><!--//.c-ArticleCard_SubTtile-->
-      <h1 class="c-ArticleCard_Title u-Hedding_Card">
-       <a href="" class="u-TxtColor_Txt">
-        Gear Name
-       </a>
-      </h1><!--//.c-ArticleCard_Title-->
-     </div><!--//_Overview-->
+   <header class="c-ArticleCard_Header">
+    <a href="">
+     <figure>
+      <img class="c-ArticleCard_Heading-Img u-ObjectFitImg" src="https://www.goldwin.co.jp/ec/img/l/NP71877.jpg" alt="GearName" />
+     </figure>
+    </a>
+   </header>
 
 
-     <footer class="c-ArticleCard_Footer">
-      <div class="c-ArticleCard_Status">
-       <ul class="c-ArticleCard_Status_Wrap">
-        <li class="c-ArticleCard_Status_Item">
-         <i class="c-ArticleCard_Status-Icon">H.</i>
-         <span class="c-ArticleCard_Status-Count">888T</span>
-        </li>
-        <li class="c-ArticleCard_Status_Item">
-         <i class="c-ArticleCard_Status-Icon">W.</i>
-         <span class="c-ArticleCard_Status-Count">888T</span>
-        </li>
-        <li class="c-ArticleCard_Status_Item">
-         <i class="c-ArticleCard_Status-Icon">C.</i>
-         <span class="c-ArticleCard_Status-Count">888T</span>
-        </li>
-       </ul>
-      </div><!-- /.c-ArticleCard_Status -->
+   <div class="c-ArticleCard_Overview">
+    <a class="c-ArticleCard_SubTtile u-Hedding_Card_Sub">
+     BrandName
+    </a><!--//.c-ArticleCard_SubTtile-->
+    <h1 class="c-ArticleCard_Title u-Hedding_Card">
+     <a href="" class="u-TxtColor_Txt">
+      Gear Name
+     </a>
+    </h1><!--//.c-ArticleCard_Title-->
+   </div><!--//_Overview-->
 
-      <div class="c-ArticleCard_Rating">
-       <div class="c-ArticleCard_Rating-Thunder">
-        <img class="" src="/img/Dummt_Thunder.svg" alt="UserName" />
-       </div><!-- /.c-ArticleCard_Rating-Thunder -->
-       <p class="c-ArticleCard_Rating-Score u-Text_Main-S">
-        3.4 THUNDER
-       </p><!--//.c-ArticleCard_Rating-Score-->
-      </div>
-     </footer>
 
-    </article>
+   <footer class="c-ArticleCard_Footer">
+    <div class="c-ArticleCard_Status">
+     <ul class="c-ArticleCard_Status_Wrap">
+      <li class="c-ArticleCard_Status_Item">
+       <i class="c-ArticleCard_Status-Icon">H.</i>
+       <span class="c-ArticleCard_Status-Count">888T</span>
+      </li>
+      <li class="c-ArticleCard_Status_Item">
+       <i class="c-ArticleCard_Status-Icon">W.</i>
+       <span class="c-ArticleCard_Status-Count">888T</span>
+      </li>
+      <li class="c-ArticleCard_Status_Item">
+       <i class="c-ArticleCard_Status-Icon">C.</i>
+       <span class="c-ArticleCard_Status-Count">888T</span>
+      </li>
+     </ul>
+    </div><!-- /.c-ArticleCard_Status -->
+
+    <div class="c-ArticleCard_Rating">
+     <div class="c-ArticleCard_Rating-Thunder">
+      <img class="" src="/img/Dummt_Thunder.svg" alt="UserName" />
+     </div><!-- /.c-ArticleCard_Rating-Thunder -->
+     <p class="c-ArticleCard_Rating-Score u-Text_Main-S">
+      3.4 THUNDER
+     </p><!--//.c-ArticleCard_Rating-Score-->
     </div>
+   </footer>
+
+  </article>
+
+ </div><!--//.l-Feed-->
+
 </template>
 
 <script>
