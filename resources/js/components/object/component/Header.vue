@@ -29,10 +29,14 @@
         ユーザー登録
        </router-link>
       </li>
-
+      <li class="c-GlobalNavi_Menu_Item">
+       <router-link to="/gear" class="c-GlobalNavi_Menu_Item-Link">
+         ギア詳細 
+       </router-link>
+      </li>
       <li class="c-GlobalNavi_Menu_Item">
        <router-link to="/user" class="c-GlobalNavi_Menu_Item-Link">
-        ユーザー情報
+        マイページ
        </router-link>
       </li>
 

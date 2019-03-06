@@ -9,6 +9,7 @@ import UserRegisterComp from './components/pages/UserRegisterComp.vue'
 import Login from './components/pages/Login.vue'
 import Logout from './components/pages/Logout.vue'
 import User from './components/pages/User.vue'
+import Gear from './components/pages/Gear.vue'
  
 Vue.use(VueRouter);
  
@@ -17,6 +18,7 @@ const routes = [
     { path: '/register', component: UserRegister },
     { path: '/register/complete', component: UserRegisterComp },
     { path: '/login', component: Login },
+    { path: '/gear', component: Gear },
     { path: '/logout', name: 'logout', component: Logout },
     { path: '/user', component: User, meta: { requiresAuth: true } }
 ];
