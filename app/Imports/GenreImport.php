@@ -15,10 +15,12 @@ class GenreImport implements ToModel,WithHeadingRow
     */
     public function model(array $row)
     {
-        return new Genre([
-            //
-            "category_id" => $row["category_id"],
-            "name" => $row["name"],
-        ]);
+        if (!is_null($row["category_id"])) {
+            return new Genre([
+                //
+                "category_id" => $row["category_id"],
+                "name" => $row["name"],
+            ]);
+        }
     }
 }
