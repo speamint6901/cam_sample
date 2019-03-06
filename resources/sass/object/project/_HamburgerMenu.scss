@@ -1,0 +1,71 @@
+.p-HamburgerMenu{
+ margin-left: $base_grid*2;
+ &_ButtonArea{
+  position: relative;
+  z-index: z(HamburgerMenuBtn);
+
+  > .menu_btn{
+   width: 28px;
+   height: 24px;
+   max-width: 60px;
+   max-height: 60px;
+   padding: 2% 0;
+   cursor: pointer;
+
+   > .p-HamburgerMenu_Trigger{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    > span{
+     position: absolute;
+     left: 0;
+     display: block;
+     width: 100%;
+     height: 2px;
+     background: #333;
+     border-radius: 2px;
+     transition: all .4s;
+     &:nth-of-type(1) {top: 0;}
+     &:nth-of-type(2) {top: calc(50% - 1px);}
+     &:nth-of-type(3) {bottom: 0;}
+    }
+   }//_Trigger
+
+   //メニュー開いたとき
+   &.open_{
+    .p-HamburgerMenu_Trigger > span{background: #FFF;}
+    .p-HamburgerMenu_Trigger > span:nth-of-type(1) {
+     top: calc(50% - 1px);
+     transform: rotate(-45deg);
+    }
+    .p-HamburgerMenu_Trigger > span:nth-of-type(2) {
+     opacity: 0;
+    }
+    .p-HamburgerMenu_Trigger > span:nth-of-type(3) {
+     bottom: calc(50% - 1px);
+     transform: rotate(45deg);
+    }
+   }//.open_
+  }//menu_btn
+
+ }//_ButtonArea
+
+
+ &_Overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: z(overlay);
+  padding: 5%;
+  background: rgba(0,0,0,0.9);
+  transition: all 0.5s;
+  color: #fff;
+  &.v-enter, &.v-leave-to {
+   opacity: 0;
+  }
+ }//_Overlay
+
+}//.p-HamburgerMenu

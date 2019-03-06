@@ -1,8 +1,6 @@
 <template>
   <div class="l-Contents_Block">
-   <div class="l-Feed">
    <card-article></card-article>
-   </div><!--//.l-Feed-->
   </div><!-- /.l-Contents_Block -->
 </template>
 
