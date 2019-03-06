@@ -1,6 +1,6 @@
 <template>
 
- <header class="l-Header u-SiteSize">
+ <header class="l-Header u-SiteSize" id="js-HamburgerMenuHeader">
   <div class="c-Header">
 
    <div class="c-Header_Block u-Half">
@@ -31,7 +31,7 @@
       </li>
       <li class="c-GlobalNavi_Menu_Item">
        <router-link to="/gear" class="c-GlobalNavi_Menu_Item-Link">
-         ギア詳細 
+         ギア詳細
        </router-link>
       </li>
       <li class="c-GlobalNavi_Menu_Item">
@@ -44,7 +44,7 @@
     </nav>
    </div><!-- /.c-Header_Block -->
 
-   <div class="c-Header_Block u-Half u-Flex _Justify-End">
+   <div class="c-Header_Block u-Half u-Flex _Justify-End _AlignItem-Center">
 
     <form role="search" method="post" id="searchform" action="">
      <div class="c-Searchbar">
@@ -60,21 +60,21 @@
       <img class="c-UserIcon_Thumb-Img u-ObjectFitImg" src="/img/user01.png" alt="UserName" />
      </div><!--//.c-UserIcon_Thumb-->
     </div><!--//.c-UserIcon-->
-    <div v-cloak>
-      <div id="header">
-        <menu-btn 
-           :class="{ menu_btn: true, open_: menuFlag }" 
-	   @click.native="menuToggle">
-	</menu-btn>
-      </div>
-      <transition>
-        <div id="sp_menu" v-show="menuFlag" :style="{ marginTop: headH }">
-          <div class="menu_wrapp">
-	    Menu
-	  </div>
-        </div>
-      </transition>
-    </div>
+
+    <div class="p-HamburgerMenu" v-cloak>
+     <div class="p-HamburgerMenu_ButtonArea" >
+      <menu-btn :class="{ menu_btn: true, open_: menuFlag }" @click.native="menuToggle"></menu-btn>
+     </div><!--//.p-HamburgerMenu_Button-->
+
+     <transition>
+      <div v-show="menuFlag" :style="{ marginTop: headH }" class="p-HamburgerMenu_Overlay">
+       <div class="">
+        Menu
+       </div>
+      </div><!--//.p-HamburgerMenu_Overlay-->
+     </transition>
+    </div><!--//.p-HamburgerMenu-->
+
    </div><!-- /.c-Header_Block -->
 
   </div><!-- /.c-Header -->
@@ -83,15 +83,17 @@
 </template>
 
 <script>
- 
+
 import { mapState } from 'vuex';
 var menuBtnComp = {
   template: `
-    <div>
-        <span class="menu_trigger">
-            <span></span><span></span><span></span>
-        </span>
-    </div>
+<div>
+<span class="p-HamburgerMenu_Trigger">
+<span></span>
+<span></span>
+<span></span>
+</span>
+</div>
 `
 }
 
@@ -121,11 +123,11 @@ export default {
       this.menuFlag = !this.menuFlag;
     }
   },
-  mounted: function() {
+/*  mounted: function() {
     //headerの高さ取得
-    let h = document.getElementById("header").offsetHeight;
+   let h = document.getElementById("js-HamburgerMenuHeader").offsetHeight;
     this.headH = h + "px";
-  },
+  },*/
   components: {
     'menu-btn': menuBtnComp,
   }
@@ -134,92 +136,9 @@ export default {
 </script>
 
 <style>
-[v-cloak]{
-  display: none;
-}
+[v-cloak]{  display: none;}
 @keyframes show{
-    from{
-        opacity: 0;
-    }
-    to{
-        opacity: 1;
-    }
-}
-header{
-  padding: 16px;
-  background: #f3f3f3;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-}
-
-.menu_btn{
-    width: 10vw;
-    height: 10vw;
-    max-width: 60px;
-    max-height: 60px;
-    padding: 2% 0;
-    cursor: pointer;
-
-    .menu_trigger{
-        position: relative;
-        display: block;
-        width: 100%;
-        height: 100%;      
-        span{
-            position: absolute;
-            left: 0;
-            display: block;
-            width: 100%;
-            height: 2px;
-            background: #333;
-            border-radius: 2px;
-            transition: all .4s;
-
-            &:nth-of-type(1) {
-                top: 0;
-            }
-            &:nth-of-type(2) {
-                top: calc(50% - 1px);
-            }
-            &:nth-of-type(3) {
-                bottom: 0;
-            }
-        }
-    }
-
-    //メニュー開いたとき
-    &.open_{
-        .menu_trigger span:nth-of-type(1) {
-            top: calc(50% - 1px);
-            transform: rotate(-45deg);
-        }
-        .menu_trigger span:nth-of-type(2) {
-            opacity: 0;
-        }
-        .menu_trigger span:nth-of-type(3) {
-            bottom: calc(50% - 1px);
-            transform: rotate(45deg);
-        }
-    }
-}
-
-
-#sp_menu{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 99;
-  padding: 5%;
-  background: rgba(0,0,0,0.9);
-  transition: all 0.5s;
-  color: #fff;
-  &.v-enter, &.v-leave-to {
-        opacity: 0;
-    }
+    from{opacity: 0;}
+    to{opacity: 1;}
 }
 </style>
