@@ -112,6 +112,12 @@ body{
   &-UserName{}
  }//_ArticleCard
 
+
+ &_MasterItem{
+  &-Title{@include MainTxt-L;}//-Title
+ }//_MasterItem
+
+
  &_Feed{
   @include MainTxt-S;
   line-height: 1em;
