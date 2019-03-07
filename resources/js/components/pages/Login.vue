@@ -1,8 +1,8 @@
 <template>
 
- <article class="">
+ <div class="l-Contents_Block">
 
-  <div class="l-Contents_Block">
+  <article class="">
    <h1 class="c-Aricle_Hedding u-Hedding_Page u-TxAlign-Center">ログイン</h1>
 
    <p v-show="isError">メールアドレスまたはパスワードが違います</p>
@@ -21,20 +21,16 @@
     </div>
 
     <div class="c-Form_Parts u-Flex _Justify-Center u-Margin _mgBottom-base05">
-    <button type="submit" class="c-Form_Submit">Login</button>
+     <button type="submit" class="c-Form_Submit">Login</button>
     </div>
 
 
     <router-link to="/register" class="u-Text_Main-S u-TxAlign-Center u-TxtColor_Main u-Fill">
      新規登録の方はこちら
     </router-link>
-
-
-
-   </form>        
-  </div><!-- /.l-Contents_Block -->
-
- </article>
+   </form>
+  </article>
+ </div><!-- /.l-Contents_Block -->
 </template>
  
 <script>

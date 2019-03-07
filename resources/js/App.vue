@@ -2,10 +2,13 @@
  <div class="l-Container">
   <page-header></page-header>
 
-  <div v-show="isLoading" class="c-Loader05">Loading..</div>
-  <div class="l-Contents u-SiteSize" v-show="!isLoading">
-   <router-view></router-view>
-  </div>
+
+  <div class="l-Contents u-SiteSize">
+   <div v-show="isLoading" class="c-Loader05">Loading..</div>
+   <div v-show="!isLoading">
+    <router-view></router-view>
+   </div>
+  </div><!--//.l-Contents-->
 
   <page-footer></page-footer>
  </div><!--//l-Container-->
