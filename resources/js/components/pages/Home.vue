@@ -1,7 +1,5 @@
 <template>
-  <div class="l-Contents_Block">
    <card-article></card-article>
-  </div><!-- /.l-Contents_Block -->
 </template>
 
 <script>

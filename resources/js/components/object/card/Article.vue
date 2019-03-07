@@ -1,4 +1,5 @@
 <template>
+ <div class="l-Contents_Block">
 
  <!--通常のArticleCard-->
  <div class="l-Feed">
@@ -54,11 +55,14 @@
     </div>
    </footer>
   </article>
-  <infinite-loading @infinite="onInfinite" ref="infiniteLoading" :distance="500">
-      <span slot="no-more">すべて読み込みました</span>
-  </infinite-loading>
  </div><!--//.l-Feed-->
 
+
+ <infinite-loading @infinite="onInfinite" ref="infiniteLoading" :distance="500">
+  <span slot="no-more">すべて読み込みました</span>
+ </infinite-loading>
+
+ </div><!-- /.l-Contents_Block -->
 </template>
 
 <script>
@@ -77,14 +81,14 @@ export default {
     },
     created() {
         axios.get(this.nextUrl).then(res => {
-           this.gears = res.data.data; 
+           this.gears = res.data.data;
            this.nextUrl = res.data.next_page_url;
         });
     },
     methods: {
         onInfinite() {
             axios.get(this.nextUrl, {
-                    notLoading: true 
+                    notLoading: true
                 }).then(res => {
                 if (res.data.data.length) {
                     this.gears = this.gears.concat(res.data.data);

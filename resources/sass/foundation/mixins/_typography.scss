@@ -15,7 +15,7 @@
 
 
 @mixin MainTxt{
- @include fontsize(14);
+ @include fontsize(13);
  line-height: 1.5em;
  @include mq(S,max){  @include fontsize(12);  line-height: 1.5em; }//Media(S)
 }//MainTxt
@@ -34,7 +34,7 @@
 
 
 @mixin MainTxt-M{
- @include fontsize(16);
+ @include fontsize(15);
  line-height: 1.5em;
  @include mq(S,max){  @include fontsize(12);  line-height: 1.5em; }//Media(S)
 }//MainTxt-M
