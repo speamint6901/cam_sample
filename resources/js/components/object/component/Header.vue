@@ -30,11 +30,6 @@
        </router-link>
       </li>
       <li class="c-GlobalNavi_Menu_Item">
-       <router-link to="/gear" class="c-GlobalNavi_Menu_Item-Link">
-         ギア詳細
-       </router-link>
-      </li>
-      <li class="c-GlobalNavi_Menu_Item">
        <router-link to="/user" class="c-GlobalNavi_Menu_Item-Link">
         マイページ
        </router-link>
@@ -49,7 +44,7 @@
     <form role="search" method="post" id="searchform" action="">
      <div class="c-Searchbar">
       <label class="screen-reader-text" for="s"></label>
-      <input type="text" value="" name="s" id="s" placeholder="keyword search">
+      <input type="text" value="" name="search_keyword" id="s" placeholder="keyword search">
       <input type="hidden" value="" id="filter_id" name="filter_id">
       <input type="submit" id="searchsubmit" value="&#xf002;"  />
      </div><!--//c-Searchbar-->
@@ -69,7 +64,7 @@
      <transition>
       <div v-show="menuFlag" :style="{ marginTop: headH }" class="p-HamburgerMenu_Overlay">
        <div class="">
-        Menu
+         Menu
        </div>
       </div><!--//.p-HamburgerMenu_Overlay-->
      </transition>

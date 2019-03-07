@@ -9,6 +9,7 @@ require('./bootstrap');
 
 import Vue from 'vue';
 import axios from 'axios';
+import InfiniteLoading from 'vue-infinite-loading';
 import store from './store/index.js';
 import router from './router';
 import * as config from './config';

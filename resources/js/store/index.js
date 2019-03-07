@@ -5,6 +5,7 @@ import AuthUser from "./modules/auth-user";
 import UserRegister from './modules/UserRegister.js';
 import Login from './modules/Login';
 
+
 Vue.use(Vuex);
 
 export default new Vuex.Store ({
@@ -12,6 +13,6 @@ export default new Vuex.Store ({
         App,
         AuthUser,
         UserRegister,
-        Login
+        Login,
     }
 });

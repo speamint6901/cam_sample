@@ -19,7 +19,7 @@ const routes = [
     { path: '/register', component: UserRegister },
     { path: '/register/complete', component: UserRegisterComp },
     { path: '/login', component: Login },
-    { path: '/gear', component: Gear },
+    { path: '/gear/:id', name: 'Gear', component: Gear },
     { path: '/logout', name: 'logout', component: Logout },
     { path: '/user', component: User, meta: { requiresAuth: true } }
 ];

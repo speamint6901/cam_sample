@@ -3,7 +3,9 @@ const http = axios;
 
 export default (Vue, { store }) => {
   http.interceptors.request.use((config) => {
-    store.commit("setLoading", true);
+    if (config.notLoading == undefined || !config.notLoading) {
+        store.commit("setLoading", true);
+    }
     return config;
   }, (error) => {
     // エラー処理

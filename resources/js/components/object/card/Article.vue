@@ -6,21 +6,21 @@
   <article class="c-ArticleCard" v-for="gear in gears">
 
    <header class="c-ArticleCard_Header">
-    <a href="">
+    <router-link v-bind:to="{ name: 'Gear', params : { id: gear.id }}" class="c-GlobalNavi_Menu_Item-Link">
      <figure>
-      <img class="c-ArticleCard_Heading-Img u-ObjectFitImg" src="https://www.goldwin.co.jp/ec/img/l/NP71877.jpg" alt="GearName" />
+      <img class="c-ArticleCard_Heading-Img u-ObjectFitImg" v-bind:src="'storage/' + gear.gear_image" alt="GearName" />
      </figure>
-    </a>
+    </router-link>
    </header>
 
 
    <div class="c-ArticleCard_Overview">
     <a class="c-ArticleCard_SubTtile u-Hedding_Card_Sub">
-     BrandName
+     {{ gear.brand.name }}
     </a><!--//.c-ArticleCard_SubTtile-->
     <h1 class="c-ArticleCard_Title u-Hedding_Card">
      <a href="" class="u-TxtColor_Txt">
-      Gear Name
+     {{ gear.name }}
      </a>
     </h1><!--//.c-ArticleCard_Title-->
    </div><!--//_Overview-->
@@ -53,62 +53,54 @@
      </p><!--//.c-ArticleCard_Rating-Score-->
     </div>
    </footer>
-
   </article>
-
+  <infinite-loading @infinite="onInfinite" ref="infiniteLoading" :distance="500">
+      <span slot="no-more">すべて読み込みました</span>
+  </infinite-loading>
  </div><!--//.l-Feed-->
 
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import * as config from './../../../config';
+import InfiniteLoading from 'vue-infinite-loading';
 
 export default {
+    components: {
+        InfiniteLoading,
+    },
     data() {
         return {
-            gears: [
-                { message: 'test1' },
-                { message: 'test2' }
-            ]
+            gears:[],
+            nextUrl: config.getList
         }
     },
-/*
+    created() {
+        axios.get(this.nextUrl).then(res => {
+           this.gears = res.data.data; 
+           this.nextUrl = res.data.next_page_url;
+        });
+    },
     methods: {
-        register() {
-            this.loading = true;
-            this.$store.dispatch('register', {
-                email: this.email,
-                name: this.name,
-                password: this.password,
-                password_confirmation: this.password_confirmation
+        onInfinite() {
+            axios.get(this.nextUrl, {
+                    notLoading: true 
+                }).then(res => {
+                if (res.data.data.length) {
+                    this.gears = this.gears.concat(res.data.data);
+                    this.$refs.infiniteLoading.stateChanger.loaded();
+                    this.nextUrl = res.data.next_page_url;
+                    //現在のページ と 最後のページが同一なら終了
+                    if (res.data.current_page == res.data.last_page) {
+                        this.$refs.infiniteLoading.stateChanger.complete();
+                    }
+                } else {
+                    this.$refs.infiniteLoading.stateChanger.complete();
+                }
+            }).catch((error) => {
+                console.log(error);
             });
         },
     },
-    computed: {
-        email: {
-            get: function () { return this.$store.getters.email },
-            set: function (val) { this.$store.commit('updateEmail', val) }
-        },
-        name: {
-            get: function () { return this.$store.getters.name },
-            set: function (val) { this.$store.commit('updateName', val) }
-        },
-        password: {
-            get: function () { return this.$store.getters.password },
-            set: function (val) { this.$store.commit('updatePassword', val) }
-        },
-        password_confirmation: {
-            get: function () { return this.$store.getters.password_confirmation },
-            set: function (val) { this.$store.commit('updatePasswordConfirmation', val) }
-        },
-        loading: {
-            get: function () { return this.$store.getters.loading },
-            set: function (val) { this.$store.commit('updateLoading', val) }
-        },
-        ...mapState({
-            errors: state => state.UserRegister.errors
-        }),
-    },
-*/
 }
 </script>
