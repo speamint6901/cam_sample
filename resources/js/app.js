@@ -18,16 +18,6 @@ import http from './http';
 window.state = store.state;
 window.Vue = Vue;
 
-axios.interceptors.request.use(config => {
-    config.headers['X-CSRF-TOKEN']     = window.Laravel.csrfToken;
-    config.headers['X-Requested-With'] = 'XMLHttpRequest';
-    config.headers['Authorization']    = `Bearer ${localStorage.getItem('jwt_token')}`;
-    return config;
-}, error => {
-    return Promise.reject(error);
-});
-
-
 Vue.component('app', require('./App.vue').default);
 
 Vue.use(http, { store });

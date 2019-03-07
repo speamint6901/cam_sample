@@ -6,9 +6,13 @@ export default (Vue, { store }) => {
     if (config.notLoading == undefined || !config.notLoading) {
         store.commit("setLoading", true);
     }
+    config.headers['X-CSRF-TOKEN']     = window.Laravel.csrfToken;
+    config.headers['X-Requested-With'] = 'XMLHttpRequest';
+    config.headers['Authorization']    = `Bearer ${localStorage.getItem('jwt_token')}`;
     return config;
   }, (error) => {
     // エラー処理
+    return Promise.reject(error);
   });
 
   http.interceptors.response.use((response) => {

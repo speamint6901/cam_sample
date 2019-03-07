@@ -18,7 +18,7 @@ const mutations = {
         state.isError = null;
         jwtToken.setToken(payload);
     },
-    isError: function (state, payload) { state.isError = payload },
+    isError: function (state, payload) { state.isError = true },
 };
 
 
@@ -35,11 +35,14 @@ const actions = {
             email: formData.email,
             password: formData.password,
         }).then(res => {
-            console.log(res.data);
-            commit('doLogin', res.data.access_token);
-            router.push({'path': '/'});
+            if (res.data.error != undefined) {
+                commit('isError', true);
+            } else {
+                commit('doLogin', res.data.access_token);
+                router.push({'path': '/'});
+            }
         }).catch(error => {
-            commit('isError', true);
+            
         });
     },
     logoutRequest: ({dispatch}) => {
