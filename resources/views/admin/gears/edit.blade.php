@@ -19,6 +19,13 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="name-text" class="col-sm-2 control-label">カテゴリ</label>
+          <div class="col-sm-10">
+            {{ Form::select('category_id', \App\Models\Category::selectbox(), isset($gear->category[0]) ? $gear->category[0]->id : null, ['class' => 'form-control', 'id' => 'categories_type']) }}
+            <p class="text-danger"><strong>{{ $errors->first('category_id') }}</strong></p>
+          </div>
+        </div>
+        <div class="form-group">
           <label for="name-text" class="col-sm-2 control-label">ジャンル</label>
           <div class="col-sm-10">
             {{ Form::select('genre_id', \App\Models\Genre::selectbox(), $gear->genre_id, ['class' => 'form-control', 'id' => 'categories_type']) }}

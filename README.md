@@ -52,6 +52,12 @@ $ sh containers/app/deploy.sh
 $ sh containers/app/front_watch.sh
 ```
 
+##### DBエクスポート
+export先はcontainers/db/dump/
+```
+$ sh containers/db/db_export.sh
+```
+
 ##### DBリフレッシュ(サーバーエラー時などで試す）
 ```
 $ sh containers/app/data_refresh.sh

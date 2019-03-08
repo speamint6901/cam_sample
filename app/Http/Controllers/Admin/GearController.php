@@ -26,12 +26,17 @@ class GearController extends BaseController
     }
 
     public function dataIndex(Request $request) {
-        $query = Gear::query();
+        $query = Gear::with('category');
         return datatables()->eloquent($query)
             ->addColumn('brand', function(Gear $gear) {
                 return optional($gear->brand)->name;
             })->addColumn('genre', function(Gear $gear) {
                 return optional($gear->genre)->name;
+            })->addColumn('category', function(Gear $gear) {
+                if(isset($gear->category[0])) {
+                    return $gear->category[0]->name;
+                }
+                return null;
             })
             ->toJson();
     }
@@ -59,6 +64,9 @@ class GearController extends BaseController
         try {
             $params = $this->putFile($request, $params);
             $gear = Gear::create($params);
+            if (isset($params['category_id']) && !empty($params['category_id'])) {
+                $gear->category()->attach($params['category_id']);
+            }
             GearProfile::create(["gear_id" => $gear->id]);
             \DB::commit();
         } catch (\Exception $e) {
@@ -79,7 +87,7 @@ class GearController extends BaseController
      */
     public function show($id)
     {
-        $this->data['gear'] = Gear::find($id);
+        $this->data['gear'] = Gear::with(['profile', 'category'])->find($id);
         if (is_null($this->data['gear'])) {
             abort(404);
         }
@@ -94,7 +102,7 @@ class GearController extends BaseController
      */
     public function edit($id)
     {
-        $this->data['gear'] = Gear::find($id);
+        $this->data['gear'] = Gear::with('category')->find($id);
         if (is_null($this->data['gear'])) {
             abort(404);
         }
@@ -122,6 +130,9 @@ class GearController extends BaseController
             $params = collect($params)->filter(function($value, $key) {
                 return !is_null($value);
             })->toArray();
+            if (isset($params['category_id']) && !empty($params['category_id'])) {
+                $gear->category()->sync($params['category_id']);
+            }
             $gear->fill($params)->save();
             \DB::commit();
         } catch (\Exception $e) {
@@ -149,6 +160,7 @@ class GearController extends BaseController
         \DB::beginTransaction();
         try {
             $gear->profile()->delete();
+            $gear->category()->detach();
             $gear->delete();
             \DB::commit();
         } catch (\Exception $e) {

@@ -33,6 +33,7 @@ services:
     volumes:
       - ./containers/db/conf.d:/etc/mysql/conf.d
       - ./containers/db/mysql_data:/var/lib/mysql
+      - ./containers/db/dump:/etc/mysql/dump
     ports:
       - "3314:3306"
   redis:

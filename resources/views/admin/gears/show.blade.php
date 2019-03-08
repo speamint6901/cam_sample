@@ -15,13 +15,19 @@
         <div class="form-group" style="padding-bottom:15px;">
           <div class="col-md-2">ブランド</div>
           <div class="col-md-10">
-            {{-- optional($gear->brand)->name --}}
+            {{ optional($gear->brand)->name }}
+          </div>
+        </div>
+        <div class="form-group" style="padding-bottom:15px;">
+          <div class="col-md-2">カテゴリ</div>
+          <div class="col-md-10">
+            {{ isset($gear->category[0]) ? $gear->category[0]->name : null }}
           </div>
         </div>
         <div class="form-group" style="padding-bottom:15px;">
           <div class="col-md-2">ジャンル</div>
           <div class="col-md-10">
-            {{-- optional($gear->genre)->name --}}
+            {{ optional($gear->genre)->name }}
           </div>
         </div>
         <div class="form-group" style="padding-bottom:15px;">

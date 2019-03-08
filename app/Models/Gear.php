@@ -34,4 +34,9 @@ class Gear extends Model
         return $this->belongsTo('\App\Models\Genre');
     }
 
+    // category belongs to many
+    public function category() {
+        return $this->belongsToMany('\App\Models\Category', 'category_has_gears');
+    }
+
 }

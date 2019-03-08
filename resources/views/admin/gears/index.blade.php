@@ -31,6 +31,7 @@
         <tr>
           <th>ID</th>
           <th>ブランド</th>
+          <th>カテゴリ</th>
           <th>ジャンル</th>
           <th>名前</th>
           <th>操作</th>

@@ -35,6 +35,7 @@ $(function() {
         columns : [
             { "data": "id", orderable: true },
             { "data": "brand", orderable: false },
+            { "data": "category", orderable: false }, 
             { "data": "genre", orderable: false },
             { "data": "name", orderable: false },
             { "data": 'id', orderable: false },
@@ -48,7 +49,7 @@ $(function() {
             addHtml = '<a class="btn btn-primary" style="margin-right:5px;" href="' + showUrl + '/' + aData.id + '">詳細</a>';
             addHtml += '<a class="btn btn-warning" style="margin-right:5px;" href="' + editUrl + '/' + aData.id + '/edit">編集</a>';
             addHtml += '<button type="button" class="btn btn-danger delete-button" data-toggle="modal" data-target="#delete-confirm" data-route="' + deleteUrl + '/' + aData.id + '">削除</button>';
-            $('td:eq(4)', nRow).html(addHtml);
+            $('td:eq(5)', nRow).html(addHtml);
         }
     } ); 
 
