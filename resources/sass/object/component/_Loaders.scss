@@ -1,4 +1,4 @@
-.c-Loader05 {
+.c-Loader05{
   margin: 25% auto;
   font-size: 10px;
   width: 1em;
@@ -9,6 +9,18 @@
   animation: load5 1.1s infinite ease;
   transform: translateZ(0);
 }
+
+.loading-default[data-v-46b20d22],.infinite-loading-container[data-v-358985eb] [class^=loading-] { //InfinityScrollの打ち消しよう不本意ｗ
+ @extend .c-Loader05;
+ width: 1em !important;
+ height: 1em !important;
+ font-size: 10px !important;
+ border:none !important;
+}
+
+.infinite-status-prompt{padding: $base_grid*10 0px !important;}//InfinityScrollの打ち消しよう不本意ｗ
+
+.loading-default[data-v-46b20d22]:before{display: none !important;}//InfinityScrollの打ち消しよう不本意ｗ
 
 $Loders_Color : #606060;
 

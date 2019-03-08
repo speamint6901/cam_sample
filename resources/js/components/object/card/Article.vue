@@ -59,7 +59,7 @@
 
 
  <infinite-loading @infinite="onInfinite" ref="infiniteLoading" :distance="500">
-  <span slot="no-more">すべて読み込みました</span>
+  <span slot="no-more">End of content</span>
  </infinite-loading>
 
  </div><!-- /.l-Contents_Block -->
