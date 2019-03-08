@@ -16,7 +16,7 @@ class CreateGearTable extends Migration
         Schema::create('gears', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('brand_id');
-            $table->integer('genre_id');
+            $table->integer('genre_id')->nullable();
             $table->string('name');
             $table->text('discription');
             $table->string('gear_image');

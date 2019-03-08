@@ -28,7 +28,7 @@ class StoreGearPost extends FormRequest
             'name' => 'required|string|max:255',
             'brand_id' => 'required',
             'category_id' => 'nullable',
-            'genre_id' => 'required',           
+            'genre_id' => 'nullable',           
             'discription' => 'required|max:5000',
             'gear_image' => 'required|mimes:jpg,jpeg,png,gif',
             'site_url' => 'nullable',
