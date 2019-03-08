@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreGearPost;
 use App\Traits\FileUpload;
 use App\Models\Gear;
+use App\Models\GearProfile;
 
 class GearController extends BaseController
 {
@@ -58,6 +59,7 @@ class GearController extends BaseController
         try {
             $params = $this->putFile($request, $params);
             $gear = Gear::create($params);
+            GearProfile::create(["gear_id" => $gear->id]);
             \DB::commit();
         } catch (\Exception $e) {
             \DB::rollback();
@@ -139,13 +141,14 @@ class GearController extends BaseController
      */
     public function destroy($id)
     {
-        $gear = Gear::find($id);
+        $gear = Gear::with('profile')->find($id);
         if (is_null($gear)) {
             abort(404);
         }
 
         \DB::beginTransaction();
         try {
+            $gear->profile()->delete();
             $gear->delete();
             \DB::commit();
         } catch (\Exception $e) {

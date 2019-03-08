@@ -19,6 +19,11 @@ class Gear extends Model
         'site_url',
     ];
 
+    // gear_profile has one
+    public function profile() {
+        return $this->hasOne('\App\Models\GearProfile');
+    }
+
     // brand belongs to
     public function brand() {
         return $this->belongsTo('\App\Models\Brand');

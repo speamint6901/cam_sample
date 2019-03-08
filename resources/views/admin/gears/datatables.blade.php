@@ -44,7 +44,7 @@ $(function() {
             var addHtml = "";
             var editUrl = "{{ url('gears') }}";
             var showUrl = "{{ url('gears') }}";
-            var deleteUrl = "{{ url('gears/destroy') }}";
+            var deleteUrl = "{{ url('gears') }}";
             addHtml = '<a class="btn btn-primary" style="margin-right:5px;" href="' + showUrl + '/' + aData.id + '">詳細</a>';
             addHtml += '<a class="btn btn-warning" style="margin-right:5px;" href="' + editUrl + '/' + aData.id + '/edit">編集</a>';
             addHtml += '<button type="button" class="btn btn-danger delete-button" data-toggle="modal" data-target="#delete-confirm" data-route="' + deleteUrl + '/' + aData.id + '">削除</button>';
