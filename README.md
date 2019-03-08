@@ -61,7 +61,6 @@ $ sh containers/db/db_export.sh
 ```
 
 ###### インポート
-export先はcontainers/db/dump/
 ```
 $ docker-compose exec -T db mysql -uroot -p campbug -e"$(cat containers/db/dump/campbug.sql)"
 ```
