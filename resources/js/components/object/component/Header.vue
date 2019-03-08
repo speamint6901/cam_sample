@@ -109,7 +109,7 @@ export default {
   },
   computed: {
     ...mapState({
-        auth: state => state.AuthUser.authenticated
+        auth: state => state.authUser.authenticated
     }),
   },
   methods: {

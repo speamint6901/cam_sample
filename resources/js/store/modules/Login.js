@@ -17,6 +17,7 @@ const mutations = {
     doLogin: function (state, payload) {
         state.isError = null;
         jwtToken.setToken(payload);
+        console.log(jwtToken.getToken());
     },
     isError: function (state, payload) { state.isError = true },
 };
@@ -31,18 +32,21 @@ const getters = {
 
 const actions = {
     login ({ commit, state }, formData) {
-        axios.post(config.login, {
-            email: formData.email,
-            password: formData.password,
-        }).then(res => {
-            if (res.data.error != undefined) {
-                commit('isError', true);
-            } else {
-                commit('doLogin', res.data.access_token);
-                router.push({'path': '/'});
-            }
-        }).catch(error => {
-            
+        return new Promise((resolve, reject) => {
+            axios.post(config.login, {
+                email: formData.email,
+                password: formData.password,
+            }).then(res => {
+                if (res.data.error != undefined) {
+                    commit('isError', true);
+                } else {
+                    commit('doLogin', res.data.access_token);
+                }
+                resolve();
+            }).catch(error => {
+                console.log("login failure!");
+                reject(); 
+            });
         });
     },
     logoutRequest: ({dispatch}) => {

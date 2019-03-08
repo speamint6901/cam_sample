@@ -32,14 +32,17 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
     store.commit('setLoading', true);
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        if (store.state.AuthUser.authenticated === false || !jwt.getToken()) {
+        if (store.state.authUser.authenticated === false || !jwt.getToken()) {
+            store.commit('setLoading', false);
             next({
                 path: '/login',
             })
         } else {
+            store.commit('setLoading', false);
             next()
         }
     } else {
+        store.commit('setLoading', false);
         next();
     }
 });

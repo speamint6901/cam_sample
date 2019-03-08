@@ -55,7 +55,10 @@ export default {
             this.$store.dispatch('login', {
                 email: this.email,
                 password: this.password,
-            });
+            }).then((response) => {
+                this.$store.dispatch('setAuthUser');
+                this.$router.push({'path': '/'});
+            }).catch((error) => {});
         },
     },
 }

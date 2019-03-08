@@ -13,7 +13,6 @@ export default {
                 state.user_id = payload.user.user.id;
                 state.name = payload.user.user.name;
             }
-            console.log(state);
         },
         unsetAuthUser (state, payload) {
             state.authenticated = false;
