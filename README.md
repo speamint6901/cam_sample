@@ -52,10 +52,17 @@ $ sh containers/app/deploy.sh
 $ sh containers/app/front_watch.sh
 ```
 
-##### DBエクスポート
+##### DBエクスポート,インポート
+パスワードは全て secret
+###### エクスポート
 export先はcontainers/db/dump/
 ```
 $ sh containers/db/db_export.sh
+```
+
+###### インポート
+```
+$ docker-compose exec -T db mysql -uroot -p campbug -e"$(cat containers/db/dump/campbug.sql)"
 ```
 
 ##### DBリフレッシュ(サーバーエラー時などで試す）
