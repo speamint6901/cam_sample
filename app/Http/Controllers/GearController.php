@@ -17,7 +17,7 @@ class GearController extends Controller
      */
     public function index()
     {
-        $gears = Gear::with('brand')->paginate(self::PER_PAGE);
+        $gears = Gear::with(['brand', 'profile'])->paginate(self::PER_PAGE);
         return response()->json($gears);
     }
 }

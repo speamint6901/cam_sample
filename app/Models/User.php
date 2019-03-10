@@ -28,6 +28,17 @@ class User extends Authenticatable implements JWTSubject
         'password', 'remember_token',
     ];
 
+    // gear belongs to many
+    public function gears()
+    {
+        return $this->belongsToMany('App\Models\Gear')
+                        ->using('App\Models\GearUser')
+                        ->withPivot([
+                            'type',
+                            'have_comment',
+                            'point',
+                        ]);
+    }
 
     public function getJWTIdentifier()
     {

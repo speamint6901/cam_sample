@@ -39,4 +39,16 @@ class Gear extends Model
         return $this->belongsToMany('\App\Models\Category', 'category_has_gears');
     }
 
+    // user belongs to many
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User')
+                        ->using('App\Models\GearUser')
+                        ->withPivot([
+                            'type',
+                            'have_comment',
+                            'point',
+                        ]);
+    }
+
 }

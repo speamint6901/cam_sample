@@ -32,15 +32,15 @@
      <ul class="c-ArticleCard_Status_Wrap">
       <li class="c-ArticleCard_Status_Item">
        <i class="c-ArticleCard_Status-Icon">H.</i>
-       <span class="c-ArticleCard_Status-Count">888T</span>
+       <span class="c-ArticleCard_Status-Count">{{ gear.profile.have_count }}</span>
       </li>
       <li class="c-ArticleCard_Status_Item">
        <i class="c-ArticleCard_Status-Icon">W.</i>
-       <span class="c-ArticleCard_Status-Count">888T</span>
+       <span class="c-ArticleCard_Status-Count">{{ gear.profile.want_count }}</span>
       </li>
       <li class="c-ArticleCard_Status_Item">
        <i class="c-ArticleCard_Status-Icon">C.</i>
-       <span class="c-ArticleCard_Status-Count">888T</span>
+       <span class="c-ArticleCard_Status-Count">{{ gear.profile.fav_count }}</span>
       </li>
      </ul>
     </div><!-- /.c-ArticleCard_Status -->
@@ -50,7 +50,7 @@
       <img class="" src="/img/Dummt_Thunder.svg" alt="UserName" />
      </div><!-- /.c-ArticleCard_Rating-Thunder -->
      <p class="c-ArticleCard_Rating-Score u-Text_Main-S">
-      3.4 THUNDER
+      {{ gear.profile.thander_avg }}THUNDER
      </p><!--//.c-ArticleCard_Rating-Score-->
     </div>
    </footer>
