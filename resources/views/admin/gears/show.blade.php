@@ -45,7 +45,7 @@
         <div class="form-group" style="padding-bottom:15px;">
           <div class="col-md-2">ギア画像</div>
           <div class="col-md-10">
-            <img src="{{ asset('storage/'. $gear->gear_image) }}">
+            <img src="{{ asset('storage/'. $gear->gear_image) }}" style="width: 300px;">
           </div>
         </div>
         <div class="form-group" style="padding-bottom:15px;">
