@@ -1,3 +1,8 @@
+-- MySQL dump 10.13  Distrib 5.7.25, for Linux (x86_64)
+--
+-- Host: localhost    Database: campbug
+-- ------------------------------------------------------
+-- Server version	5.7.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -10,6 +15,30 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+--
+-- Table structure for table `admins`
+--
+
+DROP TABLE IF EXISTS `admins`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `admins` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `admins_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admins`
+--
 
 LOCK TABLES `admins` WRITE;
 /*!40000 ALTER TABLE `admins` DISABLE KEYS */;
@@ -17,6 +46,26 @@ INSERT INTO `admins` VALUES (1,'2Q','develop@suganumadenshi.com','$2y$10$md85Z4.
 /*!40000 ALTER TABLE `admins` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `big_categories`
+--
+
+DROP TABLE IF EXISTS `big_categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `big_categories` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `big_categories`
+--
 
 LOCK TABLES `big_categories` WRITE;
 /*!40000 ALTER TABLE `big_categories` DISABLE KEYS */;
@@ -24,6 +73,26 @@ INSERT INTO `big_categories` VALUES (1,'テント・タープ',NULL,'2019-03-08 
 /*!40000 ALTER TABLE `big_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `brand_groups`
+--
+
+DROP TABLE IF EXISTS `brand_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `brand_groups` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `brand_groups`
+--
 
 LOCK TABLES `brand_groups` WRITE;
 /*!40000 ALTER TABLE `brand_groups` DISABLE KEYS */;
@@ -31,6 +100,28 @@ INSERT INTO `brand_groups` VALUES (1,'A',NULL,'2019-03-08 11:27:11','2019-03-08 
 /*!40000 ALTER TABLE `brand_groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `brands`
+--
+
+DROP TABLE IF EXISTS `brands`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `brands` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `brand_group_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_katakana` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=576 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `brands`
+--
 
 LOCK TABLES `brands` WRITE;
 /*!40000 ALTER TABLE `brands` DISABLE KEYS */;
@@ -38,6 +129,27 @@ INSERT INTO `brands` VALUES (1,'1','A Vontade','アボンタージ',NULL,'2019-0
 /*!40000 ALTER TABLE `brands` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categories` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `big_category_id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
@@ -45,20 +157,143 @@ INSERT INTO `categories` VALUES (1,1,'テント・ツェルト',NULL,'2019-03-08
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `category_has_gears`
+--
+
+DROP TABLE IF EXISTS `category_has_gears`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `category_has_gears` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) NOT NULL,
+  `gear_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category_has_gears`
+--
+
+LOCK TABLES `category_has_gears` WRITE;
+/*!40000 ALTER TABLE `category_has_gears` DISABLE KEYS */;
+INSERT INTO `category_has_gears` VALUES (1,6,10),(2,1,11),(3,1,12),(4,1,13),(5,3,14),(6,1,15),(7,1,16),(8,1,17),(9,3,18),(10,1,19),(11,1,20),(12,1,21),(13,1,22),(14,1,23),(15,1,24),(16,1,25),(17,1,26),(18,2,27),(19,2,28),(20,2,29),(21,2,30),(22,2,31),(23,2,32),(24,2,33),(25,2,34),(26,2,35),(27,2,36),(28,2,37),(29,2,38),(30,2,39),(31,2,40),(32,1,41),(34,2,42),(35,2,43),(36,2,44),(37,2,45),(38,1,46),(39,2,47),(40,2,48),(41,1,49),(42,7,50),(43,7,51),(44,7,52),(45,7,53),(46,7,54),(47,7,55);
+/*!40000 ALTER TABLE `category_has_gears` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gear_profiles`
+--
+
+DROP TABLE IF EXISTS `gear_profiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gear_profiles` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `gear_id` int(11) NOT NULL,
+  `have_count` int(11) NOT NULL DEFAULT '0',
+  `want_count` int(11) NOT NULL DEFAULT '0',
+  `fav_count` int(11) NOT NULL DEFAULT '0',
+  `thander_avg` int(11) NOT NULL DEFAULT '0',
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gear_profiles`
+--
 
 LOCK TABLES `gear_profiles` WRITE;
 /*!40000 ALTER TABLE `gear_profiles` DISABLE KEYS */;
-INSERT INTO `gear_profiles` VALUES (1,1,0,0,0,0,NULL,'2019-03-08 11:33:11','2019-03-08 11:33:11'),(2,2,0,0,0,0,NULL,'2019-03-08 11:36:21','2019-03-08 11:36:21'),(3,3,0,0,0,0,NULL,'2019-03-08 11:44:41','2019-03-08 11:44:41'),(4,4,0,0,0,0,NULL,'2019-03-08 11:51:25','2019-03-08 11:51:25'),(5,5,0,0,0,0,NULL,'2019-03-08 11:53:05','2019-03-08 11:53:05'),(6,6,0,0,0,0,NULL,'2019-03-08 11:54:12','2019-03-08 11:54:12'),(7,7,0,0,0,0,NULL,'2019-03-08 11:56:57','2019-03-08 11:56:57'),(8,8,0,0,0,0,NULL,'2019-03-08 12:04:48','2019-03-08 12:04:48'),(9,9,0,0,0,0,NULL,'2019-03-08 12:07:55','2019-03-08 12:07:55');
+INSERT INTO `gear_profiles` VALUES (1,1,0,0,0,0,NULL,'2019-03-08 11:33:11','2019-03-08 11:33:11'),(2,2,0,0,0,0,NULL,'2019-03-08 11:36:21','2019-03-08 11:36:21'),(3,3,0,0,0,0,NULL,'2019-03-08 11:44:41','2019-03-08 11:44:41'),(4,4,0,0,0,0,NULL,'2019-03-08 11:51:25','2019-03-08 11:51:25'),(5,5,0,0,0,0,NULL,'2019-03-08 11:53:05','2019-03-08 11:53:05'),(6,6,0,0,0,0,NULL,'2019-03-08 11:54:12','2019-03-08 11:54:12'),(7,7,0,0,0,0,NULL,'2019-03-08 11:56:57','2019-03-08 11:56:57'),(8,8,0,0,0,0,NULL,'2019-03-08 12:04:48','2019-03-08 12:04:48'),(9,9,0,0,0,0,NULL,'2019-03-08 12:07:55','2019-03-08 12:07:55'),(10,10,0,0,0,0,NULL,'2019-03-10 08:06:46','2019-03-10 08:06:46'),(11,11,0,0,0,0,NULL,'2019-03-11 02:53:58','2019-03-11 02:53:58'),(12,12,0,0,0,0,NULL,'2019-03-11 02:55:26','2019-03-11 02:55:26'),(13,13,0,0,0,0,NULL,'2019-03-11 02:56:33','2019-03-11 02:56:33'),(14,14,0,0,0,0,NULL,'2019-03-11 03:07:51','2019-03-11 03:07:51'),(15,15,0,0,0,0,NULL,'2019-03-11 03:10:11','2019-03-11 03:10:11'),(16,16,0,0,0,0,NULL,'2019-03-11 03:14:14','2019-03-11 03:14:14'),(17,17,0,0,0,0,NULL,'2019-03-11 03:21:41','2019-03-11 03:21:41'),(18,18,0,0,0,0,NULL,'2019-03-11 03:29:29','2019-03-11 03:29:29'),(19,19,0,0,0,0,NULL,'2019-03-11 03:34:07','2019-03-11 03:34:07'),(20,20,0,0,0,0,NULL,'2019-03-11 03:40:39','2019-03-11 03:40:39'),(21,21,0,0,0,0,NULL,'2019-03-11 03:44:50','2019-03-11 03:44:50'),(22,22,0,0,0,0,NULL,'2019-03-11 03:54:20','2019-03-11 03:54:20'),(23,23,0,0,0,0,NULL,'2019-03-11 03:57:25','2019-03-11 03:57:25'),(24,24,0,0,0,0,NULL,'2019-03-11 04:01:19','2019-03-11 04:01:19'),(25,25,0,0,0,0,NULL,'2019-03-11 04:05:25','2019-03-11 04:05:25'),(26,26,0,0,0,0,NULL,'2019-03-11 04:09:32','2019-03-11 04:09:32'),(27,27,0,0,0,0,NULL,'2019-03-11 05:03:26','2019-03-11 05:03:26'),(28,28,0,0,0,0,NULL,'2019-03-11 05:11:52','2019-03-11 05:11:52'),(29,29,0,0,0,0,NULL,'2019-03-11 05:17:28','2019-03-11 05:17:28'),(30,30,0,0,0,0,NULL,'2019-03-11 05:21:00','2019-03-11 05:21:00'),(31,31,0,0,0,0,NULL,'2019-03-11 05:23:13','2019-03-11 05:23:13'),(32,32,0,0,0,0,NULL,'2019-03-11 05:28:22','2019-03-11 05:28:22'),(33,33,0,0,0,0,NULL,'2019-03-11 05:32:36','2019-03-11 05:32:36'),(34,34,0,0,0,0,NULL,'2019-03-11 05:36:10','2019-03-11 05:36:10'),(35,35,0,0,0,0,NULL,'2019-03-11 05:41:58','2019-03-11 05:41:58'),(36,36,0,0,0,0,NULL,'2019-03-11 05:45:36','2019-03-11 05:45:36'),(37,37,0,0,0,0,NULL,'2019-03-11 05:48:17','2019-03-11 05:48:17'),(38,38,0,0,0,0,NULL,'2019-03-11 05:51:34','2019-03-11 05:51:34'),(39,39,0,0,0,0,NULL,'2019-03-11 05:55:17','2019-03-11 05:55:17'),(40,40,0,0,0,0,NULL,'2019-03-11 05:58:18','2019-03-11 05:58:18'),(41,41,0,0,0,0,NULL,'2019-03-11 06:08:52','2019-03-11 06:08:52'),(42,42,0,0,0,0,NULL,'2019-03-11 06:13:35','2019-03-11 06:13:35'),(43,43,0,0,0,0,NULL,'2019-03-11 06:19:42','2019-03-11 06:19:42'),(44,44,0,0,0,0,NULL,'2019-03-11 06:39:01','2019-03-11 06:39:01'),(45,45,0,0,0,0,NULL,'2019-03-11 06:43:22','2019-03-11 06:43:22'),(46,46,0,0,0,0,NULL,'2019-03-11 06:46:32','2019-03-11 06:46:32'),(47,47,0,0,0,0,NULL,'2019-03-11 07:01:12','2019-03-11 07:01:12'),(48,48,0,0,0,0,NULL,'2019-03-11 07:04:53','2019-03-11 07:04:53'),(49,49,0,0,0,0,NULL,'2019-03-11 07:08:54','2019-03-11 07:08:54'),(50,50,0,0,0,0,NULL,'2019-03-11 07:25:34','2019-03-11 07:25:34'),(51,51,0,0,0,0,NULL,'2019-03-11 07:58:16','2019-03-11 07:58:16'),(52,52,0,0,0,0,NULL,'2019-03-11 08:01:24','2019-03-11 08:01:24'),(53,53,0,0,0,0,NULL,'2019-03-11 08:04:27','2019-03-11 08:04:27'),(54,54,0,0,0,0,NULL,'2019-03-11 08:40:58','2019-03-11 08:40:58'),(55,55,0,0,0,0,NULL,'2019-03-11 08:41:51','2019-03-11 08:41:51');
 /*!40000 ALTER TABLE `gear_profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `gear_users`
+--
+
+DROP TABLE IF EXISTS `gear_users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gear_users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `gear_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `have_comment` text COLLATE utf8mb4_unicode_ci,
+  `point` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `gear_users_gear_id_user_id_type_unique` (`gear_id`,`user_id`,`type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gear_users`
+--
+
+LOCK TABLES `gear_users` WRITE;
+/*!40000 ALTER TABLE `gear_users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gear_users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gears`
+--
+
+DROP TABLE IF EXISTS `gears`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gears` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `brand_id` int(11) NOT NULL,
+  `genre_id` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `discription` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gear_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `site_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gears`
+--
 
 LOCK TABLES `gears` WRITE;
 /*!40000 ALTER TABLE `gears` DISABLE KEYS */;
-INSERT INTO `gears` VALUES (1,244,10,'BaseBall Cap','KAVU(カブー)ベースボールキャップはコットン素材のKAVUの頭文字「K」があしらわれた、ヴィンテージテイストキャップです。ツバが短めのディテールは、 ツバを前にしても後ろにしても被りやすいのが特徴です。\r\n\r\nサイズ：55～61 cm\r\n素材：コットン100%','gear_images/98QUPzf9AHxliHcJ9lrZcrtHFRW8ytlfK0p5sKrd.jpeg','http://www.kavu.jp/product/headwear/all/',NULL,'2019-03-08 11:33:11','2019-03-08 11:33:11'),(2,244,10,'Chillba','KAVU カブー チルバはこれぞKAVU（カブー）ならではの色使いとユニークなデザインの日よけハット！太陽の光から身体全体を守ってくれるので川遊びに、日差しの強い暑い夏のマストアイテムです。DWRナイロンを使用し、クローズドセルフォームが組み込まれているので水に浮きます。また、サイズ調節付きのあご紐でしっかり固定できますので、風の強い日でも飛ばされてしまう心配がありません。ソフトなフォームを使用しているので、折りたたむこともできます。\r\n\r\nサイズ：フリーサイズ(55cm～60cm　内側で調節可能)\r\n素材：ポリエステル100％\r\n生産国：アメリカ製','gear_images/YYTcRhJuipDjUI4ahiAHCEdN3D3Ob4ltKKIHxSuD.jpeg','http://www.kavu.jp/product/headwear/all/',NULL,'2019-03-08 11:36:21','2019-03-08 11:36:21'),(3,244,10,'FL Strap Cap','サイズ : 1sz\r\nカラー : Citrus Orange,Dark Navy,Grey\r\n素材 : 100% Cotton','gear_images/WX70A0q8B41DUSply20lb6yXhhI6PDTUWGfv43KT.jpeg','http://www.kavu.jp/product/headwear/all/',NULL,'2019-03-08 11:44:41','2019-03-08 11:44:41'),(4,244,10,'Strap Bucket Hat','\"KAVU(カブー)ストラップバケットハットは人気の10ozキャンバスを使った日本別注ハットです。定番のストラップのデザインとコットンキャンバス素材がアイコニックな魅力のアイテムで、長い間様々なアウトドアユーザーにご支持をいただいているハットです。使い込むほどに味の出るコットンキャンバス素材で、色褪せも長年愛用したジーンズのように付きあっていけるハットです。調節可能なコードロック付きのあご紐で風にハットを飛ばされることもありません。\r\n\r\nサイズ：S、L\r\n素材：キャンバスコットン100%\r\n生産国：アメリカ製\"','gear_images/d0QJtf4V3gitRmqFJcKayme5N0DhCN5NgnwoxHnR.jpeg','http://www.kavu.jp/product/headwear/all/',NULL,'2019-03-08 11:51:25','2019-03-08 11:51:25'),(5,244,10,'Strapcap','\"KAVU カブー ストラップキャップは縁に付いたアジャスタブルウェビングテープによりサイズ調節ができ、USカヌー&カヤックチームに採用されているコットンキャンバスキャップです。\r\n\r\nメイン素材: 綿\r\n素材構成: キャンバスコットン100%\r\nサイズ:56~58cm\r\n素材:キャンバスコットン100%\"','gear_images/qp2dzDEOsR4ZUwQFOUUgLW2BBWMNWGHznU2DanB8.jpeg','http://www.kavu.jp/product/headwear/all/',NULL,'2019-03-08 11:53:05','2019-03-08 11:53:05'),(6,244,10,'Synthetic Strapcap','\"KAVU カブー シンセティックキャップは軽量で速乾性に大変優れている、シンセティック素材のKAVU（カブー）定番のシンセティックストラップキャップです。KAVU（カブー）スタイルのイージーさと使いやすさを持ち合わせ、人気のKavuナイロンのウェービングが付いています。\r\n\r\n素材: ナイロン100％\r\nサイズ: S,M,L\"','gear_images/cESGjmrGCI7QyFwVBB7TzqRPXHlyGj5rJ2pjKPLV.jpeg','http://www.kavu.jp/product/headwear/all/',NULL,'2019-03-08 11:54:12','2019-03-08 11:54:12'),(7,244,10,'Trailrunner','\"KAVU カブー トレイルランナーはポリエステル100％で作られた通気性の良いアクティブな方に向けたスポーツキャップです。中間部分にはメッシュ素材を素材を採用して通気性能をアップしています。また、ストラップキャップと同様にサイズ調整が可能です。\r\n\r\nサイズ： M,L\r\n素　材：ポリエステル100％\"','gear_images/Zq9Cg5jTWDrqwI2vNRJcXecgFEmbGry5A9Ga6KlO.jpeg','http://www.kavu.jp/product/headwear/all/',NULL,'2019-03-08 11:56:57','2019-03-08 11:56:57'),(8,385,3,'HK500','\"長年にわたり世界で最も知られている圧力式灯油ランタンです。\r\n200 以上の細かなパーツから構成され、その美しく完成された姿は世界のランタン愛好家から絶大なる支持を得ています。\r\n\r\n●サイズ/φ 17 × 40cm\r\n●本体重量/ 2.4kg\r\n●タンク容量/1L\r\n●燃焼時間/約8 時間\r\n●明るさ/ 500CP(約400W)\r\n●カラー/ ニッケル、ブラス\"','gear_images/Bbh8VThoE24LL3R2FM9QtcjMXS0ZMmT26nTDRIx4.jpeg','https://www.star-corp.co.jp/product/detail10022.html',NULL,'2019-03-08 12:04:48','2019-03-08 12:04:48'),(9,390,2,'2245ランタン','\"使用マントル：IP-8052N（マントルＡ）\r\n照度：約370ルクス（Tガス使用時）\r\nガス消費量：30g/h\r\n燃焼時間：約8時間（IP-250タイプガス使用時）\r\n本体サイズ：8.3×8.3×12.7cm\r\n本体重量：200g\"','gear_images/P1NJwQ3ILpDoAplv6LwNXqBuyoeUP47nFmNKU0PI.jpeg','http://www.iwatani-primus.co.jp/products/primus/products/lanterns/ip2245a_s.html',NULL,'2019-03-08 12:07:55','2019-03-08 12:07:55');
+INSERT INTO `gears` VALUES (1,244,10,'BaseBall Cap','KAVU(カブー)ベースボールキャップはコットン素材のKAVUの頭文字「K」があしらわれた、ヴィンテージテイストキャップです。ツバが短めのディテールは、 ツバを前にしても後ろにしても被りやすいのが特徴です。\r\n\r\nサイズ：55～61 cm\r\n素材：コットン100%','gear_images/98QUPzf9AHxliHcJ9lrZcrtHFRW8ytlfK0p5sKrd.jpeg','http://www.kavu.jp/product/headwear/all/',NULL,'2019-03-08 11:33:11','2019-03-08 11:33:11'),(2,244,10,'Chillba','KAVU カブー チルバはこれぞKAVU（カブー）ならではの色使いとユニークなデザインの日よけハット！太陽の光から身体全体を守ってくれるので川遊びに、日差しの強い暑い夏のマストアイテムです。DWRナイロンを使用し、クローズドセルフォームが組み込まれているので水に浮きます。また、サイズ調節付きのあご紐でしっかり固定できますので、風の強い日でも飛ばされてしまう心配がありません。ソフトなフォームを使用しているので、折りたたむこともできます。\r\n\r\nサイズ：フリーサイズ(55cm～60cm　内側で調節可能)\r\n素材：ポリエステル100％\r\n生産国：アメリカ製','gear_images/YYTcRhJuipDjUI4ahiAHCEdN3D3Ob4ltKKIHxSuD.jpeg','http://www.kavu.jp/product/headwear/all/',NULL,'2019-03-08 11:36:21','2019-03-08 11:36:21'),(3,244,10,'FL Strap Cap','サイズ : 1sz\r\nカラー : Citrus Orange,Dark Navy,Grey\r\n素材 : 100% Cotton','gear_images/WX70A0q8B41DUSply20lb6yXhhI6PDTUWGfv43KT.jpeg','http://www.kavu.jp/product/headwear/all/',NULL,'2019-03-08 11:44:41','2019-03-08 11:44:41'),(4,244,10,'Strap Bucket Hat','\"KAVU(カブー)ストラップバケットハットは人気の10ozキャンバスを使った日本別注ハットです。定番のストラップのデザインとコットンキャンバス素材がアイコニックな魅力のアイテムで、長い間様々なアウトドアユーザーにご支持をいただいているハットです。使い込むほどに味の出るコットンキャンバス素材で、色褪せも長年愛用したジーンズのように付きあっていけるハットです。調節可能なコードロック付きのあご紐で風にハットを飛ばされることもありません。\r\n\r\nサイズ：S、L\r\n素材：キャンバスコットン100%\r\n生産国：アメリカ製\"','gear_images/d0QJtf4V3gitRmqFJcKayme5N0DhCN5NgnwoxHnR.jpeg','http://www.kavu.jp/product/headwear/all/',NULL,'2019-03-08 11:51:25','2019-03-08 11:51:25'),(5,244,10,'Strapcap','\"KAVU カブー ストラップキャップは縁に付いたアジャスタブルウェビングテープによりサイズ調節ができ、USカヌー&カヤックチームに採用されているコットンキャンバスキャップです。\r\n\r\nメイン素材: 綿\r\n素材構成: キャンバスコットン100%\r\nサイズ:56~58cm\r\n素材:キャンバスコットン100%\"','gear_images/qp2dzDEOsR4ZUwQFOUUgLW2BBWMNWGHznU2DanB8.jpeg','http://www.kavu.jp/product/headwear/all/',NULL,'2019-03-08 11:53:05','2019-03-08 11:53:05'),(6,244,10,'Synthetic Strapcap','\"KAVU カブー シンセティックキャップは軽量で速乾性に大変優れている、シンセティック素材のKAVU（カブー）定番のシンセティックストラップキャップです。KAVU（カブー）スタイルのイージーさと使いやすさを持ち合わせ、人気のKavuナイロンのウェービングが付いています。\r\n\r\n素材: ナイロン100％\r\nサイズ: S,M,L\"','gear_images/cESGjmrGCI7QyFwVBB7TzqRPXHlyGj5rJ2pjKPLV.jpeg','http://www.kavu.jp/product/headwear/all/',NULL,'2019-03-08 11:54:12','2019-03-08 11:54:12'),(7,244,10,'Trailrunner','\"KAVU カブー トレイルランナーはポリエステル100％で作られた通気性の良いアクティブな方に向けたスポーツキャップです。中間部分にはメッシュ素材を素材を採用して通気性能をアップしています。また、ストラップキャップと同様にサイズ調整が可能です。\r\n\r\nサイズ： M,L\r\n素　材：ポリエステル100％\"','gear_images/Zq9Cg5jTWDrqwI2vNRJcXecgFEmbGry5A9Ga6KlO.jpeg','http://www.kavu.jp/product/headwear/all/',NULL,'2019-03-08 11:56:57','2019-03-08 11:56:57'),(8,385,3,'HK500','\"長年にわたり世界で最も知られている圧力式灯油ランタンです。\r\n200 以上の細かなパーツから構成され、その美しく完成された姿は世界のランタン愛好家から絶大なる支持を得ています。\r\n\r\n●サイズ/φ 17 × 40cm\r\n●本体重量/ 2.4kg\r\n●タンク容量/1L\r\n●燃焼時間/約8 時間\r\n●明るさ/ 500CP(約400W)\r\n●カラー/ ニッケル、ブラス\"','gear_images/Bbh8VThoE24LL3R2FM9QtcjMXS0ZMmT26nTDRIx4.jpeg','https://www.star-corp.co.jp/product/detail10022.html',NULL,'2019-03-08 12:04:48','2019-03-08 12:04:48'),(9,390,2,'2245ランタン','\"使用マントル：IP-8052N（マントルＡ）\r\n照度：約370ルクス（Tガス使用時）\r\nガス消費量：30g/h\r\n燃焼時間：約8時間（IP-250タイプガス使用時）\r\n本体サイズ：8.3×8.3×12.7cm\r\n本体重量：200g\"','gear_images/P1NJwQ3ILpDoAplv6LwNXqBuyoeUP47nFmNKU0PI.jpeg','http://www.iwatani-primus.co.jp/products/primus/products/lanterns/ip2245a_s.html',NULL,'2019-03-08 12:07:55','2019-03-08 12:07:55'),(10,68,NULL,'COMPACT ST TABLE (L) walnut mix','\"生産：日本（岐阜）\r\n\r\nサイズ	使用時：507mm×699mm×263mm\r\n収納時：507mm×699mm×48mm\r\n素材	ナチュラルウッド（タモ、ウォルナット）\r\n重さ	3.09kg\r\n耐荷重量	20kg\"','gear_images/zx2yhY9ZEfRcSG2NUSjkxl9kBM14X7Cv92AUT414.jpeg','https://camp-mania.com/2018/09/11852.html',NULL,'2019-03-10 08:06:46','2019-03-10 08:06:46'),(11,445,NULL,'アメニティドームＳ','\"重量:5kg\r\n収納サイズ:58×18×23（h）cm\r\n\r\n■セット内容\r\nテント本体、本体フレーム長（×3）、前室フレーム（×1）、ジュラルミンペグ（17cm×18）、自在付ロープ（2.5m×4、2又4m×2）、リペアパイプ、キャリーバッグ、フレームケース、ペグケース\r\n\r\n■特長\r\n高品質のスペックでありながら、お求め易い価格帯。入門用テントとして圧倒的な人気を誇る、スノーピークの超ベストセラーテント。\r\n\r\n[仕様]\r\n● セット内容：テント本体、本体フレーム長（×3）、前室フレーム（×1）、ジュラルミンペグ（17cm×18）、自在付ロープ（2.5m×4、2又4m×2）、リペアパイプ、キャリーバッグ、フレームケース、ペグケース \r\n● 材質：フライシート／75Dポリエステルタフタ・PUコーティング耐水圧1,800mmミニマム・テフロン撥水加工・UVカット加工、インナーウォール／ 68Dポリエステルタフタ、ボトム／210Dポリエステルオックス・PUコーティング耐水圧1,800mmミニマム・テフロン撥水加工、フレーム／ジュラルミンA7001＋A6061（φ9.3mm＋φ8.5mm） \r\n● キャリーバッグサイズ：58×18×23（h）cm \r\n● 重量：5kg \r\n● 対応人数:3名\"','gear_images/974oBa03FnraXpN2Q4iXmfNYdwahz2v7H7BkxgVp.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/%E3%82%A2%E3%83%A1%E3%83%8B%E3%83%86%E3%82%A3%E3%83%89%E3%83%BC%E3%83%A0%EF%BC%B3/p/121328',NULL,'2019-03-11 02:53:58','2019-03-11 02:53:58'),(12,445,NULL,'アメニティドームM','\"重量:8kg\r\n収納サイズ:74×22×25（h）cm\r\n\r\n■セット内容\r\nテント本体、本体フレーム長（×3）、前室フレーム（×1）、ジュラルミンペグ（17cm×18）、自在付ロープ（1.4m×2、2.5m×2、2又5m×2）、リペアパイプ、キャリーバッグ、フレームケース、ペグケース\r\n\r\n■特長\r\n高品質のスペックでありながら、お求め易い価格帯。入門用テントとして圧倒的な人気を誇る、スノーピークの超ベストセラーテント。\r\n\r\n[仕様]\r\n● セット内容：テント本体、本体フレーム長（×3）、前室フレーム（×1）、ジュラルミンペグ（17cm×18）、自在付ロープ（1.4m×2、2.5m×2、2又5m×2）、リペアパイプ、キャリーバッグ、フレームケース、ペグケース \r\n● 材質：フライシート／75Dポリエステルタフタ・PUコーティング耐水圧1,800mmミニマム・テフロン撥水加工・UVカット加工、インナーウォール／68Dポリエステルタフタ、ボトム／210Dポリエステルオックス・PUコーティング耐水圧1,800mmミニマム、フレーム／ジュラルミンA7001＋A6061（φ12.8mm＋φ12mm・前室φ11.8mm＋φ12mm） \r\n● キャリーバッグサイズ：74×22×25（h）cm \r\n● 重量：8kg \r\n● 対応人数:5名\"','gear_images/nBIq8fA8NygHmqZ0k3sD6RRKYoPPpmqF60zAEpfb.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/%E3%82%A2%E3%83%A1%E3%83%8B%E3%83%86%E3%82%A3%E3%83%89%E3%83%BC%E3%83%A0M/p/121327',NULL,'2019-03-11 02:55:26','2019-03-11 02:55:26'),(13,445,NULL,'アメニティドームL','\"重量:9.8kg\r\n収納サイズ:73×23×27（h）cm\r\n\r\n■セット内容\r\nテント本体、本体フレーム長（×3）、前室フレーム（×1）、ジュラルミンペグ（17cm×18）、自在付ロープ（1.4m×2、2.5m×2、2又5m×2）、リペアパイプ、キャリーバッグ、フレームケース、ペグケース\r\n\r\n■特長\r\n高品質のスペックでありながら、お求め易い価格帯。入門用テントとして圧倒的な人気を誇る、スノーピークの超ベストセラーテント。\r\n\r\n[仕様]\r\n● セット内容：テント本体、本体フレーム長（×3）、前室フレーム（×1）、ジュラルミンペグ（17cm×18）、自在付ロープ（1.4m×2、2.5m×2、2又5m×2）、リペアパイプ、キャリーバッグ、フレームケース、ペグケース \r\n● 材質：フライシート／75Dポリエステルタフタ・PUコーティング耐水圧1,800mmミニマム・テフロン撥水加工・UVカット加工、インナーウォール／68Dポリエステルタフタ、ボトム／210Dポリエステルオックス・PUコーティング耐水圧1,800mmミニマム、フレーム／ジュラルミンA7001＋A6061（φ12mm＋φ13mm＋φ14.5mm） \r\n● キャリーバッグサイズ：73×23×27（h）cm \r\n● 重量：9.8kg \r\n● 対応人数:6名\"','gear_images/TmcRZeGhYUNh98qQlNnM938Y4CYmIjXQUVYsbgle.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/%E3%82%A2%E3%83%A1%E3%83%8B%E3%83%86%E3%82%A3%E3%83%89%E3%83%BC%E3%83%A0L/p/121329',NULL,'2019-03-11 02:56:32','2019-03-11 02:56:32'),(14,445,NULL,'ヴォールト','\"[重量]\r\n 7.9kg\r\n\r\n[収納サイズ]\r\n 60×23×23（h）cm\r\n\r\n[セット内容]\r\nテント本体、フレーム長（×1）、フ レーム短（×2）、ジュラルミンペグ（×28）、自 在付ロープ（2.5m×10、3.5m×6） 、リペア パイプ（×1）、キャリーバッグ、フレームケース、 ペグケース\r\n\r\n\r\n[仕様]\r\n● 材質：本体／75Dポリエステルタフタ、PUコーティング耐水圧1,800mmミニマム・テフロン加工、UV加工・インナーテント／68Dポリエステルタフタ、ボトム／210Dポリエステルオックス、PUコーティング耐水圧1,800mmミニマム・フレーム／A6061（φ13mm） \r\n● セット内容／テント本体、フレーム長（×1）、フレーム短（×2）、ジュラルミンペグ（×28）、自在付ロープ（2.5m×10、3.0m×6） 、リペアパイプ（×1）、キャリーバッグ、フレームケース、ペグケース \r\n● キャリーバッグサイズ：60×23×23（h）cm\"','gear_images/iKCA3y92xvpFdFdqCSkWqrnHYzWT2JULSpOwo1r1.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/%E3%83%B4%E3%82%A9%E3%83%BC%E3%83%AB%E3%83%88/p/121239',NULL,'2019-03-11 03:07:51','2019-03-11 03:07:51'),(15,445,NULL,'60周年記念 ドックドーム Pro.6','[収納サイズ]\r\n70×32×28（h）cm\r\n\r\n[セット内容]\r\nテント本体、本体フレーム（×4）、前室フレーム（×1）、ジュラピンペグ（17cm×20）、自在付ロープ（2.5ｍ×6、2.0ｍ×2）、シームグリップ剤、リペアパイプ、キャリーバッグ、フレームケース、ペグケース、取扱説明書\r\n\r\n[仕様]\r\n●セット内容：テント本体、本体フレーム（×4）、前室フレーム（×1）、ジュラピンペグ（17cm×20）、自在付ロープ（2.5ｍ×6、2.0ｍ×2）、シームグリップ剤、リペアパイプ、キャリーバッグ、フレームケース、ペグケース、取扱説明書\r\n●材質：フライシート／75Dポリエステルリップストップ・PUコーティング耐水圧1,800mmミニマム・テフロン撥水加工・UVカット加工、インナーウォール／75Dポリエステルリップストップ、ボトム／300Dポリエステルオックス・PUコーティング耐水圧10,000mmミニマム、フレーム／ジュラルミンA7001（φ11mm）\r\n● キャリーバッグサイズ：70×32×28（h）cm \r\n●カラー：グレー','gear_images/wvoF0eS8NDGuoY10bkIA2kz3iYQ8SL87rlBoLpmn.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/60%E5%91%A8%E5%B9%B4%E8%A8%98%E5%BF%B5-%E3%83%89%E3%83%83%E3%82%AF%E3%83%89%E3%83%BC%E3%83%A0-Pro-6/p/121238',NULL,'2019-03-11 03:10:11','2019-03-11 03:10:11'),(16,445,NULL,'60周年記念 アメニティドーム Pro.M','スノーピーク60周年記念のアメニティドーム Pro.Mです。\r\n\r\n[収納サイズ]\r\n74×22×25（h）cm\r\n\r\n[セット内容]\r\nテント本体、本体フレーム長（×3）、前室フレーム（×1）、ジュラルミンペグ（17cm×18）、自在付ロープ（1.4ｍ×2、2.5m×2、2又5m×2）、リペアパイプ、キャリーバッグ、フレームケース、ペグケース、取扱説明書\r\n\r\n\r\n[仕様]\r\n●材質：フライシート／75Dポリエステルリップストップ・PUコーティング耐水圧1,800mmミニマム・テフロン撥水加工・UVカット加工、インナーウォール／75Dポリエステルリップストップ、ボトム／300Dポリエステルオックス・PUコーティング耐水圧10,000mmミニマム、フレーム／ジュラルミンA7001＋A6061（φ12.8mm＋φ12mm・前室φ11.8mm+φ12mm）\r\n●セット内容：テント本体、本体フレーム長（×3）、前室フレーム（×1）、ジュラルミンペグ（17cm×18）、自在付ロープ（1.4ｍ×2、2.5m×2、2又5m×2）、リペアパイプ、キャリーバッグ、フレームケース、ペグケース、取扱説明書 \r\n●キャリーバッグサイズ：74×22×25（h）cm','gear_images/IzvclrXo9v2XfilvvlyghPAxQOdWK3ba5QtFH49T.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/60%E5%91%A8%E5%B9%B4%E8%A8%98%E5%BF%B5-%E3%82%A2%E3%83%A1%E3%83%8B%E3%83%86%E3%82%A3%E3%83%89%E3%83%BC%E3%83%A0-Pro-M/p/121241',NULL,'2019-03-11 03:14:14','2019-03-11 03:14:14'),(17,445,NULL,'ドックドーム Pro.6','Dock Dome Pro.6\r\n\r\n[サイズ]\r\n490×325×180（h）cm\r\n\r\n[重量]\r\n12.8kg\r\n\r\n[収納サイズ]\r\n70×32×28（h）cm\r\n\r\n[セット内容]\r\nテント本体、本体フレーム（×4）、前室フレーム（×1）、ジュラルミンペグ（17cm×20）、自在付ロープ（2.5m×6、2.0m×2）、シームグリップ剤、リペアパイプ、キャリーバッグ、フレームケース、ペグケース\r\n\r\n[仕様]\r\n●セット内容：テント本体、本体フレーム（×4）、前室フレーム（×1）、ジュラルミンペグ（17cm×20）、自在付ロープ（2.5m×6、2.0m×2）、シームグリップ剤、リペアパイプ、キャリーバッグ、フレームケース、ペグケース \r\n●材質：フライシート／75Dポリエステルタフタ・PUコーティング耐水圧1,800mmミニマム・テフロン撥水加工・UVカット加工、インナーウォール／75Dポリエステルリップストップ、ボトム／300Dポリエステルオックス・PUコーティング耐水圧10,000mmミニマム、フレーム／ジュラルミンA7001（φ11mm） \r\n● インナーテントサイズ：300×300×155（h）cm \r\n● 室内高：160cm\r\n● キャリーバッグサイズ：70×32×28（h）cm \r\n●  UVカット加工：〇\r\n● 対応人数:6名','gear_images/7ZNtOomPdUZNrKXcsM4yVQTa7dZ54woKteYZ9VW4.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/%E3%83%89%E3%83%83%E3%82%AF%E3%83%89%E3%83%BC%E3%83%A0-Pro-6-%5B6%E4%BA%BA%E7%94%A8%5D/p/10000',NULL,'2019-03-11 03:21:41','2019-03-11 03:21:41'),(18,445,NULL,'ラゴ Pro.air 1','[重量]\r\nメインフレーム有／950g（ケース・ペグ含まず）、メインフレーム無／800g（ケース・ペグ含まず）\r\n\r\n[収納サイズ]\r\nφ14×33cm\r\n\r\n[セット内容]\r\nテント本体、コの字フレーム（×1）、メインフレーム（×2）、サブフレーム（×1）、ジュラルミンペグ（×9）、自在付ロープ（×2）\r\n\r\n[仕様]\r\n●セット内容：テント本体、コの字フレーム（×1）、メインフレーム（×2）、サブフレーム（×1）、ジュラルミンペグ（×9）、自在付ロープ（×2） \r\n●材質：フライシート／20Dシリコンポリエステルミニリップストップ・PUコーティング耐水圧1,500mmミニマム、インナーウォール／20Dポリエステルミニリップストップ、ボトム／30Dナイロンリップストップ・PUコーティング耐水圧1,500mmミニマム、フレーム／ジュラルミンA7001（φ9.5mm） \r\n●収納サイズ／φ14×33cm \r\n●対応人数:1名','gear_images/UOsrNFTHxOTedztvNCl1jDN6Gu7nczwjvLxnxaSl.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/%E3%83%A9%E3%82%B4-Pro-air-%EF%BC%91/p/121243',NULL,'2019-03-11 03:29:29','2019-03-11 03:29:29'),(19,445,NULL,'ランドブリーズ2','Landbreeze2\r\n\r\n[サイズ]\r\n225×165×127（h）cm\r\n室内高 : 127cm\r\n\r\n[重量]\r\n5.5kg\r\n\r\n[収納サイズ]\r\n60×18×23（h）cm\r\n\r\n[セット内容]\r\nテント本体、本体フレーム長（×2）、本体フレーム短（×1）、前室フレーム（×1）、ジュラルミンペグ（17cm×16）、自在付ロープ（2m×4、2又4m×2）、シームシーリング剤、リペアパイプ、キャリーバッグ、フレームケース、ペグケース\r\n\r\n[仕様]\r\n●セット内容：テント本体、本体フレーム長（×2）、本体フレーム短（×1）、前室フレーム（×1）、ジュラルミンペグ（17cm×16）、自在付ロープ（2m×4、2又4m×2）、シームシーリング剤、リペアパイプ、キャリーバッグ、フレームケース、ペグケース \r\n● 材質：フライシート／75Dポリエステルタフタ・PUコーティング耐水圧1,800mmミニマム・テフロン撥水加工・UVカット加工、マッドスカート／210Dポリエステルオックス・PUコーティング、インナーウォール／68Dポリエステルタフタ、ボトム／210Dポリエステルオックス・PUコーティング耐水圧1,800mmミニマム、フレーム／ジュラルミンA7001（φ11mm・φ9mm） \r\n●キャリーバッグサイズ／60×18×23（h）cm \r\n● UVカット加工 〇\r\n● 対応人数:2名','gear_images/mmrDD878yYfKzQFEQWFXGmbUYisclEjnwpPvUJNC.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/%E3%83%A9%E3%83%B3%E3%83%89%E3%83%96%E3%83%AA%E3%83%BC%E3%82%BA2-%5B2%E4%BA%BA%E7%94%A8%5D/p/18768',NULL,'2019-03-11 03:34:07','2019-03-11 03:34:07'),(20,445,NULL,'ランドブリーズ4','Landbreeze4\r\n\r\n[サイズ]\r\n260×220×132（h）cm\r\n室内高 : 132cm\r\n\r\n[重量]\r\n6.9kg\r\n\r\n[収納サイズ]\r\n75×22×26（h）cm\r\n\r\n[セット内容]\r\nテント本体、本体メインフレーム（×1）、本体Wクロスフレーム（×2）、前室フレーム（ × 1 ）、ジュラルミンペグ（17cm×18）、自在付ロープ（2m×3、2.5m×2、2又4m×2）、シームシーリング剤、リペアパイプ、キャリーバッグ、フレームケース、ペグケース\r\n\r\n[仕様]\r\n● セット内容：テント本体、本体メインフレーム（×1）、本体Wクロスフレーム（×2）、前室フレーム（ × 1 ）、ジュラルミンペグ（17cm×18）、自在付ロープ（2m×3、2.5m×2、2又4m×2）、シームシーリング剤、リペアパイプ、キャリーバッグ、フレームケース、ペグケース \r\n● 材質：フライシート／75Dポリエステルタフタ・PUコーティング耐水圧1,800mmミニマム・テフロン撥水加工・UVカット加工、マッドスカート／210Dポリエステルオックス・PUコーティング、インナーウォール／68Dポリエステルタフタ、ボトム／210Dポリエステルオックス・PUコーティング耐水圧1,800mmミニマム、フレーム／ジュラルミンA7001（φ11mm・φ9mm） \r\n● UVカット加工 〇\r\n● キャリーバッグサイズ：75×22×26（h）cm \r\n● 対応人数:4名','gear_images/NdCBNb3OQnY13Qg11yUIqsKZChtBaE96janClnb9.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/%E3%83%A9%E3%83%B3%E3%83%89%E3%83%96%E3%83%AA%E3%83%BC%E3%82%BA4-%5B4%E4%BA%BA%E7%94%A8%5D/p/18770',NULL,'2019-03-11 03:40:39','2019-03-11 03:40:39'),(21,445,NULL,'ランドブリーズ6','Landbreeze6\r\n\r\n[サイズ]\r\n300×300×162（h）cm\r\n室内高 : 162cm\r\n\r\n[重量]\r\n9.8kg\r\n\r\n[収納サイズ]\r\n75×23×27（h）cm\r\n\r\n[セット内容]\r\nテント本体、本体フレーム短（×2）、本体フレーム長（×2）、前室フレーム（×1）、ジュラルミンペグ（17cm×22）、自在付ロープ（2m×2、2.5m×4、2又5m×2）、シームシーリング剤、リペアパイプ、キャリーバッグ、フレームケース、ペグケース\r\n\r\n[仕様]\r\n● セット内容：テント本体、本体フレーム短（×2）、本体フレーム長（×2）、前室フレーム（×1）、ジュラルミンペグ（17cm×22）、自在付ロープ（2m×2、2.5m×4、2又5m×2）、シームシーリング剤、リペアパイプ、キャリーバッグ、フレームケース、ペグケース \r\n● 材質：フライシート／75Dポリエステルタフタ・PUコーティング耐水圧1,800mmミニマム・テフロン撥水加工・UVカット加工、マッドスカート／210Dポリエステルオックス・PUコーティング、インナーウォール／68Dポリエステルタフタ、ボトム／210Dポリエステルオックス・PUコーティング耐水圧1,800mmミニマム、フレーム／ジュラルミンA7001（φ11mm・φ9mm） \r\n● UVカット加工〇\r\n● キャリーバッグサイズ：75×23×27（h）cm \r\n● 対応人数:6名','gear_images/BQi84xxuIIBnIklnFqiKNlh1wVbNeXI9LjEuAzXN.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/%E3%83%A9%E3%83%B3%E3%83%89%E3%83%96%E3%83%AA%E3%83%BC%E3%82%BA6-%5B6%E4%BA%BA%E7%94%A8%5D/p/18772',NULL,'2019-03-11 03:44:50','2019-03-11 03:44:50'),(22,445,NULL,'ファル Pro.air 2','FAL Pro. Air 2\r\n\r\n[サイズ]\r\n210×130×100(h)cm\r\n\r\n[重量]\r\n1,710g(本体・フレームのみ)\r\n\r\n[収納サイズ]\r\n本体ケース／φ17×33cm、フレームケース／11×50cm\r\n\r\n[セット内容]\r\nテント本体、本体フレーム（×2）、自在付きロープ（2.9m×4）、ジュラルミンV型ペグ（×10）、リペアパイプ、本体ケース、フレームケース、ペグケース\r\n\r\n[仕様]\r\n●セット内容：テント本体、本体フレーム（×2）、自在付きロープ（2.9m×4）、ジュラルミンV型ペグ（×10）、リペアパイプ、本体ケース、フレームケース、ペグケース \r\n● 材質：フライシート／20Dシリコンポリエステルミニリップストップ・PUコーティング耐水圧1,500mm、インナーウォール／20Dポリエステルミニリップストップ、ボトム／30Dナイロンリップストップ・PUコーティング耐水圧1,500mm、フレーム／ジュラルミンA7001（φ9mm） \r\n● 収納ケースサイズ：φ17×33cm（本体ケース）、11×50cm（フレームケース） \r\n● 対応人数:2名','gear_images/SJZIglaoLdvBDxJQHfT1ZyNRtvTudPb3IjSRoifI.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/%E3%83%95%E3%82%A1%E3%83%AB-Pro-air-2/p/26263',NULL,'2019-03-11 03:54:20','2019-03-11 03:54:20'),(23,445,NULL,'ファル Pro.air 3','FAL Pro. Air 3\r\n\r\n[サイズ]\r\n210×150×103(h)cm\r\n\r\n[重量]\r\n1,920g(本体・フレームのみ)\r\n\r\n[収納サイズ]\r\n本体ケース／φ17×35cm、フレームケース／11×51cm\r\n\r\n[セット内容]\r\nテント本体、本体フレーム（×2）、自在付きロープ（2.9m×4）、ジュラルミンV型ペグ（×11）、リペアパイプ、本体ケース、フレームケース、ペグケース\r\n\r\n[仕様]\r\n● セット内容：テント本体、本体フレーム（×2）、自在付きロープ（2.9m×4）、ジュラルミンV型ペグ（×11）、リペアパイプ、本体ケース、フレームケース、ペグケース \r\n● 材質：フライシート／20Dシリコンポリエステルミニリップストップ・P Uコーティング耐水圧1,500mm、インナーウォール／20Dポリエステルミニリップストップ、ボトム／30Dナイロンリップストップ・PUコーティング耐水圧1,500mm、フレーム／ジュラルミンA7001（φ9mm） \r\n● 収納ケースサイズ：φ17×35cm（本体ケース）、11×51cm（フレームケース） \r\n● 対応人数:3名','gear_images/OYF14UbhqU1lDp10Q6dsDS6U8U3DbWbpCcSr0VMi.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/%E3%83%95%E3%82%A1%E3%83%AB-Pro-air-3/p/26264',NULL,'2019-03-11 03:57:25','2019-03-11 03:57:25'),(24,445,NULL,'ファル Pro.air 4','FAL Pro.Air 4\r\n\r\n[サイズ]\r\n210×210×113(h)cm\r\n\r\n[重量]\r\n2,230g(本体・フレームのみ)\r\n\r\n[収納サイズ]\r\n本体ケース／φ17×43cm、フレームケース／13×51cm\r\n\r\n[セット内容]\r\nテント本体、本体フレーム（×2）、自在付きロープ（2.9m×4）、ジュラルミンV型ペグ（×11）、リペアパイプ、本体ケース、フレームケース、ペグケース\r\n\r\n[仕様]\r\n● セット内容：テント本体、本体フレーム（×2）、自在付きロープ（2.9m×4）、ジュラルミンV型ペグ（×11）、リペアパイプ、本体ケース、フレームケース、ペグケース \r\n● 材質：フライシート／20Dシリコンポリエステルミニリップストップ・PUコーティング耐水圧1,500mm、インナーウォール／20Dポリエステルミニリップストップ、ボトム／30Dナイロンリップストップ・PUコーティング耐水圧1,500mm、フレーム／ジュラルミンA7001（φ9.5mm） \r\n● 収納ケースサイズ：φ17×43cm（本体ケース）、13×51cm（フレームケース） \r\n● 対応人数:4名','gear_images/TyIweM3cJ3CheH8OBCArP72KS25kj5rzAugDKNPR.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/%E3%83%95%E3%82%A1%E3%83%AB-Pro-air-4/p/26282',NULL,'2019-03-11 04:01:19','2019-03-11 04:01:19'),(25,445,NULL,'ドックドーム Pro.6 アイボリー','Dock Dome Pro.6 Ivory\r\n\r\n[サイズ]\r\n290×290×155(h)cm\r\n\r\n[重量]\r\n13.5Kg\r\n\r\n[収納サイズ]\r\n70×32×28(h)cm\r\n\r\n[セット内容]\r\nテント本体、ルーフシート、本体フレーム（×4）、前室フレーム（×1）、ジュラルミンペグ（×20）、自在付ロープ（2.5m×6、2m×2）、シームグリップ剤、リペアパイプ、キャリーバッグ、フレームケース、ペグケース\r\n\r\n[仕様]\r\n● セット内容：テント本体、ルーフシート、本体フレーム（×4）、前室フレーム（×1）、ジュラルミンペグ（×20）、自在付ロープ（2.5m×6、2m×2）、シームグリップ剤、リペアパイプ、キャリーバッグ、フレームケース、ペグケース \r\n● 材質：フライシート／75Dポリエステルタフタ・P Uコーティング耐水圧1,800mmミニマム・テフロン撥水加工・UVカット加工、ルーフシート／75Dポリエステルタフタ・PUコーティング耐水圧1,800mmミニマム・UVカット加工、インナーウォール／75Dポリエステルリップストップ、ボトム／300Dポリエステルオックス・PUコーティング耐水圧10,000mmミニマム、フレーム／ジュラルミンA7001（φ11mm） \r\n● インナーテントサイズ：300×300×155（h）cm ● キャリーバッグサイズ：70×32×28（h）cm \r\n● UVカット加工 ○\r\n● 対応人数:6名','gear_images/Qd9ohWqtqUPHjVDrIdRyRXWKCJfXTdRqyiyVKluV.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/%E3%83%89%E3%83%83%E3%82%AF%E3%83%89%E3%83%BC%E3%83%A0-Pro-6-%E3%82%A2%E3%82%A4%E3%83%9C%E3%83%AA%E3%83%BC/p/26224',NULL,'2019-03-11 04:05:25','2019-03-11 04:05:25'),(26,445,NULL,'ヴァール Pro.air 4','Var Pro.Air 4\r\n\r\n[サイズ]\r\n560×346×175(h)mm\r\n\r\n[重量]\r\n11.5kg\r\n\r\n[収納サイズ]\r\n68×24×27（h）cm\r\n\r\n[セット内容]\r\n本体、メインフレーム（×2）、サブフレーム（×2）、前室フレーム（×2）、ジュラルミンペグ（×34）、自在付ロープ（2m×8、3m×4、2又6m×4）、シームグリップ剤、リペアパイプ、キャリーバッグ、フレームケース、ペグケース\r\n\r\n[仕様]\r\n●セット内容：本体、メインフレーム（×2）、サブフレーム（×2）、前室フレーム（×2）、ジュラルミンペグ（×34）、自在付ロープ（2m×8、3m×4、2又6m×4）、シームグリップ剤、リペアパイプ、キャリーバッグ、フレームケース、ペグケース \r\n● 材質：フライシート／50Dシリコンポリエステルリップストップ、PUコーティング耐水圧1,500mmミニマム（側部）、75Dシリコンポリエステルリップストップ・遮光ピグメントPUコーティング耐水圧1,500mmミニマム（天井部）、インナーウォール／75Dポリエステルリップストップ、ボトム／210Dポリエステルオックス・PUコーティング耐水圧1,800mmミニマム、フレーム／A7001（φ11mm）＋A6061（φ12.8mm） \r\n● キャリーバッグサイズ：68×24×27（h）cm \r\n●対応人数:4名','gear_images/5UIEDdYoZkIhLIO9lCKOCCazkjpIgUlI2Ya2YnL3.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%B3%E3%83%88/%E3%83%B4%E3%82%A1%E3%83%BC%E3%83%AB-Pro-air-4/p/26259',NULL,'2019-03-11 04:09:32','2019-03-11 04:09:32'),(27,445,NULL,'エントリー２ルーム エルフィールド','ENTRY 2 ROOM ELFIELD\r\n\r\n[重量]\r\n15.5kg\r\n\r\n[収納サイズ]\r\nキャリーバッ グサイズ：83×30×34（h）cm\r\n\r\n[セット内容]\r\n本体、インナールーム、ルーフシート、フ レーム長（×1）、フレーム中（×2）、フレーム短（×1）、 リッジポール（×1）、ジュラルミンペグ（21cm×22）、自在 付ロープ（2.5m×8、1.5m×8）、キャリーバッグ、フレーム ケース、ペグケース\r\n\r\n[仕様]\r\n● 材質：本体／75Ｄポリエステルタフタ・PＵコーティング耐水圧1,800mmミニマム・UVカット加工・テフロン撥水加工、ルーフシート／75Dポリエステルタフタ・PUコーティング耐水圧1,800mmミニマム・UVカット加工・撥水加工、マッドスカート／210Dポリエステルオックス・PUコーティング、インナーウォール／68Dポリエステルタフタ、ボトム／210Dポリエステルオックス・PＵコーティング耐水圧1,800mmミニマム、フレーム／A6061（φ16mm+φ14.5mm）\r\n● 対応人 数:4名','gear_images/AWrZd65E8n0G8JRDwpDY6JsbpkMyTBPrsUxVwsKP.jpeg',NULL,NULL,'2019-03-11 05:03:26','2019-03-11 05:03:26'),(28,445,NULL,'リビングシェルロング Pro. アイボリー','[重量]\r\n20.2kg\r\n\r\n[収納サイズ]\r\nキャリーバッグサイズ：84×30×37（h）cm\r\n\r\n[セット内容]\r\n本体、ルーフシート、Ａフレーム（×2）、リッジポール（×1）、Ｃフレーム（×2）、テントフレーム（×1）、アップライトポール（190cm×2）、ジュラルミンペグ（21cm×26）、自在付きロープ（二又用7m×2、3.5m×4、リング付2ｍ×4）、シームグリップ剤、キャリーバッグ、フレームケース、ペグケース\r\n\r\n[仕様]\r\n● 材質：ルーフ部／150Dポリエステルオックス・PＵコーティング耐水圧1,800mmミニマム・UVカット加工・テフロン撥水加工、ウォール部／150Dポリエステルオックス・PUコーティング耐水圧1,800mmミニマム・UVカット加工・テフロン撥水加工、マッドスカート／210Dポリエステルオックス・PUコーティング、ルーフシート／75Dポリエステルタフタ・PUコーティング耐水圧1,800mmミニマム・UVカット加工・テフロン撥水加工、フレーム／A6061（φ16mm、φ19mm） \r\n● 対応人数:6名','gear_images/oux8WqQ45NwgzUGcx4cPMxnolfK7oB0Kcy9NwaFf.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/c/2010000?q=%3Acreationtime%3Acamp%3A2010030&text=',NULL,'2019-03-11 05:11:52','2019-03-11 05:11:52'),(29,445,NULL,'リビングシェルS','Living Shell S\r\n\r\n[重量]\r\n12kg\r\n\r\n[収納サイズ]\r\nキャリーバッグサイズ：73×27×26（h）cm\r\n\r\n[セット内容]\r\n本体、Aフレーム（×2）、リッジポール（×1）、C フレーム（×2）、アップライトポール（190cm×2）、ジュラルミンペグ（21cm×22）、三角ポケット（×2）、コンプレッションベルト（×2）、自在付きロープ（3.5m×6、リング付2m×4）、シームグリップ剤、キャリーバッグ、フレームケース、ペグケース\r\n\r\n[仕様]\r\n● 材質：ルーフ部／75Dポリエステルタフタ・遮光ピグメントPUコーティング耐水圧3,000mmミニマム・UVカット加工・テフロン撥水加工、ウォール部／75Dポリエステルタフタ・PUコーティング耐水圧1,800mmミニマム・UVカット加工・テフロン撥水加工、マッドスカート／210Dポリエステルオックス・PUコーティング、フレーム／A6061（φ16mm） \r\n● 対応人数:2名','gear_images/Yb6P1NuPE6bAkhOF97rKxbOjTMPFsdysqVf9FFU1.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%BF%E3%83%BC/%E3%83%AA%E3%83%93%E3%83%B3%E3%82%B0%E3%82%B7%E3%82%A7%E3%83%ABS/p/126428',NULL,'2019-03-11 05:17:28','2019-03-11 05:17:28'),(30,445,NULL,'リビングシェル S Pro.','Living Shell S Pro.\r\n\r\n2～3人での使用に最適な小型のリビングシェル。グレーカラー（サイドパネルの上部もグレー）・リップストップ生地仕様で復刻。 サイドウォールはありません（オプションもありません）。後部ドッキングシステム付き。\r\n\r\n\r\n[セット内容]\r\n本体、Ａフレーム（×2）、リッジポール（×1）、Ｃフレーム（×2）、アップライトポール(×2)、ジュラルミンペグ(21㎝×22)、三角ポケット(×2)、コンプレッションベルト（×2）、自在付きロープ（3.5ｍ×4、7ｍ×2、2ｍ×4）、シームシーリング剤、キャリーバッグ、フレームケース、ペグケース\r\n\r\n\r\n[仕様]\r\n●材質：ルーフ部／210Ｄポリエステルリップストップ・遮光ピグメント・PUコーティング耐水圧3,000㎜ミニマム・UVカット加工・テフロン撥水加工、 ウォール部／150Ｄポリエステルリップストップ・PUコーティング耐水圧1,800㎜ミニマム・UVカット加工・テフロン撥水加工、 マッドスカート／150Ｄポリエステルリップストップ・PUコーティング、 フレーム／A6061(φ16㎜)','gear_images/1QeSYhgN4EjQhi33arTGI0tTdbEUvrTDzCAwIjUp.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%BF%E3%83%BC/%E3%83%AA%E3%83%93%E3%83%B3%E3%82%B0%E3%82%B7%E3%82%A7%E3%83%AB-S-Pro-/p/124472',NULL,'2019-03-11 05:21:00','2019-03-11 05:21:00'),(31,445,NULL,'60周年記念 リビングシェル Pro.','スノーピーク60周年記念のリビングシェル Pro.です。\r\n\r\n[収納サイズ]\r\n76×28×33（h）cm（キャリーバッサイズ）\r\n\r\n[セット内容]\r\n本体、Aフレーム（×2）、Cフレーム（×2）、ジュラルミンペグ（21cm×22）、三角ポケット（×2）、コンプレッションベルト（×2）、自在付ロープ（3.5m×4、7m×2、2m×4）、シームシーリング剤、フレームケース、ペグケース、キャリーバッグ、アップライトポール（×2）、取扱説明書\r\n\r\n[仕様]\r\n●材質：本体／ルーフ部／210Ｄポリエステルリップストップ・遮光ピグメント・PUコーティング耐水圧3,000mmミニマム・UVカット加工・テフロン撥水加工、ウォール部／150Dポリエステルリップストップ・PUコーティング耐水圧1,800mmミニマム・UVカット加工・テフロン撥水加工、マッドスカート／150Dポリエステルリップストップ・PUコーティング、フレーム／A6061（φ16mm＋φ19mm）\r\n●セット内容：本体、Aフレーム（×2）、リッジポール（×1）、Cフレーム（×2）、ジュラルミンペグ（21cm×22）、三角ポケット（×2）、自在付ロープ（3.5m×4、7m×2、2m×4）、シームシーリング剤、フレームケース、ペグケース、キャリーバッグ、アップライトポール（×2）、取扱説明書','gear_images/r1l7DiXFByHZsls06GF3Z5tOxRQZN45OTpcW3kOc.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%BF%E3%83%BC/60%E5%91%A8%E5%B9%B4%E8%A8%98%E5%BF%B5-%E3%83%AA%E3%83%93%E3%83%B3%E3%82%B0%E3%82%B7%E3%82%A7%E3%83%AB-Pro-/p/121259',NULL,'2019-03-11 05:23:13','2019-03-11 05:23:13'),(32,445,NULL,'スピアヘッド Pro.M','[重量]\r\n13.5kg\r\n\r\n[収納サイズ]\r\n82×30×34（h）cm\r\n\r\n[セット内容]\r\nタープ本体、フレーム長（×3）、フレーム短（×3）、ポール（×1）、ジュラルミンペグ（×33）、自在付ロープ（3m×6、2.5×6、2m×6）、キャリーバッグ、ポールケース、ペグケース\r\n\r\n[仕様]\r\n● セット内容：タープ本体、フレーム長（×3）、フレーム短（×3）、ポール（×1）、ジュラルミンペグ（×33）、自在付ロープ（3m×6、2.5×6、2m×6）、キャリーバッグ、ポールケース、ペグケース \r\n● 材質：本体／210Dポリエステルオックス、PUコーティング耐水圧1,800mmミニマム・テフロン加工、UV加工、フレーム／ジュラルミンA7001（φ9.5、φ11mm）、ポール／A6061（φ32mm） \r\n● キャリーバッグサイズ：82×30×34（h）cm \r\n● 対応人数:6名','gear_images/NBmOU93G8vOd8i9DyOKZlrVw5VRsM1dY0ccHtOL6.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%BF%E3%83%BC/%E3%82%B9%E3%83%94%E3%82%A2%E3%83%98%E3%83%83%E3%83%89-Pro-M/p/121256',NULL,'2019-03-11 05:28:22','2019-03-11 05:28:22'),(33,445,NULL,'スピアヘッド Pro.L','[重量]\r\n16kg\r\n\r\n[収納サイズ]\r\n87×33×38（h）cm\r\n\r\n[セット内容]\r\nタープ本体、フレーム長（×3）、フレーム短（×3）、ポール（×1）、ジュラルミンペグ（×33）、自在付ロープ（3m×6、2.5×6、2m×6）、キャリーバッグ、ポールケース、ペグケース\r\n\r\n[仕様]\r\n● セット内容：タープ本体、フレーム長（×3）、フレーム短（×3）、ポール（×1）、ジュラルミンペグ（×33）、自在付ロープ（3m×6、2.5×6、2m×6）、キャリーバッグ、ポールケース、ペグケース \r\n● 材質：本体／210Dポリエステルオックス、PUコーティング耐水圧1,800mmミニマム・テフロン加工、UV加工、フレーム／ジュラルミンA7001（φ11mm）、ポール／A6061（φ34mm） \r\n●キャリーバッグサイズ：87×33×38（h）cm \r\n● 対応人数:8名','gear_images/UoMDf6DQcqUIePPI5QhpJwf0V1yHr4JsBA6gDQRI.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%BF%E3%83%BC/%E3%82%B9%E3%83%94%E3%82%A2%E3%83%98%E3%83%83%E3%83%89-Pro-L/p/121253',NULL,'2019-03-11 05:32:36','2019-03-11 05:32:36'),(34,445,NULL,'メッシュシェルター','Mesh Shelter\r\n\r\n[サイズ]\r\n430×400×210(h)cm\r\n室内高 : 210cm\r\n\r\n[重量]\r\n11.7kg\r\n\r\n[収納サイズ]\r\n76×26×30（h）cm\r\n\r\n[セット内容]\r\n本体、リッジポール、Aフレーム（×4）、センターフレーム（×2）、バイザーフレーム（×2）、ジュラルミンペグ（21cm×22）、自在付ロープ（ 1 . 5 m×2 、2 . 5 m×6 、3.0m×4）、フレームケース、ペグケース、キャリーバッグ、シームシーリング剤\r\n\r\n[仕様]\r\n● セット内容：本体、リッジポール、Aフレーム（×4）、センターフレーム（×2）、バイザーフレーム（×2）、ジュラルミンペグ（21cm×22）、自在付ロープ（ 1 . 5 m×2 、2 . 5 m×6 、3.0m×4）、フレームケース、ペグケース、キャリーバッグ、シームシーリング剤 \r\n● 材質：本体／75Dポリエステルタフタ・PUコーティング耐水圧1,800mmミニマム・UVカット加工・テフロン撥水加工、マッドスカート／210Dポリエステルオックス・PUコーティング、フレーム／A6061（φ13mm＋φ16mm＋φ19mm）\r\n● UVカット加工 ○\r\n● キャリーバッグサイズ：76×26×30（h）cm \r\n● 対応人数:4名','gear_images/ydNS0FuoeToCEl3MvdhzmPV7S3xQz9WLUS84FXMk.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%BF%E3%83%BC/%E3%83%A1%E3%83%83%E3%82%B7%E3%83%A5%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%BF%E3%83%BC-%5B4%E4%BA%BA%E7%94%A8%5D/p/18789',NULL,'2019-03-11 05:36:10','2019-03-11 05:36:10'),(35,445,NULL,'ランドロック','Land Lock\r\n\r\n[サイズ]\r\n625×405×205(h)cm\r\n室内高 : 205cm\r\n\r\n[重量]\r\n22.0kg(付属品含む)\r\n\r\n[収納サイズ]\r\nキャリーバッグ／75×33×36（h）cm、フレームケース／72×17×22（h）cm\r\n\r\n[セット内容]\r\n本体、インナールーム、Aフレーム（×2）、Cフレーム（×2）、センターフレーム、リッジポール、ジュラルミンペグ（21cm×27）、自在付ロープ（1.5m×2、2.5m×4、3.5m×6）、シームグリップ剤、ペグケース、フレームキャリーバッグ、キャリーバッグ、コンプレッションベルト（×2）\r\n\r\n[仕様]\r\n● セット内容：本体、インナールーム、Aフレーム（×2）、Cフレーム（×2）、センターフレーム、リッジポール、ジュラルミンペグ（21cm×27）、自在付ロープ（1.5m×2、2.5m×4、3.5m×6）、シームグリップ剤、ペグケース、フレームキャリーバッグ、キャリーバッグ、コンプレッションベルト（×2） \r\n● 材質：本体／150Dポリエステルオックス・遮光ピグメントPUコーティング耐水圧3,000mmミニマム（ルーフ部）・UVカット加工・テフロン撥水加工・150Dポリエステルオックス・PUコーティング耐水圧1,800mmミニマム（ウォール部）・UVカット加工・テフロン撥水加工・フレーム／A6061（φ19mm）、インナールーム／68Dポリエステルタフタ（ウォール）・210Dポリエステルオックス・PUコーティング耐水圧1,800mmミニマム（ボトム） \r\n● 収納ケースサイズ：キャリーバッグ／75×33×36（h）cm、フレームケース／72×17×22（h）cm \r\n● 対応人数:6名','gear_images/rzEQinZzkTXm7hYRX4BFJt0KT5eRrK6if1EgI1Oq.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%BF%E3%83%BC/%E3%83%A9%E3%83%B3%E3%83%89%E3%83%AD%E3%83%83%E3%82%AF/p/26235',NULL,'2019-03-11 05:41:58','2019-03-11 05:41:58'),(36,445,NULL,'リビングシェル','Living Shell\r\n\r\n[サイズ]\r\n445×415×210（h）cm\r\n室内高 : 210cm\r\n\r\n[重量]\r\n13.2kg\r\n\r\n[収納サイズ]\r\n76×28×33(h)cm\r\n\r\n[セット内容]\r\n本体、Aフレーム（×2）、リッジポール（×1）、Cフレーム（×2）、ジュラルミンペグ（21cm×22）、三角ポケット（×2）、コンプレッションベルト（×2）、自在付ロープ（3.5m×4、7m×2、2m×4）、シームシーリング剤、フレームケース、ペグケース、キャリーバッグ、アップライトポール（×2）\r\n\r\n[仕様]\r\n● セット内容：本体、Aフレーム（×2）、リッジポール（×1）、Cフレーム（×2）、ジュラルミンペグ（21cm×22）、三角ポケット（×2）、コンプレッションベルト（×2）、自在付ロープ（3.5m×4、7m×2、2m×4）、シームシーリング剤、フレームケース、ペグケース、キャリーバッグ、アップライトポール（×2） \r\n● 材質：本体／75Dポリエステルタフタ・70Dナイロンタフタ・遮光ピグメントPUコーティング耐水圧3,000mmミニマム（ルーフ部）・PUコーティング耐水圧1,800mmミニマム（ウォール部）・UVカット加工・テフロン撥水加工、マッドスカート／210Dポリエステルオックス・P Uコーティング、フレーム／A6061（φ16mm＋φ19mm） \r\n● キャリーバッグサイズ：76×28×33（h）cm \r\n● 対応人数:4名','gear_images/PMS3TwTdY0sVOwRueP8H72hBaujdROkX4R10lYqI.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%BF%E3%83%BC/%E3%83%AA%E3%83%93%E3%83%B3%E3%82%B0%E3%82%B7%E3%82%A7%E3%83%AB-%5B4%E4%BA%BA%E7%94%A8%5D/p/18788',NULL,'2019-03-11 05:45:36','2019-03-11 05:45:36'),(37,445,NULL,'リビングシェルロング Pro.','Living Shell Long Pro.\r\n\r\n[サイズ]\r\n530×415×220(h)cm\r\n\r\n[重量]\r\n18.6kg\r\n\r\n[収納サイズ]\r\n80×28×30(h)cm\r\n\r\n[セット内容]\r\n本体、リッジポール、Aフレーム（×2）、Cフレーム（×2）、テントフレーム（×1）、アップライトポール190（×2）、ジュラルミンペグ（21cm×26）、自在付ロープ（3.5m×4、7m×2、2m×4）、シームグリップ剤、ペグケース、フレームケース、キャリーバッグ\r\n\r\n[仕様]\r\n● セット内容：本体、リッジポール、Aフレーム（×2）、Cフレーム（×2）、テントフレーム（×1）、アップライトポール190（×2）、ジュラルミンペグ（21cm×26）、自在付ロープ（3.5m×4、7m×2、2m×4）、シームグリップ剤、ペグケース、フレームケース、キャリーバッグ \r\n● 材質：本体／150Dポリエステルオックス、ルーフ部／遮光ピグメントPUコーティング耐水圧3,000mmミニマム、ウォール部／耐水圧1,800mmミニマム・テフロン撥水加工・UVカット加工、フレーム／A6061（φ16mm・19mm） \r\n● キャリーバッグサイズ：80×28×30（h）cm \r\n● 対応人数:6名','gear_images/0DHjnK5idNciQtZWO4QotADh5pva7PMVONigRpKd.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%BF%E3%83%BC/%E3%83%AA%E3%83%93%E3%83%B3%E3%82%B0%E3%82%B7%E3%82%A7%E3%83%AB%E3%83%AD%E3%83%B3%E3%82%B0-Pro-%5B4-6%E4%BA%BA%E7%94%A8%5D/p/10019',NULL,'2019-03-11 05:48:16','2019-03-11 05:48:16'),(38,445,NULL,'トルテュ ライト','トルテュ ライト [3-4人用]\r\nTortue Light\r\n\r\n\r\n[サイズ]\r\n580×360×205(h)cm\r\n\r\n[重量]\r\n18.5kg\r\n\r\n[収納サイズ]\r\n73×30×30(h)cm(本体キャリーバック)、70×18×20(h)cm(フレームケース)\r\n\r\n[セット内容]\r\nセット内容:(フライ/インナーテント)、リッジポール、Aフレーム(×2)、センターフレーム(×2)、Cフレーム(×2)テントフレーム(×1)、ジュラピンペグ(21×28)自在付ロープ(3.0m×2、2.5m×10、1.5m×2)、シームグリップ剤、ペグケース、フレームケース、キャリーバッグ\r\n\r\n[仕様]\r\n●材質:本体(フライ)/75Dポリエステルタフタ・PUコーティング耐水圧1,800mmミニマム(ルーフ部)、耐水圧1,800mmミニマム(ウォール部)・テフロン撥水加工・UVカット加工、インナーテント/68Dポリエステルタフタ、ボトム/210DポリエステルオックスPUコーティング耐水圧1,800mmミニマム、フレーム/A6061(φ14.5mm・16mm・17.5mm) \r\n●セット内容:(フライ/インナーテント)、リッジポール、Aフレーム(×2)、センターフレーム(×2)、Cフレーム(×2)テントフレーム(×1)、ジュラピンペグ(21×28)自在付ロープ(3.0m×2、2.5m×10、1.5m×2)、シームグリップ剤、ペグケース、フレームケース、キャリーバッグ、取扱説明書 \r\n●収納ケースサイズ:本体キャリーバッグ/W73×D30×H30cm、フレームケース/W70×D18×H20cm \r\n●カラー:ベージュ/グレー','gear_images/8PEByLXfsVcvHcGAvOEQ4Y05qmRjvkZxCUb0CPE0.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%BF%E3%83%BC/%E3%83%88%E3%83%AB%E3%83%86%E3%83%A5-%E3%83%A9%E3%82%A4%E3%83%88-%5B3-4%E4%BA%BA%E7%94%A8%5D/p/10024',NULL,'2019-03-11 05:51:34','2019-03-11 05:51:34'),(39,445,NULL,'ソル Pro.','[サイズ]\r\n580×510×210(h) cm\r\n室内高 : 210cm\r\n\r\n[重量]\r\n25.5kg\r\n\r\n[収納サイズ]\r\nキャリーバッグ/40×80×40(h)cm、フレームケース/20×70×20(h)cm\r\n\r\n[セット内容]\r\nセット内容:本体、シールドルーフ、リッジポール(×1)、Aフレーム(×3)、Cフレーム(×3)アップライトポール190cm(×2)、ジュラピンペグ(×34)、自在付ロープ(3.5m×6、2.5m×6、7m二又×2)、シームグリップ剤、ペグケース、フレームケース、キャリーバッグ\r\n\r\n[仕様]\r\n● セット内容：本体、シールドルーフ、リッジポール（×1）、Aフレーム（×3）、Cフレーム（×3）アップライトポール190㎝（×2）、ジュラルミンペグ（×34）、自在付ロープ（3.5m×6、2.5m×6、7m二又×2）、シームグリップ剤、ペグケース、フレームケース、キャリーバッグ \r\n● 材質：本体 ルーフ部／150Dポリエステルオックス・遮光ピグメントPUコーティング耐水圧3,000mmミニマム・テフロン撥水加工・UVカット加工、ウォール部／150Dポリエステルオックス・PUコーティング耐水圧1,800mmミニマム、シールドルーフ／75Dポリエステルタフタ・遮光ピグメントPUコーティング耐水圧3,000mmミニマム・テフロン撥水加工・UVカット加工、スカート部／210Dポリエステルオックス・PUコーティング、フレーム／A6061（φ19mm、φ16mm、φ13mm） \r\n● キャリーバッグサイズ：40×80×40（h）cm \r\n● フレームケースサイズ：20×70×20（h）cm \r\n●対応人数:6名','gear_images/v2hUf0ybmbiK9nE2jjmUNh5wlHreCQ5JdJ2Oh2rm.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%BF%E3%83%BC/%E3%82%BD%E3%83%AB-Pro-%5B6%E4%BA%BA%E7%94%A8%5D/p/11525',NULL,'2019-03-11 05:55:17','2019-03-11 05:55:17'),(40,445,NULL,'モーグ Pro.air','Morg Pro.Air\r\n\r\n[サイズ]\r\n505×420×200(h)cm\r\n\r\n[重量]\r\n15.5kg\r\n\r\n[収納サイズ]\r\n77×30×30(h)cm\r\n\r\n[セット内容]\r\n本体、シールドルーフ、リッジポール、Aフレーム（×2）、Cフレーム（×2）、テントフレーム（×1）、アップライトポール（×2）、ジュラルミンペグ（×32）、自在付ロープ（2又7m×2、3.5m×8、2m×2、2m（Oリング付）×4）、三角ポケット×2、シームグリップ剤、キャリーバッグ、フレームケース、ペグケース\r\n\r\n[仕様]\r\n● セット内容：本体、シールドルーフ、リッジポール、Aフレーム（×2）、Cフレーム（×2）、テントフレーム（×1）、アップライトポール（×2）、ジュラルミンペグ（×32）、自在付ロープ（2又7m×2、3.5m×8、2m×2、2m（Oリング付）×4）、三角ポケット×2、シームグリップ剤、キャリーバッグ、フレームケース、ペグケース \r\n● 材質：本体／50Dシリコンポリエステルリップストップ、PUコーティング耐水圧1,500mmミニマム（側部）、75Dシリコンポリエステルリップストップ、PUコーティング耐水圧1,500mmミニマム（天井部）、シールドルーフ／75Dシリコンポリエステルリップストップ、遮光ピグメントPUコーティング耐水圧1,500mmミニマム、フレーム／A6061（φ17.5mm＋φ16mm） \r\n● キャリーバッグサイズ：77×30×30（h）cm \r\n● 対応人数:6名','gear_images/a1zJ0KMrDF4zBrnRqNwSoGIAIiHJFrPiXuwOvIzL.jpeg','https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%BF%E3%83%BC/%E3%83%A2%E3%83%BC%E3%82%B0-Pro-air/p/26270',NULL,'2019-03-11 05:58:18','2019-03-11 05:58:18'),(41,270,NULL,'Djedi DCF-eVent Dome','ジェダイ・DCF-イーヴェント・ドーム\r\n\r\nサイズ：長さ 230cm x 幅 130cm x 高さ 105cm\r\n\r\n収納サイズ：長さ 34cm x 直径 14cm（テント本体）、長さ 51cm x 幅 8cm（ポール）\r\n\r\n重量：\r\nフロント・メッシュドアパネル無し：本体480g（スタッフサック込）、ポール300g（スタッフサック込）、合計780g\r\nフロント・メッシュドアパネル付：本体580g（スタッフサック込）、ポール300g（スタッフサック込）、合計880g\r\n＊メッシュドアパネル有り、無しをお選び頂けます。\r\n\r\nファブリック：\r\n上部：DCF-eVent （ミスティ・グレイ）\r\nバスタブ・フロア：DCF（グレイ）\r\n\r\n最大収容人数：2名\r\n\r\n仕様\r\n自在開閉可能なメッシュ付きダブルドア仕様のフロント・エントランス\r\n脱着可能な支柱付き、フロント通気口\r\n裾のコーナー・タイアウト4か所（ガイライン、ラインロック装着済）、サイドパネル・タイアウト2か所、各リッジライン・タイアウト4か所\r\nすべてのリッジライン・タイアウト、パネル・タイアウト用ダイニーマ・リフレクティブガイライン及びラインロック、ミニカラビナ付属\r\n外側頂点にウェビング・ループ付\r\nカーボンファイバー製専用ポール付\r\n専用フットプリント付\r\n\r\n耐水性能：>15,000 mmH2O (AATCC-TM127)\r\n透湿性能：50,000 g/m2-24hrs (JIS L 1099 B1)','gear_images/hU7B1fK5Fpi3JMxMvkhL9v14JNB0MNFV6oFSM3Oe.jpeg','https://locusgear.com/items/djedi-dcf-event-dome/',NULL,'2019-03-11 06:08:52','2019-03-11 06:08:52'),(42,270,NULL,'Khufu HB','サイズ：L 265cm x W 160cm x H 130cm\r\n\r\n収納サイズ：L 25cm x 直径 12cm\r\n\r\n重量：390g\r\n\r\nファブリック：10D シリコン/PU ハイブリッド・コーティング リップストップナイロン\r\n\r\n色：タン\r\n\r\n最大収容人数：2名\r\n\r\n仕様\r\n\r\n・フロントベント\r\n・カテナリーカーブのリッジライン\r\n・裾タイアウト9か所、各パネルタイアウト5か所、各リッジラインタイアウト4か所\r\n・すべてのタイアウトにダイニーマ・リフレクティブガイライン及びラインロック装着済み\r\n・内側頂点及び外側頂点それぞれにループ\r\n・パネル留め付き両開きファスナー。上下裏表どちらからでも開閉できるプラー付きダブルスライダーx2個\r\n・シームテープ処理済み','gear_images/Cx4zpD7bnzNOaleThKdaasRsMUgPADUrhnIUoztC.jpeg','https://locusgear.com/items/khufu-hb/',NULL,'2019-03-11 06:13:35','2019-03-11 06:17:27'),(43,270,NULL,'Khafra HB','サイズ：L 280cm x W 280cm x H 170cm\r\n\r\n収納サイズ：L 30cm x 直径 12cm\r\n\r\n重量：650g\r\n\r\nファブリック：15D シリコン/PU ハイブリッド・コーティング リップストップナイロン\r\n\r\n色：タン\r\n\r\n最大収容人数：４名\r\n\r\n仕様\r\n・ダブルベント（フロント及びリア）\r\n・カテナリーカーブのリッジライン\r\n・裾タイアウト9か所、各パネルタイアウト5か所、各リッジラインタイアウト4か所\r\n・*すべてのタイアウトにダイニーマ・リフレクティブガイライン及びラインロック装着済み\r\n・内側頂点及び外側頂点それぞれにループ\r\n・パネル留め付き両開きファスナー。上下裏表どちらからでも開閉できるプラー付きダブルスライダーx2個\r\n・シームテープ処理済み','gear_images/X8DhnyKyUsNswW07tUWwhtkPxasPjGT4pwYCNzFV.png','https://locusgear.com/items/khafra-hb/',NULL,'2019-03-11 06:19:42','2019-03-11 06:19:42'),(44,494,NULL,'炎幕','[素材]\r\nフライシート : コットン100%(表面撥水加工、抗カビ加工)\r\nグランドシート : ポリエステル オックス210D\r\nポール、ペグ : スチール製\r\n\r\n[耐水圧]\r\n1,500mm(グランドシート)\r\n\r\n[サイズ]\r\nフライ(約) W:330×D:190×H:130cm\r\nグランドシート(約) W:187×D:93×H:10cm\r\n\r\n[重量]\r\n(約)5.6kg\r\n(本体 2.8kg、ポール 0.94kg、グランドシート0.42kg)\r\n\r\n[付属品]\r\nグランドシート、ポール×2本、張り綱(2m×4本)※白色、ペグ12本、収納袋\r\n\r\n[原産国]\r\n中国','gear_images/WhsmF5VFywrnzVuqwVoKytKUT2vvjB8gf24vOulq.jpeg','https://www.tent-mark.com/enmaku/',NULL,'2019-03-11 06:39:01','2019-03-11 06:39:01'),(45,494,NULL,'炎幕DX','[素材]\r\nフライシート : コットン100%(表面撥水加工、抗カビ加工)\r\nグランドシート : ポリエステル オックス210D\r\nスカート : ポリエステル\r\nポール、ペグ : スチール製\r\n\r\n[耐水圧]\r\n¥1,500mm(グランドシート)\r\n\r\n[サイズ]\r\n本体(約) W:330×D:190×H:130cm\r\nグランドシート(約) W:187×D:93×H:10cm\r\n\r\n[重量]\r\n(約)7.6kg  (本体 3.68kg、ポール 1.88kg、グランドシート0.42kg)\r\n\r\n[付属品]\r\nグランドシート、ポール×4本、張り綱(2m×7本)※白色、ペグ×15本、収納袋\r\n\r\n[原産国]\r\n中国','gear_images/xhX9zEGMBg4Shz8PhoLmz36cuTtXOWaszE6OkO2c.jpeg','https://www.tent-mark.com/enmaku_dx/',NULL,'2019-03-11 06:43:22','2019-03-11 06:43:22'),(46,494,NULL,'PANDA TC','[素材]\r\nフライシート : ポリエステル65％、コットン35％（表面撥水加工）\r\nインナーボトム : ポリエステルタフタ68D\r\n\r\n[耐水圧]\r\nインナーボトム1,500mm\r\n\r\n[サイズ]\r\nフライシート : 270×270×170(H)cm\r\nインナー : 250×115×155(H)cm\r\n収納サイズ :（約）49×25×16cm\r\n\r\n[重量]\r\n総重量 (約)5,440g\r\nフライシート:2,750g / インナー:800g / ポール:440g / 張綱:50g / ペグ(12本):1,140g / 収納ケース(4つ):260g\r\n [付属品]\r\nポール、張綱、ペグ、収納袋\r\n\r\n[原産国]\r\nベトナム','gear_images/B8j12J4tF2jTVxRkMO8R78x5y5NuECOM7OfU31O8.jpeg','https://www.tent-mark.com/panda_tc/',NULL,'2019-03-11 06:46:32','2019-03-11 06:46:32'),(47,494,NULL,'CIRCUS TC','[素材]\r\n本体 : コットン混紡生地(TC) 撥水加工済み ポリエステル65％コットン35％\r\n裾部(スカート) : ポリエステル\r\nポール : スチール製5本継ぎ(φ32mm/280cm)\r\n\r\n※2017年生産モデルの変更点\r\n・張綱は「白」自在は「赤のアルミ自在」に変更\r\n・スカートペグポイント　3箇所（両端と中央）から2箇所（両端）に変更\r\n\r\n[サイズ]\r\n420×420×(H)280cm\r\n\r\n[総重量]\r\n(約)10,880g(本体・張り綱6,450g、ポール2,360g)\r\n\r\n[付属品]\r\nポール、張り網、設営用ガイドセット、ペグ、収納袋\r\n\r\n[原産国]\r\nベトナム','gear_images/eKDAIYMkNBLLfb5JuwuwSGoFEPwVsLvYkt8QMW7P.jpeg','https://www.tent-mark.com/circus_tc/',NULL,'2019-03-11 07:01:12','2019-03-11 07:01:12'),(48,494,NULL,'CIRCUS TC BIG','[素材]\r\n本体 : コットン混紡生地（TC）撥水加工済み、ポリエステル65％、コットン35％\r\n裾部（スカート）: ポリエステル\r\nポール : スチール製 Φ35mm\r\n\r\n※ランタンハンガーはメッシュインナーを吊るす事も考慮し高めに設定しております。\r\nランタンを吊るす際高すぎる場合は前もって張り綱やロングS環フックなどを別途ご準備いただき御利用くださいませ。\r\n\r\n[サイズ]\r\n520×520×H350cm\r\n\r\n[重量]\r\n本体 : 11,386g\r\nポール : 3,246g\r\n収納袋 : 454g\r\nアクセ : 290g（張り綱＆セットUPガイド）\r\n\r\n[付属品]\r\n収納ケース、ペグ、張り綱、設営用ガイドセット\r\n\r\n[原産国]\r\nベトナム','gear_images/DDM0Qp9BaDANVknGFSyziupBlEpBiRErwNkHdpXz.jpeg','https://www.tent-mark.com/circus_tc_big/',NULL,'2019-03-11 07:04:53','2019-03-11 07:04:53'),(49,494,NULL,'CAMPANDA「PANDA」','[総重量]\r\n2190g(ペグ　収納ケース含む)\r\n\r\n[本体重量]\r\n1940g\r\nフライ/約1030g、インナー/約640g、ポール/約270g\r\n\r\n[サイズ]\r\nフライ/約240×240×150(H)、インナー/約220×100×135(H)\r\n\r\n[素材]\r\nフライ(ベンチレーター除く)\r\n40Dナイロンリップストップ、PU/シリコンコーティング（1,500mm耐水）、シームテープ加工\r\nインナーボトム\r\n75D ポリエステルタフタ、PUコーティング（1,500mm耐水）、シームテープ加工\r\n\r\n[原産国]\r\nベトナム','gear_images/RDt7TOldpVGksglM0Kvtsd5avkVcuzaO8itqu1GP.jpeg','https://www.tent-mark.com/campanda/',NULL,'2019-03-11 07:08:54','2019-03-11 07:08:54'),(50,494,NULL,'Fami スチールボックス 40.5L 【ブラック】','[素材]\r\nスチール（紛体塗装）\r\n\r\n[サイズ]\r\nW300×D450×H300mm\r\n\r\n[容量]\r\n約40.5L\r\n\r\n[重量]\r\n約5.6kg\r\n\r\n[原産国]\r\nイタリア','gear_images/DYeNz8O43SGGd1Fhl59XWZjXAy9RB2sFJn4O9EPM.jpeg','https://www.tent-mark.com/fami_steel_box/',NULL,'2019-03-11 07:25:34','2019-03-11 07:25:34'),(51,494,NULL,'Fami スチールボックス 27L【ガルヴァナイズ】','[素材]\r\n亜鉛めっき加工\r\n\r\n[サイズ]\r\nW300×D450×H200mm\r\n\r\n[容量]\r\n約27L\r\n\r\n[重量]\r\n約4.6kg\r\n\r\n[原産国]\r\nイタリア','gear_images/jG5r1c1xtFdE6jE8erH4gEhT6GfuiQgz7vKibLqr.jpeg','https://www.tent-mark.com/fami_steel_box/',NULL,'2019-03-11 07:58:16','2019-03-11 07:58:16'),(52,494,NULL,'Fami スチールボックス 27L【ブラック】','[素材]\r\nスチール（紛体塗装）\r\n\r\n[サイズ]\r\nW300×D450×H200mm\r\n\r\n[容量]\r\n約27L\r\n\r\n[重量]\r\n約4.2kg\r\n\r\n[原産国]\r\nイタリア','gear_images/4g57d0LcPAtch3rCJdGVianxNiqEASwGzP82Tdr8.jpeg','https://www.tent-mark.com/fami_steel_box/',NULL,'2019-03-11 08:01:24','2019-03-11 08:01:24'),(53,494,NULL,'Fami スチールボックス ホール  27L【ブラック】','[素材]\r\nスチール（紛体塗装）\r\n\r\n[サイズ]\r\nW300×D450×H200mm\r\n\r\n[容量]\r\n約27L\r\n\r\n[重量]\r\n約3.6kg\r\n\r\n[原産国]\r\nイタリア','gear_images/lcuITMB6eVGLNQoeiJaRsd0cLR07fNPLuJxahPRB.jpeg','https://www.tent-mark.com/fami_steel_box/',NULL,'2019-03-11 08:04:27','2019-03-11 08:04:27'),(54,494,NULL,'Fami スチールボックス 12L【ブラック】','[素材]\r\nスチール（紛体塗装）\r\n\r\n[サイズ]\r\nW200×D300×H200mm\r\n\r\n[容量]\r\n約12L\r\n\r\n[重量]\r\n約2.2kg\r\n\r\n[原産国]\r\nイタリア','gear_images/ObvEC8G2Q5KONtxsH3jSyCi62j7AYmgaYxN9T5DG.jpeg','https://www.tent-mark.com/fami_steel_box/',NULL,'2019-03-11 08:40:58','2019-03-11 08:40:58'),(55,494,NULL,'Fami スチールボックス 8.7L【ブラック】','[素材]\r\nスチール（紛体塗装）\r\n\r\n[サイズ]\r\nW200×D300×H145mm\r\n\r\n[容量]\r\n約8.7L\r\n\r\n[重量]\r\n約1.9kg\r\n\r\n[原産国]\r\nイタリア','gear_images/kWqhhUAQPVfBYGEi3rHMUOadUdpBpoBuCxami5bb.jpeg','https://www.tent-mark.com/fami_steel_box/',NULL,'2019-03-11 08:41:51','2019-03-11 08:41:51');
 /*!40000 ALTER TABLE `gears` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `genres`
+--
+
+DROP TABLE IF EXISTS `genres`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `genres` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `genres`
+--
 
 LOCK TABLES `genres` WRITE;
 /*!40000 ALTER TABLE `genres` DISABLE KEYS */;
@@ -66,13 +301,81 @@ INSERT INTO `genres` VALUES (1,13,'ガソリンランタン',NULL,'2019-03-08 11
 /*!40000 ALTER TABLE `genres` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations`
+--
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (12,'2014_10_12_000000_create_users_table',1),(13,'2014_10_12_100000_create_password_resets_table',1),(14,'2019_02_21_011149_create_admin_table',1),(15,'2019_02_25_015236_create_gear_table',1),(16,'2019_02_25_042229_create_brand_table',1),(17,'2019_02_25_042250_create_genre_table',1),(18,'2019_02_25_042324_create_category_table',1),(19,'2019_02_25_055200_create_big_category_table',1),(20,'2019_02_28_034624_create_brand_group_table',1),(21,'2019_03_08_064644_create_gear_profile_table',1),(22,'2019_03_08_065022_create_category_has_gear_table',1);
+INSERT INTO `migrations` VALUES (12,'2014_10_12_000000_create_users_table',1),(13,'2014_10_12_100000_create_password_resets_table',1),(14,'2019_02_21_011149_create_admin_table',1),(15,'2019_02_25_015236_create_gear_table',1),(16,'2019_02_25_042229_create_brand_table',1),(17,'2019_02_25_042250_create_genre_table',1),(18,'2019_02_25_042324_create_category_table',1),(19,'2019_02_25_055200_create_big_category_table',1),(20,'2019_02_28_034624_create_brand_group_table',1),(21,'2019_03_08_064644_create_gear_profile_table',1),(22,'2019_03_08_065022_create_category_has_gear_table',1),(23,'2014_10_12_000000_create_users_table',1),(24,'2014_10_12_100000_create_password_resets_table',1),(25,'2019_02_21_011149_create_admin_table',1),(26,'2019_02_25_015236_create_gear_table',1),(27,'2019_02_25_042229_create_brand_table',1),(28,'2019_02_25_042250_create_genre_table',1),(29,'2019_02_25_042324_create_category_table',1),(30,'2019_02_25_055200_create_big_category_table',1),(31,'2019_02_28_034624_create_brand_group_table',1),(32,'2019_03_08_064644_create_gear_profile_table',1),(33,'2019_03_08_065022_create_category_has_gear_table',1),(34,'2019_03_10_091116_create_gear_user_table',2);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+LOCK TABLES `password_resets` WRITE;
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_verified_hash` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`),
+  UNIQUE KEY `users_mail_verified_hash_unique` (`mail_verified_hash`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
@@ -80,3 +383,13 @@ INSERT INTO `users` VALUES (1,'Test2Q','testuser@mail.com','c6cd2c03-ece1-4dc1-9
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-03-11  8:45:28
