@@ -50,7 +50,7 @@
           <label for="gear_image-text" class="col-sm-2 control-label">ギア画像</label>
           <div class="col-sm-10">
             <input type="file" class="form-control" name="gear_image" id="gear_image-text" value="{{ $gear->gear_image }}">
-            <img src="{{ asset('storage/'.$gear->gear_image) }}">
+            <img src="{{ asset('storage/'.$gear->gear_image) }}" style="width: 300px;">
             <p class="text-danger"><strong>{{ $errors->first('gear_image') }}</strong></p>
           </div>
         </div>
