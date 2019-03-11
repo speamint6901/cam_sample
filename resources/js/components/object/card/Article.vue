@@ -5,7 +5,7 @@
  <div class="l-Feed">
 
   <article class="c-ArticleCard" v-for="gear in gears">
-
+   <multi-modal-view :val="gear"></multi-modal-view>
    <header class="c-ArticleCard_Header">
     <router-link v-bind:to="{ name: 'Gear', params : { id: gear.id }}" class="c-GlobalNavi_Menu_Item-Link">
      <figure>
@@ -32,7 +32,7 @@
      <ul class="c-ArticleCard_Status_Wrap">
       <li class="c-ArticleCard_Status_Item">
        <i class="c-ArticleCard_Status-Icon">H.</i>
-       <span class="c-ArticleCard_Status-Count">{{ gear.profile.have_count }}</span>
+       <span class="c-ArticleCard_Status-Count" @click="showHaveModal({gear: gear})">{{ gear.profile.have_count }}</span>
       </li>
       <li class="c-ArticleCard_Status_Item">
        <i class="c-ArticleCard_Status-Icon">W.</i>
@@ -66,18 +66,24 @@
 </template>
 
 <script>
+import { mapState, mapActions, mapMutations } from 'vuex'
 import * as config from './../../../config';
 import InfiniteLoading from 'vue-infinite-loading';
+import MultiModalView from '../modal/MultiModalView.vue'
 
 export default {
     components: {
         InfiniteLoading,
+        MultiModalView
     },
     data() {
         return {
             gears:[],
             nextUrl: config.getList
         }
+    },
+    computed: {
+      ...mapState('MultiModal', ['id']),
     },
     created() {
         axios.get(this.nextUrl).then(res => {
@@ -105,6 +111,7 @@ export default {
                 console.log(error);
             });
         },
+        ...mapActions('MultiModal', ['showHaveModal'])
     },
 }
 </script>

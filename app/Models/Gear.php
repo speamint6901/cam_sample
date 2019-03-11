@@ -19,6 +19,11 @@ class Gear extends Model
         'site_url',
     ];
 
+
+    /**
+    * relations
+    */
+
     // gear_profile has one
     public function profile() {
         return $this->hasOne('\App\Models\GearProfile');
@@ -39,16 +44,55 @@ class Gear extends Model
         return $this->belongsToMany('\App\Models\Category', 'category_has_gears');
     }
 
-    // user belongs to many
-    public function users()
+
+    /**
+    * gear status relations
+    */
+
+    // have_user belongs to many
+    public function have_user()
     {
         return $this->belongsToMany('App\Models\User')
                         ->using('App\Models\GearUser')
                         ->withPivot([
                             'type',
                             'have_comment',
+                        ])
+                        ->wherePivot('type', 'have');
+    }
+
+    // want_user belongs to many
+    public function want_user()
+    {
+        return $this->belongsToMany('App\Models\User')
+                        ->using('App\Models\GearUser')
+                        ->withPivot([
+                            'type',
+                        ])
+                        ->wherePivot('type', 'want');
+    }
+
+    // fav_user belongs to many
+    public function fav_user()
+    {
+        return $this->belongsToMany('App\Models\User')
+                        ->using('App\Models\GearUser')
+                        ->withPivot([
+                            'type',
+                        ])
+                        ->wherePivot('type', 'fav');
+    }
+
+    // thander_user belongs to many
+    public function thander_user()
+    {
+        return $this->belongsToMany('App\Models\User')
+                        ->using('App\Models\GearUser')
+                        ->withPivot([
+                            'type',
                             'point',
-                        ]);
+                        ])
+                        ->wherePivot('type', 'thander');
     }
 
 }
