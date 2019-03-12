@@ -47,7 +47,10 @@
    display: flex;
    justify-content: flex-start;
   }//_Wrap
-  &_Item{  margin-right: $base_grid;}
+  &_Item{
+   margin-right: $base_grid;
+   cursor: pointer;
+  }//_Item
   &-Icon{@include MainTxt-L;}//-Icon
   &-Count{@include MainTxt-S;}
  }//_Status
