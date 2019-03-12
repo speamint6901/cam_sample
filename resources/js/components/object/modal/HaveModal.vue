@@ -9,10 +9,13 @@
 </template>
 
 <script>
-  import { mapMutations } from 'vuex'
+  import { mapState, mapMutations } from 'vuex'
   import MultiModalMixin from '../../../mixins/MultiModalMixin'
   export default {
     name: 'HaveModal',
-    mixins: [MultiModalMixin]
+    computed: {
+        ...mapState('MultiModal', ['gear'])
+    },
+    mixins: [MultiModalMixin],
   }
 </script>

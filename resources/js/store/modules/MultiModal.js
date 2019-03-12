@@ -1,12 +1,12 @@
 const state = {
   modalName: "",
-  id: null,
+  gear: null,
 }
 
 const mutations = {
-  setModal (state, name, id) {
-    state.modalName = name
-    state.id = id
+  setModal (state, payload) {
+    state.modalName = payload.name
+    state.gear = payload.gear.gear 
   },
   hideModal (state) {
     state.modalName = ''
@@ -15,7 +15,7 @@ const mutations = {
 
 const actions = {
   showHaveModal ({ commit }, gear) {
-    commit('setModal', {name : 'HaveModal', id: gear.id})
+    commit('setModal', {name : 'HaveModal', gear: gear})
   },
 }
 
