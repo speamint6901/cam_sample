@@ -28,23 +28,7 @@
 
 
    <footer class="c-ArticleCard_Footer">
-    <div class="c-ArticleCard_Status">
-     <ul class="c-ArticleCard_Status_Wrap">
-      <li class="c-ArticleCard_Status_Item">
-       <i class="c-ArticleCard_Status-Icon">H.</i>
-       <span class="c-ArticleCard_Status-Count" @click="showHaveModal({gear: gear})">{{ gear.profile.have_count }}</span>
-      </li>
-      <li class="c-ArticleCard_Status_Item">
-       <i class="c-ArticleCard_Status-Icon">W.</i>
-       <span class="c-ArticleCard_Status-Count">{{ gear.profile.want_count }}</span>
-      </li>
-      <li class="c-ArticleCard_Status_Item">
-       <i class="c-ArticleCard_Status-Icon">C.</i>
-       <span class="c-ArticleCard_Status-Count">{{ gear.profile.fav_count }}</span>
-      </li>
-     </ul>
-    </div><!-- /.c-ArticleCard_Status -->
-
+    <want :gear="gear" :have_count="gear.profile.have_count" :want_count="gear.profile.want_count" :fav_count="gear.profile.fav_count"></want>
     <div class="c-ArticleCard_Rating">
      <div class="c-ArticleCard_Rating-Thunder">
       <img class="" src="/img/Dummt_Thunder.svg" alt="UserName" />
@@ -70,11 +54,13 @@ import { mapState, mapActions, mapMutations } from 'vuex'
 import * as config from './../../../config';
 import InfiniteLoading from 'vue-infinite-loading';
 import MultiModalView from '../modal/MultiModalView.vue'
+import Want from './buttons/Want.vue';
 
 export default {
     components: {
         InfiniteLoading,
-        MultiModalView
+        MultiModalView,
+        want: Want,
     },
     data() {
         return {
@@ -84,12 +70,15 @@ export default {
     },
     computed: {
       ...mapState('MultiModal', ['gear']),
+      want_count: {
+        get: function () { return this.$store.getters.want_count },
+      },
     },
     created() {
         axios.get(this.nextUrl).then(res => {
            this.gears = res.data.data;
            this.nextUrl = res.data.next_page_url;
-        });
+        })
     },
     methods: {
         onInfinite() {
@@ -111,7 +100,8 @@ export default {
                 console.log(error);
             });
         },
-        ...mapActions('MultiModal', ['showHaveModal'])
+        ...mapActions('MultiModal', ['showHaveModal']),
+        ...mapActions('GearStatus', ['toggleWant','setWantCount'])
     },
 }
 </script>

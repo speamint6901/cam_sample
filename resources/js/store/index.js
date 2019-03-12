@@ -5,6 +5,7 @@ import MultiModal from './modules/MultiModal';
 import authUser from "./modules/auth-user";
 import UserRegister from './modules/UserRegister.js';
 import Login from './modules/Login';
+import GearStatus from './modules/GearStatus';
 
 
 Vue.use(Vuex);
@@ -16,5 +17,6 @@ export default new Vuex.Store ({
         authUser,
         UserRegister,
         Login,
+        GearStatus,
     }
 });
