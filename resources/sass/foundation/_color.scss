@@ -35,6 +35,9 @@ $palettes: (
   sub:#a3a3a3,
   main_color:#727C60,
  ),
+ Overlay:(
+  base:rgba(255, 255, 255, 0.8),
+ ),
 );
 
 @function palettes($key, $tone: base) {
