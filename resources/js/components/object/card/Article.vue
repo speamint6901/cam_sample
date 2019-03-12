@@ -30,9 +30,9 @@
    <footer class="c-ArticleCard_Footer">
     <div class="c-ArticleCard_Status">
      <ul class="c-ArticleCard_Status_Wrap">
-      <li class="c-ArticleCard_Status_Item">
+      <li class="c-ArticleCard_Status_Item" @click="showHaveModal({gear: gear})">
        <i class="c-ArticleCard_Status-Icon">H.</i>
-       <span class="c-ArticleCard_Status-Count" @click="showHaveModal({gear: gear})">{{ gear.profile.have_count }}</span>
+       <span class="c-ArticleCard_Status-Count" >{{ gear.profile.have_count }}</span>
       </li>
       <li class="c-ArticleCard_Status_Item">
        <i class="c-ArticleCard_Status-Icon">W.</i>
