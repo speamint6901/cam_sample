@@ -63,9 +63,14 @@
 
      <transition>
       <div v-show="menuFlag" :style="{ marginTop: headH }" class="p-HamburgerMenu_Overlay">
-       <div class="">
-         Menu
-       </div>
+
+       <ul class="p-HamburgerMenu_List">
+        <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">Brand List</a></li>
+        <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">ギア登録申請</a></li>
+        <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">アカウント設定</a></li>
+        <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">Logout</a></li>
+       </ul><!--//.p-HamburgerMenu_List-->
+
       </div><!--//.p-HamburgerMenu_Overlay-->
      </transition>
     </div><!--//.p-HamburgerMenu-->
