@@ -25,7 +25,7 @@
    </div><!-- /.c-Modal-Have_Content -->
 
    <footer class="c-Modal-Have_Footer">
-    <button type="submit" class="c-Form_Submit">登録</button>
+    <button type="submit" class="c-Modal-Have_Register c-Form_Submit">登録</button>
    </footer>
   </div><!--//c-Modal-Have-->
 
