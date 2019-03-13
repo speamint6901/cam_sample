@@ -5,7 +5,7 @@
   <article class="">
    <h1 class="c-Aricle_Hedding u-Hedding_Page u-TxAlign-Center">ログイン</h1>
 
-   <p v-show="isError">メールアドレスまたはパスワードが違います</p>
+   <p class="c-Error_Message u-TxAlign-Center u-Margin _mgBottom-base05" v-show="isError">メールアドレスまたはパスワードが違います</p>
 
    <form @submit.prevent="login"  class="l-Contents_Block-XS">
 
