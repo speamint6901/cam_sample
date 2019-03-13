@@ -24,6 +24,7 @@
   &_Header{
    position: relative;
    margin-bottom: $base_grid *2;
+   padding: 1em 0;
   }//_Header
 
   &_Content{
@@ -55,7 +56,7 @@
   &_Close{
    position: fixed;
    right: $base_grid;
-   top: $base_grid;
+   top: $base_grid *2;
    background-color: transparent;
    cursor: pointer;
    &-Img{
@@ -65,7 +66,8 @@
 
 
   &_Footer{
-
+   display: flex;
+   flex-direction: row-reverse;
   }//_Footer
 
  }//-Have
