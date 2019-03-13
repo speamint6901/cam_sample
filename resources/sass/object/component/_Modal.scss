@@ -19,7 +19,7 @@
   transform: translate(-50%,-50%);
   width: $BreakPoint-S;
   padding: $base_grid *3;
-  background-color: palettes(Theme,Main);
+  background-color: palettes(Theme,Sand);
 
   &_Header{
    position: relative;
@@ -27,6 +27,7 @@
   }//_Header
 
   &_Content{
+   margin-bottom: $base_grid *3;
   }//_Content
 
 
@@ -53,8 +54,13 @@
 
   &_Close{
    position: fixed;
-   right: 0;
-   top: 0;
+   right: $base_grid;
+   top: $base_grid;
+   background-color: transparent;
+   cursor: pointer;
+   &-Img{
+    fill:palettes(Theme,Light);
+   }//-Img
   }//_Close
 
 
