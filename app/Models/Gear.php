@@ -50,9 +50,9 @@ class Gear extends Model
     */
 
     // have_user belongs to many
-    public function have_user()
+    public function have_users()
     {
-        return $this->belongsToMany('App\Models\User')
+        return $this->belongsToMany('App\Models\User', 'gear_users')
                         ->using('App\Models\GearUser')
                         ->withPivot([
                             'type',
@@ -62,9 +62,9 @@ class Gear extends Model
     }
 
     // want_user belongs to many
-    public function want_user()
+    public function want_users()
     {
-        return $this->belongsToMany('App\Models\User')
+        return $this->belongsToMany('App\Models\User', 'gear_users')
                         ->using('App\Models\GearUser')
                         ->withPivot([
                             'type',
@@ -73,9 +73,9 @@ class Gear extends Model
     }
 
     // fav_user belongs to many
-    public function fav_user()
+    public function fav_users()
     {
-        return $this->belongsToMany('App\Models\User')
+        return $this->belongsToMany('App\Models\User', 'gear_users')
                         ->using('App\Models\GearUser')
                         ->withPivot([
                             'type',
@@ -84,9 +84,9 @@ class Gear extends Model
     }
 
     // thander_user belongs to many
-    public function thander_user()
+    public function thander_users()
     {
-        return $this->belongsToMany('App\Models\User')
+        return $this->belongsToMany('App\Models\User', 'gear_users')
                         ->using('App\Models\GearUser')
                         ->withPivot([
                             'type',

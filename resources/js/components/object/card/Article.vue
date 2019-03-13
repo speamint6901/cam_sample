@@ -28,24 +28,11 @@
 
 
    <footer class="c-ArticleCard_Footer">
-    <want :gear="gear" :have_count="gear.profile.have_count" :want_count="gear.profile.want_count" :fav_count="gear.profile.fav_count"></want>
     <div class="c-ArticleCard_Status">
-     <ul class="c-ArticleCard_Status_Wrap">
-      <li class="c-ArticleCard_Status_Item" @click="showHaveModal({gear: gear})">
-       <i class="c-ArticleCard_Status-Icon">H.</i>
-       <span class="c-ArticleCard_Status-Count" >{{ gear.profile.have_count }}</span>
-      </li>
-      <li class="c-ArticleCard_Status_Item">
-       <i class="c-ArticleCard_Status-Icon">W.</i>
-       <span class="c-ArticleCard_Status-Count">{{ gear.profile.want_count }}</span>
-      </li>
-      <li class="c-ArticleCard_Status_Item">
-       <i class="c-ArticleCard_Status-Icon">C.</i>
-       <span class="c-ArticleCard_Status-Count">{{ gear.profile.fav_count }}</span>
-      </li>
-     </ul>
-    </div><!-- /.c-ArticleCard_Status -->
-
+    <have :gear="gear"></have>
+    <want :gear="gear"></want>
+    <fav :gear="gear"></fav>
+    </div>
     <div class="c-ArticleCard_Rating">
      <div class="c-ArticleCard_Rating-Thunder">
       <img class="" src="/img/Dummt_Thunder.svg" alt="UserName" />
@@ -71,13 +58,17 @@ import { mapState, mapActions, mapMutations } from 'vuex'
 import * as config from './../../../config';
 import InfiniteLoading from 'vue-infinite-loading';
 import MultiModalView from '../modal/MultiModalView.vue'
+import Have from './buttons/Have.vue';
 import Want from './buttons/Want.vue';
+import Fav from './buttons/Fav.vue';
 
 export default {
     components: {
         InfiniteLoading,
         MultiModalView,
+        have: Have,
         want: Want,
+        fav: Fav
     },
     data() {
         return {
@@ -93,6 +84,7 @@ export default {
     },
     created() {
         axios.get(this.nextUrl).then(res => {
+           console.log(res.data)
            this.gears = res.data.data;
            this.nextUrl = res.data.next_page_url;
         })

@@ -16,6 +16,9 @@ RUN docker-php-ext-install pdo pdo_mysql zip gd
 RUN apt-get install -y supervisor
 
 RUN service supervisor start
+RUN supervisorctl reread
+RUN supervisorctl update
+RUN supervisorctl start laravel-worker:*
 
 # install node npm
 RUN apt-get install -y gnupg

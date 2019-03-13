@@ -1,41 +1,44 @@
 <template>
-  <div class="c-ArticleCard_Status">
-   <ul class="c-ArticleCard_Status_Wrap">
-    <li class="c-ArticleCard_Status_Item">
-     <i class="c-ArticleCard_Status-Icon">H.</i>
-     <span class="c-ArticleCard_Status-Count" @click="showHaveModal({gear: gear})">{{ have_count }}</span>
-    </li>
-    <li class="c-ArticleCard_Status_Item">
-     <i class="c-ArticleCard_Status-Icon">W.</i>
-     <span class="c-ArticleCard_Status-Count" @click="toggleWant({ id : gear.id, want_count: want_count })">{{ want_count }}</span>
-    </li>
-    <li class="c-ArticleCard_Status_Item">
-     <i class="c-ArticleCard_Status-Icon">C.</i>
-     <span class="c-ArticleCard_Status-Count">{{ fav_count }}</span>
-    </li>
-   </ul>
-  </div><!-- /.c-ArticleCard_Status -->
+<div class="c-ArticleCard_Status_Item">
+ <i class="c-ArticleCard_Status-Icon">W.</i>
+ <span class="c-ArticleCard_Status-Count" v-bind:disabled="isProcessing" @click="toggleWant({ id : gear.id, want_count: want_count, type: isWant })">{{ want_count }}</span>
+</div>
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations } from 'vuex'
+import * as config from './../../../../config';
 
 export default {
     name: 'GearStatus',
     props: ['gear'],
-    computed: {
-        want_count: {
-            get: function () { return this.$store.getters.want_count },
-            set: function (val) { this.$store.GearStatus.commit('setWantCount', val) }
+    data: function() {
+        return {
+            want_count: this.gear.profile.want_count,
+            isWant: this.gear.want_users_count,
+            isProcessing: false
         }
     },
-    created() {
-       console.log(this.gear)
-       this.want_count = this.gear.profile.want_count 
-    },
     methods: {
-        ...mapActions('MultiModal', ['showHaveModal']),
-        ...mapActions('GearStatus', ['toggleWant','setWantCount'])
+        toggleWant() {
+            return new Promise((resolve, reject) => {
+                this.isProcessing = true
+                axios.post(config.toggleWant, {
+                    gear_id: this.gear.id,
+                    count: this.want_count,
+                    type: this.isWant,
+                    notLoading: true,
+                }).then(res => {
+                    console.log(res)
+                    this.want_count = res.data.want_count
+                    this.isWant = res.data.type
+                    this.isProcessing = false
+                    resolve();
+                }).catch(error => {
+                    console.log(error)
+                    router.push({'path': '/login'});
+                });
+            });
+        }
     }
 }
 </script>
