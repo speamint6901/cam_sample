@@ -3,7 +3,6 @@
  &_ButtonArea{
   position: relative;
   z-index: z(HamburgerMenuBtn);
-
   > .menu_btn{
    width: 28px;
    height: 24px;
@@ -48,9 +47,22 @@
     }
    }//.open_
   }//menu_btn
-
  }//_ButtonArea
 
+
+ &_List{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+ }//_List
+
+ &_Item{
+  margin-bottom: 1em;
+  &-Link{
+   color: palettes(link,White);
+  }//-Link
+ }//_Item
 
  &_Overlay{
   position: fixed;
@@ -60,7 +72,8 @@
   height: 100%;
   z-index: z(overlay);
   padding: 5%;
-  background: rgba(0,0,0,0.9);
+  //background: rgba(0,0,0,0.9);
+  background-color: palettes(Overlay,Dark);
   transition: all 0.5s;
   color: #fff;
   &.v-enter, &.v-leave-to {
