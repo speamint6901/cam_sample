@@ -2,7 +2,8 @@
 width: 100%;
  border: 1px solid palettes(line,base);
  padding: $base_grid*3;
- width: $BreakPoint-S;
+ width: $BreakPoint-M;
+ max-width: 100%;
  margin: auto auto $Common_MarginBottom auto;
 
  &_Overview{

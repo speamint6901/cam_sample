@@ -4,6 +4,8 @@
   position: relative;
   height: $CoverHeight;
   color: palettes(text,white);
+  margin-top: - $base_grid *5;
+  margin-bottom: $base_grid *10;
   &-Bg{
    height: $CoverHeight;
   }//-Bg
@@ -42,6 +44,7 @@
  &_Menu{
   display: flex;
   justify-content: space-evenly;
+  margin-bottom: $base_grid *10;
   &-Item{
    text-align: center;
    &_Label{
