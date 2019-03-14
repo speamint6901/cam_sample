@@ -50,19 +50,7 @@
  }//_ButtonArea
 
 
- &_List{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
- }//_List
 
- &_Item{
-  margin-bottom: 1em;
-  &-Link{
-   color: palettes(link,White);
-  }//-Link
- }//_Item
 
  &_Overlay{
   position: fixed;
@@ -80,5 +68,45 @@
    opacity: 0;
   }
  }//_Overlay
+
+
+ &_Wrap{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+ }//_Wrap
+
+ &_List{
+ margin-bottom: $base_grid *10;
+ }//_List
+
+ &_Item{
+  margin-bottom: 1em;
+  &-Link{
+   color: palettes(link,White);
+  }//-Link
+ }//_Item
+
+ &_SNS{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  width: 240px;
+  &_Item{
+   &-Link{}//-Link
+   &-Img{
+    fill:#fff;
+   width: auto;
+    height: 24px;
+   }//-Img
+  }//_Item
+
+ }//_SNS
 
 }//.p-HamburgerMenu
