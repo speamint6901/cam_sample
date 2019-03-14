@@ -69,7 +69,7 @@
       </div><!--//.c-TimelineCard_UserIcon-->
 
       <div class="c-TimelineCard_UserStatus">
-       <p class="c-TimelineCard_UserStatus-Label">Have.</p>
+       <p class="c-TimelineCard_UserStatus-Label">Favorite.</p>
        <time class="u-Text_Main-S c-TimelineCard_UserStatus-Date" datetime="2018-07-07">2018.07.07</time>
       </div><!-- /.c-TimelineCard_UserStatus -->
 
@@ -94,7 +94,7 @@
           <span class="c-ArticleCard_Status-Count">888T</span>
          </li>
          <li class="c-ArticleCard_Status_Item">
-          <i class="c-ArticleCard_Status-Icon">C.</i>
+          <i class="c-ArticleCard_Status-Icon">F.</i>
           <span class="c-ArticleCard_Status-Count">888T</span>
          </li>
         </ul>
@@ -129,7 +129,7 @@
       </div><!--//.c-TimelineCard_UserIcon-->
 
       <div class="c-TimelineCard_UserStatus">
-       <p class="c-TimelineCard_UserStatus-Label">Comment.</p>
+       <p class="c-TimelineCard_UserStatus-Label">Have.</p>
        <time class="u-Text_Main-S c-TimelineCard_UserStatus-Date" datetime="2018-07-07">2018.07.07</time>
       </div><!-- /.c-TimelineCard_UserStatus -->
 
@@ -154,7 +154,7 @@
           <span class="c-ArticleCard_Status-Count">888T</span>
          </li>
          <li class="c-ArticleCard_Status_Item">
-          <i class="c-ArticleCard_Status-Icon">C.</i>
+          <i class="c-ArticleCard_Status-Icon">F.</i>
           <span class="c-ArticleCard_Status-Count">888T</span>
          </li>
         </ul>
@@ -226,7 +226,7 @@
           <span class="c-ArticleCard_Status-Count">888T</span>
          </li>
          <li class="c-ArticleCard_Status_Item">
-          <i class="c-ArticleCard_Status-Icon">C.</i>
+          <i class="c-ArticleCard_Status-Icon">F.</i>
           <span class="c-ArticleCard_Status-Count">888T</span>
          </li>
          <li class="c-ArticleCard_Status_Item">
