@@ -8,6 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Models\Gear;
+use App\Models\GearProfile;
 
 class GearStatusWant implements ShouldQueue
 {
@@ -37,16 +38,15 @@ class GearStatusWant implements ShouldQueue
     public function handle()
     {
         // タイプ(足すor引く)で切り替え
+        \Log::info($this->type);
         if ($this->type) {
-            $this->gear->want_users()->sync([$this->user->id => ['type' => 'want']]);
-        } else {
             $this->gear->want_users()->detach($this->user->id);
+        } else {
+            $this->gear->want_users()->sync([$this->user->id => ['type' => 'want']]);
         }
 
         // カウント更新
-        /*
         $this->gear->profile->want_count = $this->gear->want_users()->count();
         $this->gear->push();
-        */
     }
 }
