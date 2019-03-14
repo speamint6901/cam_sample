@@ -1,0 +1,63 @@
+.p-UserMypage{
+ $CoverHeight: 480px;
+ &_Cover{
+  position: relative;
+  height: $CoverHeight;
+  color: palettes(text,white);
+  margin-top: - $base_grid *5;
+  margin-bottom: $base_grid *10;
+  &-Bg{
+   height: $CoverHeight;
+  }//-Bg
+ }//_Cover
+
+ &_Filter{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: palettes(Overlay,Filter);
+ }//_Filter
+
+ &_UserThumb{
+  text-align: center;
+ }//_UserThumb
+
+ &_UserName{
+
+ }//_UserName
+
+ &_Info{
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  transform: translateX(-50%);
+ }//_Info
+
+ &_Prof{
+
+ }//_Prof
+
+
+
+ &_Menu{
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: $base_grid *10;
+  &-Item{
+   text-align: center;
+   &_Label{
+    cursor: pointer;
+    &.-Active{
+     color: palettes(text,main_color);
+     border-bottom: 1px solid;
+    }//.-Active
+   }//_Label
+   &_Count{
+    display: block;
+   }//_Count
+  }//-Item
+ }
+
+}//p-UserMypage

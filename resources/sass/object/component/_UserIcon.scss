@@ -19,5 +19,21 @@
  }//c-UserIcon_Name
 
 
+ &-L{
+  &_Thumb{
+   &-Img{
+    width: 90px;
+    height: 90px;
+    border-radius: 100%;
+   }//-Img
+   &-CardImg{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+   }//-Img
+  }//_Thumb
+ }//-L
+
+
 }//.c-UserIcon
 
