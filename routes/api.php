@@ -24,5 +24,8 @@ Route::get('/gears', 'GearController@index');
 Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/me', 'AuthController@me');
     Route::get('/logout', 'AuthController@logout');
+    // toggle gear status
     Route::post('/want', 'GearStatusController@toggleWant');
+    Route::post('/fav', 'GearStatusController@toggleFav');
+    Route::post('/have', 'GearStatusController@toggleHave');
 });

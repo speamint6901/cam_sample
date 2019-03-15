@@ -10,7 +10,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use App\Models\Gear;
 use App\Models\GearProfile;
 
-class GearStatusWant implements ShouldQueue
+class GearStatusFav implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -41,13 +41,13 @@ class GearStatusWant implements ShouldQueue
         \DB::beginTransaction();
         try {
             if ($this->type) {
-                $this->gear->want_users()->detach($this->user->id);
+                $this->gear->fav_users()->detach($this->user->id);
             } else {
-                $this->gear->want_users()->sync([$this->user->id => ['type' => 'want']]);
+                $this->gear->fav_users()->sync([$this->user->id => ['type' => 'fav']]);
             }
 
             // カウント更新
-            $this->gear->profile->want_count = $this->gear->want_users()->count();
+            $this->gear->profile->fav_count = $this->gear->fav_users()->count();
             $this->gear->push();
             \DB::commit();
         } catch (\Exception $e) {

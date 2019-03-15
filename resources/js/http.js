@@ -23,6 +23,7 @@ export default (Vue, { store }) => {
     return response;
   }, (error) => {
     // エラー処理
+    return error;
   });
 
   Vue.http = http;

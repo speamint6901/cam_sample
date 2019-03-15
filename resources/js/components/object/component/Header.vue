@@ -68,7 +68,8 @@
         <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">Brand List</a></li>
         <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">ギア登録申請</a></li>
         <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">アカウント設定</a></li>
-        <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">Logout</a></li>
+        <li class="p-HamburgerMenu_Item" v-show="auth"><router-link to="/logout" class="c-GlobalNavi_Menu_Item-Link">Logout</router-link></li>
+        <li class="p-HamburgerMenu_Item" v-show="!auth"><router-link to="/login" class="c-GlobalNavi_Menu_Item-Link">Login</router-link></li>
        </ul><!--//.p-HamburgerMenu_List-->
 
       </div><!--//.p-HamburgerMenu_Overlay-->

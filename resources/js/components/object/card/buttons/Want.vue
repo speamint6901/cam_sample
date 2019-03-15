@@ -28,8 +28,8 @@ export default {
                     type: this.isWant,
                     notLoading: true,
                 }).then(res => {
-                    console.log(res)
-                    this.want_count = res.data.want_count
+                    console.log(res.data)
+                    this.want_count = res.data.count
                     this.isWant = res.data.type
                     this.isProcessing = false
                     resolve();

@@ -1,7 +1,7 @@
 <template>
  <div class="c-Modal">
   <div class="c-Modal_Bg"></div>
-
+  <form @submit.prevent="register" class="l-Contents_Block-XS">
   <div class="c-Modal-Have">
    <header class="c-Modal-Have_Header">
     <h2 class="u-Text_Main-L u-TxtColor_White">Have : Review</h2>
@@ -28,6 +28,7 @@
     <button type="submit" class="c-Modal-Have_Register c-Form_Submit">登録</button>
    </footer>
   </div><!--//c-Modal-Have-->
+  </form>
 
  </div><!--//c-Modal-Have-->
 </template>
