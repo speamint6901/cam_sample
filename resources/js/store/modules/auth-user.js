@@ -3,11 +3,17 @@ import * as api from './../../config';
 export default {
     state: {
         authenticated: false,
+        init: null,
         user_id: null,
         name: null,
     },
+    getters: {
+        authenticated: state => state.authenticated,
+        init: state => state.init
+    },
     mutations: {
         setAuthUser (state, payload) {
+            state.init = true
             state.authenticated = payload.user.authenticated;
             if (payload.user.authenticated) {
                 state.user_id = payload.user.user.id;

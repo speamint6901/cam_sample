@@ -17,7 +17,7 @@ class GearController extends Controller
      */
     public function index()
     {
-        $gears = Gear::with(['brand', 'profile'])->withCount(['have_users', 'want_users', 'fav_users' => function($query) {
+        $gears = Gear::with(['brand', 'profile', 'have_users', 'thander_users'])->withCount(['have_users', 'want_users', 'fav_users' => function($query) {
             $query->where('user_id', optional(\Auth::guard('api')->user())->id);
         }])->paginate(self::PER_PAGE);
                    

@@ -28,18 +28,31 @@ const router = new VueRouter({
     mode: 'history',
     routes
 });
+
+const nextAuth = (to, from, next) => {
+  // 認証が必要なページでログイン情報が無ければリダイレクト
+  store.commit('setLoading', false);
+  if (store.getters.authenticated) {
+    next()
+  } else {
+    next({
+      path: '/login',
+    })
+  }
+}
  
 router.beforeEach((to, from, next) => {
     store.commit('setLoading', true);
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        if (store.state.authUser.authenticated === false || !jwt.getToken()) {
-            store.commit('setLoading', false);
-            next({
-                path: '/login',
-            })
+        if (store.getters.init !== true) {
+            const unwatch = store.watch(() => store.getters.init, n => {
+                console.log('unw' + n)
+                unwatch()
+                nextAuth(to, from, next)
+            })
         } else {
             store.commit('setLoading', false);
-            next()
+            nextAuth(to, from, next)
         }
     } else {
         store.commit('setLoading', false);
