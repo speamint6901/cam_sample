@@ -1,13 +1,14 @@
 <template>
 <div class="c-ArticleCard_Status_Item">
  <i class="c-ArticleCard_Status-Icon">F.</i>
- <span class="c-ArticleCard_Status-Count" v-bind:disabled="isProcessing" @click="toggleFav({ id : gear.id, fav_count: fav_count, type: isFav })">{{ fav_count }}</span>
+ <button class="c-ArticleCard_Status-Count" v-bind:disabled="isProcessing" @click="toggleFav({ id : gear.id, fav_count: fav_count, type: isFav })">{{ fav_count }}</button>
 </div>
 </template>
 
 <script>
 import * as config from './../../../../config';
 import router from './../../../../router';
+import store from './../../../../store/index.js';
 
 export default {
     name: 'GearStatus',
@@ -21,6 +22,7 @@ export default {
     },
     methods: {
         toggleFav() {
+             store.commit("setLoading", false)
              return new Promise((resolve, reject) => {
                 this.isProcessing = true
                 axios.post(config.toggleFav, {
