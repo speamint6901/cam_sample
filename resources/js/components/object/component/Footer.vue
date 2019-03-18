@@ -11,9 +11,6 @@
    <nav class="c-Footer_Navi" role="navigation">
     <ul class="c-Footer_Navi_Menu">
      <li class="c-Footer_Navi_Menu_Item">
-      <a href="" class="c-Footer_Navi_Menu_Item-Link">ABOUT</a>
-     </li>
-     <li class="c-Footer_Navi_Menu_Item">
       <a href="" class="c-Footer_Navi_Menu_Item-Link">PRIVACY POLICY</a>
      </li>
      <li class="c-Footer_Navi_Menu_Item ">
