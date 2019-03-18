@@ -16,7 +16,7 @@
 
     <div class="c-Modal-Have_Rating">
      <p class="c-Modal-Have_Rating_Title">Rating</p>
-     <input type="range" v-model="rating" min="0" max="5" step="0.1" class="c-Modal-Have_Rating_Slider" oninput="document.getElementById('output1').value=this.value">
+     <input type="range" v-model="rating" value="0" min="0" max="5" step="1" class="c-Modal-Have_Rating_Slider" oninput="document.getElementById('output1').value=this.value">
      <output id="output1" class="c-Modal-Have_Rating_Num">0</output>
     </div><!-- /.c-Modal-Have_RatingSlider -->
 

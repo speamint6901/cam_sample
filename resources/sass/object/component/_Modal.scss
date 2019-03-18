@@ -34,13 +34,38 @@
 
   &_Rating{
    display: flex;
+   align-items: center;
    margin-bottom: $base_grid *3;
    color: palettes(text,white);
    &_Title{
    width: 10%;
    }//_Title
    &_Slider{
+    $Slider_Knob_Color:palettes(Theme,Main);
+    $Slider_Knob_Height:12px;
+    $Slider_Knob_Width:12px;
+
     width: 80%;
+    appearance:none;
+    background: palettes(gray,Lv4);
+    height:2px;
+    border-radius:8px;
+
+    &::-webkit-slider-thumb{
+     -webkit-appearance:none;
+     background:$Slider_Knob_Color;
+     height:$Slider_Knob_Height;
+     width:$Slider_Knob_Width;
+    }
+    &::-ms-tooltip{display:none;}
+    &::-moz-range-track{height:0;}
+    &::-moz-range-thumb{
+     background:$Slider_Knob_Color;
+     height:$Slider_Knob_Height;
+     width:$Slider_Knob_Width;
+     border:none;
+    }
+
    }//_Slider
    &_Num{
     font-size: 2em;
