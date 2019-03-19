@@ -25,21 +25,23 @@
 select {
  cursor: pointer;
  position: relative;
- -webkit-appearance: none;
- appearance: none;
  display: block;
- width: 200px;
+ text-overflow: ellipsis;
  padding: 0.5em 1em;
- color: $text-color;
- border: none;
- //border-radius: 5px;
  background: transparent;
+ border: none;
+ background-image: none;
+ box-shadow: none;
+ font-family: itc-american-typewriter, serif;
+ &:focus{ }
+
  &:disabled{
   cursor: not-allowed;
   background-color:$disable-color;
  }
-}
 
-::-ms-expand {
- display: none;
+ ::-ms-expand {
+  display: none;
+ }
+
 }
