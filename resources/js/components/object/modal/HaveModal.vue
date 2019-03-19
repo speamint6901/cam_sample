@@ -16,8 +16,8 @@
 
     <div class="c-Modal-Have_Rating">
      <p class="c-Modal-Have_Rating_Title">Rating</p>
-     <input type="range" v-model="rating" value="0" min="0" max="5" step="1" class="c-Modal-Have_Rating_Slider" oninput="document.getElementById('output1').value=this.value">
-     <output id="output1" class="c-Modal-Have_Rating_Num">0</output>
+     <input type="range" v-model="rating" min="0" max="5" step="1" class="c-Modal-Have_Rating_Slider" oninput="document.getElementById('output1').value=this.value">
+     <output id="output1" class="c-Modal-Have_Rating_Num">{{ rating }}</output>
     </div><!-- /.c-Modal-Have_RatingSlider -->
 
     <textarea name="comment" v-model="comment" id="Input_Gear_Review" cols="30" rows="25" class="c-Modal-Have_Textarea" placeholder="レビューを記入してください。無記入でも登録できます。"></textarea>
@@ -25,7 +25,7 @@
    </div><!-- /.c-Modal-Have_Content -->
 
    <footer class="c-Modal-Have_Footer">
-    <button type="submit" class="c-Modal-Have_Register c-Form_Submit">登録</button>
+    <button type="submit" v-bind:disabled="isProcessing" class="c-Modal-Have_Register c-Form_Submit">登録</button>
    </footer>
   </form>
   </div><!--//c-Modal-Have-->
@@ -34,53 +34,44 @@
 </template>
 
 <script>
-  import { mapState, mapMutations } from 'vuex'
+  import * as config from './../../../config';
   import MultiModalMixin from '../../../mixins/MultiModalMixin'
+  import { mapState } from 'vuex';
+
   export default {
-    name: 'HaveModal',
+    props: ['gear'],
+    data: function() {
+        console.log(this.gear)
+        return {
+            have_count: this.gear.profile.have_count,
+            isHave: this.gear.have_users_count,
+            rating: this.gear.have_users.point,
+            comment: this.gear.have_users.comment,
+            isProcessing: false,
+        }
+    },
     computed: {
-        //...mapState('MultiModal', ['gear']),
-        gear: {
-            get: function () { return this.$store.getters.gear },
-        },
-        have_count: {
-            get: function () { return this.$store.getters.have_count },
-        },
-        isHave: {
-            get: function () { return this.$store.getters.isHave },
-        },
-        comment: {
-            get: function () { return this.$store.getters.comment },
-        },
-        rating: {
-            get: function () { return this.$store.getters.rating },
-        },
-        isProcessing: {
-            get: function () { return this.$store.getters.isProcessing },
-        },
+        ...mapState('MultiModal', ['after_have_count'])
     },
     mixins: [MultiModalMixin],
     methods: {
-        toggleHave() {
-            this.$store.commit("setLoading", false)
-            return new Promise((resolve, reject) => {
-                this.$store.commit("setProcessing", true)
-                axios.post(config.toggleWant, {
-                    gear_id: this.gear.id,
-                    count: this.have_count,
-                    type: this.isHave,
-                }).then(res => {
-                    console.log(res.data)
-                    this.have_count = res.data.count
-                    this.isHave = res.data.type
-                    this.$store.commit("setProcessing", false)
-                    resolve();
-                }).catch(error => {
-                    console.log(error)
-                    router.push({'path': '/login'});
-                });
+      toggleHave () {
+        return new Promise((resolve, reject) => {
+            this.isProcessing = true
+            axios.post(config.toggleHave, {
+                gear_id: this.gear.id,
+                count: this.have_count,
+                rating: this.rating,
+                comment: this.comment,
+            }).then(res => {
+                this.$store.dispatch('MultiModal/setAfterHaveCount', { gear_id: this.gear.id, count: 5 })
+                this.hideModal()
+                resolve();
+            }).catch(error => {
+                reject(); 
             });
-        }
+        }) 
+      }
     }
   }
 </script>

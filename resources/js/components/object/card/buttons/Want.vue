@@ -29,7 +29,6 @@ export default {
                     gear_id: this.gear.id,
                     count: this.want_count,
                     type: this.isWant,
-                    notLoading: true,
                 }).then(res => {
                     console.log(res.data)
                     this.want_count = res.data.count

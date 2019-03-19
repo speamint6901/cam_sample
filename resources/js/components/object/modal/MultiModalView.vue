@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <component v-if="isShow" :is="modalName"></component>
+    <component v-if="isShow" :is="modalName" :gear="val"></component>
   </transition>
 </template>
 
@@ -17,7 +17,7 @@
     computed: {
       ...mapState('MultiModal', ['modalName', 'gear']),
       isShow () {
-        return this.modalName !== '' && this.gear.id == this.val
+        return this.modalName !== '' && this.gear.id == this.val.id
       }
     }
   }
