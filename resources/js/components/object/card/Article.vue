@@ -5,7 +5,7 @@
  <div class="l-Feed">
 
   <article class="c-ArticleCard" v-for="gear in gears">
-   <multi-modal-view :val="gear.id"></multi-modal-view>
+   <multi-modal-view :val="gear"></multi-modal-view>
    <header class="c-ArticleCard_Header">
     <router-link v-bind:to="{ name: 'Gear', params : { id: gear.id }}" class="c-GlobalNavi_Menu_Item-Link">
      <figure>

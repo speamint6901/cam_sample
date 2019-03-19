@@ -32,6 +32,7 @@ const getters = {
 
 const actions = {
     login ({ commit, state }, formData) {
+        commit('setLoading', true);
         return new Promise((resolve, reject) => {
             axios.post(config.login, {
                 email: formData.email,

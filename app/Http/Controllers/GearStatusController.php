@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreGearStatusPost;
+use App\Http\Requests\StoreGearStatusHavePost;
 use App\Jobs\GearStatusWant;
 use App\Jobs\GearStatusFav;
 use App\Models\Gear;
@@ -44,6 +45,11 @@ class GearStatusController extends Controller
         GearStatusFav::dispatch($gear, $user, $params['type']);
 
         return $this->toggleCountAndType($params, $user);
+    }
+
+    public function toggleHave(StoreGearStatusHavePost $request) {
+        $params = $request->input();
+        return response()->json($params);
     }
 
     private function toggleCountAndType($params, $user) {
