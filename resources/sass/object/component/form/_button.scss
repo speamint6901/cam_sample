@@ -1,0 +1,19 @@
+button{
+
+ //共通設定 ########################################
+ padding:0;
+ cursor: pointer;
+ background-color: transparent;
+ font-family: itc-american-typewriter, serif;
+
+ //共通設定ここまで ########################################
+
+ &.c-Form{
+  &_Button{
+
+  }//_Button
+ }//c-Form
+
+
+}//button
+
