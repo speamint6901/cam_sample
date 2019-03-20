@@ -26,6 +26,7 @@
 
    <footer class="c-Modal-Have_Footer">
     <button type="submit" v-bind:disabled="isProcessing" class="c-Modal-Have_Register c-Form_Submit">登録</button>
+    <button type="submit" v-bind:disabled="isProcessing" class="c-Modal-Have_Delete c-Form_Submit">削除</button>
    </footer>
   </form>
   </div><!--//c-Modal-Have-->
