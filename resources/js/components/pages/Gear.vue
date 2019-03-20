@@ -147,7 +147,7 @@
   <div class="l-Contents_Block">
    <!--UserComment-->
    <article class="c-UserFeed-Comment">
-    <div class="c-UserFeed-Comment_Block">
+    <div class="c-UserFeed-Comment_Block-UserInfo">
 
      <div class="c-UserFeed-Comment_UserIcon">
       <div class="c-UserIcon_Thumb">
