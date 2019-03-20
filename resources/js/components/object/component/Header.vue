@@ -30,9 +30,10 @@
        </router-link>
       </li>
       <li class="c-GlobalNavi_Menu_Item">
-       <router-link to="/user" class="c-GlobalNavi_Menu_Item-Link">
-        マイページ
-       </router-link>
+       BRAND
+      </li>
+      <li class="c-GlobalNavi_Menu_Item">
+       CATEGORY
       </li>
 
      </ul>
