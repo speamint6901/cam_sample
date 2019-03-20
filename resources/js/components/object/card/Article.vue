@@ -43,12 +43,12 @@
     </div>
    </footer>
   </article>
- <infinite-loading @infinite="onInfinite" ref="infiniteLoading">
-  <span slot="no-more">End of content</span>
- </infinite-loading>
+
 
  </div><!--//.l-Feed-->
-
+ <infinite-loading v-if="!initLoadFlag" @infinite="onInfinite" ref="infiniteLoading" :distance="1">
+  <span slot="no-more">End of content</span>
+ </infinite-loading>
 
 
  </div><!-- /.l-Contents_Block -->
@@ -73,6 +73,7 @@ export default {
     },
     data() {
         return {
+            initLoadFlag: true,
             gears:[],
             nextUrl: config.getList
         }
@@ -84,9 +85,10 @@ export default {
       },
     },
     created() {
-        axios.get(this.nextUrl).then(res => {
+        axios.get(this.nextUrl, {notLoading: true}).then(res => {
            this.gears = res.data.data;
            this.nextUrl = res.data.next_page_url;
+           this.initLoadFlag = false;
         })
     },
     methods: {
