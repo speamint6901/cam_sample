@@ -85,10 +85,12 @@ export default {
       },
     },
     created() {
+        this.$store.commit('setLoading', true);
         axios.get(this.nextUrl, {notLoading: true}).then(res => {
            this.gears = res.data.data;
            this.nextUrl = res.data.next_page_url;
            this.initLoadFlag = false;
+           this.$store.commit('setLoading', false);
         })
     },
     methods: {
