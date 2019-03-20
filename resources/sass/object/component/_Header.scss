@@ -2,16 +2,45 @@
  display: flex;
  justify-content: space-between;
  align-items: center;
- //background-color: $base-color;
+ background-color: palettes(Theme,Light);
+ padding: $base_grid*2 0;
+ width: 100%;
+ position: fixed;
+ z-index: z(header);
 
  @include mq(XL, max){
-  margin:auto $ContentsPadding auto $ContentsPadding;
+  padding: $base_grid*2 $ContentsPadding;
  }
+
+ @include mq(L, min){
+   left: 50%;
+   transform: translateX(-50%);
+ }
+
 
  &_Branding{
   &_Caption{  } //_Caption
  } //_Branding
  &_Block{ }//_Block
+
+ &_NavMenu{
+  width: 50%;
+ }//_NavMenu
+
+ &_Control{
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 42px; //HamburgerMenuBtn分あける
+  @include mq(XXL, min){
+   margin-right: 0;
+  }
+  @include mq(M, max){
+  width: 100%;
+   justify-content: space-between;
+  }
+ }//_Control
 
 
 }//.c-Header

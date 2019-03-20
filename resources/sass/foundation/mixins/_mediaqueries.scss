@@ -5,6 +5,7 @@ $mq-breakpoints: (
  'M' : $BreakPoint-M,
  'L' : $BreakPoint-L,
  'XL': $BreakPoint-XL,
+ 'XXL': $BreakPoint-XXL,
 );
 
 @mixin mq($breakpoint: medium, $rule: min, $subtraction: false) {

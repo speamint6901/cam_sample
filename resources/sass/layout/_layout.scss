@@ -6,10 +6,7 @@
 
 .l-Header{
  width: 100%;
- padding: $base_grid*2 0;
- overflow: hidden;
- //position: fixed;
- //z-index: z(header);
+ position: relative;
 
  + .l-Contents{
   //padding-top: $header_height;
@@ -19,7 +16,7 @@
 
 .l-Contents{
  margin: auto;
- padding: $base_grid*5 0;
+ padding:$base_grid*20 0 $base_grid*5 0;
  @include ContentsBlock;
  background-color:palettes(Theme,Base);
 }//l-Contents

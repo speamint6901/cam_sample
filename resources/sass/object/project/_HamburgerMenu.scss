@@ -1,5 +1,11 @@
 .p-HamburgerMenu{
- margin-left: $base_grid*2;
+ //margin-left: $base_grid*2;
+
+ position: fixed;
+ right: $ContentsPadding;
+ top: 24px;
+ z-index: z(HamburgerMenuBtn);
+
  &_ButtonArea{
   position: relative;
   z-index: z(HamburgerMenuBtn);
@@ -50,8 +56,6 @@
  }//_ButtonArea
 
 
-
-
  &_Overlay{
   position: fixed;
   top: 0;
@@ -69,6 +73,12 @@
   }
  }//_Overlay
 
+
+ &_Branding{
+  width: 140px;
+  fill:palettes(Theme,Light);
+  margin-bottom: 10em;
+ }//_Branding
 
  &_Wrap{
   position: absolute;

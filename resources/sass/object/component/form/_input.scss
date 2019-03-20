@@ -8,15 +8,17 @@ input[type="number"],
  //共通設定 ########################################
  $input_width:300px;
 
- margin-bottom:1.5em;
  display: inline-block;
  position: relative;
  //width:$input_width;
  transition: all .2s;
  padding: 0.5em 1em;
+ border: none;
+ background-color:transparent;
 
  &:focus {
   padding-left: 0.8em;
+  background-color: transparent;
   &:placeholder,
   &::-webkit-input-placeholder,
   &::-moz-placeholder,
@@ -49,6 +51,8 @@ input[type="number"],
   &_Input{
    background: $base-color;
    width: 100%;
+   border: 1px solid $line-color;
+   margin-bottom:1.5em;
 
    &.-Text{
     position: relative;

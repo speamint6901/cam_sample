@@ -14,11 +14,12 @@ $Vendors_Path: "object/vendors/";
 
 
 //******************************* breakpoints
-$BreakPoint-XS:    320px;
+$BreakPoint-XS:    480px;
 $BreakPoint-S:     600px;
 $BreakPoint-M:     768px;
 $BreakPoint-L:     1024px;
 $BreakPoint-XL:    1280px;
+$BreakPoint-XXL:    1400px;
 $BreakPoint-maxL:    $BreakPoint-L + 1px;
 
 
@@ -32,8 +33,8 @@ $z-index:(
  Modal,
  nav,
  HamburgerMenuBtn,
- header,
  overlay,
+ header,
  gototop,
  swiper-caption,
  GlobalNavHome,

@@ -29,5 +29,19 @@
 
 
 
+.u-Desktop{
+ &-Only{ display: none; @include mq(L, min){display: block}; }
+ &-Off{@include mq(L, min){display: none;}; }
+}//Desktop
+
+.u-Tablet{
+ &-Only{ display: none; @include mq(M, max){display: block}; }
+ &-Off{@include mq(M, max){display: none;}; }
+}//Tablet
+
+.u-Mb{
+ &-Only{ display: none; @include mq(XS, max){display: block}; }
+ &-Off{@include mq(XS, max){display: none;}; }
+}//Mb
 
 
