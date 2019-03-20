@@ -15,8 +15,9 @@
 
 
 .l-Contents{
+ min-height: 100vh ;
  margin: auto;
- padding:$base_grid*20 0 $base_grid*5 0;
+ padding:$base_grid*20 0 $base_grid*12 0;
  @include ContentsBlock;
  background-color:palettes(Theme,Base);
 }//l-Contents
@@ -37,7 +38,8 @@
 
 
 .l-Footer{
- padding: $base_grid 0;
+ width: 100%;
+ position: relative;
 }//l-footer
 
 

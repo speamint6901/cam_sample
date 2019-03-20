@@ -1,10 +1,21 @@
 .c-Footer {
-
  display: flex;
  align-items: center;
 
+ background-color: palettes(Theme,Light);
+ padding: $base_grid*2 0;
+ width: 100%;
+ position: fixed;
+ bottom: 0;
+ z-index: z(footer);
+
  @include mq(XL, max){
-  margin:auto $ContentsPadding auto $ContentsPadding;
+  padding: $base_grid*2 $ContentsPadding;
+ }
+
+ @include mq(L, min){
+  left: 50%;
+  transform: translateX(-50%);
  }
 
  &_Branding{

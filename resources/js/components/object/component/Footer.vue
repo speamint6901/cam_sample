@@ -1,9 +1,9 @@
 <template>
 
 
- <footer class="l-Footer u-SiteSize">
+ <footer class="l-Footer">
 
-  <div class="c-Footer">
+  <div class="c-Footer u-SiteSize">
 
   <div class="c-Footer_Block u-Half">
    <div class="u-Flex _AlignItem-Center">
