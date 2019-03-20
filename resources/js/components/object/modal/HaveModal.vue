@@ -34,14 +34,12 @@
 </template>
 
 <script>
-  import * as config from './../../../config';
   import MultiModalMixin from '../../../mixins/MultiModalMixin'
   import { mapState } from 'vuex';
 
   export default {
     props: ['gear'],
     data: function() {
-        console.log(this.gear)
         return {
             have_count: this.gear.profile.have_count,
             isHave: this.gear.have_users_count,
@@ -56,21 +54,16 @@
     mixins: [MultiModalMixin],
     methods: {
       toggleHave () {
-        return new Promise((resolve, reject) => {
-            this.isProcessing = true
-            axios.post(config.toggleHave, {
-                gear_id: this.gear.id,
-                count: this.have_count,
-                rating: this.rating,
-                comment: this.comment,
-            }).then(res => {
-                this.$store.dispatch('MultiModal/setAfterHaveCount', { gear_id: this.gear.id, count: 5 })
-                this.hideModal()
-                resolve();
-            }).catch(error => {
-                reject(); 
-            });
-        }) 
+        this.isProcessing = true
+        this.$store.dispatch('MultiModal/toggleHave', {
+            gear_id: this.gear.id,
+            count: this.have_count,
+            rating: this.rating,
+            comment: this.comment,
+            type: this.isHave,
+        }).then((res) => {
+            this.hideModal()
+        }).catch((error) => {});
       }
     }
   }

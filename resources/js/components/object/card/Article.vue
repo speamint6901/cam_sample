@@ -43,12 +43,13 @@
     </div>
    </footer>
   </article>
+ <infinite-loading @infinite="onInfinite" ref="infiniteLoading">
+  <span slot="no-more">End of content</span>
+ </infinite-loading>
+
  </div><!--//.l-Feed-->
 
 
- <infinite-loading @infinite="onInfinite" ref="infiniteLoading" :distance="500">
-  <span slot="no-more">End of content</span>
- </infinite-loading>
 
  </div><!-- /.l-Contents_Block -->
 </template>
@@ -84,7 +85,6 @@ export default {
     },
     created() {
         axios.get(this.nextUrl).then(res => {
-           console.log(res.data)
            this.gears = res.data.data;
            this.nextUrl = res.data.next_page_url;
         })

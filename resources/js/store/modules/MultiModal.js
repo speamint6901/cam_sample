@@ -1,4 +1,5 @@
 import * as config from './../../config';
+import router from '../../router';
 
 const state = {
   modalName: "",
@@ -11,17 +12,6 @@ const state = {
   after_have_count: 0,
   current_gear_id: null,
 }
-
-/*
-const getters = {
-    have_gear: state => state.have_gear,
-    have_count: state => state.have_count,
-    isHave: state => state.isHave,
-    have_comment: state => state.have_comment,
-    have_rating: state => state.have_rating,
-    isProcessing: state => state.isProcessing,
-}
-*/
 
 const mutations = {
   setModal (state, payload) {
@@ -44,34 +34,30 @@ const mutations = {
     state.after_have_count = payload.count
     state.current_gear_id = payload.gear_id
   },
-  /*
-  setResponseHaveData (state, payload) {
-
-  }
-  */
 }
 
 const actions = {
   showHaveModal ({ commit }, gear) {
-    commit('setModal', {name : 'HaveModal', gear: gear})
+    if (this.state.authUser.authenticated == false) {
+        router.push({'path': '/login'});
+    } else {
+        commit('setModal', {name : 'HaveModal', gear: gear})
+    }
   },
-  setAfterHaveCount ({ commit }, {gear_id, count}) {
-    commit('setAfterHaveCount', { gear_id: gear_id, count: count })
-  },
-  toggleHave ({ commit, state }) {
-    console.log(state)
-    return new Promise((resolve, reject) => {
-        axios.post(config.toggleHave, {
-            rating: state.rating,
-            comment: state.rating,
-            count: state.have_count,
-        }).then(res => {
-            resolve();
-        }).catch(error => {
-            reject(); 
-        });
-    })
-  },
+  toggleHave ({ commit, state }, formData) {
+    axios.post(config.toggleHave, {
+        gear_id: formData.gear_id,
+        rating: formData.rating,
+        comment: formData.comment,
+        count: formData.count,
+        type: formData.type,
+    }).then(res => {
+        console.log(res)
+        commit('setAfterHaveCount', { gear_id: formData.gear_id, count: res.data.count })
+    }).catch(error => {
+        console.log(error)
+    });
+  }
 }
 
 export default {

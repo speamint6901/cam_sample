@@ -7,6 +7,7 @@ use App\Http\Requests\StoreGearStatusPost;
 use App\Http\Requests\StoreGearStatusHavePost;
 use App\Jobs\GearStatusWant;
 use App\Jobs\GearStatusFav;
+use App\Jobs\GearStatusHave;
 use App\Models\Gear;
 
 class GearStatusController extends Controller
@@ -49,7 +50,15 @@ class GearStatusController extends Controller
 
     public function toggleHave(StoreGearStatusHavePost $request) {
         $params = $request->input();
-        return response()->json($params);
+        $user = \Auth::user();
+        $gear = Gear::find($params['gear_id']);
+        if (is_null($gear)) {
+            abort(404);
+        }
+        // ジョブに投入
+        GearStatusHave::dispatch($gear, $user, $params);
+
+        return $this->toggleCountAndType($params, $user);
     }
 
     private function toggleCountAndType($params, $user) {

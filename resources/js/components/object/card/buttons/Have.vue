@@ -9,7 +9,6 @@
 import { mapState, mapActions, mapMutations } from 'vuex'
 
 export default {
-    //name: 'GearStatus',
     props: ['gear'],
     data: function() {
         return {
