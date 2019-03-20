@@ -37,7 +37,7 @@ select {
 
  &:disabled{
   cursor: not-allowed;
-  background-color:$disable-color;
+  background-color:palettes(Button,Disable);
  }
 
  ::-ms-expand {
