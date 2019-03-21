@@ -157,8 +157,8 @@ body{
 }//u-Br
 
 .u-error_message{
- color: $default-color;
- background-color: $warning-color;
+ color: palettes(Button,Warning);
+ background-color:  palettes(Button,Warning);
  padding: 0 10px;
  @include common_radius();
  margin-top: -20px;
@@ -181,7 +181,7 @@ body{
  &::after{
   content:"必須";
   //content:"※";
-  color: $danger-color;
+  color: palettes(Button,Warning);
   border: 1px solid;
   border-radius: 20px;
   padding: 0 5px;
@@ -220,7 +220,7 @@ body{
   content: '';
   flex-grow: 1;
   height: 1px;
-  background: $text-color;
+  background:palettes(text,base);
   min-width: 20px;
   display: inline-block;
   vertical-align: middle;
@@ -237,7 +237,7 @@ body{
    content: '';
    flex-grow: 1;
    height: 1px;
-   background: $text-color;
+   background: palettes(text,base);
    min-width: 1em;
    display: inline-block;
    vertical-align: middle;
@@ -254,7 +254,7 @@ body{
    content: '';
    flex-grow: 1;
    height: 1px;
-   background: $text-color;
+   background:palettes(text,base);
    min-width: 1em;
    display: inline-block;
    vertical-align: middle;

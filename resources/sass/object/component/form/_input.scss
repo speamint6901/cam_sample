@@ -92,6 +92,9 @@ input[type="number"],
    color:palettes(Theme,Base);
    padding: 0.5em 2em;
    cursor: pointer;
+   &.-Del{
+    background-color:palettes(Button,Warning);
+   }
   }
   &_Reset{}
 
