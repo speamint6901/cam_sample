@@ -58,7 +58,8 @@ export default {
             }).then((response) => {
                 this.$store.dispatch('setAuthUser');
                 this.$router.push({'path': '/'});
-            }).catch((error) => {});
+            }).catch((error) => {
+            });
         },
     },
 }

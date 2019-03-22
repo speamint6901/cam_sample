@@ -25,8 +25,8 @@
    </div><!-- /.c-Modal-Have_Content -->
 
    <footer class="c-Modal-Have_Footer">
-    <button type="submit" v-bind:disabled="isProcessing" class="c-Modal-Have_Register c-Form_Submit">登録</button>
-    <button type="submit" v-bind:disabled="isProcessing" class="c-Modal-Have_Delete c-Form_Submit">削除</button>
+    <button type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange(0)" class="c-Modal-Have_Register c-Form_Submit">登録</button>
+    <button v-show="isHave" type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange(1)" class="c-Modal-Have_Delete c-Form_Submit">削除</button>
    </footer>
   </form>
   </div><!--//c-Modal-Have-->
@@ -44,9 +44,10 @@
         return {
             have_count: this.gear.profile.have_count,
             isHave: this.gear.have_users_count,
-            rating: this.gear.have_users.point,
+            rating: (this.gear.have_users.point) ? this.gear.have_users.point : 0,
             comment: this.gear.have_users.comment,
             isProcessing: false,
+            type: 1,
         }
     },
     computed: {
@@ -55,16 +56,20 @@
     mixins: [MultiModalMixin],
     methods: {
       toggleHave () {
+        console.log(this.type);
         this.isProcessing = true
         this.$store.dispatch('MultiModal/toggleHave', {
             gear_id: this.gear.id,
             count: this.have_count,
             rating: this.rating,
             comment: this.comment,
-            type: this.isHave,
+            type: this.type,
         }).then((res) => {
             this.hideModal()
         }).catch((error) => {});
+      },
+      toggleTypeChange(type) {
+        this.type = type;
       }
     }
   }

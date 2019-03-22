@@ -8,7 +8,7 @@ use App\Models\Gear;
 class GearController extends Controller
 {
 
-    const PER_PAGE = 8;
+    const PER_PAGE = 20;
 
     /**
      * Show the application dashboard.

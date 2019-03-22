@@ -58,7 +58,10 @@ class GearStatusController extends Controller
         // ジョブに投入
         GearStatusHave::dispatch($gear, $user, $params);
 
-        return $this->toggleCountAndType($params, $user);
+        if (!$params['type'] && !$gear->have_users()->count()) {
+            return $this->toggleCountAndType($params, $user);
+        }
+        return response()->json(["user" => $user, 'count' => $params['count'], 'type' => $params['type']]);
     }
 
     private function toggleCountAndType($params, $user) {

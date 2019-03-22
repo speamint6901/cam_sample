@@ -26,7 +26,7 @@ class GearController extends BaseController
     }
 
     public function dataIndex(Request $request) {
-        $query = Gear::with('category');
+        $query = Gear::with('category')->orderBy('updated_at', 'desc');
         return datatables()->eloquent($query)
             ->addColumn('brand', function(Gear $gear) {
                 return optional($gear->brand)->name;

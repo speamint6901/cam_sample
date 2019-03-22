@@ -53,8 +53,10 @@ class GearStatusHave implements ShouldQueue
             }
 
             // カウント更新
-            $this->gear->profile->have_count = $this->gear->have_users()->count();
-            $this->gear->push();
+            if (!$this->gear->have_users()->count()) {
+                $this->gear->profile->have_count = $this->gear->have_users()->count();
+                $this->gear->push();
+            }
             \DB::commit();
 
         } catch (\Exception $e) {

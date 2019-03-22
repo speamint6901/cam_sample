@@ -38,14 +38,12 @@ const actions = {
                 email: formData.email,
                 password: formData.password,
             }).then(res => {
-                if (res.data.error != undefined) {
-                    commit('isError', true);
-                } else {
-                    commit('doLogin', res.data.access_token);
-                }
+                commit('doLogin', res.data.access_token);
                 resolve();
             }).catch(error => {
                 console.log("login failure!");
+                commit('isError', true);
+                commit('setLoading', false);
                 reject(); 
             });
         });
