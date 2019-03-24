@@ -185,5 +185,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 
+export default {
+    props: ['id'],
+    computed: {
+        ...mapState('Gear', ['gear_detail'])
+    },
+    created() {
+        this.$store.dispatch('Gear/showGearDetail', this.id)
+    },
+}
 </script>

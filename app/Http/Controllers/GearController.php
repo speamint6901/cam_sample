@@ -24,6 +24,24 @@ class GearController extends Controller
         return response()->json($gears);
     }
 
+    public function show(Request $request) {
+        $params = $request->input();
+        $gear = Gear::with(['brand', 'profile', 'have_users' => function($query) { 
+            $query->where('user_id', optional(\Auth::guard('api')->user())->id);
+        }, 'want_users' => function($query) { 
+            $query->where('user_id', optional(\Auth::guard('api')->user())->id);
+        }, 'fav_users' => function($query) { 
+            $query->where('user_id', optional(\Auth::guard('api')->user())->id);
+        }])->withCount(['have_users' => function($query) {
+            $query->where('user_id', optional(\Auth::guard('api')->user())->id);
+        }, 'want_users' => function($query) {
+            $query->where('user_id', optional(\Auth::guard('api')->user())->id);
+        }, 'fav_users' => function($query) {
+            $query->where('user_id', optional(\Auth::guard('api')->user())->id);
+        }])->where('id', $params['id'])->first();
+        return response()->json(["gear" => $gear]);
+    }
+
     public function modalGear(Request $request) {
         $params = $request->input();
         $gear = Gear::with(['brand', 'profile', 'have_users' => function($query) { 

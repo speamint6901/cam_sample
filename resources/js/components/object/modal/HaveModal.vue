@@ -38,7 +38,6 @@
 <script>
   import MultiModalMixin from '../../../mixins/MultiModalMixin'
   import { mapState, mapMutations, mapActions } from 'vuex';
-  import store from '../../../store/index.js';
 
   export default {
     computed: {
