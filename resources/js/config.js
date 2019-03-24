@@ -7,3 +7,4 @@ export const getList = domain + '/api/gears';
 export const toggleWant = domain + '/api/want';
 export const toggleFav = domain + '/api/fav';
 export const toggleHave = domain + '/api/have';
+export const haveModalGear = domain + '/api/have_modal_gear';

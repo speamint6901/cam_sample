@@ -57,6 +57,7 @@ class Gear extends Model
                         ->withPivot([
                             'type',
                             'have_comment',
+                            'point',
                         ])
                         ->wherePivot('type', 'have');
     }
@@ -82,17 +83,4 @@ class Gear extends Model
                         ])
                         ->wherePivot('type', 'fav');
     }
-
-    // thander_user belongs to many
-    public function thander_users()
-    {
-        return $this->belongsToMany('App\Models\User', 'gear_users')
-                        ->using('App\Models\GearUser')
-                        ->withPivot([
-                            'type',
-                            'point',
-                        ])
-                        ->wherePivot('type', 'thander');
-    }
-
 }

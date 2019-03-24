@@ -16,17 +16,18 @@
 
     <div class="c-Modal-Have_Rating">
      <p class="c-Modal-Have_Rating_Title">Rating</p>
-     <input type="range" v-model="rating" min="0" max="5" step="1" class="c-Modal-Have_Rating_Slider" oninput="document.getElementById('output1').value=this.value">
-     <output id="output1" class="c-Modal-Have_Rating_Num">{{ rating }}</output>
+     <input type="range" :value="have_rating" @input="updateRatingForm($event)" min="0" max="5" step="1" class="c-Modal-Have_Rating_Slider" oninput="document.getElementById('output1').value=this.value">
+     <output id="output1" class="c-Modal-Have_Rating_Num">{{ have_rating }}</output>
     </div><!-- /.c-Modal-Have_RatingSlider -->
 
-    <textarea name="comment" v-model="comment" id="Input_Gear_Review" cols="30" rows="25" class="c-Modal-Have_Textarea" placeholder="レビューを記入してください。無記入でも登録できます。"></textarea>
+    <textarea name="comment" :value="have_comment" @input="updateCommentForm($event)" id="Input_Gear_Review" cols="30" rows="25" class="c-Modal-Have_Textarea" placeholder="レビューを記入してください。無記入でも登録できます。"></textarea>
 
    </div><!-- /.c-Modal-Have_Content -->
 
    <footer class="c-Modal-Have_Footer">
-    <button type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange(0)" class="c-Modal-Have_Register c-Form_Submit">登録</button>
-    <button v-show="isHave" type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange(1)" class="c-Modal-Have_Delete c-Form_Submit">削除</button>
+    <button v-show="!isHave" type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange('regist')" class="c-Modal-Have_Register c-Form_Submit">登録</button>
+    <button v-show="isHave" type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange('update')" class="c-Modal-Have_Register c-Form_Submit">編集</button>
+    <button v-show="isHave" type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange('detach')" class="c-Modal-Have_Delete c-Form_Submit">削除</button>
    </footer>
   </form>
   </div><!--//c-Modal-Have-->
@@ -36,41 +37,45 @@
 
 <script>
   import MultiModalMixin from '../../../mixins/MultiModalMixin'
-  import { mapState } from 'vuex';
+  import { mapState, mapMutations, mapActions } from 'vuex';
+  import store from '../../../store/index.js';
 
   export default {
-    props: ['gear'],
-    data: function() {
-        return {
-            have_count: this.gear.profile.have_count,
-            isHave: this.gear.have_users_count,
-            rating: (this.gear.have_users.point) ? this.gear.have_users.point : 0,
-            comment: this.gear.have_users.comment,
-            isProcessing: false,
-            type: 1,
-        }
-    },
     computed: {
-        ...mapState('MultiModal', ['after_have_count'])
+        ...mapState('MultiModal', [
+            'after_have_count', 'have_gear', 'have_count',
+            'isHave', 'current_gear_id', 'have_type', 'isProcessing',
+            'have_rating', 'have_comment'
+        ]),
+        isHave: {
+             get() { return this.$store.getters['MultiModal/isHave'] },
+             set(val) { this.$store.commit('MultiModal/setIsHave', this.have_gear.have_users_count) }
+        }
     },
     mixins: [MultiModalMixin],
     methods: {
+      updateRatingForm(e) {
+        console.log(e.target.value)
+        this.$store.commit('MultiModal/updateRatingForm', e.target.value) 
+      },
+      updateCommentForm(e) {
+        console.log(e.target.value)
+        this.$store.commit('MultiModal/updateCommentForm', e.target.value) 
+      },
       toggleHave () {
-        console.log(this.type);
-        this.isProcessing = true
+        this.$store.dispatch('MultiModal/changeIsProcessing', true)
         this.$store.dispatch('MultiModal/toggleHave', {
-            gear_id: this.gear.id,
+            gear_id: this.have_gear.id,
             count: this.have_count,
-            rating: this.rating,
-            comment: this.comment,
-            type: this.type,
+            rating: this.have_rating,
+            comment: this.have_comment,
+            type: this.have_type,
         }).then((res) => {
             this.hideModal()
+            this.$store.dispatch('MultiModal/changeIsProcessing', false)
         }).catch((error) => {});
       },
-      toggleTypeChange(type) {
-        this.type = type;
-      }
+      ...mapActions('MultiModal', ['toggleTypeChange'])
     }
   }
 </script>

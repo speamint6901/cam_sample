@@ -40,7 +40,7 @@ class GearStatusHave implements ShouldQueue
         // タイプ(足すor引く)で切り替え
         \DB::beginTransaction();
         try {
-            if ($this->params['type']) {
+            if ($this->params['type'] == 'detach') {
                 $this->gear->have_users()->detach($this->user->id);
             } else {
                 $this->gear->have_users()->sync([$this->user->id => 
@@ -53,7 +53,7 @@ class GearStatusHave implements ShouldQueue
             }
 
             // カウント更新
-            if (!$this->gear->have_users()->count()) {
+            if ($this->params['type'] != "update") {
                 $this->gear->profile->have_count = $this->gear->have_users()->count();
                 $this->gear->push();
             }
@@ -61,8 +61,7 @@ class GearStatusHave implements ShouldQueue
 
         } catch (\Exception $e) {
             \DB::rollback();
-            throw $e;
-            //abort(500);
+            abort(500);
         }
     }
 }

@@ -40,7 +40,7 @@ class GearStatusWant implements ShouldQueue
         // タイプ(足すor引く)で切り替え
         \DB::beginTransaction();
         try {
-            if ($this->type) {
+            if ($this->type == "detach") {
                 $this->gear->want_users()->detach($this->user->id);
             } else {
                 $this->gear->want_users()->sync([$this->user->id => ['type' => 'want']]);

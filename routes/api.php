@@ -28,4 +28,5 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/want', 'GearStatusController@toggleWant');
     Route::post('/fav', 'GearStatusController@toggleFav');
     Route::post('/have', 'GearStatusController@toggleHave');
+    Route::get('/have_modal_gear', 'GearController@modalGear');
 });

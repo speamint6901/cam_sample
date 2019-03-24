@@ -15,9 +15,9 @@
     },
     props: ['val'],
     computed: {
-      ...mapState('MultiModal', ['modalName', 'gear']),
+      ...mapState('MultiModal', ['modalName', 'have_gear']),
       isShow () {
-        return this.modalName !== '' && this.gear.id == this.val.id
+        return this.modalName !== '' && this.have_gear.id == this.val.id
       }
     }
   }

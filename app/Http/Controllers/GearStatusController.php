@@ -13,8 +13,9 @@ use App\Models\Gear;
 class GearStatusController extends Controller
 {
 
-    const TOGGLE_TYPE_ACTIVE = 1;
-    const TOGGLE_TYPE_DISABLE = 0;
+    const TOGGLE_TYPE_ACTIVE = "regist";
+    const TOGGLE_TYPE_DISABLE = "detach";
+    const TOGGLE_TYPE_UPDATE = "update";
 
     // want toggle
     public function toggleWant(StoreGearStatusPost $request) {
@@ -58,24 +59,32 @@ class GearStatusController extends Controller
         // ジョブに投入
         GearStatusHave::dispatch($gear, $user, $params);
 
-        if (!$params['type'] && !$gear->have_users()->count()) {
+        // データ更新以外をカウント変更
+        if ($params['type'] != 'update') {
             return $this->toggleCountAndType($params, $user);
         }
-        return response()->json(["user" => $user, 'count' => $params['count'], 'type' => $params['type']]);
+        return response()->json([
+            "user" => $user, 
+            'count' => $params['count'], 
+	    ]);
     }
 
+    // 結果表示用カウント更新
     private function toggleCountAndType($params, $user) {
 
-        if ($params['type']) {
+        if ($params['type'] == self::TOGGLE_TYPE_DISABLE) {
             if (!$params['count']) {
                 abort(500, 'count augment error');
             }
-            $type = self::TOGGLE_TYPE_DISABLE;
             $count = $params['count'] - 1;
-        } else {
-            $type = self::TOGGLE_TYPE_ACTIVE;
+        } elseif ($params["type"] == self::TOGGLE_TYPE_ACTIVE) {
             $count = $params['count'] + 1;
+        } else {
+            $count = $params['count'];
         }
-        return response()->json(["user" => $user, 'count' => $count, 'type' => $type]);
+        return response()->json([
+            "user" => $user, 
+            'count' => $count, 
+	]);
     }
 }
