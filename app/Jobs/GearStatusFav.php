@@ -40,7 +40,7 @@ class GearStatusFav implements ShouldQueue
         // タイプ(足すor引く)で切り替え
         \DB::beginTransaction();
         try {
-            if ($this->type == "detach") {
+            if ($this->type) {
                 $this->gear->fav_users()->detach($this->user->id);
             } else {
                 $this->gear->fav_users()->sync([$this->user->id => ['type' => 'fav']]);

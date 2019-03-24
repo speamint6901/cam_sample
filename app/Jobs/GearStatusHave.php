@@ -43,7 +43,7 @@ class GearStatusHave implements ShouldQueue
             if ($this->params['type'] == 'detach') {
                 $this->gear->have_users()->detach($this->user->id);
             } else {
-                $this->gear->have_users()->sync([$this->user->id => 
+                $this->user->have_gears()->sync([$this->gear->id => 
                     [
                         'type' => 'have',
                         'have_comment' => isset($this->params['comment']) ? $this->params['comment'] : null,

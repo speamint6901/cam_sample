@@ -27,11 +27,9 @@ const mutations = {
   },
   updateRatingForm (state, payload) {
     state.have_rating = payload;
-    console.log(state)
   },
   updateCommentForm (state, payload) {
     state.have_comment = payload;
-    console.log(state)
   },
   setCurrentGear (state, payload) {
     state.current_gear = payload
@@ -57,7 +55,6 @@ const mutations = {
 
 const actions = {
   showHaveModal ({ commit }, gear) {
-    console.log(this.state.authUser.authenticated)
     if (this.state.authUser.authenticated == false || this.state.authUser.authenticated == undefined) {
         router.push({'path': '/login'});
     } else {

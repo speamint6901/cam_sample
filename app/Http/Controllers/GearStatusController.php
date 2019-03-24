@@ -61,7 +61,7 @@ class GearStatusController extends Controller
 
         // データ更新以外をカウント変更
         if ($params['type'] != 'update') {
-            return $this->toggleCountAndType($params, $user);
+            return $this->toggleHaveCountAndType($params, $user);
         }
         return response()->json([
             "user" => $user, 
@@ -71,6 +71,22 @@ class GearStatusController extends Controller
 
     // 結果表示用カウント更新
     private function toggleCountAndType($params, $user) {
+        if ($params['type']) {
+            if (!$params['count']) {
+                abort(500, 'count augment error');
+            }
+            $type = 0;
+            $count = $params['count'] - 1;
+        } else {
+            $type = 1;
+            $count = $params['count'] + 1;
+        }
+
+        return response()->json(["user" => $user, 'count' => $count, 'type' => $type]);
+    }
+
+    // 結果表示用カウント更新
+    private function toggleHaveCountAndType($params, $user) {
 
         if ($params['type'] == self::TOGGLE_TYPE_DISABLE) {
             if (!$params['count']) {
@@ -85,6 +101,6 @@ class GearStatusController extends Controller
         return response()->json([
             "user" => $user, 
             'count' => $count, 
-	]);
+        ]);
     }
 }

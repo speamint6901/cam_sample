@@ -29,15 +29,28 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     // gear belongs to many
-    public function gears()
+    public function user_gears()
     {
-        return $this->belongsToMany('App\Models\Gear')
+        return $this->belongsToMany('App\Models\Gear', 'gear_users')
                         ->using('App\Models\GearUser')
                         ->withPivot([
                             'type',
                             'have_comment',
                             'point',
                         ]);
+    }
+
+    // haves belongs to many
+    public function have_gears()
+    {
+        return $this->belongsToMany('App\Models\Gear', 'gear_users')
+                        ->using('App\Models\GearUser')
+                        ->withPivot([
+                            'type',
+                            'have_comment',
+                            'point',
+                        ])
+                        ->wherePivot('type', 'have');
     }
 
     public function getJWTIdentifier()
