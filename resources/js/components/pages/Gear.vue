@@ -1,6 +1,6 @@
 <template>
 
- <article class="c-MasterItem">
+ <article v-if="gear_detail != null" class="c-MasterItem">
 
 
   <div class="l-Contents_Block">
@@ -15,15 +15,15 @@
 
    <div class="c-MasterItem_MainBlock">
     <figure class="c-MasterItem_MainVisual">
-     <img class="c-MasterItem_MainVisual-Img u-ObjectFitImg" src="https://www.goldwin.co.jp/ec/img/l/NP71877.jpg" alt="GearName" />
+     <img class="c-MasterItem_MainVisual-Img u-ObjectFitImg" v-bind:src="asset_domain + 'storage/' + gear_detail.gear_image" alt="GearName" />
      <figcaption class="u-Flex u-Text_Main-XS u-Margin _mgTop-base02">
      Source:
-      <blockquote class="u-Margin _mgLeft-base01">https://www.goldwin.co.jp/</blockquote>
+      <blockquote class="u-Margin _mgLeft-base01" v-show="gear_detail.site_url">{{ gear_detail.site_url }}</blockquote>
      </figcaption>
     </figure><!-- /.c-MasterItem_MainVisual -->
     <div class="c-MasterItem_MainOverview">
-     <a class="c-MasterItem_MainOverview_SubTtile">BrandName</a><!--//.c-MasterItem_MainOverview_SubTtile-->
-     <h1 class="c-MasterItem_MainOverview_Title u-Text_MasterItem-Title">Gear Name Teppei☆Nakao x CielBleu T-Shirts</h1><!--//.c-MasterItem_MainOverview_Title-->
+     <a class="c-MasterItem_MainOverview_SubTtile">{{ gear_detail.brand.name }}</a><!--//.c-MasterItem_MainOverview_SubTtile-->
+     <h1 class="c-MasterItem_MainOverview_Title u-Text_MasterItem-Title">{{ gear_detail.name }}</h1><!--//.c-MasterItem_MainOverview_Title-->
 
      <div class="c-MasterItem_MainStatus">
       <ul class="c-MasterItem_MainStatus_Wrap">
@@ -61,20 +61,18 @@
 
      <div class="c-MasterItem_MainInfo">
       <p>
-       バス釣りとライフスタイルを融合させ、アングラーのデイリーウエアをファッションとして確立させた「バスブリゲード」とのコラボ第2弾。今回はプレミアムクオリティのボディを使ったTシャツが登場。<br>
-       <br>
-       バス釣りとライフスタイルを融合させ、アングラーのデイリーウエアをファッションとして確立させた「バスブリゲード」とのコラボ第2弾。今回はプレミアムクオリティのボディを使ったTシャツが登場。バス釣りとライフスタイルを融合させ、アングラーのデイリーウエアをファッションとして確立させた「バスブリゲード」とのコラボ第2弾。今回はプレミアムクオリティのボディを使ったTシャツが登場。バス釣りとライフスタイルを融合させ、アングラーのデイリーウエアをファッションとして確立させた「バスブリゲード」とのコラボ第2弾。今回はプレミアムクオリティのボディを使ったTシャツが登場。
-       バス釣りとライフスタイルを融合させ、アングラーのデイリーウエアをファッションとして確立させた「バスブリゲード」とのコラボ第2弾。今回はプレミアムクオリティのボディを使ったTシャツが登場。<br>
-       <br>
-       バス釣りとライフスタイルを融合させ、アングラーのデイリーウエアをファッションとして確立させた「バスブリゲード」とのコラボ第2弾。今回はプレミアムクオリティのボディを使ったTシャツが登場。バス釣りとライフスタイルを融合させ、アングラーのデイリーウエアをファッションとして確立させた「バスブリゲード」とのコラボ第2弾。今回はプレミアムクオリティのボディを使ったTシャツが登場。バス釣りとライフスタイルを融合させ、アングラーのデイリーウエアをファッションとして確立させた「バスブリゲード」とのコラボ第2弾。今回はプレミアムクオリティのボディを使ったTシャツが登場。
+        {{ gear_detail.discription }}
       </p>
      </div><!--//.c-MasterItem_MainInfo-->
-
-     <ul class="c-MasterItem_Category">
-      <li class="c-MasterItem_Category_Label"><a href="" class="u-TxtColor_Main">ランタン/照明</a></li>
-      <li class="c-MasterItem_Category_Label"><a href="" class="u-TxtColor_Main">燃料式ランタン</a></li>
-      <li class="c-MasterItem_Category_Label"><a href="" class="u-TxtColor_Main">ガソリンランタン</a></li>
+     <ul class="c-MasterItem_Category" v-if="this.gear_detail.genre != null">
+      <li class="c-MasterItem_Category_Label"><a href="" class="u-TxtColor_Main">{{ gear_detail.genre.category.big_category.name }}</a></li>
+      <li class="c-MasterItem_Category_Label"><a href="" class="u-TxtColor_Main">{{ gear_detail.genre.category.name }}</a></li>
+      <li class="c-MasterItem_Category_Label"><a href="" class="u-TxtColor_Main">{{ gear_detail.genre.name }}</a></li>
      </ul><!-- /.c-MasterItem_Category -->
+     <ul v-else class="c-MasterItem_Category">
+      <li class="c-MasterItem_Category_Label"><a href="" class="u-TxtColor_Main">{{ gear_detail.category[0].big_category.name }}</a></li>
+      <li class="c-MasterItem_Category_Label"><a href="" class="u-TxtColor_Main">{{ gear_detail.category[0].name }}</a></li>
+     </ul>
 
      <ul class="c-MasterItem_SNSshare">
       <li class="c-MasterItem_SNSshare_Item">
@@ -185,15 +183,23 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
+import * as config from './../../config';
 
 export default {
     props: ['id'],
+    data () {
+        return {
+            asset_domain: config.assetDomain
+        }
+    },
     computed: {
-        ...mapState('Gear', ['gear_detail'])
+        gear_detail: {
+            get () { return this.$store.state.Gear.gear_detail }
+        }
     },
     created() {
-        this.$store.dispatch('Gear/showGearDetail', this.id)
+        this.$store.dispatch('showGearDetail', this.id)
     },
 }
 </script>

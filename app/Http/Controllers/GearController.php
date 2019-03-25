@@ -26,8 +26,8 @@ class GearController extends Controller
 
     public function show(Request $request) {
         $params = $request->input();
-        $gear = Gear::with(['brand', 'profile', 'have_users' => function($query) { 
-            $query->where('user_id', optional(\Auth::guard('api')->user())->id);
+        $gear = Gear::with(['brand', 'profile', 'genre.category.big_category', 'category.big_category', 'have_users' => function($query) use ($params)  { 
+            $query->where('gear_id', $params["id"]);
         }, 'want_users' => function($query) { 
             $query->where('user_id', optional(\Auth::guard('api')->user())->id);
         }, 'fav_users' => function($query) { 

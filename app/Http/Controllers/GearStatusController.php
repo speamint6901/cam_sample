@@ -57,6 +57,7 @@ class GearStatusController extends Controller
             abort(404);
         }
         // ジョブに投入
+        \Log::info($params['type']);
         GearStatusHave::dispatch($gear, $user, $params);
 
         // データ更新以外をカウント変更

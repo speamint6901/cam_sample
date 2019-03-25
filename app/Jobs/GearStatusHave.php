@@ -42,13 +42,18 @@ class GearStatusHave implements ShouldQueue
         try {
             if ($this->params['type'] == 'detach') {
                 $this->gear->have_users()->detach($this->user->id);
+            } elseif ($this->params['type'] == 'update') {
+                $this->gear->have_users()->detach($this->user->id);
+                $this->gear->have_users()->attach($this->user->id, [
+                    'type' => 'have',
+                    'have_comment' => isset($this->params['comment']) ? $this->params['comment'] : null,
+                    'point' => isset($this->params['rating']) ? $this->params['rating'] : null,
+                ]);
             } else {
-                $this->user->have_gears()->sync([$this->gear->id => 
-                    [
-                        'type' => 'have',
-                        'have_comment' => isset($this->params['comment']) ? $this->params['comment'] : null,
-                        'point' => isset($this->params['rating']) ? $this->params['rating'] : null,
-                    ]
+                $this->gear->have_users()->attach($this->user->id, [
+                    'type' => 'have',
+                    'have_comment' => isset($this->params['comment']) ? $this->params['comment'] : null,
+                    'point' => isset($this->params['rating']) ? $this->params['rating'] : null,
                 ]);
             }
 
@@ -56,6 +61,9 @@ class GearStatusHave implements ShouldQueue
             if ($this->params['type'] != "update") {
                 $this->gear->profile->have_count = $this->gear->have_users()->count();
                 $this->gear->push();
+            }
+            if (isset($this->params['rating']) && $this->params['rating'] > 0) {
+                $this->gear->profile->thander_avg = $this->gear->have_users()->get()->avg('point');
             }
             \DB::commit();
 
