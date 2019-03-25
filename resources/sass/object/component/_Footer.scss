@@ -1,0 +1,63 @@
+.c-Footer {
+ display: flex;
+ align-items: center;
+
+ background-color: palettes(Theme,Light);
+ padding: $base_grid*2 0;
+ width: 100%;
+ position: fixed;
+ bottom: 0;
+ z-index: z(footer);
+
+ @include mq(XL, max){
+  padding: $base_grid*2 $ContentsPadding;
+ }
+
+ @include mq(L, min){
+  left: 50%;
+  transform: translateX(-50%);
+ }
+
+ &_Branding{
+ width: 108px;
+ }//_Branding
+
+ &_Navi{
+  //margin: auto;
+  margin-left: 3em;
+  &_Menu{
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   &_Item{
+    @include MainTxt-S;
+    margin-right: 2em;
+    &-Link{
+     color: palettes(link,main_color);
+    }//-Link
+   }//_Item
+  }//_Menu
+ }//_Navi
+
+} //c-Footer
+
+
+
+
+.mobile { //mobile setting **********************
+
+ //Gyro setting --------------------------------
+ @media screen and (orientation: portrait) { }//portrait
+ @media screen and (orientation: landscape) { }//landscape
+ //end Gyro setting ----------------------------
+
+} //mobile end **********************************
+
+.tablet { //tablet setting **********************
+
+ //Gyro setting --------------------------------
+ @media screen and (orientation: portrait) { } //portrait
+ @media screen and (orientation: landscape) { }//landscape
+ //end Gyro setting ----------------------------
+
+} //tablet end **********************************

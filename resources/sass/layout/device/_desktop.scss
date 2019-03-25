@@ -1,0 +1,99 @@
+// *PC Desktop* /
+
+
+.desktop{//desktop setting ****************************    
+	
+
+	.breadcrumbs {padding: 120px 0 0 0;}
+	.header{
+		background-color: rgba(255, 255, 255, 1);
+		position: fixed;
+		@include maxwidth;
+		z-index:$layer98;
+	}//header
+	.headerinfo{ 
+		margin-top:0; 
+		position:relative; 
+		overflow:hidden;
+	
+		.shopinfo{
+   		width:74%; 
+			float:left;
+			background-color:transparent; 
+			color:$text-color; 
+			position: relative; 
+   		z-index:1; 
+			@include maxwidth;
+    }//shopinfo
+    
+    .shop-time{ 
+			width:auto;  
+			display:inline-block; 
+			vertical-align:top; 
+			width: 70%; 
+			margin: 10px;
+      p{
+				@include fontsize(14); 
+				@include lineheight(16);
+				margin-left:20px; 
+				&.caution{	
+					@include fontsize(11); 
+					display:inline-block; 
+					background-color:rgba(255, 255, 255, 0.8);
+				}//caution
+			}//p
+    }//shop-time
+    
+    .shop-phone{
+			width:auto;  
+			display:inline-block;  
+			vertical-align:top; 
+			margin: 1rem;
+      p{
+				@include fontsize(16); 
+				@include lineheight(18);
+				font-weight:bold; 
+				text-align:right;
+        span{
+					width:40px; 
+					@include fontsize(16);
+				}
+      }
+    }//shop-phone
+
+	}//headerinfo
+	#shiro-girl{width: 30%; position: absolute; right: 0; top: -5rem; z-index: 0; max-width:400px; }
+	.contents{
+		background-color:$ct-background;
+		border-radius:6px;
+//			h2 {
+//				font-size: 1.4rem;
+//				line-height: 3rem;
+//				border: none;
+//				margin-bottom: 20px;
+//			}
+	}//contents
+	#shiro-girl2{
+		position: fixed;
+		bottom: 0;
+		z-index: -1;
+		max-width: 960px;
+		width:100%;
+	}
+	#monnshinn dd {  display: block;}
+	
+	.top{
+		.movie-area{
+			li{
+				
+				video{
+					padding-top: 9%;
+					padding-bottom: 9.4%;
+					background-color: $text-color;
+				}
+			}
+		}
+	}//top
+
+@import "../media-queries";    
+}//desktop end ***************************************

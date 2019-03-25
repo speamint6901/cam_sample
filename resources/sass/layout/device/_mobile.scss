@@ -1,0 +1,280 @@
+/*mobile set*/
+//class:mobile
+
+@import "ios";
+@import "iphone";
+@import "ipod";
+@import "andoroid";
+@import "windows";
+@import "portrait";
+@import "landscape";
+
+.mobile{//mobile setting ****************************
+	.split2{	width:$responsive-width; padding-right:0;	}    
+	.container{ max-width:100%; min-width:100%;}
+	header{
+		.panel_left-btn,.panel_right-btn{
+			border: 1px solid #3D3D3D;
+		}//panel_left-btn
+	}//header
+	.contents{	
+		width:$responsive-width;		
+		}
+	.box-list{width: 49%;}
+	.button-center{width: 100%; margin: 0;}
+	.breadcrumbs{
+		li{
+			width: auto;			
+			display: inline-block;
+			line-height: 16px;
+			&.root a{
+				color: $text-color;	
+			}
+			a{
+				background-color: transparent;
+				display: inline-block;							
+			}//a
+		}
+	}
+	.tel-link{
+		a {
+			display: block;
+			width: 90%;
+			padding: 5px 0%;
+			margin: 5px 5%;
+			text-align: center;
+			color: white;
+			border: 1px solid rgba(255, 255, 255, 0.5);
+			text-decoration: none;
+			text-transform: uppercase;
+			background-color: $link-color;
+			border-radius: 4px;
+		}
+	}
+	.icon_box{
+		li{
+			float: none;
+			display: inline-block;		
+		}
+	}
+	.button{margin: 10px auto;}
+	
+	
+//Index Page--	
+	.qr-area,.media-area{display: none;}
+	.entrance{
+		position: static;
+		margin-bottom: 10px;
+		.enter{
+			position: static;
+			width: 100%;
+			left: 0;
+			margin-bottom: 10px;
+		}//enter
+		.exit{
+			position: static;
+			width: 100%;
+			img{
+				position: static;
+				margin: 0 auto;
+				display: inherit;
+			}
+		}//exit
+	}//entrance
+	
+	//Top
+	.top{
+		.movie-area{
+		 li{
+		 	width: 100%;
+		 	padding: 10px;
+			}
+		}
+		.imasugu-area {
+			li{width: 99%;}
+		}//.imasugu-area 
+	}//top
+	
+	.howto{
+		.contents{
+			li{
+				&.step{
+					.pic{	width: 100%;	}
+					.text{width: 100%;}
+				}//step
+			}//li
+		}//contents
+	}//howto
+	.campaign_list{
+		.contents {
+			.text {
+				.button{
+					width: 100%;
+				}
+			}
+		}
+	}//campaign_list
+	
+	
+	
+//SideA--
+	.SideA {	
+		.unit{
+			background-color: $base-color;
+			border-radius: 0px;
+			h2{
+				font-weight: normal;
+				padding: 4%;
+				border-radius: 4px;
+				margin: 0% 0% 2% 0%;
+			}
+		}	
+		.contents-area{		
+		}
+		.okusama-blog{
+			.text{
+				width: 65%;
+			}
+			.pic{
+				width: 35%;
+			}
+		}
+		li a{
+			width: auto;
+			padding:0;
+			margin: 0;
+			border: none;
+			background-color:transparent;
+		}
+		.list-area{
+			ul{
+				padding: 0;
+				li{
+					background-color: $base-color;
+					a{color: $text-color;}
+				}//li			
+			}//ul
+		}
+	}//SideA
+	
+//Reserve Page-----------------------------------------
+	.reserve{
+		.header{
+			ul{list-style-type: none; padding: 0rem;}
+		}
+		#monnshinn{			
+			dd {  display: none;}
+		}
+		.respo-tbl{
+			th{padding: 2% 1%;}
+			.req{bottom:10px;}
+			.tb-caution{@include fontsize(10);}
+		}
+		
+		.formBtn01 {
+			width: 86%;
+			margin: 30px 7%;
+			.rollover{line-height: 4rem;}
+		}
+		//ul{list-style-type: disc; padding-left: 2rem;}
+		//li{@include lineheight(18);}
+
+	}//reserve   
+	
+	.footer{ 
+		.footerinfo{
+			.shop-phone{width: 100%; margin: 12px 0;}
+			.shop-time{margin:0 0 10px 0;}
+		}
+		.notice{padding: 20px;}
+		.shop-reserve{
+				position: static; 
+				display: block;
+				margin:0 5% 10px 5%;		
+		}
+		.ft-mark{display: none;}
+	}//fotoer
+	
+	.profile {
+		.cpprof {
+			.prof-visual {			
+				width: 100%;
+				float: left;
+				padding-right: 0;
+				.owl-controls {
+				}
+			}
+			//prof-visual
+			.prof-info {			
+				width: 100%;
+				.ico{}//ico
+				.item{
+					.date{
+					}//time
+					.att-time{
+						dt,dd{		
+						}//dt.dd
+						dt{
+						}
+						dd{
+							span{		
+								padding: 0;
+							}
+						}//dd					
+					}//att-time
+				}//item
+			}//prof-info
+		}//cpprof
+		.comment {
+		}//comment	
+		#tab03 p {		}
+		.blog-area{
+			width: 100%; 
+			float: right;
+			li{
+				overflow: hidden;
+				border-bottom: 1px solid $main-color;
+				padding-bottom: 10px;
+				margin-bottom: 10px;
+				.text{width: 60%; float: left; padding: 0 10px;
+					.name{ @include fontsize(14);}
+					.extract{margin-top: 20px;}
+				}
+				.pic{width: 40%; float: left; padding: 0 10px;}
+			}
+		}//blog-area
+		.report-list{
+			.report-contents{
+
+			}
+			.reply{
+
+			}
+		}		
+		.tag-list{
+			li{		
+				width: calc((100% / 2) - 5px);
+			}//li
+		}//tag-list
+		.tab{
+			.tab-nav{	
+			li{
+				width: $box_w100 / 5;
+				a{padding:5px 0;}
+			}//li
+			}
+		}//tab
+	}//cp
+
+
+//Gyro setting **********************************
+
+	@media screen and (orientation:portrait) {
+	}//portrait
+    
+	@media screen and (orientation:landscape) {
+	}//landscape
+
+//end Gyro setting ******************************
+
+}//mobile end ***************************************

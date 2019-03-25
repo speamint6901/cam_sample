@@ -1,0 +1,91 @@
+//******************************* Font /
+@mixin fontsize($size: 10) {
+ font-size: $size + px;
+ font-size: ($size / 10) * 1rem;
+}
+//ex. @include fontsize(12);
+
+@mixin lineheight($lheight: 10) {
+ line-height: $lheight + px;
+ line-height: ($lheight / 10) * 1rem;
+}
+//ex. @include lineheight(12);
+
+
+
+
+@mixin MainTxt{
+ @include fontsize(13);
+ line-height: 1.5em;
+ @include mq(S,max){  @include fontsize(12);  line-height: 1.5em; }//Media(S)
+}//MainTxt
+
+
+@mixin MainTxt-XS{
+ @include fontsize(10);
+ line-height: 1.5em;
+}//MainTxt-XS
+
+@mixin MainTxt-S{
+ @include fontsize(12);
+ line-height: 1.5em;
+ @include mq(S,max){  @include fontsize(11);  line-height: 1.5em; }//Media(S)
+}//MainTxt-S
+
+
+@mixin MainTxt-M{
+ @include fontsize(15);
+ line-height: 1.5em;
+ @include mq(S,max){  @include fontsize(12);  line-height: 1.5em; }//Media(S)
+}//MainTxt-M
+
+
+@mixin MainTxt-L{
+ @include fontsize(18);
+ line-height: 1.5em;
+ @include mq(S,max){  @include fontsize(16);  line-height: 1.5em; }//Media(S)
+}//MainTxt-L
+
+
+@mixin MainTxt-XL{
+ @include fontsize(20);
+ line-height: 1.5em;
+ @include mq(S,max){  @include fontsize(18);  line-height: 1.5em; }//Media(S)
+}//MainTxt-XL
+
+
+@mixin MainTxt-XXL{
+ @include fontsize(26);
+ line-height: 1.5em;
+ @include mq(S,max){  @include fontsize(24);  line-height: 1.5em; }//Media(S)
+}//MainTxt-XXL
+
+
+
+
+
+
+
+
+//==================== 複数行の時に高さ固定して三点省略表示するやつ
+@mixin multiple-ellipsis($ct-height:80px,$num-line:4,$ct-color:#FFF){
+ position: relative;
+ height: $ct-height;
+ overflow: hidden;
+ line-height: ($ct-height / $num-line);
+ &::before, &::after {
+  position: absolute;
+  background: $ct-color;
+ }
+ &::before {
+  content: "･･･";
+  bottom: 0;
+  right: 0;
+  padding: 0 1px;
+ }
+ &::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+ }
+}//ex. @include multiple-ellipsis(80px,4,$main-color);

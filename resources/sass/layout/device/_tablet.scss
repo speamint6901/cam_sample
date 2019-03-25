@@ -1,0 +1,21 @@
+// *tablet set* /
+
+@import "ios";
+@import "andoroid";
+@import "windows";
+@import "portrait";
+@import "landscape";
+
+.tablet{//tablet setting ****************************
+
+	.container{ max-width:100%; min-width:100%; }
+
+
+//Gyro setting ##################################
+	@media screen and (orientation:portrait) {
+	}//portrait    
+	@media screen and (orientation:landscape) {
+	}//landscape
+//end Gyro setting ##############################
+
+}//tablet end ***************************************

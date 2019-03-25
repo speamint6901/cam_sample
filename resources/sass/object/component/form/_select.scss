@@ -1,0 +1,47 @@
+.selectform {
+ position: relative;
+ display: inline-block;
+ width: 100%;
+ //background: #fff;
+ @include common_radius;
+ border: 1px solid palettes(line,base);
+ margin-bottom: $common_mr-bt;
+
+ &:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: block;
+  width: 0;
+  height: 0;
+  margin: -2px 0 0 0;
+  border: 5px solid transparent;
+  border-top: 7px solid  palettes(Theme,Main);
+ }
+}//selectform
+
+
+select {
+ cursor: pointer;
+ position: relative;
+ display: block;
+ text-overflow: ellipsis;
+ padding: 0.5em 1em;
+ background: transparent;
+ border: none;
+ background-image: none;
+ box-shadow: none;
+ font-family: itc-american-typewriter, serif;
+ &:focus{ }
+
+ &:disabled{
+  cursor: not-allowed;
+  background-color:palettes(Button,Disable);
+ }
+
+ ::-ms-expand {
+  display: none;
+ }
+
+}

@@ -1,0 +1,76 @@
+//Common Parts --------------------------------------------
+.l-Container{
+ background-color:palettes(Theme,Back);
+}//.l-Container
+
+
+.l-Header{
+ width: 100%;
+ position: relative;
+
+ + .l-Contents{
+  //padding-top: $header_height;
+ }
+}//l-header
+
+
+.l-Contents{
+ min-height: 100vh ;
+ margin: auto;
+ padding:$base_grid*20 0 $base_grid*12 0;
+ @include ContentsBlock;
+ background-color:palettes(Theme,Base);
+}//l-Contents
+
+.l-Article{
+ @include ContentsBlock;
+}//l-Article
+
+.l-Feed{
+ display: flex;
+ justify-content: space-between;
+ flex-wrap: wrap;
+}//.l-Feed
+
+.l-SideContents{
+ width: 100%;
+}//.l-SideContents
+
+
+.l-Footer{
+ width: 100%;
+ position: relative;
+}//l-footer
+
+
+
+//ContentsLayout --------------------------------------------
+.l-ContentsLayout{
+ $LayoutMargin:$base_grid *5;
+ $SideContents-Width:30%;
+ $Contentswidth: Calc(100% - #{$SideContents-Width} - #{$LayoutMargin});
+
+margin:$ContentsMargin;
+display: flex;
+flex-wrap: wrap;
+
+>.l-Article,>.l-Feed{width: $Contentswidth; margin-right: $LayoutMargin;}
+>.l-SideContents{width:$SideContents-Width;}
+}//l-ContentsLayout
+
+
+
+//Article Feed --------------------------------------------
+.l-Feed{
+
+ >.u-Flex>.c-ArticleCard{
+  @include ArticleCard_Size(4,200px);
+   }//.c-ArticleCard
+
+}//.l-Feed
+
+.p-RecentPosts_Feed_Wrap{
+ >.c-ArticleCard{
+  @include ArticleCard_Size(4,200px);
+ }//.c-ArticleCard
+}//p-RecentPosts_Feed_Wrap

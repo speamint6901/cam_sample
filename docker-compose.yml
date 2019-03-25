@@ -16,18 +16,41 @@ services:
     build:
       context: .
       dockerfile: ./containers/app/Dockerfile
+    working_dir: /var/www/html/campbug
     volumes:
       - .:/var/www/html/campbug/
+      - ./containers/app/laravel-worker.conf:/etc/supervisor/conf.d/laravel-worker.conf
     links:
       - db
+      - redis
   db:
     build:
       context: .
       dockerfile: ./containers/db/Dockerfile
     environment:
-      MYSQL_PASSWORD: campbug
+      MYSQL_DATABASE: campbug
       MYSQL_ROOT_PASSWORD: secret
     volumes:
       - ./containers/db/conf.d:/etc/mysql/conf.d
+      - ./containers/db/mysql_data:/var/lib/mysql
+      - ./containers/db/dump:/etc/mysql/dump
     ports:
       - "3314:3306"
+  redis:
+    image: redis:5.0
+    ports:
+      - "6379:6379"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: secret
+    restart: always
+    links:
+      - db
+    ports:
+      - "8080:80"
+    volumes:
+      - ./containers/db/mysql_data:/var/lib/mysql

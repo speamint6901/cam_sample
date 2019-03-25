@@ -1,9 +1,14 @@
 /node_modules
 /public/hot
 /public/storage
+/public/js
+/public/css
 /storage/*.key
+!/storage/app/public/gear_images/
 /vendor
+/containers/db/mysql_data/*
 .env
 .phpunit.result.cache
 npm-debug.log
 yarn-error.log
+*.DS_Store

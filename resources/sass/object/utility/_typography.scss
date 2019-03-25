@@ -1,0 +1,301 @@
+//*******************************font set full /
+//ゴシック体
+$fontfull-gothic:Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", Meiryo UI, "メイリオ", Meiryo, sans-serif;
+//明朝
+$fontfull-mincho:"Times New Roman", "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "メイリオ", Meiryo, serif;
+//等幅書体
+$fontfull-monospace:"Osaka－等幅", Osaka-mono, "ＭＳ ゴシック", "MS Gothic", monospace;
+
+//*******************************font set mini /
+//ゴシック体
+$font-gothic:Verdana, "游ゴシック", YuGothic, "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+//明朝
+$font-mincho:"Times New Roman", "游明朝", YuMincho, "Hiragino Mincho ProN", "メイリオ", Meiryo, serif;
+//等幅書体
+$font-monospace:Osaka-mono, "MS Gothic", monospace;
+
+//*******************************original set /
+//M+ Regular
+$fontfull-gothic: 'Roboto',"M PLUS 1p", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", Meiryo UI, "メイリオ", Meiryo, sans-serif;
+
+//******************************* Base Font /
+$root_fontsize:62.5%;
+$base_fontfam : $fontfull-gothic; //上のフォントセットから指定
+
+
+
+//******************************* Placeholder /
+
+
+
+
+
+//******************************* 基本テキスト設定 /
+html{
+ font-family: itc-american-typewriter, serif;
+ font-size: $root_fontsize;
+}
+
+body{
+ @include MainTxt;
+ word-break: normal;
+ letter-spacing: 0.05rem;
+ color: palettes(text,base);
+}
+
+
+//*******************************  見出し設定/
+.u-Hedding{
+ &_Main{
+  @include fontsize(16);
+  line-height: 1.5em;
+ }//_Main
+ &_Sub{
+  @include fontsize(12);
+  line-height: 1.0em;
+ }//_Sub
+
+ &_Page{
+  text-align: center;
+  @include fontsize(16);
+  line-height: 1.5em;
+  margin-bottom:$common_mr-bt *2;
+ }
+
+ &_Article{
+  font-weight: bold;
+  margin-bottom: 1.5em;
+  @include mq(S,max){  }//Media(S)
+ }//_Article
+
+ &_Feed{
+  line-height: 1em;
+  &_Sub{
+   line-height: 1em;
+  }//_Sub
+ }//_Feed
+
+ &_Card{
+  @include MainTxt;
+  line-height: 1em;
+  @include mq(S,max){  }//Media(S)
+  &_Sub{
+   @include MainTxt-S;
+   line-height: 1em;
+   color: palettes(link,text);
+  }//_Sub
+ }//_Article
+
+ &_Block{
+  font-weight: bold;
+  text-align: center;
+ }//_Block
+
+}//.u-Hedding
+
+
+//*******************************  本文設定/
+
+.u-Text{
+
+ &_Main{
+  @include MainTxt;
+  &-XS{@include MainTxt-XS;}//-XS
+  &-S{@include MainTxt-S;}//-S
+  &-M{@include MainTxt-M;}//-M
+  &-L{@include MainTxt-L;}//-M
+  &-XL{@include MainTxt-XL;}//-XL
+  &-XXL{@include MainTxt-XL;}//-XL
+ }//_Main
+
+ &_ArticleCard{
+  &-UserName{}
+ }//_ArticleCard
+
+
+ &_MasterItem{
+  &-Title{@include MainTxt-L;}//-Title
+ }//_MasterItem
+
+
+ &_Feed{
+  @include MainTxt-S;
+  line-height: 1em;
+
+  &_Link{color: palettes(link,main_color);}//_Link
+
+  &_Taxonomy{
+   @include MainTxt-S;
+   line-height: 1em;
+   &-Link{color: palettes(link,main_color);}//_Link
+  }//_Taxonomy
+
+  &_Price{ line-height: 1em; }//_Price
+
+  &_Date{line-height: 1em;}//_Date
+ }//_Feed
+
+}//.u-text
+
+
+
+//Text Status
+.u-TxAlign{
+ &-Center{text-align: center;}
+ &-Right{text-align: right;}
+}//.u-TxAlign
+
+
+.u-Br{
+ &_SP{
+  &-Off{
+   @include mq(S,max){
+    display: none;
+   }//@include mq(M,max)
+  }//-Off
+ }//_SP
+}//u-Br
+
+.u-error_message{
+ color: palettes(Button,Warning);
+ background-color:  palettes(Button,Warning);
+ padding: 0 10px;
+ @include common_radius();
+ margin-top: -20px;
+ margin-bottom: 20px;
+}
+
+
+//******************************* Txt Decoration /
+.u-TxtColor{
+ &_Main{color: palettes(text,main_color);}//_Main
+ &_Txt{color: palettes(text,base);}//_Txt
+ &_White{color: palettes(text,White);}//_White
+}//-TxtColor
+.u-TextOverflow {//テキストが表示領域をオーバーフローした際に「…」を表示
+ overflow: hidden;
+ white-space: nowrap;
+ text-overflow: ellipsis;
+}
+.u-Required{
+ &::after{
+  content:"必須";
+  //content:"※";
+  color: palettes(Button,Warning);
+  border: 1px solid;
+  border-radius: 20px;
+  padding: 0 5px;
+  margin: 0 0 0 0.5em;
+ }
+}//required
+.u-LinesOnSides {
+ display: table;
+ text-align: center;
+ white-space: nowrap;
+ &:after,
+ &:before {
+  content: '';
+  display: table-cell;
+  width: 50%;
+  background: linear-gradient(transparent 50%, currentColor 50%, currentColor calc(50% + 1px), transparent calc(50% + 1px));
+  background-clip: padding;
+ }
+
+ &:after {
+  border-left: 1em solid transparent;
+ }
+
+ &:before {
+  border-right: 1em solid transparent;
+ }
+}//lines-on-sides
+.u-HasLines {
+ display: flex;
+ align-items: center;
+ text-align: center;
+ justify-content: center;
+
+ &:before,
+ &:after {
+  content: '';
+  flex-grow: 1;
+  height: 1px;
+  background:palettes(text,base);
+  min-width: 20px;
+  display: inline-block;
+  vertical-align: middle;
+ }
+ &:before { margin-right: 1em;}
+ &:after { margin-left: 1em; }
+
+ &-Right{
+  display: flex;
+  align-items: center;
+  text-align: left;
+  justify-content: center;
+  &:after {
+   content: '';
+   flex-grow: 1;
+   height: 1px;
+   background: palettes(text,base);
+   min-width: 1em;
+   display: inline-block;
+   vertical-align: middle;
+  }
+  &:after { margin-left: 1em; }
+ }//-Right
+
+ &-Left{
+  display: flex;
+  align-items: center;
+  text-align: right;
+  justify-content: center;
+  &:before {
+   content: '';
+   flex-grow: 1;
+   height: 1px;
+   background:palettes(text,base);
+   min-width: 1em;
+   display: inline-block;
+   vertical-align: middle;
+  }
+  &:before { margin-right: 1em; }
+ }//-Right
+
+}//u-HasLines
+
+
+
+.u-BeforeIcon{
+ &-Thunder{
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  //background-image: url('#{$img_path}/icon-thunder.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  vertical-align: top;
+  margin-right: 0.4em;
+ }//-Thunder
+}//u-BeforeIcon
+
+
+//******************************* Device /
+.mobile { //mobile setting **********************
+
+ //Gyro setting --------------------------------
+ @media screen and (orientation: portrait) { }//portrait
+ @media screen and (orientation: landscape) { }//landscape
+ //end Gyro setting ----------------------------
+
+} //mobile end **********************************
+.tablet { //tablet setting **********************
+
+ //Gyro setting --------------------------------
+ @media screen and (orientation: portrait) { } //portrait
+ @media screen and (orientation: landscape) { }//landscape
+ //end Gyro setting ----------------------------
+
+
+} //tablet end **********************************

@@ -1,0 +1,42 @@
+//******************************* Liquid Size /
+@mixin liquidsize {
+ width:100%;
+ height:auto;
+ margin:0 auto;
+}
+
+//******************************* Layout /
+//==================== 天地の中央に配置
+@mixin vertical-align {
+ position: relative;
+ top: 50%;
+ -webkit-transform: translateY(-50%);
+ -ms-transform: translateY(-50%);
+ transform: translateY(-50%);
+}
+//ex. @include vertical-align();
+
+//side と contentsを揃える時になんか使って
+@mixin pittari_box{
+ padding-bottom: 32768px;
+ margin-bottom: -32768px;
+}
+
+
+@mixin windowfit($top_num: 10px, $bottom_num: 10px, $leftright_num: 100%) {
+ width: 100%;
+ float: left;
+ padding: $top_num $leftright_num $bottom_num $leftright_num;
+ margin:  0 (-$leftright_num);
+  box-sizing: initial;
+  }
+//ex.  @include windowfit(5%,20px,100%);
+
+
+//Mobile時にメイン画像を幅いっぱいにする
+@mixin widtnMaxContents( ){
+ width: calc(100% + #{$contents-padding} + #{$contents-padding});
+ margin-left: - $contents-padding
+}
+//ex.@include widtnMaxContents();
+

@@ -53,7 +53,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-
+    'admin_url' => env('ADMIN_URL', 'http://localhost.admin'),
     'asset_url' => env('ASSET_URL', null),
 
     /*
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ja',
 
     /*
     |--------------------------------------------------------------------------
@@ -165,6 +165,9 @@ return [
         /*
          * Package Service Providers...
          */
+	    JeroenNoten\LaravelAdminLte\ServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -223,7 +226,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'Form'         => Collective\Html\FormFacade::class,
     ],
 
 ];

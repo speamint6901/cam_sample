@@ -1,0 +1,116 @@
+.c-MasterItem{
+$MainVisualImg:480px;
+
+ &_MainBlock{
+  display: flex;
+  justify-content: space-between;
+ }//_MainBlock
+
+ &_MainVisual{
+  width: 50%;
+  &-Img{
+   max-width: $MainVisualImg;
+   max-height: $MainVisualImg;
+  }//-Img
+ }//_MainVisual
+
+ &_MainOverview{
+  width: calc(100% - #{$MainVisualImg});
+  &_Title{margin-bottom: 1em;}//_Title
+  &_SubTtile{}//_SubTtile
+ }//_MainOverview
+
+ &_MainStatus{
+  margin-bottom: 2em;
+  &_Wrap{
+   display: flex;
+  }//_Wrap
+  &_Item{
+   margin-right: 0.5em;
+   padding: 0.2em 0.5em;
+   cursor: pointer;
+   &.-Active{
+    color: palettes(text,White);
+    background-color:  palettes(Theme,Main);
+   }//-Avtive
+   &-Icon{
+    display:inline-block;
+    &:first-letter{font-size: 1.5em;}//:first-letters
+   }//-Icon
+   &-Count{}//-Count
+  }//_Item
+ }//_MainStatus
+
+ &_MainRating{
+  display: flex;
+  align-items: center;
+  margin-bottom: 3em;
+  &-Thunder{
+   width: 120px; //暫定
+  }//-Thunder
+  &-Score{
+   font-size: 2rem;
+   line-height: 1em;
+   margin-left: 1em;
+   color:  palettes(Theme,Main);
+  }//-Score
+ }//_MainRating
+
+ &_MainInfo{
+  margin-bottom: 3em;
+ }//_MainInfo
+
+
+ &_Category{
+  display: flex;
+  margin-bottom: 1em;
+  &_Label{
+   &:after{
+    content: ">";
+    margin:0 0.5em;
+    color: palettes(Theme,Main);
+   }//after
+   &:last-child{
+    &:after{    display: none;    }//after
+   }//last-child
+   > a{  text-decoration: underline;}
+  }//_Label
+ }//_Category
+
+
+ &_SNSshare{
+  display: flex;
+  margin-bottom: 2em;
+  &_Item{
+   margin-right: $base_grid*2;
+   &-Icon{
+    &_Img{
+     width: auto;
+     height: 24px;
+     fill:#000;
+    }//_Img
+   }//-Icon
+  }//Item
+
+ }//_SNSshare
+
+
+ &_ProductLink{
+  display: flex;
+  justify-content: space-between;
+  &_Btn{
+   width: 33%;
+   text-align: center;
+   padding: 1em 1em;
+   color: palettes(text,white);
+   border-radius: 4px;
+   &.-Amazon{background-color: #FFAF52;}//Amazon
+   &.-Rakuten{background-color: #FF6C6C;}//Rakuten
+   &.-Yahoo{background-color: #6CA5FF;}//Yahoo
+
+  }//_Btn
+
+ }//_ProductLink
+
+}//.c-MasterItem
+

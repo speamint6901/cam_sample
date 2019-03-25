@@ -1,0 +1,10 @@
+.c-Sort{
+ &_Btn{
+  @include MainTxt-S;
+  border-bottom: 1px solid;
+  padding: 0.5em 1em;
+  margin-right: 1em;
+  &-Link{color:palettes(link,text) }
+ }//_Btn
+}//.c-Sort
+

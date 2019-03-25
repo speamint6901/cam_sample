@@ -1,0 +1,31 @@
+.p-Footer {
+ width: 100%;
+ //padding-bottom: $base_grid * 4;
+
+
+ .c-Copyright { }
+
+
+
+}//.l-Footer
+
+
+
+.mobile { //mobile setting **********************
+
+  //Gyro setting --------------------------------
+  @media screen and (orientation: portrait) { }//portrait
+  @media screen and (orientation: landscape) { }//landscape
+  //end Gyro setting ----------------------------
+
+} //mobile end **********************************
+
+.tablet { //tablet setting **********************
+
+ //Gyro setting --------------------------------
+ @media screen and (orientation: portrait) { } //portrait
+ @media screen and (orientation: landscape) { }//landscape
+ //end Gyro setting ----------------------------
+
+} //tablet end **********************************
+

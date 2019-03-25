@@ -1,0 +1,62 @@
+.c-Searchbar{
+ border-bottom: 1px solid;
+ position: relative;
+ margin-right: 1em;
+
+ &_Block{
+ display: flex;
+  align-items: center;
+ }//_Block
+
+ &-Icon{
+
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  &-SVG{
+  width: 20px;
+   height: 20px;
+   fill:palettes(text,base);
+  }
+ }//_Icon
+
+ &-Bar{
+  @include MainTxt-S;
+  margin-bottom: 0;
+  border: none;
+  margin-left: 1em;
+  font-family: itc-american-typewriter, serif;
+ }//_Bar
+
+ &-Select{
+  width: 80px;
+  @include MainTxt-S;
+  &:focus{ background-color: transparent; }
+
+  &_Wrap{
+   position: relative;
+   border-bottom: 1px solid;
+   margin-right: 0.5em;
+   &:before {
+    position: absolute;
+    top: 50%;
+    transform: translateY(50%);
+    right: 0.9em;
+    padding: 0;
+    content: '';
+    pointer-events: none;
+    width: 0.5em;
+    height: 0.5em;
+    border: 1px solid;
+    border-color:  transparent transparent palettes(text,base) palettes(text,base);
+    transform:translateY(-75%) rotate(-45deg);
+   }
+  }//_Wrap
+ }//_Select
+
+
+
+}//.c-Searchbar
+

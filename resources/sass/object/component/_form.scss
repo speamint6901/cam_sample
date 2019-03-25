@@ -1,0 +1,172 @@
+/*reset***********************/
+button,
+option,
+select,
+textarea,
+input[type="button"],
+input[type="submit"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+input[type="text"],
+input[type="select"],
+input[type="option"],
+input[type="checkbox"] {
+ appearance: none;
+ border-radius: 0;
+ border: none;
+ outline: 0;
+ //margin: 0;
+}
+
+/* デフォルトのradio、checkboxは非表示 */
+input[type=radio],
+input[type=checkbox] {
+ display: none;
+}
+
+/* for firefox */
+select {
+ text-indent: 0.01px;
+ text-overflow: '';
+}
+
+/* for ie10 ie11 ie系のプルダウンの矢印を消す ie9は非対応 */
+select::-ms-expand {
+ display: none;
+}
+
+//IEのinput要素に出てくるマークを消去
+//* text */
+input::-ms-clear { visibility: hidden;}
+//* password */
+input::-ms-reveal { visibility: hidden;}
+
+//#########ここまでフォームリセット設定
+
+
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+textarea,
+select{
+ @include common_radius;
+ border: 1px solid palettes(line,base);
+ padding: 0.5em 1em;
+ //color: $text-color;
+ display: inline-block;
+ position: relative;
+ transition: all .2s;
+ padding: 0.5em 1em;
+// font-family: itc-american-typewriter, serif;
+}
+
+
+input:focus,
+textarea:focus,
+select:focus{
+ outline:none;
+ background-color:rgba(238,238,238,0.6);
+}
+
+::disabled{  cursor: not-allowed; }
+
+input[type="submit"],input[type="button"],input[type="reset"]{
+ @include common_radius;
+ border: 1px solid palettes(line,base);
+ padding: 0.5em 1em;
+ background-color: transparent;
+ cursor: pointer;
+ &:hover{
+  opacity:0.7;
+  filter:alpha(opacity=70);
+  -ms-filter: “alpha( opacity=70 )”;
+ }
+}
+
+input[type=date]{
+ //* スピンボタン（上下ボタン）を非表示 */
+ &::-webkit-inner-spin-button { -webkit-appearance: none;}
+ //* 無入力時の 年/月/日 を / / にする */
+ &::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+ &::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+ &::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+  color: transparent;
+ }
+ //* clearボタンの非表示 */
+ &::-webkit-clear-button {  -webkit-appearance: none; }
+ //* カレンダーのインジケータ（▼）を非表示 */
+ &::-webkit-calendar-picker-indicator {
+  color: #000;
+  position: relative;
+
+  &:before {
+   color: #000;
+   font-family: FontAwesome;
+   content: "\f073";
+   position: absolute;
+   left: -5px;
+   top: -5px;
+  }
+
+ }//calendar-picker-indicator
+}//type=date
+
+
+.c-Form{
+
+ &_Block{
+  margin-bottom: 1em;
+  &._Border{
+   border-bottom: 4px solid #ED9324;
+   padding-bottom: 60px;
+   margin-bottom: 60px;
+   &-White{border-color: $base-color;}
+  }//._Border
+ }//_Block
+
+ &_Parts{
+  @include mq(S,max) {
+   margin-bottom: $base_grid *2;
+   &.u-Half { width: 100%; }
+   &.u-Quarter { width: 100%;  }
+   &.u-Third { width: 100%;  }
+   &.u-TwoThirds {width: 100%; }
+  }//mq-S
+ }//_Parts
+
+ &_Label{
+  display: block;
+  text-align: left;
+  margin-bottom: 0.5em;
+ }//_Label
+
+ &_Btn{
+  &_Submit{
+   display: block;
+   margin: auto;
+   @include common_radius;
+   padding: 0.8em 2.5em;
+   //border: 1px solid $main-color;
+   background-color: palettes(text,base);
+   margin: auto;
+   margin-top: $base_grid *6;
+
+   //color:$base-color ;
+  }//_Submit
+ }//_Btn
+
+}//c-Form
+
+//#########ここまでフォーム基本設定
+
+
+@import "form/input";
+@import "form/textarea";
+@import "form/select";
+@import "form/radiobutton";
+@import "form/checkbox";
+@import "form/button";
+@import "form/togglebtn";
