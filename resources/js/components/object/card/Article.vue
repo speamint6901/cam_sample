@@ -38,7 +38,7 @@
       <img class="" src="/img/Dummt_Thunder.svg" alt="UserName" />
      </div><!-- /.c-ArticleCard_Rating-Thunder -->
      <p class="c-ArticleCard_Rating-Score u-Text_Main-S">
-      {{ gear.profile.thander_avg }}THUNDER
+      {{ gear.profile.thander_avg }} THUNDER
      </p><!--//.c-ArticleCard_Rating-Score-->
     </div>
    </footer>
@@ -47,7 +47,7 @@
 
  </div><!--//.l-Feed-->
  <infinite-loading v-if="!initLoadFlag" @infinite="onInfinite" ref="infiniteLoading" :distance="1">
-  <span slot="no-more">End of content</span>
+  <span slot="no-more">All products loaded.</span>
  </infinite-loading>
 
 
