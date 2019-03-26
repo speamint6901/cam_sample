@@ -1,26 +1,47 @@
 .c-MasterItem{
-$MainVisualImg:480px;
+ $MainVisualImg:420px;
+ $MainVisualImg-TB:380px;
+ $MainVisualImg-MB:280px;
 
  &_MainBlock{
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
  }//_MainBlock
 
  &_MainVisual{
-  width: 50%;
+  //width: 50%;
+  margin-right: $base_grid*5;
+  position: relative;
   &-Img{
    max-width: $MainVisualImg;
    max-height: $MainVisualImg;
-   height: $MainVisualImg;
+   width: 50vw;
+   height: 50vw;
    margin-bottom: $base_grid *2;
+   @include mq(S, max){
+    max-width: calc(100vw - #{$ContentsPadding-MB} *2);
+    max-height: calc(100vw - #{$ContentsPadding-MB} *2);
+    width: calc(100vw - #{$ContentsPadding-MB} *2);
+    height: calc(100vw - #{$ContentsPadding-MB} *2);
+   }//S
    &_Caption{
+    width: 50vw;
     max-width: $MainVisualImg;
+    @include mq(S, max){
+     width: calc(100vw - #{$ContentsPadding-MB} *2 - 4em);
+     max-width: calc(100vw - #{$ContentsPadding-MB} *2);
+     position: absolute;
+     bottom: 2em;
+     left: 1em;
+    }//S
    }
   }//-Img
  }//_MainVisual
 
  &_MainOverview{
-  width: calc(100% - #{$MainVisualImg});
+  //width: calc(100% - #{$MainVisualImg});
+  flex:1;
   &_Title{margin-bottom: 1em;}//_Title
   &_SubTtile{}//_SubTtile
  }//_MainOverview
@@ -63,6 +84,7 @@ $MainVisualImg:480px;
 
  &_MainInfo{
   margin-bottom: 3em;
+  &-Discription{white-space: pre-line;margin-top: -1em;}
  }//_MainInfo
 
 
