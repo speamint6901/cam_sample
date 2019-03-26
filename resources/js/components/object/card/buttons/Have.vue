@@ -19,7 +19,7 @@ export default {
         this.have_count = this.gear.profile.have_count
     },
     computed: {
-        ...mapState('MultiModal', ['after_have_count', 'current_gear_id']),
+        ...mapState('MultiModal', ['after_have_count', 'current_gear_id', 'have_button_process']),
         updateHaveCount () {
             if (this.current_gear_id == this.gear.id) {
                 return this.have_count = this.after_have_count
