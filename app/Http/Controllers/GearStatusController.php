@@ -57,13 +57,13 @@ class GearStatusController extends Controller
             abort(404);
         }
         // ジョブに投入
-        \Log::info($params['type']);
         GearStatusHave::dispatch($gear, $user, $params);
 
         // データ更新以外をカウント変更
         if ($params['type'] != 'update') {
             return $this->toggleHaveCountAndType($params, $user);
         }
+
         return response()->json([
             "user" => $user, 
             'count' => $params['count'], 

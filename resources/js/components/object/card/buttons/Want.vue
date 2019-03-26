@@ -1,8 +1,8 @@
 <template>
-<div class="c-ArticleCard_Status_Item">
- <i class="c-ArticleCard_Status-Icon">W.</i>
- <button class="c-ArticleCard_Status-Count" v-bind:disabled="isProcessing" @click="toggleWant({ id : gear.id, want_count: want_count, type: isWant })">{{ want_count }}</button>
-</div>
+ <div class="c-ArticleCard_Status_Item" v-bind:disabled="isProcessing" @click="toggleWant({ id : gear.id, want_count: want_count, type: isWant })">
+  <i class="c-ArticleCard_Status-Icon">W<span class="p-MasterItem-Only">ANT</span>.</i>
+  <span class="c-ArticleCard_Status-Count">{{ want_count }}</span>
+ </div>
 </template>
 
 <script>

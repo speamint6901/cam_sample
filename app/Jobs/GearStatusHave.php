@@ -60,11 +60,20 @@ class GearStatusHave implements ShouldQueue
             // カウント更新
             if ($this->params['type'] != "update") {
                 $this->gear->profile->have_count = $this->gear->have_users()->count();
-                $this->gear->push();
             }
+
+            // アベレージ更新
             if (isset($this->params['rating']) && $this->params['rating'] > 0) {
-                $this->gear->profile->thander_avg = $this->gear->have_users()->get()->avg('point');
+                if ($this->gear->have_users()->count()) {
+                    $point_arr = collect($this->gear->have_users()->get()->map(function($item) {
+                        if ($item->pivot->point > 0) {
+                            return $item->pivot->point;
+                        }
+                    }));
+                    $this->gear->profile->thander_avg = round($point_arr->avg(), 1);
+                }
             }
+            $this->gear->push();
             \DB::commit();
 
         } catch (\Exception $e) {

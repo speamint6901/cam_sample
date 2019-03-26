@@ -1,8 +1,8 @@
 <template>
-  <div class="c-ArticleCard_Status_Item" @click="showHaveModal({gear: gear})">
-    <i class="c-ArticleCard_Status-Icon">H.</i>
-    <span class="c-ArticleCard_Status-Count" >{{ updateHaveCount }}</span>
-  </div>
+ <div class="c-ArticleCard_Status_Item" @click="showHaveModal({gear: gear})">
+  <i class="c-ArticleCard_Status-Icon">H<span class="p-MasterItem-Only">AVE</span>.</i>
+  <span class="c-ArticleCard_Status-Count">{{ updateHaveCount }}</span>
+ </div>
 </template>
 
 <script>
@@ -16,10 +16,10 @@ export default {
         }
     },
     created () {
-        this.have_count = this.gear.profile.have_count 
+        this.have_count = this.gear.profile.have_count
     },
     computed: {
-        ...mapState('MultiModal', ['after_have_count', 'current_gear_id']),
+        ...mapState('MultiModal', ['after_have_count', 'current_gear_id', 'have_button_process']),
         updateHaveCount () {
             if (this.current_gear_id == this.gear.id) {
                 return this.have_count = this.after_have_count
