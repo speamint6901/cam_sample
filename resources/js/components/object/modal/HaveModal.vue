@@ -54,7 +54,6 @@
     mixins: [MultiModalMixin],
     methods: {
       updateRatingForm(e) {
-        console.log(e.target.value)
         this.$store.commit('MultiModal/updateRatingForm', e.target.value) 
       },
       updateCommentForm(e) {
@@ -70,6 +69,7 @@
             comment: this.have_comment,
             type: this.have_type,
         }).then((res) => {
+            console.log(res)
             this.hideModal()
             this.$store.dispatch('MultiModal/changeIsProcessing', false)
         }).catch((error) => {});

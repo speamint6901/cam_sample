@@ -12,6 +12,7 @@ const state = {
   isProcessing: false,
   after_have_count: 0,
   current_gear_id: null,
+  have_button_process: false,
 }
 
 const getters = {
@@ -19,6 +20,9 @@ const getters = {
 }
 
 const mutations = {
+  setHaveButtonProcess (state, payload) {
+    state.have_button_process = payload;
+  },
   setModal (state, payload) {
     state.modalName = payload.name
     state.have_gear = payload.gear 
@@ -57,7 +61,8 @@ const actions = {
   showHaveModal ({ commit }, gear) {
     if (this.state.authUser.authenticated == false || this.state.authUser.authenticated == undefined) {
         router.push({'path': '/login'});
-    } else {
+    } else if (!state.have_button_process) {
+        commit('setHaveButtonProcess', true);
         var url = config.haveModalGear + '?gear_id=' + gear.gear.id;
         axios.get(url,{}).then(res => {
             commit('setModal', {name : 'HaveModal', gear: res.data.gear})
@@ -65,8 +70,9 @@ const actions = {
                 commit('updateCommentForm', res.data.gear.have_users[0].pivot.have_comment)
                 commit('updateRatingForm', res.data.gear.have_users[0].pivot.point)
             }
+            commit('setHaveButtonProcess', false);
         }).catch(err => {
- 
+            commit('setHaveButtonProcess', false);
         });
     }
   },
