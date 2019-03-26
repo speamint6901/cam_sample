@@ -60,7 +60,7 @@
      </div><!--//.c-MasterItem_MainRating-->
 
      <div class="c-MasterItem_MainInfo">
-      <p>
+      <p class="c-MasterItem_MainInfo-Discription">
         {{ gear_detail.discription }}
       </p>
      </div><!--//.c-MasterItem_MainInfo-->

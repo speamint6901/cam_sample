@@ -263,8 +263,9 @@ body{
  }//-Right
 
 }//u-HasLines
-
-
+.u-WSpace{
+ &-PreLine{white-space: pre-line;}
+}
 
 .u-BeforeIcon{
  &-Thunder{
