@@ -2,6 +2,7 @@
  <div class="c-Modal">
   <div class="c-Modal_Bg"></div>
   <div class="c-Modal-Have">
+
    <header class="c-Modal-Have_Header">
     <h2 class="u-Text_Main-L u-TxtColor_White">Have : Review</h2>
    <button class="c-Modal-Have_Close" @click="hideModal">
@@ -11,7 +12,7 @@
    </button>
   </header>
 
-  <form @submit.prevent="toggleHave" class="l-Contents_Block-XS">
+  <form @submit.prevent="toggleHave" >
    <div class="c-Modal-Have_Content">
 
     <div class="c-Modal-Have_Rating">
@@ -57,8 +58,7 @@
         this.$store.commit('MultiModal/updateRatingForm', e.target.value) 
       },
       updateCommentForm(e) {
-        console.log(e.target.value)
-        this.$store.commit('MultiModal/updateCommentForm', e.target.value) 
+        this.$store.commit('MultiModal/updateCommentForm', e.target.value)
       },
       toggleHave () {
         this.$store.dispatch('MultiModal/changeIsProcessing', true)

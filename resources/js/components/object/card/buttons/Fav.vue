@@ -1,8 +1,8 @@
 <template>
-<div class="c-ArticleCard_Status_Item">
- <i class="c-ArticleCard_Status-Icon">F.</i>
- <button class="c-ArticleCard_Status-Count" v-bind:disabled="isProcessing" @click="toggleFav({ id : gear.id, fav_count: fav_count, type: isFav })">{{ fav_count }}</button>
-</div>
+ <div class="c-ArticleCard_Status_Item" v-bind:disabled="isProcessing" @click="toggleFav({ id : gear.id, fav_count: fav_count, type: isFav })">
+  <i class="c-ArticleCard_Status-Icon">F<span class="p-MasterItem-Only">AVORITE</span>.</i>
+  <span class="c-ArticleCard_Status-Count">{{ fav_count }}</span>
+ </div>
 </template>
 
 <script>
