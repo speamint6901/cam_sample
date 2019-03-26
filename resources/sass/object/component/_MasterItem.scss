@@ -11,6 +11,11 @@ $MainVisualImg:480px;
   &-Img{
    max-width: $MainVisualImg;
    max-height: $MainVisualImg;
+   height: $MainVisualImg;
+   margin-bottom: $base_grid *2;
+   &_Caption{
+    max-width: $MainVisualImg;
+   }
   }//-Img
  }//_MainVisual
 

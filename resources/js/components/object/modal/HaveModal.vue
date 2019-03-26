@@ -26,9 +26,9 @@
    </div><!-- /.c-Modal-Have_Content -->
 
    <footer class="c-Modal-Have_Footer">
+    <button v-show="isHave" type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange('detach')" class="c-Modal-Have_Delete c-Form_Submit -Del">削除</button>
     <button v-show="!isHave" type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange('regist')" class="c-Modal-Have_Register c-Form_Submit">登録</button>
-    <button v-show="isHave" type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange('update')" class="c-Modal-Have_Register c-Form_Submit">編集</button>
-    <button v-show="isHave" type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange('detach')" class="c-Modal-Have_Delete c-Form_Submit">削除</button>
+    <button v-show="isHave" type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange('update')" class="c-Modal-Have_Update c-Form_Submit">更新</button>
    </footer>
   </form>
   </div><!--//c-Modal-Have-->
