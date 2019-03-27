@@ -5,8 +5,7 @@
 
   <div class="l-Contents_Block">
    <nav class="u-Flex _Justify-Center _AlignItem-Center u-Margin _mgTop-base06 _mgBottom-base06">
-    <p class="u-Margin _mgRight-base04 u-TxAlign-Center">COMMENT<span class="u-Block">888T</span></p>
-    <p class="u-TxAlign-Center">PHOTO<span class="u-Block">40</span></p>
+    <p class="u-Margin _mgRight-base04 u-TxAlign-Center">COMMENT<span class="u-Block">{{ gear_comment_count }}</span></p>
    </nav>
   </div><!-- /.l-Contents_Block -->
 
@@ -141,42 +140,7 @@
   <div class="l-Contents_Block">
   </div><!-- /.l-Contents_Block -->
 
-
-  <div class="l-Contents_Block">
-   <!--UserComment-->
-   <article class="c-UserFeed-Comment">
-    <div class="c-UserFeed-Comment_Block-UserInfo">
-
-     <div class="c-UserFeed-Comment_UserIcon">
-      <div class="c-UserIcon_Thumb">
-       <a href="">
-        <img class="c-UserIcon_Thumb-Img u-ObjectFitImg" src="/img/user01.png" alt="UserName" />
-       </a>
-      </div><!--//.c-UserIcon_Thumb-->
-      <p class="c-UserIcon_Name u-Text_Main-XS">UserName</p><!--//.c-UserIcon_Name-->
-     </div><!--//.Comment_UserIcon-->
-
-     <div class="c-UserFeed-Comment_Rating">
-      <div class="c-UserFeed-Comment_Rating-Thunder">
-       <img class="" src="/img/Dummt_Thunder.svg" alt="UserName" />
-      </div><!-- /.c-UserFeed-Comment_Rating-Thunder -->
-      <p class="c-ArticleCard_Rating-Score u-Text_Main-S">
-       3.4 THUNDER
-      </p><!--//.c-ArticleCard_Rating-Score-->
-     </div><!--//Comment_Rating-->
-
-    </div><!-- /.c-UserFeed-Comment_Block -->
-
-    <div class="c-UserFeed-Comment_Block-Text">
-     <p>バス釣りとライフスタイルを融合させ、アングラーのデイリーウエアをファッションとして確立させた「バスブリゲード」とのコラボ第2弾。今回はプレミアムクオリティのボディを使ったTシャツが登場。バス釣りとライフスタイルを融合させ、アングラーのデイリーウエアをファッションとして確立させた「バスブリゲード」とのコラボ第2弾。今回はプレミアムクオリティのボディを使ったTシャツが登場。バス釣りとライフスタイルを融合させ、アングラーのデイリーウエアをファッションとして確立させた「バスブリゲード」とのコラボ第2弾。今回はプレミアムクオリティのボディを使ったTシャツが登場。</p>
-
-     <time datetime="2018-07-07">Date : 2018.07.07</time>
-
-    </div><!-- /.c-UserFeed-Comment_Block-Text -->
-   </article><!--//.c-UserFeed-Comment-->
-
-  </div><!-- /.l-Contents_Block -->
-
+  <have-comment></have-comment>
 
  </article><!--//.c-MasterItem-->
 
@@ -185,8 +149,12 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import * as config from './../../config';
+import HaveComment from '../object/card/HaveComment.vue';
 
 export default {
+    components: {
+        'have-comment': HaveComment
+    },
     props: ['id'],
     data () {
         return {
@@ -196,9 +164,13 @@ export default {
     computed: {
         gear_detail: {
             get () { return this.$store.state.Gear.gear_detail }
+        },
+        gear_comment_count: {
+            get () { return this.$store.state.Gear.gear_comment_count }
         }
     },
     created() {
+        this.$store.commit('setGearDetail', null);
         this.$store.dispatch('showGearDetail', this.id)
     },
 }

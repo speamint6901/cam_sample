@@ -95,6 +95,9 @@ export default {
     },
     methods: {
         onInfinite() {
+            if (this.nextUrl == null) {
+                this.$refs.infiniteLoading.stateChanger.complete();
+            }
             axios.get(this.nextUrl, {
                     notLoading: true
                 }).then(res => {

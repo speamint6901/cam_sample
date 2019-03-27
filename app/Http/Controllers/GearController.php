@@ -39,7 +39,18 @@ class GearController extends Controller
         }, 'fav_users' => function($query) {
             $query->where('user_id', optional(\Auth::guard('api')->user())->id);
         }])->where('id', $params['id'])->first();
-        return response()->json(["gear" => $gear]);
+
+        $gear_comment_count = $gear->have_users()->whereNotNull('have_comment')->count();
+
+        return response()->json(["gear" => $gear, 'comment_count' => $gear_comment_count]);
+    }
+
+    public function comments(Request $request) {
+        $params = $request->input();
+        $comments = \App\Models\GearUser::where('gear_id', $params['gear_id'])
+                                       ->whereNotNull('have_comment')
+                                       ->paginate(self::PER_PAGE);
+        return response()->json($comments);
     }
 
     public function modalGear(Request $request) {

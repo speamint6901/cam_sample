@@ -59,6 +59,7 @@ class Gear extends Model
                             'have_comment',
                             'point',
                         ])
+                        ->withTimestamps()
                         ->wherePivot('type', 'have');
     }
 
