@@ -35,7 +35,7 @@
     </div>
     <div class="c-ArticleCard_Rating">
      <div class="c-ArticleCard_Rating-Thunder">
-      <img class="" src="/img/Dummt_Thunder.svg" alt="UserName" />
+      <img class="" src="/img/rating/thunder-2-9.svg" alt="UserName" />
      </div><!-- /.c-ArticleCard_Rating-Thunder -->
      <p class="c-ArticleCard_Rating-Score u-Text_Main-S">
       {{ gear.profile.thander_avg }} THUNDER

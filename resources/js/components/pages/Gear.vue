@@ -52,7 +52,7 @@
 
      <div class="c-MasterItem_MainRating">
       <div class="c-MasterItem_MainRating-Thunder">
-       <img class="" src="/img/Dummt_Thunder.svg" alt="UserName" />
+       <img class="" src="/img/rating/thunder-2-9.svg" alt="" />
       </div><!-- /.c-MasterItem_Main_Rating-Thunder -->
       <p class="c-MasterItem_MainRating-Score u-Text">
        3.4 THUNDER
