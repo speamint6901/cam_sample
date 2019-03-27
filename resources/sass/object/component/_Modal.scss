@@ -20,6 +20,16 @@
   width: $BreakPoint-S;
   padding: $base_grid *3;
   background-color: palettes(Theme,Sand);
+  &_Delete{
+   margin-left: 1em;
+  }//_Delete
+
+  &_Register{
+  }//_Register
+
+  &_Update{
+  }//_Update
+
 
   &_Header{
    position: relative;

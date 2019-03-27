@@ -15,7 +15,7 @@
    <div class="c-MasterItem_MainBlock">
     <figure class="c-MasterItem_MainVisual">
      <img class="c-MasterItem_MainVisual-Img u-ObjectFitImg" v-bind:src="asset_domain + 'storage/' + gear_detail.gear_image" alt="GearName" />
-     <figcaption class="u-Flex u-Text_Main-XS u-Margin _mgTop-base02">
+     <figcaption class="u-Flex u-Text_Main-XS u-TextOverflow c-MasterItem_MainVisual-Img_Caption">
      Source:
       <blockquote class="u-Margin _mgLeft-base01" v-show="gear_detail.site_url">{{ gear_detail.site_url }}</blockquote>
      </figcaption>
@@ -59,7 +59,7 @@
      </div><!--//.c-MasterItem_MainRating-->
 
      <div class="c-MasterItem_MainInfo">
-      <p>
+      <p class="c-MasterItem_MainInfo-Discription">
         {{ gear_detail.discription }}
       </p>
      </div><!--//.c-MasterItem_MainInfo-->
