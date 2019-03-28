@@ -32,9 +32,11 @@ $base_fontfam : $fontfull-gothic; //上のフォントセットから指定
 
 //******************************* 基本テキスト設定 /
 html{
- font-family: itc-american-typewriter, serif;
+ font-family: itc-american-typewriter,tbnpmincho-std, serif;
  font-size: $root_fontsize;
 }
+
+
 
 body{
  @include MainTxt;
