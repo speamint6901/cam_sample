@@ -22,4 +22,8 @@ class GearProfile extends Model
     public function gear() {
         return $this->belongsTo('\App\Models\Gear');
     }
+
+    public function getAvgImageNameAttribute() {
+        return str_replace('.', '-', $this->thander_avg);
+    }
 }
