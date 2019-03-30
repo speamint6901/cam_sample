@@ -70,7 +70,9 @@ class GearStatusHave implements ShouldQueue
                             return $item->pivot->point;
                         }
                     }));
-                    $this->gear->profile->thander_avg = round($point_arr->avg(), 1);
+                    $avg = round($point_arr->avg(), 1);
+                    $this->gear->profile->thander_avg = $avg;
+                    $this->gear->profile->avg_image_name = str_replace('.', '-', $avg);
                 }
             }
             $this->gear->push();
