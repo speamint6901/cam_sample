@@ -20,6 +20,7 @@ class GearController extends Controller
         $gears = Gear::with(['brand', 'profile', 'have_users'])->withCount(['have_users', 'want_users', 'fav_users' => function($query) {
             $query->where('user_id', optional(\Auth::guard('api')->user())->id);
         }])
+        ->orderBy('created_at', 'DESC')
         ->paginate(self::PER_PAGE);
 
         return response()->json($gears);

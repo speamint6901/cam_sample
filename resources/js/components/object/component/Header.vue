@@ -12,27 +12,10 @@
         HOME
        </router-link>
       </li>
-
-      <li class="c-GlobalNavi_Menu_Item" v-show="!auth">
-       <router-link to="/login" class="c-GlobalNavi_Menu_Item-Link">
-        LOGIN
-       </router-link>
-      </li>
-
-      <li class="c-GlobalNavi_Menu_Item" v-show="auth">
-       <router-link to="/logout" class="c-GlobalNavi_Menu_Item-Link">
-        LOGOUT
-       </router-link>
-      </li>
-      <li class="c-GlobalNavi_Menu_Item">
-       <router-link to="/register" class="c-GlobalNavi_Menu_Item-Link">
-        ユーザー登録
-       </router-link>
-      </li>
-      <li class="c-GlobalNavi_Menu_Item">
+      <li class="c-GlobalNavi_Menu_Item" @click="setBrandList">
        BRAND
       </li>
-      <li class="c-GlobalNavi_Menu_Item">
+      <li class="c-GlobalNavi_Menu_Item" @click="setCategoryList">
        CATEGORY
       </li>
 
@@ -47,9 +30,8 @@
      <div class="c-Searchbar-Select_Wrap">
      <select name="" id="" class="c-Searchbar-Select">
       <option value="ALL">ALL</option>
+      <option value="GEAR">GEAR</option>
       <option value="BRAND">BRAND</option>
-      <option value="PHOTO">PHOTO</option>
-      <option value="USER">USER</option>
      </select>
      </div><!-- /.c-Searchbar_Select_Wrap -->
 
@@ -106,15 +88,12 @@
      </div><!-- /.p-HamburgerMenu_Branding -->
 
      <ul class="p-HamburgerMenu_List">
-      <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">HOME</a></li>
-      <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">BRAND</a></li>
-      <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">CATEGORY</a></li>
-      <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">ギア登録申請</a></li>
-      <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">アカウント設定</a></li>
-      <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">利用規約</a></li>
-      <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">プライバシーポリシー</a></li>
-      <li class="p-HamburgerMenu_Item" v-show="auth"><router-link to="/logout" class="c-GlobalNavi_Menu_Item-Link">Logout</router-link></li>
-      <li class="p-HamburgerMenu_Item" v-show="!auth"><router-link to="/login" class="c-GlobalNavi_Menu_Item-Link">Login</router-link></li>
+      <li class="p-HamburgerMenu_Item"><router-link to="/" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">HOME</router-link></li>
+      <li class="p-HamburgerMenu_Item"><router-link to="/register" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">ユーザー登録</router-link></li>
+      <li class="p-HamburgerMenu_Item"><router-link to="/terms" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">利用規約</router-link></li>
+      <li class="p-HamburgerMenu_Item"><router-link to="/privacy" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">プライバシーポリシー</router-link></li>
+      <li class="p-HamburgerMenu_Item" v-show="auth"><router-link to="/logout" @click.native="menuToggle" class="c-GlobalNavi_Menu_Item-Link">Logout</router-link></li>
+      <li class="p-HamburgerMenu_Item" v-show="!auth"><router-link to="/login" @click.native="menuToggle" class="c-GlobalNavi_Menu_Item-Link">Login</router-link></li>
      </ul><!--//.p-HamburgerMenu_List-->
 
      <div class="p-HamburgerMenu_SNS">
@@ -152,7 +131,7 @@
 
    </div><!--//.p-HamburgerMenu_Overlay-->
   </transition>
-
+  <multi-search-modal-view></multi-search-modal-view>
 
  </header>
 
@@ -160,7 +139,10 @@
 
 <script>
 
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
+import * as config from './../../../config';
+import MultiSearchModalView from '../modal/MultiSearchModalView.vue'
+
 var menuBtnComp = {
   template: `
 <div>
@@ -174,38 +156,29 @@ var menuBtnComp = {
 }
 
 export default {
-
   data() {
     return {
         menuFlag: false,
         headH: "0px",
-        sublistlabel:{
-            "Cloth":"",
-            "Pants":"",
-            "Shoes":"",
-            "Goods":""
-        },
-        active:false
+        active:false,
+        assetDomain: config.assetDomain
     }
   },
   computed: {
     ...mapState({
-        auth: state => state.authUser.authenticated
+        auth: state => state.authUser.authenticated,
     }),
   },
   methods: {
+    ...mapActions('Search', ['setBrandList', 'setCategoryList']),
     menuToggle: function() {
       //menuFlag切り替え
       this.menuFlag = !this.menuFlag;
     }
   },
-/*  mounted: function() {
-    //headerの高さ取得
-   let h = document.getElementById("js-HamburgerMenuHeader").offsetHeight;
-    this.headH = h + "px";
-  },*/
   components: {
     'menu-btn': menuBtnComp,
+    MultiSearchModalView
   }
 }
 

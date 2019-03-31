@@ -7,6 +7,7 @@ import UserRegister from './modules/UserRegister.js';
 import Login from './modules/Login';
 import Gear from './modules/Gear';
 import GearStatus from './modules/GearStatus';
+import Search from './modules/Search';
 
 
 Vue.use(Vuex);
@@ -20,5 +21,6 @@ export default new Vuex.Store ({
         Login,
         GearStatus,
         Gear,
+        Search,
     }
 });
