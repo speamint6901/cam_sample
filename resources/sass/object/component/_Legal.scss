@@ -1,0 +1,15 @@
+.c-Legal{
+
+ &_Block{
+margin-bottom: $base_grid *10;
+ }//_Block
+
+ &_Hedding{border-bottom: 1px solid; margin-bottom: 1.2em;}
+
+ >.-Chapter{
+  counter-increment: Chapter;
+ >.c-Legal_Hedding::before{content: "第"counter(Chapter)"条　";}
+ }//-Chapter
+
+}//.c-Legal
+
