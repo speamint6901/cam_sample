@@ -12,10 +12,10 @@
         HOME
        </router-link>
       </li>
-      <li class="c-GlobalNavi_Menu_Item" @click="setBrandList">
+      <li class="c-GlobalNavi_Menu_Item c-Modal_OpenBtn" @click="setBrandList">
        BRAND
       </li>
-      <li class="c-GlobalNavi_Menu_Item" @click="setCategoryList">
+      <li class="c-GlobalNavi_Menu_Item c-Modal_OpenBtn" @click="setCategoryList">
        CATEGORY
       </li>
 
@@ -89,11 +89,11 @@
 
      <ul class="p-HamburgerMenu_List">
       <li class="p-HamburgerMenu_Item"><router-link to="/" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">HOME</router-link></li>
-      <li class="p-HamburgerMenu_Item"><router-link to="/register" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">ユーザー登録</router-link></li>
       <li class="p-HamburgerMenu_Item"><router-link to="/terms" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">利用規約</router-link></li>
       <li class="p-HamburgerMenu_Item"><router-link to="/privacy" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">プライバシーポリシー</router-link></li>
-      <li class="p-HamburgerMenu_Item" v-show="auth"><router-link to="/logout" @click.native="menuToggle" class="c-GlobalNavi_Menu_Item-Link">Logout</router-link></li>
-      <li class="p-HamburgerMenu_Item" v-show="!auth"><router-link to="/login" @click.native="menuToggle" class="c-GlobalNavi_Menu_Item-Link">Login</router-link></li>
+      <li class="p-HamburgerMenu_Item"><router-link to="/register" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">ユーザー登録</router-link></li>
+      <li class="p-HamburgerMenu_Item" v-show="auth"><router-link to="/logout" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">Logout</router-link></li>
+      <li class="p-HamburgerMenu_Item" v-show="!auth"><router-link to="/login" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">Login</router-link></li>
      </ul><!--//.p-HamburgerMenu_List-->
 
      <div class="p-HamburgerMenu_SNS">

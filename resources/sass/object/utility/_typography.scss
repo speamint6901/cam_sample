@@ -93,11 +93,16 @@ body{
   text-align: center;
  }//_Block
 
+ &_Legal{
+  font-weight: bold;
+  &-Second{}
+ }
+
+
 }//.u-Hedding
 
 
 //*******************************  本文設定/
-
 .u-Text{
 
  &_Main{
@@ -166,6 +171,8 @@ body{
  margin-top: -20px;
  margin-bottom: 20px;
 }
+
+
 
 
 //******************************* Txt Decoration /

@@ -11,10 +11,10 @@
    <nav class="c-Footer_Navi" role="navigation">
     <ul class="c-Footer_Navi_Menu">
      <li class="c-Footer_Navi_Menu_Item">
-      <a href="" class="c-Footer_Navi_Menu_Item-Link">PRIVACY POLICY</a>
+      <router-link to="/privacy" class="c-Footer_Navi_Menu_Item-Link">PRIVACY POLICY</router-link>
      </li>
      <li class="c-Footer_Navi_Menu_Item ">
-      <a href="" class="c-Footer_Navi_Menu_Item-Link">TERMS OF SERVICE</a>
+      <router-link to="/terms" class="c-Footer_Navi_Menu_Item-Link">TERMS OF SERVICE</router-link>
      </li>
     </ul>
    </nav>
