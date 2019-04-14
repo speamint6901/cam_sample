@@ -16,7 +16,7 @@
 
 @mixin MainTxt{
  @include fontsize(13);
- line-height: 1.5em;
+ line-height: 1.8em;
  @include mq(S,max){  @include fontsize(12);  line-height: 1.5em; }//Media(S)
 }//MainTxt
 
