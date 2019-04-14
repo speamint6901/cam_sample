@@ -84,9 +84,9 @@
 <script>
 import * as config from './../../../config';
 import store from './../../../store/index.js';
-import MultiModalMixin from '../../../mixins/MultiModalMixin'
+import SearchModalMixin from '../../../mixins/SearchModalMixin.js'
 
 export default {
-    mixins: [MultiModalMixin],
+    mixins: [SearchModalMixin],
 }
 </script>
