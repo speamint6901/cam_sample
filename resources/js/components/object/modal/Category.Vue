@@ -18,8 +18,9 @@
 <script>
 import * as config from './../../../config';
 import store from './../../../store/index.js';
+import MultiModalMixin from '../../../mixins/MultiModalMixin'
 
 export default {
-
+    mixins: [MultiModalMixin],
 }
 </script>
