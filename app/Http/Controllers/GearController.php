@@ -15,13 +15,17 @@ class GearController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $gears = Gear::with(['brand', 'profile', 'have_users'])->withCount(['have_users', 'want_users', 'fav_users' => function($query) {
+        $params = $request->input();
+        $query = Gear::with(['brand', 'profile', 'have_users'])->withCount(['have_users', 'want_users', 'fav_users' => function($query) {
             $query->where('user_id', optional(\Auth::guard('api')->user())->id);
-        }])
-        ->orderBy('created_at', 'DESC')
-        ->paginate(self::PER_PAGE);
+        }]);
+        if (!empty($params)) {
+            $this->filterQueries($query, $params);
+        }
+        $query->orderBy('created_at', 'DESC')
+        $query->paginate(self::PER_PAGE);
 
         return response()->json($gears);
     }
