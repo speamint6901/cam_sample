@@ -25,10 +25,10 @@
 
    <div class="c-Header_Block c-Header_Control">
 
-    <form role="search" method="post" id="searchform" action="" class="c-Searchbar_Block">
+    <form @submit.prevent="searchKeyword" class="c-Searchbar_Block">
 
      <div class="c-Searchbar-Select_Wrap">
-     <select name="" id="" class="c-Searchbar-Select">
+     <select name="keyword_type" @input="changeKeywordType($event)" id="" class="c-Searchbar-Select">
       <option value="ALL">ALL</option>
       <option value="GEAR">GEAR</option>
       <option value="BRAND">BRAND</option>
@@ -41,7 +41,8 @@
         <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
        </svg>
       </i>
-      <input type="text" value="" name="search_keyword" id="s" class="c-Searchbar-Bar" placeholder="SEARCH">
+      <input type="text" :value="filter.keyword" @input="changeKeyword($event)" name="keyword" id="s" class="c-Searchbar-Bar" placeholder="SEARCH">
+      <button type="submit" class="c-Form_Submit">検索</button>
      </div><!--//c-Searchbar-->
 
     </form>
@@ -168,9 +169,22 @@ export default {
     ...mapState({
         auth: state => state.authUser.authenticated,
     }),
+    ...mapState('Search', ['filter', 'sort']),
   },
   methods: {
-    ...mapActions('Search', ['setBrandList', 'setCategoryList']),
+    ...mapActions('Search', ['getInitialGears', 'setBrandList', 'setCategoryList']),
+    changeKeywordType(e) {
+        this.$store.commit('Search/setKeywordType', e.target.value);
+    },
+    changeKeyword(e) {
+        this.$store.commit('Search/setKeyword', e.target.value);
+    },
+    searchKeyword() {
+        if (this.filter.keyword != null) {
+            this.$store.commit('setLoading', true)
+            this.getInitialGears();
+        }
+    },
     menuToggle: function() {
       //menuFlag切り替え
       this.menuFlag = !this.menuFlag;

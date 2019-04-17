@@ -5,9 +5,40 @@ const state = {
     brand_list: [],    
     category_list: [],
     modalName: null,
+    gears: [],
+    nextUrl: config.getList,
+    initLoadFlag: true,
+    infiniteLoading: null,
+    filter: {
+        brand_id: null,
+        genre_id: null,
+        category_id: null,
+        big_category_id: null,
+        keyword: null,
+        keyword_type: null,
+    },
+    sort: {
+        type: 'created_at',
+        sorting: 'desc',
+    }
 };
 
 const mutations = {
+    setInitialLoad (state, payload) {
+        state.gears = state.gears.concat(payload.data.data);
+        state.nextUrl = payload.data.next_page_url;
+        state.initLoadFlag = false;
+    },
+    unsetGears (state) {
+        state.gears = [];
+        state.nextUrl = config.getList;
+    },
+    setKeywordType (state, payload) {
+        state.filter.keyword_type = payload
+    },
+    setKeyword (state, payload) {
+        state.filter.keyword = payload
+    },
     setBrandModal (state, payload) {
         state.modalName = payload.name
         state.brand_list = payload.brands
@@ -21,12 +52,42 @@ const mutations = {
         state.brand_list = []
         state.category_list = []
     },
+    infiniteLoading (state, payload) {
+        state.infiniteLoading = payload;
+    },
 };
 
 const getters = {
 };
 
 const actions = {
+  getInitialGears ({ commit, state }) {
+      commit('unsetGears')
+      axios.get(state.nextUrl, { params: {filter: state.filter, sort: state.sort, notLoading: true} }).then(res => {
+         commit('setInitialLoad', res)
+         commit('setLoading', false, { root: true });
+      })
+  },
+  infinite ({ commit, state }) {
+      if (state.nextUrl == null) {
+         state.infiniteLoading.stateChanger.complete();
+      }
+      axios.get(state.nextUrl, {notLoading: true}).then(res => {
+         if (res.data.data.length) {
+             state.infiniteLoading.stateChanger.loaded();
+             //現在のページ と 最後のページが同一なら終了
+             if (res.data.current_page == res.data.last_page) {
+                 state.infiniteLoading.stateChanger.complete();
+             }
+         } else {
+             state.infiniteLoading.stateChanger.complete();
+         }
+         commit('setInitialLoad', res)
+         commit('setLoading', false, { root: true });
+      }).catch((error) => {
+            console.log(error);
+      });
+  },
   setBrandList ({ commit, state }) {
     axios.get(config.getBrandList,{}).then(res => {
         commit('setBrandModal', {name : 'BrandList', brands: res.data.brand})
