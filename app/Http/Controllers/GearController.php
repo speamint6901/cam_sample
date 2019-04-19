@@ -21,7 +21,8 @@ class GearController extends Controller
     public function index(Request $request)
     {
         $params = $request->input();
-        $query = Gear::with(['brand', 'profile', 'have_users'])->withCount(['have_users', 'want_users', 'fav_users' => function($query) {
+        $query = Gear::with(['brand', 'genre', 'category.big_category', 'profile', 'have_users'])
+                    ->withCount(['have_users', 'want_users', 'fav_users' => function($query) {
             $query->where('user_id', optional(\Auth::guard('api')->user())->id);
         }]);
         if (isset($params['onFilter']) && $params['onFilter']) {
