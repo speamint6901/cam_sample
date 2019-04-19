@@ -79,6 +79,7 @@ export default {
       },
     },
     created() {
+        this.$store.commit('Search/setOnFilter', 0)
         this.$store.commit('setLoading', true);
         this.getInitialGears();
     },

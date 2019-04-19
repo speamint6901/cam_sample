@@ -6,14 +6,16 @@ namespace App\Traits;
 trait Search {
 
     public function filterQueries($query, $params) {
-        if (isset($params['is_gear_keyword'])) {
-            if (!empty($params['keyword'])) {
+        if (!is_null($params['keyword'])) {
+            if ($params['keyword_type'] == 1) {
+                return $query->join('brands', 'brands.id', '=', 'gears.brand_id')
+                    ->where('gears.name', "like", "%".$params['keyword']."%")
+                    ->orWhere('gears.discription', "like", "%".$params['keyword']."%")
+                    ->orWhere('brands.name', 'like', '%'.$params['keyword']."%");
+            } elseif ($params['keyword_type'] == 2) {
                 return $query->where('name', "like", "%".$params['keyword']."%")
                     ->orWhere('description', "like", "%".$params['keyword']."%");
-            }
-        }
-        if (isset($params['is_brand_keyword'])) {
-            if (!empty($params['keyword'])) {
+            } elseif ($params['keyword_type'] == 3) {
                 return $query->join('brands', 'brands.id', '=', 'gears.brand_id')
                         ->where('brands.name', "like", "%".$params['keyword']."%");
             }

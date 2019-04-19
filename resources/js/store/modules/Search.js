@@ -9,13 +9,15 @@ const state = {
     nextUrl: config.getList,
     initLoadFlag: true,
     infiniteLoading: null,
+    onFilter: 0,
+    onSort: 0,
     filter: {
         brand_id: null,
         genre_id: null,
         category_id: null,
         big_category_id: null,
         keyword: null,
-        keyword_type: null,
+        keyword_type: 1,
     },
     sort: {
         type: 'created_at',
@@ -38,6 +40,9 @@ const mutations = {
     },
     setKeyword (state, payload) {
         state.filter.keyword = payload
+    },
+    setOnFilter (state, payload) {
+        state.onFilter = payload
     },
     setBrandModal (state, payload) {
         state.modalName = payload.name
@@ -63,7 +68,8 @@ const getters = {
 const actions = {
   getInitialGears ({ commit, state }) {
       commit('unsetGears')
-      axios.get(state.nextUrl, { params: {filter: state.filter, sort: state.sort, notLoading: true} }).then(res => {
+      axios.get(state.nextUrl, 
+         { params: {onFilter: state.onFilter, filter: state.filter, sort: state.sort, notLoading: true} }).then(res => {
          commit('setInitialLoad', res)
          commit('setLoading', false, { root: true });
       })
@@ -72,7 +78,8 @@ const actions = {
       if (state.nextUrl == null) {
          state.infiniteLoading.stateChanger.complete();
       }
-      axios.get(state.nextUrl, {notLoading: true}).then(res => {
+      axios.get(state.nextUrl, 
+         { params: {onFilter: state.onFilter, filter: state.filter, sort: state.sort, notLoading: true} }).then(res => {
          if (res.data.data.length) {
              state.infiniteLoading.stateChanger.loaded();
              //現在のページ と 最後のページが同一なら終了
