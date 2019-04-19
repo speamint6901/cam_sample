@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Traits\Search;
 use App\Models\Gear;
 
 class GearController extends Controller
 {
+
+    use Search;
 
     const PER_PAGE = 20;
 
@@ -24,8 +27,8 @@ class GearController extends Controller
         if (!empty($params)) {
             $this->filterQueries($query, $params);
         }
-        $query->orderBy('created_at', 'DESC')
-        $query->paginate(self::PER_PAGE);
+        $query->orderBy('created_at', 'DESC');
+        $gears = $query->paginate(self::PER_PAGE);
 
         return response()->json($gears);
     }
