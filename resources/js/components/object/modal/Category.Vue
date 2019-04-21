@@ -85,9 +85,13 @@
 <script>
 import * as config from './../../../config';
 import store from './../../../store/index.js';
+import { mapState, mapActions } from 'vuex';
 import SearchModalMixin from '../../../mixins/SearchModalMixin.js'
 
 export default {
     mixins: [SearchModalMixin],
+    computed: {
+        ...mapState('Search', ['filter', 'sort', 'onFilter', 'onSort', 'category_list']),
+    },
 }
 </script>

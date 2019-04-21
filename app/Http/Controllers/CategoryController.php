@@ -15,8 +15,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = BigCategory::with(['categories'])->withCount(['categories'])
-            ->get();
+        $category = BigCategory::with(['categories' => function($query) {
+            $query->withCount('gear');    
+        }, 'categories.genres' => function($query) {
+            $query->withCount('gears');    
+        }])
+        ->get();
 
         return response()->json($category);
     }
