@@ -110,7 +110,7 @@
        </a>
       </li>
       <li class="c-MasterItem_SNSshare_Item">
-       <a href="http://b.hatena.ne.jp/add?mode=confirm&url={ページURL}&title={ページのタイトル}" target="_blank" rel="nofollow" class="c-MasterItem_SNSshare_Item-Link">
+       <a href="http://b.hatena.ne.jp/add?mode=confirm&url={ページURL}&title={GearItemName}" target="_blank" rel="nofollow" class="c-MasterItem_SNSshare_Item-Link">
         <i class="c-MasterItem_SNSshare_Item-Icon">
          <img class="c-MasterItem_SNSshare_Item-Icon_Img" src="/img/sns_icon-hatebu.svg" alt="hatebu" />
         </i>
@@ -126,9 +126,9 @@
      </ul><!-- /.c-MasterItem_SNSshare -->
 
      <div class="c-MasterItem_ProductLink">
-      <a href="" class="c-MasterItem_ProductLink_Btn -Amazon">Amazonで見る</a>
-      <a href="" class="c-MasterItem_ProductLink_Btn -Rakuten">楽天市場で見る</a>
-      <a href="" class="c-MasterItem_ProductLink_Btn -Yahoo">Yahooショッピングで見る</a>
+      <a href="" class="c-MasterItem_ProductLink_Btn -Amazon">Amazon</a>
+      <a href="" class="c-MasterItem_ProductLink_Btn -Rakuten">楽天市場</a>
+      <a href="" class="c-MasterItem_ProductLink_Btn -Yahoo">Yahooショッピング</a>
      </div><!-- /.c-MasterItem_ProductLink -->
 
     </div><!-- /.c-MasterItem_MainOverview -->
