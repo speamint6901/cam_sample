@@ -2,7 +2,8 @@
  <div class="c-MenuModal">
   <div class="c-MenuModal_Bg"></div>
 
-  <div class="c-MenuModal_Contents">
+  <div v-show="isLoading" class="c-Loader05">Loading..</div>
+  <div v-show="!isLoading" class="c-MenuModal_Contents">
 
    <button class="c-MenuModal_Close" @click="hideModal">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="c-MenuModal_Close-Img">
@@ -78,7 +79,6 @@
   </div><!--//.c-MenuModal_Contents-->
 
  </div><!--//.c-MenuModal-->
-
 </template>
 
 <script>
