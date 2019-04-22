@@ -50,7 +50,8 @@ const mutations = {
     },
     setCategoryModal (state, payload) {
         state.modalName = payload.name
-        state.brand_list = payload.categories
+        console.log(payload.categories)
+        state.category_list = payload.categories
     },
     hideModal (state) {
         state.modalName = ''
@@ -103,7 +104,8 @@ const actions = {
   },
   setCategoryList ({ commit, state }) {
     axios.get(config.getCategoryList,{}).then(res => {
-        commit('setCategoryModal', {name : 'Category', categories: res.data.category})
+        console.log(res.data);
+        commit('setCategoryModal', {name : 'Category', categories: res.data})
     }).catch(err => {
     });
   },

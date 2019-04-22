@@ -14,67 +14,19 @@
     <h2 class="u-Text_Main-L u-TxAlign-Center p-CategoryList-Title">Category List</h2>
    </header>
 
-   <section class="p-CategoryList-Block">
-    <h3 class="p-CategoryList-Block_Label">テント・タープ<span class="p-CategoryList-Count">888</span></h3>
-    <ul class="p-CategoryList-Categorys">
-     <li class="p-CategoryList-Categorys-Name">テント・ツェルト<span class="p-CategoryList-Count">10</span></li>
-     <li class="p-CategoryList-Categorys-Name">タープ・シェルター<span class="p-CategoryList-Count">0</span></li>
-     <li class="p-CategoryList-Categorys-Name">テントアクセサリー<span class="p-CategoryList-Count">0</span></li>
-     <li class="p-CategoryList-Categorys-Name">その他<span class="p-CategoryList-Count">888</span></li>
-    </ul>
+   <section v-for="big_category in category_list" class="p-CategoryList-Block">
+     <h3 class="p-CategoryList-Block_Label">{{ big_category.name }}<span class="p-CategoryList-Count">{{ big_category.gears_count }}</span></h3>
+     <ul class="p-CategoryList-Categorys">
+        <li v-for="category in big_category.categories"class=" p-CategoryList-Categorys-Name">{{ category.name }}<span class="p-CategoryList-Count">{{ category.gear_count }}</span>
+           <input v-if="category.genres.length" id="Genre1" class="p-CategoryList-Genre-Check" type="checkbox"> 
+           <label v-if="category.genres.length" class="p-CategoryList-Genre-Label" for="Genre1"></label>
+           <div v-if="category.genres.length" class="p-CategoryList-Genre_Contents">
+              <li v-for="genre in category.genres" class="p-CategoryList-Genre-Name">{{ genre.name }}<span class="p-CategoryList-Count">{{ genre.gears_count }}</span></li>
+           </div>
+        </li>
+
+     </ul>
    </section>
-
-
-   <section class="p-CategoryList-Block">
-    <h3 class="p-CategoryList-Block_Label">ランタン・ライト<span class="p-CategoryList-Count">888</span></h3>
-    <ul class="p-CategoryList-Categorys">
-     <li class="p-CategoryList-Categorys-Name">
-      燃料式ランタン<span class="p-CategoryList-Count">10</span>
-
-      <input id="Genre1" class="p-CategoryList-Genre-Check" type="checkbox">
-      <label class="p-CategoryList-Genre-Label" for="Genre1"></label>
-
-      <div class="p-CategoryList-Genre_Contents">
-       <ul>
-        <li class="p-CategoryList-Genre-Name">電池式ランタン<span class="p-CategoryList-Count">0</span></li>
-        <li class="p-CategoryList-Genre-Name">ヘッドライト<span class="p-CategoryList-Count">20</span></li>
-        <li class="p-CategoryList-Genre-Name">ハンディーライト<span class="p-CategoryList-Count">888</span></li>
-        <li class="p-CategoryList-Genre-Name">その他<span class="p-CategoryList-Count">76K</span></li>
-       </ul>
-      </div>
-     </li>
-
-     <li class="p-CategoryList-Categorys-Name">
-      電池式ランタン/ライト<span class="p-CategoryList-Count">0</span>
-
-      <input id="Genre2" class="p-CategoryList-Genre-Check" type="checkbox">
-      <label class="p-CategoryList-Genre-Label" for="Genre2"></label>
-
-      <div class="p-CategoryList-Genre_Contents">
-       <ul>
-        <li class="p-CategoryList-Genre-Name">電池式ランタン<span class="p-CategoryList-Count">0</span></li>
-        <li class="p-CategoryList-Genre-Name">ヘッドライト<span class="p-CategoryList-Count">20</span></li>
-        <li class="p-CategoryList-Genre-Name">ハンディーライト<span class="p-CategoryList-Count">888</span></li>
-        <li class="p-CategoryList-Genre-Name">その他<span class="p-CategoryList-Count">76K</span></li>
-       </ul>
-      </div>
-
-     </li>
-     <li class="p-CategoryList-Categorys-Name">その他<span class="p-CategoryList-Count">0</span></li>
-    </ul>
-   </section>
-
-
-   <section class="p-CategoryList-Block">
-    <h3 class="p-CategoryList-Block_Label">調理器具・食事用具<span class="p-CategoryList-Count">888</span></h3>
-    <ul class="p-CategoryList-Categorys">
-     <li class="p-CategoryList-Categorys-Name">テント・ツェルト<span class="p-CategoryList-Count">10</span></li>
-     <li class="p-CategoryList-Categorys-Name">タープ・シェルター<span class="p-CategoryList-Count">0</span></li>
-     <li class="p-CategoryList-Categorys-Name">テントアクセサリー<span class="p-CategoryList-Count">0</span></li>
-     <li class="p-CategoryList-Categorys-Name">その他<span class="p-CategoryList-Count">888</span></li>
-    </ul>
-   </section>
-
 
   </div><!--//.c-MenuModal_Contents-->
 
@@ -93,5 +45,7 @@ export default {
     computed: {
         ...mapState('Search', ['filter', 'sort', 'onFilter', 'onSort', 'category_list']),
     },
+    methods: {
+    }
 }
 </script>

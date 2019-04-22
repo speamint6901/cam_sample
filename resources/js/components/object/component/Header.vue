@@ -180,7 +180,6 @@ export default {
         this.$store.commit('Search/setKeyword', e.target.value);
     },
     searchKeyword() {
-        console.log(this.filter.keyword);
         if (this.filter.keyword) {
             this.$store.commit('Search/setOnFilter', 1)
             this.$store.commit('setLoading', true)
