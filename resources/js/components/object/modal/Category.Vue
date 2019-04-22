@@ -2,7 +2,8 @@
  <div class="c-MenuModal">
   <div class="c-Modal_Bg"></div>
 
-  <div class="c-MenuModal_Contents">
+  <div v-show="isLoading" class="c-Loader05">Loading..</div>
+  <div v-show="!isLoading" class="c-MenuModal_Contents">
 
    <button class="c-MenuModal_Close" @click="hideModal">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="c-MenuModal_Close-Img">
@@ -15,23 +16,22 @@
    </header>
 
    <section v-for="big_category in category_list" class="p-CategoryList-Block">
-     <h3 class="p-CategoryList-Block_Label">{{ big_category.name }}<span class="p-CategoryList-Count">{{ big_category.gears_count }}</span></h3>
-     <ul class="p-CategoryList-Categorys">
-        <li v-for="category in big_category.categories"class=" p-CategoryList-Categorys-Name">{{ category.name }}<span class="p-CategoryList-Count">{{ category.gear_count }}</span>
-           <input v-if="category.genres.length" id="Genre1" class="p-CategoryList-Genre-Check" type="checkbox"> 
-           <label v-if="category.genres.length" class="p-CategoryList-Genre-Label" for="Genre1"></label>
-           <div v-if="category.genres.length" class="p-CategoryList-Genre_Contents">
-              <li v-for="genre in category.genres" class="p-CategoryList-Genre-Name">{{ genre.name }}<span class="p-CategoryList-Count">{{ genre.gears_count }}</span></li>
-           </div>
-        </li>
+    <h3 class="p-CategoryList-Block_Label">{{ big_category.name }}<span class="p-CategoryList-Count">{{ big_category.gears_count }}</span></h3>
+    <ul class="p-CategoryList-Categorys">
+     <li v-for="category in big_category.categories"class=" p-CategoryList-Categorys-Name">{{ category.name }}<span class="p-CategoryList-Count">{{ category.gear_count }}</span>
+      <input v-if="category.genres.length" id="Genre1" class="p-CategoryList-Genre-Check" type="checkbox">
+      <label v-if="category.genres.length" class="p-CategoryList-Genre-Label" for="Genre1"></label>
+      <div v-if="category.genres.length" class="p-CategoryList-Genre_Contents">
+       <li v-for="genre in category.genres" class="p-CategoryList-Genre-Name">{{ genre.name }}<span class="p-CategoryList-Count">{{ genre.gears_count }}</span></li>
+      </div>
+     </li>
 
-     </ul>
+    </ul>
    </section>
 
   </div><!--//.c-MenuModal_Contents-->
 
  </div><!--//.c-MenuModal-->
-
 </template>
 
 <script>
