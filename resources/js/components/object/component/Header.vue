@@ -29,9 +29,9 @@
 
      <div class="c-Searchbar-Select_Wrap">
      <select name="keyword_type" @input="changeKeywordType($event)" id="" class="c-Searchbar-Select">
-      <option value="ALL">ALL</option>
-      <option value="GEAR">GEAR</option>
-      <option value="BRAND">BRAND</option>
+      <option value="1">ALL</option>
+      <option value="2">GEAR</option>
+      <option value="3">BRAND</option>
      </select>
      </div><!-- /.c-Searchbar_Select_Wrap -->
 
@@ -169,7 +169,7 @@ export default {
     ...mapState({
         auth: state => state.authUser.authenticated,
     }),
-    ...mapState('Search', ['filter', 'sort']),
+    ...mapState('Search', ['filter', 'sort', 'onFilter', 'onSort']),
   },
   methods: {
     ...mapActions('Search', ['getInitialGears', 'setBrandList', 'setCategoryList']),
@@ -180,7 +180,12 @@ export default {
         this.$store.commit('Search/setKeyword', e.target.value);
     },
     searchKeyword() {
-        if (this.filter.keyword != null) {
+        if (this.filter.keyword) {
+            this.$store.commit('Search/setOnFilter', 1)
+            this.$store.commit('setLoading', true)
+            this.getInitialGears();
+        } else {
+            this.$store.commit('Search/setOnFilter', 0)
             this.$store.commit('setLoading', true)
             this.getInitialGears();
         }

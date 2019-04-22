@@ -4,6 +4,7 @@
 /public/js
 /public/css
 /storage/*.key
+/storage/debugbar
 !/storage/app/public/gear_images/
 /vendor
 /containers/db/mysql_data/*

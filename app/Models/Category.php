@@ -25,6 +25,11 @@ class Category extends Model
         return $this->hasMany('\App\Models\Genre');
     }
 
+    // gear belongs to many
+    public function gear() {
+        return $this->belongsToMany('\App\Models\Gear', 'category_has_gears');
+    }
+
     // セレクトボックス生成
     public function scopeSelectBox($query) {
         return $query->get()
