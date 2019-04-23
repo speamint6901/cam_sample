@@ -16,13 +16,13 @@
    </header>
 
    <section v-for="big_category in category_list" class="p-CategoryList-Block">
-    <h3 class="p-CategoryList-Block_Label">{{ big_category.name }}<span class="p-CategoryList-Count">{{ big_category.gears_count }}</span></h3>
+    <h3 class="p-CategoryList-Block_Label"><a href="#" @click.prevent.stop="doCategorySearch({ category_type: 1, category_id: big_category.id })">{{ big_category.name }}</a><span class="p-CategoryList-Count">{{ big_category.gears_count }}</span></h3>
     <ul class="p-CategoryList-Categorys">
-     <li v-for="category in big_category.categories"class=" p-CategoryList-Categorys-Name">{{ category.name }}<span class="p-CategoryList-Count">{{ category.gear_count }}</span>
-      <input v-if="category.genres.length" id="Genre1" class="p-CategoryList-Genre-Check" type="checkbox">
-      <label v-if="category.genres.length" class="p-CategoryList-Genre-Label" for="Genre1"></label>
+     <li v-for="category in big_category.categories"class=" p-CategoryList-Categorys-Name"><a href="#" @click.prevent.stop="doCategorySearch({ category_type: 2, category_id: category.id })">{{ category.name }}</a><span class="p-CategoryList-Count">{{ category.gear_count }}</span>
+      <input v-if="category.genres.length" :id="'Genre'+category.id" class="p-CategoryList-Genre-Check" type="checkbox">
+      <label v-if="category.genres.length" class="p-CategoryList-Genre-Label" :for="'Genre'+category.id"></label>
       <div v-if="category.genres.length" class="p-CategoryList-Genre_Contents">
-       <li v-for="genre in category.genres" class="p-CategoryList-Genre-Name">{{ genre.name }}<span class="p-CategoryList-Count">{{ genre.gears_count }}</span></li>
+       <li v-for="genre in category.genres" class="p-CategoryList-Genre-Name"><a href="#" @click.prevent.stop="doCategorySearch({ category_type: 3, category_id: genre.id })">{{ genre.name }}</a><span class="p-CategoryList-Count">{{ genre.gears_count }}</span></li>
       </div>
      </li>
 
@@ -42,10 +42,24 @@ import SearchModalMixin from '../../../mixins/SearchModalMixin.js'
 
 export default {
     mixins: [SearchModalMixin],
+    created () {
+        this.$store.commit('setLoading', true, {root : true});
+    },
     computed: {
         ...mapState('Search', ['filter', 'sort', 'onFilter', 'onSort', 'category_list']),
+        isLoading: {
+            get: function () { return this.$store.getters.isLoading }
+        }
     },
     methods: {
+        ...mapActions('Search', ['getInitialGears']),
+        doCategorySearch(category_info) {
+            this.$store.commit('setLoading', true)
+            this.$store.commit('Search/setOnFilter', 1)
+            this.$store.commit('Search/setCategoryInfo', category_info)
+            this.$store.commit('Search/hideModal')
+            this.getInitialGears();
+        }
     }
 }
 </script>

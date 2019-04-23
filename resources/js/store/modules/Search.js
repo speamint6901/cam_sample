@@ -13,9 +13,8 @@ const state = {
     onSort: 0,
     filter: {
         brand_id: null,
-        genre_id: null,
+        category_type: 0,
         category_id: null,
-        big_category_id: null,
         keyword: null,
         keyword_type: 1,
     },
@@ -41,6 +40,10 @@ const mutations = {
     setKeyword (state, payload) {
         state.filter.keyword = payload
     },
+    setCategoryInfo(state, payload) {
+        state.filter.category_type = payload.category_type
+        state.filter.category_id = payload.category_id
+    },
     setOnFilter (state, payload) {
         state.onFilter = payload
     },
@@ -48,10 +51,11 @@ const mutations = {
         state.modalName = payload.name
         state.brand_list = payload.brands
     },
-    setCategoryModal (state, payload) {
-        state.modalName = payload.name
-        console.log(payload.categories)
-        state.category_list = payload.categories
+    setSearchModal (state, payload) {
+        state.modalName = payload
+    },
+    setCategoryList (state, payload) {
+        state.category_list = payload
     },
     hideModal (state) {
         state.modalName = ''
@@ -103,9 +107,10 @@ const actions = {
     });
   },
   setCategoryList ({ commit, state }) {
+    commit('setSearchModal', 'Category')
     axios.get(config.getCategoryList,{}).then(res => {
-        console.log(res.data);
-        commit('setCategoryModal', {name : 'Category', categories: res.data})
+        commit('setCategoryList', res.data)
+        commit('setLoading', false, { root : true })
     }).catch(err => {
     });
   },
