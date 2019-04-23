@@ -18,7 +18,7 @@
    <section v-for="big_category in category_list" class="p-CategoryList-Block">
     <h3 class="p-CategoryList-Block_Label"><a href="#" @click.prevent.stop="doCategorySearch({ category_type: 1, category_id: big_category.id })">{{ big_category.name }}</a><span class="p-CategoryList-Count">{{ big_category.gears_count }}</span></h3>
     <ul class="p-CategoryList-Categorys">
-     <li v-for="category in big_category.categories"class=" p-CategoryList-Categorys-Name"><a href="#" @click.prevent.stop="doCategorySearch({ category_type: 2, category_id: category.id })">{{ category.name }}</a><span class="p-CategoryList-Count">{{ category.gear_count }}</span>
+     <li v-for="category in big_category.categories"class=" p-CategoryList-Categorys-Name"><a href="#" @click.prevent.stop="doCategorySearch({ category_type: 2, category_id: category.id })">{{ category.name }}</a><span v-if="category.gear_count" class="p-CategoryList-Count">{{ category.gear_count }}</span>
       <input v-if="category.genres.length" :id="'Genre'+category.id" class="p-CategoryList-Genre-Check" type="checkbox">
       <label v-if="category.genres.length" class="p-CategoryList-Genre-Label" :for="'Genre'+category.id"></label>
       <div v-if="category.genres.length" class="p-CategoryList-Genre_Contents">

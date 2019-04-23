@@ -17,62 +17,14 @@
 
   <nav class="p-BrandList-Nav">
    <ul class="p-BrandList-Nav_Menu">
-    <li class="p-BrandList-Nav_Item">A</li>
-    <li class="p-BrandList-Nav_Item">B</li>
-    <li class="p-BrandList-Nav_Item">C</li>
-    <li class="p-BrandList-Nav_Item">D</li>
-    <li class="p-BrandList-Nav_Item">E</li>
-    <li class="p-BrandList-Nav_Item">F</li>
-    <li class="p-BrandList-Nav_Item">G</li>
-    <li class="p-BrandList-Nav_Item">H</li>
-    <li class="p-BrandList-Nav_Item">I</li>
-    <li class="p-BrandList-Nav_Item">J</li>
-    <li class="p-BrandList-Nav_Item">K</li>
-    <li class="p-BrandList-Nav_Item">L</li>
-    <li class="p-BrandList-Nav_Item">M</li>
-    <li class="p-BrandList-Nav_Item">N</li>
-    <li class="p-BrandList-Nav_Item">O</li>
-    <li class="p-BrandList-Nav_Item">P</li>
-    <li class="p-BrandList-Nav_Item">Q</li>
-    <li class="p-BrandList-Nav_Item">R</li>
-    <li class="p-BrandList-Nav_Item">S</li>
-    <li class="p-BrandList-Nav_Item">T</li>
-    <li class="p-BrandList-Nav_Item">U</li>
-    <li class="p-BrandList-Nav_Item">V</li>
-    <li class="p-BrandList-Nav_Item">W</li>
-    <li class="p-BrandList-Nav_Item">X</li>
-    <li class="p-BrandList-Nav_Item">Y</li>
-    <li class="p-BrandList-Nav_Item">Z</li>
-    <li class="p-BrandList-Nav_Item">Other</li>
+    <li v-for="brand_group in brand_list" class="p-BrandList-Nav_Item">{{ brand_group.name }}</li>
    </ul>
   </nav>
 
-   <section class="p-BrandList-Block">
-    <h3 class="p-BrandList-Block_Label">A</h3>
-    <ul class="p-BrandList-Brand">
-     <li class="p-BrandList-Brand_Name">A＆F<span class="p-BrandList-Brand_Count">10</span></li>
-     <li class="p-BrandList-Brand_Name">ADIRONDACK<span class="p-BrandList-Brand_Count">0</span></li>
-     <li class="p-BrandList-Brand_Name">AIGLE<span class="p-BrandList-Brand_Count">0</span></li>
-     <li class="p-BrandList-Brand_Name">AIRMONTE<span class="p-BrandList-Brand_Count">888</span></li>
-     <li class="p-BrandList-Brand_Name">Amok Equipment<span class="p-BrandList-Brand_Count">0</span></li>
-     <li class="p-BrandList-Brand_Name">and wander<span class="p-BrandList-Brand_Count">20K</span></li>
-     <li class="p-BrandList-Brand_Name">antigravitygear<span class="p-BrandList-Brand_Count">0</span></li>
-     <li class="p-BrandList-Brand_Name">ALDIES<span class="p-BrandList-Brand_Count">0</span></li>
-    </ul>
-   </section>
-
-
-   <section class="p-BrandList-Block">
-    <h3 class="p-BrandList-Block_Label">B</h3>
-    <ul class="p-BrandList-Brand">
-     <li class="p-BrandList-Brand_Name">A＆F<span class="p-BrandList-Brand_Count">10</span></li>
-     <li class="p-BrandList-Brand_Name">ADIRONDACK<span class="p-BrandList-Brand_Count">0</span></li>
-     <li class="p-BrandList-Brand_Name">AIGLE<span class="p-BrandList-Brand_Count">0</span></li>
-     <li class="p-BrandList-Brand_Name">AIRMONTE<span class="p-BrandList-Brand_Count">888</span></li>
-     <li class="p-BrandList-Brand_Name">Amok Equipment<span class="p-BrandList-Brand_Count">0</span></li>
-     <li class="p-BrandList-Brand_Name">and wander<span class="p-BrandList-Brand_Count">20K</span></li>
-     <li class="p-BrandList-Brand_Name">antigravitygear<span class="p-BrandList-Brand_Count">0</span></li>
-     <li class="p-BrandList-Brand_Name">ALDIES<span class="p-BrandList-Brand_Count">0</span></li>
+   <section v-for="brand_group in brand_list" class="p-BrandList-Block">
+    <h3 class="p-BrandList-Block_Label">{{ brand_group.name }}</h3>
+    <ul v-if="brand_group.brands.length" class="p-BrandList-Brand">
+     <li v-for="brand in brand_group.brands" class="p-BrandList-Brand_Name"><a href="#" @click.prevent.stop="doBrandSearch(brand.id)">{{ brand.name }}</a><span class="p-BrandList-Brand_Count">{{ brand.gears_count }}</span></li>
     </ul>
    </section>
 
@@ -84,9 +36,26 @@
 <script>
 import * as config from './../../../config';
 import store from './../../../store/index.js';
+import { mapState, mapActions } from 'vuex';
 import SearchModalMixin from '../../../mixins/SearchModalMixin.js'
 
 export default {
     mixins: [SearchModalMixin],
+    computed: {
+        ...mapState('Search', ['filter', 'sort', 'onFilter', 'onSort', 'brand_list']),
+        isLoading: {
+            get: function () { return this.$store.getters.isLoading }
+        }
+    },
+    methods: {
+        ...mapActions('Search', ['getInitialGears']),
+        doBrandSearch(brand_id) {
+            this.$store.commit('setLoading', true)
+            this.$store.commit('Search/setOnFilter', 1)
+            this.$store.commit('Search/setBrandId', brand_id)
+            this.$store.commit('Search/hideModal')
+            this.getInitialGears();
+        }
+    }
 }
 </script>

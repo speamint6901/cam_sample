@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Brand;
+use App\Models\BrandGroup;
 
 class BrandController extends Controller
 {
@@ -15,8 +16,10 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::with('brand_group')->withCount('gears')
-            ->get();
+        $brands = BrandGroup::with(['brands' => function($query) {
+            $query->withCount('gears');
+        }])
+        ->get();
 
         return response()->json($brands);
     }

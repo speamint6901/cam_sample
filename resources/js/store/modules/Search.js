@@ -40,6 +40,9 @@ const mutations = {
     setKeyword (state, payload) {
         state.filter.keyword = payload
     },
+    setBrandId(state, payload) {
+        state.filter.brand_id = payload
+    },
     setCategoryInfo(state, payload) {
         state.filter.category_type = payload.category_type
         state.filter.category_id = payload.category_id
@@ -47,12 +50,11 @@ const mutations = {
     setOnFilter (state, payload) {
         state.onFilter = payload
     },
-    setBrandModal (state, payload) {
-        state.modalName = payload.name
-        state.brand_list = payload.brands
-    },
     setSearchModal (state, payload) {
         state.modalName = payload
+    },
+    setBrandList (state, payload) {
+        state.brand_list = payload
     },
     setCategoryList (state, payload) {
         state.category_list = payload
@@ -101,8 +103,11 @@ const actions = {
       });
   },
   setBrandList ({ commit, state }) {
+    commit('setSearchModal', 'BrandList')
     axios.get(config.getBrandList,{}).then(res => {
-        commit('setBrandModal', {name : 'BrandList', brands: res.data.brand})
+        console.log(res.data);
+        commit('setBrandList', res.data)
+        commit('setLoading', false, { root : true })
     }).catch(err => {
     });
   },

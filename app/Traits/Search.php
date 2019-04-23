@@ -36,6 +36,9 @@ trait Search {
             } elseif ($category_type == 2) {
                 return $query->whereHas('category', function($query) use ($category_id) {
                     $query->where('category_id', $category_id);
+                })
+                ->orWhereHas('genre.category', function($query) use ($category_id) {
+                    $query->where('id', $category_id);
                 });
             } else {
                 return $query->whereHas('category.big_category', function($query) use ($category_id) {
