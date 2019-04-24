@@ -5,6 +5,7 @@
 
   <div class="c-MenuModal_Contents">
 
+   <div class="c-MenuModal_Sticky">
    <button class="c-MenuModal_Close" @click="hideModal">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="c-MenuModal_Close-Img">
      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
@@ -14,10 +15,12 @@
    <header class="c-MenuModal_Header">
     <h2 class="u-Text_Main-L u-TxAlign-Center p-CategoryList-Title">Category List</h2>
    </header>
+   </div><!-- /.c-MenuModal_Sticky -->
 
    <div v-show="isLoading" class="c-Loader05">Loading..</div>
 
-   <section v-show="!isLoading" v-for="big_category in category_list" class="p-CategoryList-Block">
+   <div v-show="!isLoading" class="c-MenuModal_Body">
+   <section v-for="big_category in category_list" class="p-CategoryList-Block">
     <h3 class="p-CategoryList-Block_Label">
      <a href="#" @click.prevent.stop="doCategorySearch({ category_type: 1, category_id: big_category.id })" class="u-TxtColor_Txt">{{ big_category.name }}</a>
      <span class="p-CategoryList-Count">{{ big_category.gears_count }}</span>
@@ -37,6 +40,7 @@
      </li>
     </ul>
    </section>
+   </div><!--//c-MenuModal_Body-->
 
   </div><!--//.c-MenuModal_Contents-->
 
