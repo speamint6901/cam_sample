@@ -129,11 +129,12 @@
  }//_Bg
 
  &_Close{
-  position: fixed;
+  position: absolute;
   right: $base_grid *3;
-  top: $base_grid *3;
+  top:  $base_grid *3;
   background-color: transparent;
   cursor: pointer;
+
   &-Img{
    fill:palettes(text,base);
    width: 30px;
@@ -142,18 +143,35 @@
 
  }//_Close
 
+ &_Sticky{
+  position: sticky;
+  top: 0px;
+  background-color: palettes(Theme,Sand);
+  margin-bottom: $base_grid *10;
+  z-index: z(Lv1Contents);
+ }//_Sticky
+
+ &_Header{
+  padding-top: $base_grid *12;
+  padding-bottom: $base_grid *2;
+ }
+
 
  &_Contents{
   overflow: scroll;
-  max-height: 100%;
+  max-height: 80%;
   z-index: z(ModalContent);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
   width: $BreakPoint-M;
-  padding: $base_grid *3;
   background-color: palettes(Theme,Sand);
  }//_Contents
+
+
+ &_Body{
+  padding: $base_grid *3;
+ }//_Body
 
 }//.c-MenuModal

@@ -1,12 +1,12 @@
 .p-BrandList{
 
  &-Title{
- margin-top: $base_grid *10;
-  margin-bottom: $base_grid *5;
  }//-Title
 
  &-Nav{
   margin-bottom: $base_grid *10;
+  padding: $base_grid *3 $base_grid *3 $base_grid *6 $base_grid *3;
+
   &_Menu{
    display: flex;
    justify-content: space-between;
@@ -39,6 +39,18 @@
     transform: translate(-50%,-50%);
    }//after
   }//_Label
+
+  &:last-child{//Other用
+   width: auto;
+   > .p-BrandList-Block_Label{
+    width: auto;
+    &:after{
+     border-radius: 25px;
+     width: 4em;
+    }//:after
+   }//.p-BrandList-Block_Label
+  }//:last-child
+
  }//-Block
 
  &-Brand{
@@ -59,3 +71,9 @@
  }//-Brand
 
 }//p-BrandList
+
+
+
+.p-BrandList-Block{
+
+}
