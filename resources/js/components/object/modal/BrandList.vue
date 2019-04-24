@@ -2,8 +2,8 @@
  <div class="c-MenuModal">
   <div class="c-MenuModal_Bg"></div>
 
-  <div v-show="isLoading" class="c-Loader05">Loading..</div>
-  <div v-show="!isLoading" class="c-MenuModal_Contents">
+
+  <div class="c-MenuModal_Contents">
 
    <button class="c-MenuModal_Close" @click="hideModal">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="c-MenuModal_Close-Img">
@@ -15,18 +15,28 @@
     <h2 class="u-Text_Main-L u-TxAlign-Center p-BrandList-Title">BRAND</h2>
   </header>
 
-  <nav class="p-BrandList-Nav">
-   <ul class="p-BrandList-Nav_Menu">
-    <li v-for="brand_group in brand_list" class="p-BrandList-Nav_Item">{{ brand_group.name }}</li>
-   </ul>
-  </nav>
+   <div v-show="isLoading" class="c-Loader05">Loading..</div>
 
-   <section v-for="brand_group in brand_list" class="p-BrandList-Block">
-    <h3 class="p-BrandList-Block_Label">{{ brand_group.name }}</h3>
-    <ul v-if="brand_group.brands.length" class="p-BrandList-Brand">
-     <li v-for="brand in brand_group.brands" class="p-BrandList-Brand_Name"><a href="#" @click.prevent.stop="doBrandSearch(brand.id)">{{ brand.name }}</a><span class="p-BrandList-Brand_Count">{{ brand.gears_count }}</span></li>
-    </ul>
-   </section>
+
+   <div v-show="!isLoading" >
+    <nav class="p-BrandList-Nav">
+     <ul class="p-BrandList-Nav_Menu">
+      <li v-for="brand_group in brand_list" class="p-BrandList-Nav_Item">
+       <a href="" class="u-TxtColor_Txt">{{ brand_group.name }}</a>
+      </li>
+     </ul>
+    </nav>
+
+    <section v-for="brand_group in brand_list" class="p-BrandList-Block">
+     <h3 class="p-BrandList-Block_Label">{{ brand_group.name }}</h3>
+     <ul v-if="brand_group.brands.length" class="p-BrandList-Brand">
+      <li v-for="brand in brand_group.brands" class="p-BrandList-Brand_Name">
+       <a id="" href="#" @click.prevent.stop="doBrandSearch(brand.id)" class="u-TxtColor_Txt">{{ brand.name }}</a>
+       <span class="p-BrandList-Brand_Count">{{ brand.gears_count }}</span>
+      </li>
+     </ul>
+    </section>
+   </div><!--//v-show="!isLoading"-->
 
   </div><!--//.c-MenuModal_Contents-->
 
