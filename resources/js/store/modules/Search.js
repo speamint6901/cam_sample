@@ -13,9 +13,8 @@ const state = {
     onSort: 0,
     filter: {
         brand_id: null,
-        genre_id: null,
+        category_type: 0,
         category_id: null,
-        big_category_id: null,
         keyword: null,
         keyword_type: 1,
     },
@@ -41,17 +40,33 @@ const mutations = {
     setKeyword (state, payload) {
         state.filter.keyword = payload
     },
+    setBrandId(state, payload) {
+        state.filter.brand_id = payload
+    },
+    setCategoryInfo(state, payload) {
+        state.filter.category_type = payload.category_type
+        state.filter.category_id = payload.category_id
+    },
+    unsetFilter(state) {
+        state.filter.brand_id = null
+        state.filter.category_type = 0
+        state.filter.category_id = null
+    },
+    unsetKeyword(state) {
+        state.filter.keyword_type = 1
+        state.filter.keyword = null
+    },
     setOnFilter (state, payload) {
         state.onFilter = payload
     },
-    setBrandModal (state, payload) {
-        state.modalName = payload.name
-        state.brand_list = payload.brands
+    setSearchModal (state, payload) {
+        state.modalName = payload
     },
-    setCategoryModal (state, payload) {
-        state.modalName = payload.name
-        console.log(payload.categories)
-        state.category_list = payload.categories
+    setBrandList (state, payload) {
+        state.brand_list = payload
+    },
+    setCategoryList (state, payload) {
+        state.category_list = payload
     },
     hideModal (state) {
         state.modalName = ''
@@ -97,15 +112,19 @@ const actions = {
       });
   },
   setBrandList ({ commit, state }) {
+    commit('setSearchModal', 'BrandList')
     axios.get(config.getBrandList,{}).then(res => {
-        commit('setBrandModal', {name : 'BrandList', brands: res.data.brand})
+        console.log(res.data);
+        commit('setBrandList', res.data)
+        commit('setLoading', false, { root : true })
     }).catch(err => {
     });
   },
   setCategoryList ({ commit, state }) {
+    commit('setSearchModal', 'Category')
     axios.get(config.getCategoryList,{}).then(res => {
-        console.log(res.data);
-        commit('setCategoryModal', {name : 'Category', categories: res.data})
+        commit('setCategoryList', res.data)
+        commit('setLoading', false, { root : true })
     }).catch(err => {
     });
   },

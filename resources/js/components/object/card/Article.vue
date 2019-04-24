@@ -35,7 +35,7 @@
     </div>
     <div class="c-ArticleCard_Rating">
      <div class="c-ArticleCard_Rating-Thunder">
-      <img class="" :src="'/img/rating/thunder-' + gear.profile.avg_image_name + '.svg'" alt="UserName" />
+      <img class="" :src="'/img/rating/thunder-' + replaceThander(gear.profile.thander_avg) + '.svg'" alt="UserName" />
      </div><!-- /.c-ArticleCard_Rating-Thunder -->
      <p class="c-ArticleCard_Rating-Score u-Text_Main-S">
       {{ gear.profile.thander_avg }} THUNDER
@@ -73,17 +73,21 @@ export default {
     },
     computed: {
       ...mapState('MultiModal', ['gear']),
-      ...mapState('Search', ['gears', 'nextUrl', 'initLoadFlag', 'infiniteLoading']),
+      ...mapState('Search', ['gears', 'nextUrl', 'initLoadFlag', 'infiniteLoading', 'onFilter']),
       want_count: {
         get: function () { return this.$store.getters.want_count },
       },
     },
     created() {
-        this.$store.commit('Search/setOnFilter', 0)
+        this.$store.commit('Search/setOnFilter', this.onFilter)
         this.$store.commit('setLoading', true);
         this.getInitialGears();
     },
     methods: {
+        replaceThander(val) {
+           var a = String(val);
+           return a.replace('.', '-'); 
+        },
         ...mapActions('Search', ['getInitialGears', 'infinite']),
         ...mapActions('MultiModal', ['showHaveModal']),
         ...mapActions('GearStatus', ['toggleWant','setWantCount']),

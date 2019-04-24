@@ -8,9 +8,7 @@
      <ul class="c-GlobalNavi_Menu">
 
       <li class="c-GlobalNavi_Menu_Item">
-       <router-link to="/" class="c-GlobalNavi_Menu_Item-Link">
-        HOME
-       </router-link>
+       <a href="#" @click.prevent.stop="goToHome()" class="c-GlobalNavi_Menu_Item-Link">HOME</a>
       </li>
       <li class="c-GlobalNavi_Menu_Item c-Modal_OpenBtn" @click="setBrandList">
        BRAND
@@ -142,6 +140,7 @@
 
 import { mapState, mapActions } from 'vuex';
 import * as config from './../../../config';
+import router from './../../../router';
 import MultiSearchModalView from '../modal/MultiSearchModalView.vue'
 
 var menuBtnComp = {
@@ -173,6 +172,13 @@ export default {
   },
   methods: {
     ...mapActions('Search', ['getInitialGears', 'setBrandList', 'setCategoryList']),
+    goToHome() {
+        this.$store.commit('Search/unsetFilter')
+        this.$store.commit('Search/setOnFilter', 0)
+        this.$store.commit('setLoading', true)
+        this.getInitialGears();
+        router.push({'path': '/'});
+    },
     changeKeywordType(e) {
         this.$store.commit('Search/setKeywordType', e.target.value);
     },
@@ -181,13 +187,13 @@ export default {
     },
     searchKeyword() {
         if (this.filter.keyword) {
+            this.$store.commit('Search/unsetFilter')
             this.$store.commit('Search/setOnFilter', 1)
             this.$store.commit('setLoading', true)
             this.getInitialGears();
+            router.push({'path': '/'});
         } else {
-            this.$store.commit('Search/setOnFilter', 0)
-            this.$store.commit('setLoading', true)
-            this.getInitialGears();
+            this.goToHome();
         }
     },
     menuToggle: function() {

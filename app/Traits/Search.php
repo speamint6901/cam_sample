@@ -23,26 +23,31 @@ trait Search {
                 });
             }
         }
+
         if (isset($params['brand_id'])) {
             $query->where('brand_id', $params['brand_id']);
         }
-        if (isset($params['genre_id'])) {
-            return $query->where('genre_id', $params['genre_id']);
-        }
-        if (isset($params['category_id'])) {
+
+        if (isset($params['category_type']) && $params['category_type']) {
+            $category_type = $params['category_type'];
             $category_id = $params['category_id'];
-            return $query->whereHas('category', function($query) use ($category_id) {
-                $query ->where('id', $category_id);
-            });
-        }
-        if (isset($params['big_category_id'])) {
-            $big_category_id = $params['big_category_id'];
-            return $query->whereHas('category.big_category', function($query) use ($big_category_id) {
-                $query->where('id', $big_category_id);
-            })
-            ->orWhereHas('genre.category.big_category', function($query) use ($big_category_id) {
-                 $query->where('id', $big_category_id);               
-            });
+            if ($category_type == 3) {
+                return $query->where('genre_id', $category_id);
+            } elseif ($category_type == 2) {
+                return $query->whereHas('category', function($query) use ($category_id) {
+                    $query->where('category_id', $category_id);
+                })
+                ->orWhereHas('genre.category', function($query) use ($category_id) {
+                    $query->where('id', $category_id);
+                });
+            } else {
+                return $query->whereHas('category.big_category', function($query) use ($category_id) {
+                    $query->where('id', $category_id);
+                })
+                ->orWhereHas('genre.category.big_category', function($query) use ($category_id) {
+                     $query->where('id', $category_id);
+                });
+            }
         }
     }
 }
