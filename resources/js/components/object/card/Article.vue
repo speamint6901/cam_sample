@@ -73,13 +73,13 @@ export default {
     },
     computed: {
       ...mapState('MultiModal', ['gear']),
-      ...mapState('Search', ['gears', 'nextUrl', 'initLoadFlag', 'infiniteLoading']),
+      ...mapState('Search', ['gears', 'nextUrl', 'initLoadFlag', 'infiniteLoading', 'onFilter']),
       want_count: {
         get: function () { return this.$store.getters.want_count },
       },
     },
     created() {
-        this.$store.commit('Search/setOnFilter', 0)
+        this.$store.commit('Search/setOnFilter', this.onFilter)
         this.$store.commit('setLoading', true);
         this.getInitialGears();
     },

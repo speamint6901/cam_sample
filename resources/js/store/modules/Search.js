@@ -47,6 +47,15 @@ const mutations = {
         state.filter.category_type = payload.category_type
         state.filter.category_id = payload.category_id
     },
+    unsetFilter(state) {
+        state.filter.brand_id = null
+        state.filter.category_type = 0
+        state.filter.category_id = null
+    },
+    unsetKeyword(state) {
+        state.filter.keyword_type = 1
+        state.filter.keyword = null
+    },
     setOnFilter (state, payload) {
         state.onFilter = payload
     },

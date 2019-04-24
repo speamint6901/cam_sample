@@ -36,6 +36,7 @@
 
 <script>
 import * as config from './../../../config';
+import router from './../../../router';
 import store from './../../../store/index.js';
 import { mapState, mapActions } from 'vuex';
 import SearchModalMixin from '../../../mixins/SearchModalMixin.js'
@@ -59,6 +60,7 @@ export default {
             this.$store.commit('Search/setCategoryInfo', category_info)
             this.$store.commit('Search/hideModal')
             this.getInitialGears();
+            router.push({'path': '/'});
         }
     }
 }
