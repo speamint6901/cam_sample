@@ -24,37 +24,18 @@
      <a class="c-MasterItem_MainOverview_SubTtile">{{ gear_detail.brand.name }}</a><!--//.c-MasterItem_MainOverview_SubTtile-->
      <h1 class="c-MasterItem_MainOverview_Title u-Text_MasterItem-Title">{{ gear_detail.name }}</h1><!--//.c-MasterItem_MainOverview_Title-->
 
-     <div class="c-MasterItem_MainStatus">
-      <ul class="c-MasterItem_MainStatus_Wrap">
-       <li class="c-MasterItem_MainStatus_Item -Active">
-        <i class="c-MasterItem_MainStatus_Item-Icon">
-         HAVE.
-         <span class="c-MasterItem_MainStatus_Item-Count">888T</span>
-        </i>
-       </li>
-
-       <li class="c-MasterItem_MainStatus_Item">
-        <i class="c-MasterItem_MainStatus_Item-Icon">
-         WANT.
-         <span class="c-MasterItem_MainStatus_Item-Count">888T</span>
-        </i>
-       </li>
-
-       <li class="c-MasterItem_MainStatus_Item">
-        <i class="c-MasterItem_MainStatus_Item-Icon">
-         FAVORITE.
-         <span class="c-MasterItem_MainStatus_Item-Count">888T</span>
-        </i>
-       </li>
-      </ul>
-     </div><!-- /.c-MasterItem_MainStatus -->
+    <div class="c-ArticleCard_Status">
+    <have :gear="gear_detail"></have>
+    <want :gear="gear_detail"></want>
+    <fav :gear="gear_detail"></fav>
+    </div>
 
      <div class="c-MasterItem_MainRating">
       <div class="c-MasterItem_MainRating-Thunder">
-       <img class="" src="/img/rating/thunder-2-9.svg" alt="" />
+       <img class="" :src="'/img/rating/thunder-' + replaceThander(gear_detail.profile.thander_avg) + '.svg'" alt="" />
       </div><!-- /.c-MasterItem_Main_Rating-Thunder -->
       <p class="c-MasterItem_MainRating-Score u-Text">
-       3.4 THUNDER
+       {{ gear_detail.profile.thander_avg }} THUNDER
       </p><!--//.c-MasterItem_MainRating-Score-->
      </div><!--//.c-MasterItem_MainRating-->
 
@@ -150,10 +131,16 @@
 import { mapState, mapMutations } from 'vuex'
 import * as config from './../../config';
 import HaveComment from '../object/card/HaveComment.vue';
+import Have from '../object/card/buttons/Have.vue';
+import Want from '../object/card/buttons/Want.vue';
+import Fav from '../object/card/buttons/Fav.vue';
 
 export default {
     components: {
-        'have-comment': HaveComment
+        'have-comment': HaveComment,
+        have: Have,
+        want: Want,
+        fav: Fav
     },
     props: ['id'],
     data () {
@@ -173,5 +160,11 @@ export default {
         this.$store.commit('setGearDetail', null);
         this.$store.dispatch('showGearDetail', this.id)
     },
+    methods: {
+        replaceThander(val) {
+           var a = String(val);
+           return a.replace('.', '-'); 
+        },
+    }
 }
 </script>
