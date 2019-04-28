@@ -44,6 +44,12 @@
   flex:1;
   &_Title{margin-bottom: 1em;}//_Title
   &_SubTtile{}//_SubTtile
+
+  >.c-ArticleCard_Status .p-MasterItem-Only{
+   display: inline-block;
+  }
+
+
  }//_MainOverview
 
  &_MainStatus{
