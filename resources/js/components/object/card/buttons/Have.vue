@@ -1,5 +1,5 @@
 <template>
- <div class="c-ArticleCard_Status_Item" @click="showHaveModal({gear: gear})">
+ <div class="c-ArticleCard_Status_Item -Active" @click="showHaveModal({gear: gear})">
   <i class="c-ArticleCard_Status-Icon">H<span class="p-MasterItem-Only">AVE</span>.</i>
   <span class="c-ArticleCard_Status-Count">{{ updateHaveCount }}</span>
  </div>
