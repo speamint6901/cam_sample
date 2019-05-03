@@ -8,31 +8,12 @@
      <ul class="c-GlobalNavi_Menu">
 
       <li class="c-GlobalNavi_Menu_Item">
-       <router-link to="/" class="c-GlobalNavi_Menu_Item-Link">
-        HOME
-       </router-link>
+       <a href="#" @click.prevent.stop="goToHome()" class="c-GlobalNavi_Menu_Item-Link">HOME</a>
       </li>
-
-      <li class="c-GlobalNavi_Menu_Item" v-show="!auth">
-       <router-link to="/login" class="c-GlobalNavi_Menu_Item-Link">
-        LOGIN
-       </router-link>
-      </li>
-
-      <li class="c-GlobalNavi_Menu_Item" v-show="auth">
-       <router-link to="/logout" class="c-GlobalNavi_Menu_Item-Link">
-        LOGOUT
-       </router-link>
-      </li>
-      <li class="c-GlobalNavi_Menu_Item">
-       <router-link to="/register" class="c-GlobalNavi_Menu_Item-Link">
-        ユーザー登録
-       </router-link>
-      </li>
-      <li class="c-GlobalNavi_Menu_Item">
+      <li class="c-GlobalNavi_Menu_Item c-Modal_OpenBtn" @click="setBrandList">
        BRAND
       </li>
-      <li class="c-GlobalNavi_Menu_Item">
+      <li class="c-GlobalNavi_Menu_Item c-Modal_OpenBtn" @click="setCategoryList">
        CATEGORY
       </li>
 
@@ -42,14 +23,13 @@
 
    <div class="c-Header_Block c-Header_Control">
 
-    <form role="search" method="post" id="searchform" action="" class="c-Searchbar_Block">
+    <form @submit.prevent="searchKeyword" class="c-Searchbar_Block">
 
      <div class="c-Searchbar-Select_Wrap">
-     <select name="" id="" class="c-Searchbar-Select">
-      <option value="ALL">ALL</option>
-      <option value="BRAND">BRAND</option>
-      <option value="PHOTO">PHOTO</option>
-      <option value="USER">USER</option>
+     <select name="keyword_type" @input="changeKeywordType($event)" id="" class="c-Searchbar-Select">
+      <option value="1">ALL</option>
+      <option value="2">GEAR</option>
+      <option value="3">BRAND</option>
      </select>
      </div><!-- /.c-Searchbar_Select_Wrap -->
 
@@ -59,7 +39,8 @@
         <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
        </svg>
       </i>
-      <input type="text" value="" name="search_keyword" id="s" class="c-Searchbar-Bar" placeholder="SEARCH">
+      <input type="text" :value="filter.keyword" @input="changeKeyword($event)" name="keyword" id="s" class="c-Searchbar-Bar" placeholder="SEARCH">
+      <button type="submit" class="c-Form_Submit">検索</button>
      </div><!--//c-Searchbar-->
 
     </form>
@@ -106,15 +87,12 @@
      </div><!-- /.p-HamburgerMenu_Branding -->
 
      <ul class="p-HamburgerMenu_List">
-      <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">HOME</a></li>
-      <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">BRAND</a></li>
-      <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">CATEGORY</a></li>
-      <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">ギア登録申請</a></li>
-      <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">アカウント設定</a></li>
-      <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">利用規約</a></li>
-      <li class="p-HamburgerMenu_Item"><a href="" class="p-HamburgerMenu_Item-Link">プライバシーポリシー</a></li>
-      <li class="p-HamburgerMenu_Item" v-show="auth"><router-link to="/logout" class="c-GlobalNavi_Menu_Item-Link">Logout</router-link></li>
-      <li class="p-HamburgerMenu_Item" v-show="!auth"><router-link to="/login" class="c-GlobalNavi_Menu_Item-Link">Login</router-link></li>
+      <li class="p-HamburgerMenu_Item"><router-link to="/" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">HOME</router-link></li>
+      <li class="p-HamburgerMenu_Item"><router-link to="/terms" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">利用規約</router-link></li>
+      <li class="p-HamburgerMenu_Item"><router-link to="/privacy" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">プライバシーポリシー</router-link></li>
+      <li class="p-HamburgerMenu_Item"><router-link to="/register" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">ユーザー登録</router-link></li>
+      <li class="p-HamburgerMenu_Item" v-show="auth"><router-link to="/logout" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">Logout</router-link></li>
+      <li class="p-HamburgerMenu_Item" v-show="!auth"><router-link to="/login" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">Login</router-link></li>
      </ul><!--//.p-HamburgerMenu_List-->
 
      <div class="p-HamburgerMenu_SNS">
@@ -152,7 +130,7 @@
 
    </div><!--//.p-HamburgerMenu_Overlay-->
   </transition>
-
+  <multi-search-modal-view></multi-search-modal-view>
 
  </header>
 
@@ -160,7 +138,11 @@
 
 <script>
 
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
+import * as config from './../../../config';
+import router from './../../../router';
+import MultiSearchModalView from '../modal/MultiSearchModalView.vue'
+
 var menuBtnComp = {
   template: `
 <div>
@@ -174,38 +156,54 @@ var menuBtnComp = {
 }
 
 export default {
-
   data() {
     return {
         menuFlag: false,
         headH: "0px",
-        sublistlabel:{
-            "Cloth":"",
-            "Pants":"",
-            "Shoes":"",
-            "Goods":""
-        },
-        active:false
+        active:false,
+        assetDomain: config.assetDomain
     }
   },
   computed: {
     ...mapState({
-        auth: state => state.authUser.authenticated
+        auth: state => state.authUser.authenticated,
     }),
+    ...mapState('Search', ['filter', 'sort', 'onFilter', 'onSort']),
   },
   methods: {
+    ...mapActions('Search', ['getInitialGears', 'setBrandList', 'setCategoryList']),
+    goToHome() {
+        this.$store.commit('Search/unsetFilter')
+        this.$store.commit('Search/setOnFilter', 0)
+        this.$store.commit('setLoading', true)
+        this.getInitialGears();
+        router.push({'path': '/'});
+    },
+    changeKeywordType(e) {
+        this.$store.commit('Search/setKeywordType', e.target.value);
+    },
+    changeKeyword(e) {
+        this.$store.commit('Search/setKeyword', e.target.value);
+    },
+    searchKeyword() {
+        if (this.filter.keyword) {
+            this.$store.commit('Search/unsetFilter')
+            this.$store.commit('Search/setOnFilter', 1)
+            this.$store.commit('setLoading', true)
+            this.getInitialGears();
+            router.push({'path': '/'});
+        } else {
+            this.goToHome();
+        }
+    },
     menuToggle: function() {
       //menuFlag切り替え
       this.menuFlag = !this.menuFlag;
     }
   },
-/*  mounted: function() {
-    //headerの高さ取得
-   let h = document.getElementById("js-HamburgerMenuHeader").offsetHeight;
-    this.headH = h + "px";
-  },*/
   components: {
     'menu-btn': menuBtnComp,
+    MultiSearchModalView
   }
 }
 

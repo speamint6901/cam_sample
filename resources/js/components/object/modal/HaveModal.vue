@@ -4,7 +4,7 @@
   <div class="c-Modal-Have">
 
    <header class="c-Modal-Have_Header">
-    <h2 class="u-Text_Main-L u-TxtColor_White">Have : Review</h2>
+    <h2 class="u-Text_Main-L">Have : Review</h2>
    <button class="c-Modal-Have_Close" @click="hideModal">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="c-Modal-Have_Close-Img">
      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
@@ -26,9 +26,9 @@
    </div><!-- /.c-Modal-Have_Content -->
 
    <footer class="c-Modal-Have_Footer">
+    <button v-show="isHave" type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange('detach')" class="c-Modal-Have_Delete c-Form_Submit -Del">削除</button>
     <button v-show="!isHave" type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange('regist')" class="c-Modal-Have_Register c-Form_Submit">登録</button>
-    <button v-show="isHave" type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange('update')" class="c-Modal-Have_Register c-Form_Submit">編集</button>
-    <button v-show="isHave" type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange('detach')" class="c-Modal-Have_Delete c-Form_Submit">削除</button>
+    <button v-show="isHave" type="submit" v-bind:disabled="isProcessing" @click="toggleTypeChange('update')" class="c-Modal-Have_Update c-Form_Submit">更新</button>
    </footer>
   </form>
   </div><!--//c-Modal-Have-->
@@ -55,7 +55,7 @@
     mixins: [MultiModalMixin],
     methods: {
       updateRatingForm(e) {
-        this.$store.commit('MultiModal/updateRatingForm', e.target.value) 
+        this.$store.commit('MultiModal/updateRatingForm', e.target.value)
       },
       updateCommentForm(e) {
         this.$store.commit('MultiModal/updateCommentForm', e.target.value)

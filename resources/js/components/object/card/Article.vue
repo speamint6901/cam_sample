@@ -35,7 +35,7 @@
     </div>
     <div class="c-ArticleCard_Rating">
      <div class="c-ArticleCard_Rating-Thunder">
-      <img class="" src="/img/Dummt_Thunder.svg" alt="UserName" />
+      <img class="" :src="'/img/rating/thunder-' + replaceThander(gear.profile.thander_avg) + '.svg'" alt="UserName" />
      </div><!-- /.c-ArticleCard_Rating-Thunder -->
      <p class="c-ArticleCard_Rating-Score u-Text_Main-S">
       {{ gear.profile.thander_avg }} THUNDER
@@ -71,50 +71,30 @@ export default {
         want: Want,
         fav: Fav
     },
-    data() {
-        return {
-            initLoadFlag: true,
-            gears:[],
-            nextUrl: config.getList
-        }
-    },
     computed: {
       ...mapState('MultiModal', ['gear']),
+      ...mapState('Search', ['gears', 'nextUrl', 'initLoadFlag', 'infiniteLoading', 'onFilter']),
       want_count: {
         get: function () { return this.$store.getters.want_count },
       },
     },
     created() {
+        this.$store.commit('Search/setOnFilter', this.onFilter)
         this.$store.commit('setLoading', true);
-        axios.get(this.nextUrl, {notLoading: true}).then(res => {
-           this.gears = res.data.data;
-           this.nextUrl = res.data.next_page_url;
-           this.initLoadFlag = false;
-           this.$store.commit('setLoading', false);
-        })
+        this.getInitialGears();
     },
     methods: {
-        onInfinite() {
-            axios.get(this.nextUrl, {
-                    notLoading: true
-                }).then(res => {
-                if (res.data.data.length) {
-                    this.gears = this.gears.concat(res.data.data);
-                    this.$refs.infiniteLoading.stateChanger.loaded();
-                    this.nextUrl = res.data.next_page_url;
-                    //現在のページ と 最後のページが同一なら終了
-                    if (res.data.current_page == res.data.last_page) {
-                        this.$refs.infiniteLoading.stateChanger.complete();
-                    }
-                } else {
-                    this.$refs.infiniteLoading.stateChanger.complete();
-                }
-            }).catch((error) => {
-                console.log(error);
-            });
+        replaceThander(val) {
+           var a = String(val);
+           return a.replace('.', '-'); 
         },
+        ...mapActions('Search', ['getInitialGears', 'infinite']),
         ...mapActions('MultiModal', ['showHaveModal']),
-        ...mapActions('GearStatus', ['toggleWant','setWantCount'])
+        ...mapActions('GearStatus', ['toggleWant','setWantCount']),
+        onInfinite() {
+            this.$store.commit('Search/infiniteLoading', this.$refs.infiniteLoading)
+            this.infinite(this.$refs.infiniteLoading)
+        }
     },
 }
 </script>

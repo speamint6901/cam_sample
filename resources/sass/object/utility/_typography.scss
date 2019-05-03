@@ -32,9 +32,11 @@ $base_fontfam : $fontfull-gothic; //上のフォントセットから指定
 
 //******************************* 基本テキスト設定 /
 html{
- font-family: itc-american-typewriter, serif;
+ font-family: itc-american-typewriter,tbnpmincho-std, serif;
  font-size: $root_fontsize;
 }
+
+
 
 body{
  @include MainTxt;
@@ -91,11 +93,16 @@ body{
   text-align: center;
  }//_Block
 
+ &_Legal{
+  font-weight: bold;
+  &-Second{}
+ }
+
+
 }//.u-Hedding
 
 
 //*******************************  本文設定/
-
 .u-Text{
 
  &_Main{
@@ -164,6 +171,8 @@ body{
  margin-top: -20px;
  margin-bottom: 20px;
 }
+
+
 
 
 //******************************* Txt Decoration /
@@ -263,8 +272,9 @@ body{
  }//-Right
 
 }//u-HasLines
-
-
+.u-WSpace{
+ &-PreLine{white-space: pre-line;}
+}
 
 .u-BeforeIcon{
  &-Thunder{

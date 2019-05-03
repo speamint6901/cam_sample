@@ -21,6 +21,9 @@ Route::get('/register/confirm_mail', 'AuthController@confirmMail')->name('regist
 Route::get('/user/current', 'AuthController@getCurrentUser');
 Route::get('/gears', 'GearController@index');
 Route::get('/gear', 'GearController@show');
+Route::get('/gear/comments', 'GearController@comments');
+Route::get('/brands', 'BrandController@index');
+Route::get('/categories', 'CategoryController@index');
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/me', 'AuthController@me');

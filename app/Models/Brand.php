@@ -17,7 +17,7 @@ class Brand extends Model
     ];
 
     // brand_group belongs to
-    public function brand() {
+    public function brand_group() {
         return $this->belongsTo('\App\Models\BrandGroup');
     }
 

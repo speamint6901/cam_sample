@@ -1,0 +1,85 @@
+.p-CategoryList{
+
+ &-Title{
+  //margin-top: $base_grid *10;
+ //margin-bottom: $base_grid *20;
+ }//-Title
+
+ &-Nav{
+  margin-bottom: $base_grid *10;
+  &_Menu{
+   display: flex;
+   justify-content: space-between;
+  }//_Menu
+  &_Item{
+   &:after{content: ".";}
+  }//_Item
+ }//-Nav
+
+ &-Block{
+  margin-bottom: $base_grid *10;
+  &_Label{
+   margin: auto;
+   text-align: center;
+   margin-bottom: $Common_MarginBottom;
+  }//_Label
+ }//-Block
+
+
+ &-Categorys{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  &-Name{
+   margin-right: 2em;
+   margin-bottom: 1em;
+   font-size: 0.9em;
+  }//-Name
+ }
+
+ &-Count{
+  font-size: 0.8em;
+  color: palettes(text,white);
+  padding: 0 0.5em;
+  margin-left: 0.5em;
+  background-color:palettes(Theme,Main);
+ }//-Count
+
+
+ &-Genre{
+
+  &-Name{
+   margin-right: 2em;
+   margin-bottom: 1em;
+  }//-Name
+
+  &-Label{
+   cursor: pointer;
+   position: relative;
+   &:after{    content: '▼';   }
+  }//-Label
+  &-Check{
+   display: none;
+
+   &:checked{
+    + .p-CategoryList-Genre-Label:after{    content: '▲';   }
+    + .p-CategoryList-Genre-Label + .p-CategoryList-Genre_Contents{
+    height: auto;
+    opacity: 1;
+    padding: 10px;
+    visibility: visible;
+   }
+   }
+  }//-Check
+
+  &_Contents{
+   height: 0;
+   opacity: 0;
+   padding: 0 10px;
+   transition: .5s;
+   visibility: hidden;
+  }//_Contents
+ }//-Genre
+
+}//p-BrandList
+

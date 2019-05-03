@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Traits\Search;
 use App\Models\Gear;
 
 class GearController extends Controller
 {
+
+    use Search;
 
     const PER_PAGE = 20;
 
@@ -15,12 +18,19 @@ class GearController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $gears = Gear::with(['brand', 'profile', 'have_users'])->withCount(['have_users', 'want_users', 'fav_users' => function($query) {
+        $params = $request->input();
+        $query = Gear::with(['brand', 'genre.category.big_category', 'category.big_category', 'profile', 'have_users'])
+                    ->withCount(['have_users', 'want_users', 'fav_users' => function($query) {
             $query->where('user_id', optional(\Auth::guard('api')->user())->id);
-        }])->paginate(self::PER_PAGE);
-                   
+        }]);
+        if (isset($params['onFilter']) && $params['onFilter']) {
+            $this->filterQueries($query, json_decode($params['filter'], true));
+        }
+        $query->orderBy('created_at', 'DESC');
+        $gears = $query->paginate(self::PER_PAGE);
+
         return response()->json($gears);
     }
 
@@ -39,7 +49,18 @@ class GearController extends Controller
         }, 'fav_users' => function($query) {
             $query->where('user_id', optional(\Auth::guard('api')->user())->id);
         }])->where('id', $params['id'])->first();
-        return response()->json(["gear" => $gear]);
+
+        $gear_comment_count = $gear->have_users()->whereNotNull('have_comment')->count();
+
+        return response()->json(["gear" => $gear, 'comment_count' => $gear_comment_count]);
+    }
+
+    public function comments(Request $request) {
+        $params = $request->input();
+        $comments = \App\Models\GearUser::where('gear_id', $params['gear_id'])
+                                       ->whereNotNull('have_comment')
+                                       ->paginate(self::PER_PAGE);
+        return response()->json($comments);
     }
 
     public function modalGear(Request $request) {

@@ -10,12 +10,16 @@ import Login from './components/pages/Login.vue'
 import Logout from './components/pages/Logout.vue'
 import User from './components/pages/User.vue'
 import Gear from './components/pages/Gear.vue'
+import Privacy from './components/pages/Privacy.vue'
+import Terms from './components/pages/Terms.vue'
 
 
 Vue.use(VueRouter);
  
 const routes = [
     { path: '/', component: Home },
+    { path: '/privacy', component: Privacy },
+    { path: '/terms', component: Terms },
     { path: '/register', component: UserRegister },
     { path: '/register/complete', component: UserRegisterComp },
     { path: '/login', component: Login },

@@ -5,8 +5,7 @@
 
   <div class="l-Contents_Block">
    <nav class="u-Flex _Justify-Center _AlignItem-Center u-Margin _mgTop-base06 _mgBottom-base06">
-    <p class="u-Margin _mgRight-base04 u-TxAlign-Center">COMMENT<span class="u-Block">888T</span></p>
-    <p class="u-TxAlign-Center">PHOTO<span class="u-Block">40</span></p>
+    <p class="u-Margin _mgRight-base04 u-TxAlign-Center">COMMENT<span class="u-Block">{{ gear_comment_count }}</span></p>
    </nav>
   </div><!-- /.l-Contents_Block -->
 
@@ -16,7 +15,7 @@
    <div class="c-MasterItem_MainBlock">
     <figure class="c-MasterItem_MainVisual">
      <img class="c-MasterItem_MainVisual-Img u-ObjectFitImg" v-bind:src="asset_domain + 'storage/' + gear_detail.gear_image" alt="GearName" />
-     <figcaption class="u-Flex u-Text_Main-XS u-Margin _mgTop-base02">
+     <figcaption class="u-Flex u-Text_Main-XS u-TextOverflow c-MasterItem_MainVisual-Img_Caption">
      Source:
       <blockquote class="u-Margin _mgLeft-base01" v-show="gear_detail.site_url">{{ gear_detail.site_url }}</blockquote>
      </figcaption>
@@ -25,42 +24,23 @@
      <a class="c-MasterItem_MainOverview_SubTtile">{{ gear_detail.brand.name }}</a><!--//.c-MasterItem_MainOverview_SubTtile-->
      <h1 class="c-MasterItem_MainOverview_Title u-Text_MasterItem-Title">{{ gear_detail.name }}</h1><!--//.c-MasterItem_MainOverview_Title-->
 
-     <div class="c-MasterItem_MainStatus">
-      <ul class="c-MasterItem_MainStatus_Wrap">
-       <li class="c-MasterItem_MainStatus_Item -Active">
-        <i class="c-MasterItem_MainStatus_Item-Icon">
-         HAVE.
-         <span class="c-MasterItem_MainStatus_Item-Count">888T</span>
-        </i>
-       </li>
-
-       <li class="c-MasterItem_MainStatus_Item">
-        <i class="c-MasterItem_MainStatus_Item-Icon">
-         WANT.
-         <span class="c-MasterItem_MainStatus_Item-Count">888T</span>
-        </i>
-       </li>
-
-       <li class="c-MasterItem_MainStatus_Item">
-        <i class="c-MasterItem_MainStatus_Item-Icon">
-         FAVORITE.
-         <span class="c-MasterItem_MainStatus_Item-Count">888T</span>
-        </i>
-       </li>
-      </ul>
-     </div><!-- /.c-MasterItem_MainStatus -->
+    <div class="c-ArticleCard_Status">
+    <have :gear="gear_detail"></have>
+    <want :gear="gear_detail"></want>
+    <fav :gear="gear_detail"></fav>
+    </div>
 
      <div class="c-MasterItem_MainRating">
       <div class="c-MasterItem_MainRating-Thunder">
-       <img class="" src="/img/Dummt_Thunder.svg" alt="UserName" />
+       <img class="" :src="'/img/rating/thunder-' + replaceThander(gear_detail.profile.thander_avg) + '.svg'" alt="" />
       </div><!-- /.c-MasterItem_Main_Rating-Thunder -->
       <p class="c-MasterItem_MainRating-Score u-Text">
-       3.4 THUNDER
+       {{ gear_detail.profile.thander_avg }} THUNDER
       </p><!--//.c-MasterItem_MainRating-Score-->
      </div><!--//.c-MasterItem_MainRating-->
 
      <div class="c-MasterItem_MainInfo">
-      <p>
+      <p class="c-MasterItem_MainInfo-Discription">
         {{ gear_detail.discription }}
       </p>
      </div><!--//.c-MasterItem_MainInfo-->
@@ -111,7 +91,7 @@
        </a>
       </li>
       <li class="c-MasterItem_SNSshare_Item">
-       <a href="http://b.hatena.ne.jp/add?mode=confirm&url={ページURL}&title={ページのタイトル}" target="_blank" rel="nofollow" class="c-MasterItem_SNSshare_Item-Link">
+       <a href="http://b.hatena.ne.jp/add?mode=confirm&url={ページURL}&title={GearItemName}" target="_blank" rel="nofollow" class="c-MasterItem_SNSshare_Item-Link">
         <i class="c-MasterItem_SNSshare_Item-Icon">
          <img class="c-MasterItem_SNSshare_Item-Icon_Img" src="/img/sns_icon-hatebu.svg" alt="hatebu" />
         </i>
@@ -127,9 +107,9 @@
      </ul><!-- /.c-MasterItem_SNSshare -->
 
      <div class="c-MasterItem_ProductLink">
-      <a href="" class="c-MasterItem_ProductLink_Btn -Amazon">Amazonで見る</a>
-      <a href="" class="c-MasterItem_ProductLink_Btn -Rakuten">楽天市場で見る</a>
-      <a href="" class="c-MasterItem_ProductLink_Btn -Yahoo">Yahooショッピングで見る</a>
+      <a href="" class="c-MasterItem_ProductLink_Btn -Amazon">Amazon</a>
+      <a href="" class="c-MasterItem_ProductLink_Btn -Rakuten">楽天市場</a>
+      <a href="" class="c-MasterItem_ProductLink_Btn -Yahoo">Yahooショッピング</a>
      </div><!-- /.c-MasterItem_ProductLink -->
 
     </div><!-- /.c-MasterItem_MainOverview -->
@@ -141,42 +121,7 @@
   <div class="l-Contents_Block">
   </div><!-- /.l-Contents_Block -->
 
-
-  <div class="l-Contents_Block">
-   <!--UserComment-->
-   <article class="c-UserFeed-Comment">
-    <div class="c-UserFeed-Comment_Block-UserInfo">
-
-     <div class="c-UserFeed-Comment_UserIcon">
-      <div class="c-UserIcon_Thumb">
-       <a href="">
-        <img class="c-UserIcon_Thumb-Img u-ObjectFitImg" src="/img/user01.png" alt="UserName" />
-       </a>
-      </div><!--//.c-UserIcon_Thumb-->
-      <p class="c-UserIcon_Name u-Text_Main-XS">UserName</p><!--//.c-UserIcon_Name-->
-     </div><!--//.Comment_UserIcon-->
-
-     <div class="c-UserFeed-Comment_Rating">
-      <div class="c-UserFeed-Comment_Rating-Thunder">
-       <img class="" src="/img/Dummt_Thunder.svg" alt="UserName" />
-      </div><!-- /.c-UserFeed-Comment_Rating-Thunder -->
-      <p class="c-ArticleCard_Rating-Score u-Text_Main-S">
-       3.4 THUNDER
-      </p><!--//.c-ArticleCard_Rating-Score-->
-     </div><!--//Comment_Rating-->
-
-    </div><!-- /.c-UserFeed-Comment_Block -->
-
-    <div class="c-UserFeed-Comment_Block-Text">
-     <p>バス釣りとライフスタイルを融合させ、アングラーのデイリーウエアをファッションとして確立させた「バスブリゲード」とのコラボ第2弾。今回はプレミアムクオリティのボディを使ったTシャツが登場。バス釣りとライフスタイルを融合させ、アングラーのデイリーウエアをファッションとして確立させた「バスブリゲード」とのコラボ第2弾。今回はプレミアムクオリティのボディを使ったTシャツが登場。バス釣りとライフスタイルを融合させ、アングラーのデイリーウエアをファッションとして確立させた「バスブリゲード」とのコラボ第2弾。今回はプレミアムクオリティのボディを使ったTシャツが登場。</p>
-
-     <time datetime="2018-07-07">Date : 2018.07.07</time>
-
-    </div><!-- /.c-UserFeed-Comment_Block-Text -->
-   </article><!--//.c-UserFeed-Comment-->
-
-  </div><!-- /.l-Contents_Block -->
-
+  <have-comment></have-comment>
 
  </article><!--//.c-MasterItem-->
 
@@ -185,8 +130,18 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import * as config from './../../config';
+import HaveComment from '../object/card/HaveComment.vue';
+import Have from '../object/card/buttons/Have.vue';
+import Want from '../object/card/buttons/Want.vue';
+import Fav from '../object/card/buttons/Fav.vue';
 
 export default {
+    components: {
+        'have-comment': HaveComment,
+        have: Have,
+        want: Want,
+        fav: Fav
+    },
     props: ['id'],
     data () {
         return {
@@ -196,10 +151,20 @@ export default {
     computed: {
         gear_detail: {
             get () { return this.$store.state.Gear.gear_detail }
+        },
+        gear_comment_count: {
+            get () { return this.$store.state.Gear.gear_comment_count }
         }
     },
     created() {
+        this.$store.commit('setGearDetail', null);
         this.$store.dispatch('showGearDetail', this.id)
     },
+    methods: {
+        replaceThander(val) {
+           var a = String(val);
+           return a.replace('.', '-'); 
+        },
+    }
 }
 </script>
