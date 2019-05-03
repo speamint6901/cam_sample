@@ -25,7 +25,7 @@ class AddTimestampsToGearUser extends Migration
      */
     public function down()
     {
-        Schema::table('gear_user', function (Blueprint $table) {
+        Schema::table('gear_users', function (Blueprint $table) {
             //
             $table->dropcolumn('created_at');
             $table->dropcolumn('updated_at');
