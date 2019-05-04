@@ -28,6 +28,19 @@ class StoreUserPost extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',           
+            'policy' => 'required',
+        ];
+    }
+
+    /**
+    * バリデーションエラーのカスタム属性の取得
+    *
+    * @return array
+    */
+    public function attributes()
+    {
+        return [
+            'policy' => '利用規約',
         ];
     }
 }

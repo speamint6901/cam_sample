@@ -15,9 +15,6 @@ export default (Vue, { store }) => {
   http.interceptors.response.use((response) => {
     store.commit("setLoading", false);
     return response;
-  }, (error) => {
-    // エラー処理
-    return error;
   });
 
   Vue.http = http;
