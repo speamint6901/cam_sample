@@ -70,7 +70,7 @@
        </a>
       </li>
       <li class="c-MasterItem_SNSshare_Item">
-       <a data-pin-do="buttonBookmark" data-pin-lang="ja" href="https://jp.pinterest.com/pin/create/button/" class="c-MasterItem_SNSshare_Item-Link">
+       <a data-pin-do="buttonBookmark" data-pin-lang="ja" href="https://jp.pinterest.com/pin/create/button/" class="c-MasterItem_SNSshare_Item-Link" target="_blank">
         <i class="c-MasterItem_SNSshare_Item-Icon">
          <img class="c-MasterItem_SNSshare_Item-Icon_Img" src="/img/sns_icon-pintarest.svg" alt="pintarest" />
         </i>
@@ -163,7 +163,7 @@ export default {
     methods: {
         replaceThander(val) {
            var a = String(val);
-           return a.replace('.', '-'); 
+           return a.replace('.', '-');
         },
     }
 }
