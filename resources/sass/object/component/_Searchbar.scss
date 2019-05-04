@@ -3,13 +3,20 @@
  position: relative;
  margin-right: 1em;
 
+ @include mq(M, max){ width: 100%;  }
+ @include mq(S, max){  width: 60%; }
+
  &_Block{
  display: flex;
   align-items: center;
+
+  @include mq(M, max){ flex-basis: 100%;  }
+  @include mq(S, max){ width: 70%;  }
+
  }//_Block
 
  &-Icon{
-
+  padding: 0;
   display: flex;
   position: absolute;
   left: 0;
@@ -28,6 +35,8 @@
   border: none;
   margin-left: 1em;
   font-family: itc-american-typewriter, serif;
+  max-width: 100%;
+
  }//_Bar
 
  &-Select{
