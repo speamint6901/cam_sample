@@ -171,17 +171,6 @@ input[type=date]{
   font-size: 12px;
   position: relative;
   top: -1.3em;
-  &:before{
-   content: "";
-   display: block;
-   width: calc(100% - 4px);
-   position: absolute;
-   top: -2.3em;
-   left: 0px;
-   padding: 1em 0;
-   border: 2px solid red;
-   @include common_radius;
-  }//:before
  }//_Validation
 }//c-Form
 
