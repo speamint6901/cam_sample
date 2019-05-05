@@ -4,6 +4,9 @@
   border-bottom: 1px solid;
   padding: 0.5em 1em;
   margin-right: 1em;
+
+  @include mq(M, max){ flex-basis: 60px;  }
+
   &-Link{color:palettes(link,text) }
  }//_Btn
 }//.c-Sort

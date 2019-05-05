@@ -20,6 +20,9 @@
   width: $BreakPoint-S;
   padding: $base_grid *3;
   background-color: palettes(Theme,Sand);
+
+  @include mq(S, max){ max-width: 100%;  }
+
   &_Delete{
    margin-left: 1em;
   }//_Delete
@@ -49,6 +52,7 @@
    //color: palettes(text,white);
    &_Title{
    width: 10%;
+    @include mq(S, max){  width: 15%;  }
    }//_Title
    &_Slider{
     $Slider_Knob_Color:palettes(Theme,Main);
