@@ -2,6 +2,11 @@
  width: calc(100vw / 5);
  min-width: 190px;
  margin-bottom: $base_grid *4;
+
+ @include mq(S, max){  width: calc(100vw / 1); }
+
+
+
  &_Header{
  position: relative;
 
@@ -28,6 +33,11 @@
    height: calc(100vw / 5);
    min-width: 190px;
    min-height: 190px;
+
+   @include mq(S, max){
+    width: calc((100vw - #{$ContentsPadding-MB *2}) / 1);
+    height: calc((100vw - #{$ContentsPadding-MB *2}) / 1);
+   }
   }//-Img
  }//_Heading
 

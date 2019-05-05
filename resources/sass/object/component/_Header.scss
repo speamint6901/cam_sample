@@ -17,6 +17,10 @@
    transform: translateX(-50%);
  }
 
+ @include mq(S, max){
+  padding: $base_grid*2 $ContentsPadding-MB;
+ }
+
 
  &_Branding{
   &_Caption{  } //_Caption
@@ -37,8 +41,13 @@
    margin-right: 0;
   }
   @include mq(M, max){
-  width: 100%;
+  width: 80%;
    justify-content: space-between;
+  }
+
+  @include mq(S, max){
+   width: 90%;
+   justify-content:flex-start;
   }
  }//_Control
 

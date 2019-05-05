@@ -16,24 +16,24 @@
      <div class="c-Form_Parts">
       <label class="c-Form_Label" for="UserMail">メールアドレス</label>
       <input type="email" name="usermail" id="UserMail" class="c-Form_Input" v-model="email">
-      <span class="help-block" v-if="ur_errors && ur_errors.email">{{ ur_errors.email }}</span>
+      <span class="c-Form_Validation" v-if="ur_errors && ur_errors.email">{{ ur_errors.email }}</span>
      </div>
 
      <div class="c-Form_Parts">
       <label class="c-Form_Label" for="UserName">ユーザーネーム</label>
       <input type="text" name="username" id="UserName" class="c-Form_Input" v-model="name">
-      <span class="help-block" v-if="ur_errors && ur_errors.name">{{ ur_errors.name }}</span>
+      <span class="c-Form_Validation" v-if="ur_errors && ur_errors.name">{{ ur_errors.name }}</span>
      </div>
 
      <div class="c-Form_Parts">
       <label class="c-Form_Label" for="Password">パスワード</label>
       <input type="password" name="password" id="Password" class="c-Form_Input" v-model="password">
-      <span class="help-block" v-if="ur_errors && ur_errors.password">{{ ur_errors.password }}</span>
      </div>
 
      <div class="c-Form_Parts u-Margin _mgBottom-base05">
       <label class="c-Form_Label" for="PasswordConfirmation">パスワード確認</label>
       <input type="password" name="password_confirmation" id="PasswordConfirmation" class="c-Form_Input" v-model="password_confirmation">
+      <span class="c-Form_Validation" v-if="ur_errors && ur_errors.password">{{ ur_errors.password }}</span>
      </div>
 
      <div class="c-Form_Parts">
@@ -41,7 +41,7 @@
       <label class="c-Form_Label -CheckBox u-Text_Main-S" for="idch01">
        <a href="" class="u-TxtColor_Main">利用規約</a>と<a href="" class="u-TxtColor_Main">プライバシーポリシー</a>に同意する
       </label>
-      <span class="help-block" v-if="ur_errors && ur_errors.policy">{{ ur_errors.policy }}</span>
+      <span class="c-Form_Validation" v-if="ur_errors && ur_errors.policy">{{ ur_errors.policy }}</span>
      </div>
 
      <div class="c-Form_Parts u-Flex _Justify-Center">
