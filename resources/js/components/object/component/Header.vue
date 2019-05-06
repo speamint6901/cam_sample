@@ -176,6 +176,7 @@ export default {
   methods: {
     ...mapActions('Search', ['getInitialGears', 'setBrandList', 'setCategoryList']),
     goToHome() {
+        this.$store.commit('Search/unsetGears')
         this.$store.commit('Search/unsetFilter')
         this.$store.commit('Search/setOnFilter', 0)
         this.$store.commit('setLoading', true)
