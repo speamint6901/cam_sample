@@ -1,17 +1,17 @@
 .c-Searchbar{
  border-bottom: 1px solid;
  position: relative;
- margin-right: 1em;
 
  @include mq(M, max){ width: 100%;  }
- @include mq(S, max){  width: 60%; }
+ @include mq(S, max){  width: 62%;}
 
  &_Block{
  display: flex;
   align-items: center;
+  margin-right: 0.5em;
 
   @include mq(M, max){ flex-basis: 100%;  }
-  @include mq(S, max){ width: 70%;  }
+  @include mq(S, max){ width: calc(70% - 0.5em);   }
 
  }//_Block
 
@@ -36,6 +36,7 @@
   margin-left: 1em;
   font-family: itc-american-typewriter, serif;
   max-width: 100%;
+ width:100%;
 
  }//_Bar
 
