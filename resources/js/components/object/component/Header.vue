@@ -48,13 +48,7 @@
      <a class="c-Sort_Btn-Link">SORT</a>
     </div><!--//.c-Sort_Btn-->
 
-    <div class="c-UserIcon u-Mb-Off">
-     <div class="c-UserIcon_Thumb">
-      <router-link to="/user" class="c-UserIcon_Thumb-Link">
-       <img class="c-UserIcon_Thumb-Img u-ObjectFitImg" src="/img/user01.png" alt="UserName" />
-      </router-link>
-     </div><!--//.c-UserIcon_Thumb-->
-    </div><!--//.c-UserIcon-->
+
 
 
 
