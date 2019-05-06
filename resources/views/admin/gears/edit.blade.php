@@ -61,6 +61,27 @@
             <p class="text-danger"><strong>{{ $errors->first('site_url') }}</strong></p>
           </div>
         </div>
+        <div class="form-group">
+          <label for="amazon_url-text" class="col-sm-2 control-label">アマゾンURL</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="amazon_url" id="amazon_url-text" value="{{ $gear->amazon_url }}" placeholder="アマゾンURL">
+            <p class="text-danger"><strong>{{ $errors->first('amazon_url') }}</strong></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="yahoo_url-text" class="col-sm-2 control-label">ヤフーURL</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="yahoo_url" id="yahoo_url-text" value="{{ $gear->yahoo_url }}" placeholder="ヤフーURL">
+            <p class="text-danger"><strong>{{ $errors->first('yahoo_url') }}</strong></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="rakuten_url-text" class="col-sm-2 control-label">楽天URL</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="rakuten_url" id="rakuten_url-text" value="{{ $gear->rakuten_url }}" placeholder="楽天URL">
+            <p class="text-danger"><strong>{{ $errors->first('rakuten_url') }}</strong></p>
+          </div>
+        </div>
       </div>
       <!-- /.box-body -->
       <div class="box-footer">

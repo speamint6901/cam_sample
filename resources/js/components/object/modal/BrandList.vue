@@ -18,7 +18,7 @@
     <nav class="p-BrandList-Nav">
      <ul class="p-BrandList-Nav_Menu">
       <li v-for="brand_group in brand_list" class="p-BrandList-Nav_Item">
-       <a href="" class="u-TxtColor_Txt">{{ brand_group.name }}</a>
+       <a :href="'#' + brand_group.name" class="u-TxtColor_Txt">{{ brand_group.name }}</a>
       </li>
      </ul>
     </nav>
@@ -29,11 +29,13 @@
 
    <div v-show="!isLoading" class="c-MenuModal_Body">
 
+
     <section v-for="brand_group in brand_list" class="p-BrandList-Block">
+     <a :id="brand_group.name" class="p-BrandList-Anchor"></a>
      <h3 class="p-BrandList-Block_Label">{{ brand_group.name }}</h3>
      <ul v-if="brand_group.brands.length" class="p-BrandList-Brand">
       <li v-for="brand in brand_group.brands" class="p-BrandList-Brand_Name">
-       <a id="" href="#" @click.prevent.stop="doBrandSearch(brand.id)" class="u-TxtColor_Txt">{{ brand.name }}</a>
+       <a href="#" @click.prevent.stop="doBrandSearch(brand.id)" class="u-TxtColor_Txt">{{ brand.name }}</a>
        <span class="p-BrandList-Brand_Count">{{ brand.gears_count }}</span>
       </li>
      </ul>

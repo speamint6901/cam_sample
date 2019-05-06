@@ -32,6 +32,9 @@ class StoreGearPost extends FormRequest
             'discription' => 'required|max:5000',
             'gear_image' => 'nullable|mimes:jpg,jpeg,png,gif',
             'site_url' => 'nullable',
+            'amazon_url' => 'nullable',
+            'yahoo_url' => 'nullable',
+            'rakuten_url' => 'nullable',
         ];
     }
 }

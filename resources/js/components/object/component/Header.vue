@@ -45,16 +45,15 @@
     </form>
 
     <div class="c-Sort_Btn">
-     <a class="c-Sort_Btn-Link">SORT</a>
+     <select name="Sort_type"  id="" class="c-Sort-Select">
+      <option value="0">SORT</option>
+      <option value="1">NEWEST</option>
+      <option value="2">HAVE</option>
+      <option value="3">WANT</option>
+      <option value="4">FAVORITE</option>
+      <option value="5">RATING</option>
+     </select>
     </div><!--//.c-Sort_Btn-->
-
-    <div class="c-UserIcon u-Mb-Off">
-     <div class="c-UserIcon_Thumb">
-      <router-link to="/user" class="c-UserIcon_Thumb-Link">
-       <img class="c-UserIcon_Thumb-Img u-ObjectFitImg" src="/img/user01.png" alt="UserName" />
-      </router-link>
-     </div><!--//.c-UserIcon_Thumb-->
-    </div><!--//.c-UserIcon-->
 
 
 
@@ -176,6 +175,7 @@ export default {
   methods: {
     ...mapActions('Search', ['getInitialGears', 'setBrandList', 'setCategoryList']),
     goToHome() {
+        this.$store.commit('Search/unsetGears')
         this.$store.commit('Search/unsetFilter')
         this.$store.commit('Search/setOnFilter', 0)
         this.$store.commit('setLoading', true)
