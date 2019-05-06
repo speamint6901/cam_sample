@@ -36,13 +36,16 @@
   margin-left: 1em;
   font-family: itc-american-typewriter, serif;
   max-width: 100%;
- width:100%;
+  width:100%;
+  line-height: initial;
+
 
  }//_Bar
 
  &-Select{
   width: 80px;
   @include MainTxt-S;
+  line-height: initial;
   &:focus{ background-color: transparent; }
 
   &_Wrap{
@@ -70,3 +73,6 @@
 
 }//.c-Searchbar
 
+
+
+input.c-Searchbar-Bar{  padding-bottom: 0.6em;} //調整用
