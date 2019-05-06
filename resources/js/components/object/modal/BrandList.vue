@@ -29,8 +29,10 @@
 
    <div v-show="!isLoading" class="c-MenuModal_Body">
 
+
     <section v-for="brand_group in brand_list" class="p-BrandList-Block">
-     <h3 class="p-BrandList-Block_Label"><a :id="brand_group.name">{{ brand_group.name }}</a></h3>
+     <a :id="brand_group.name" class="p-BrandList-Anchor"></a>
+     <h3 class="p-BrandList-Block_Label">{{ brand_group.name }}</h3>
      <ul v-if="brand_group.brands.length" class="p-BrandList-Brand">
       <li v-for="brand in brand_group.brands" class="p-BrandList-Brand_Name">
        <a href="#" @click.prevent.stop="doBrandSearch(brand.id)" class="u-TxtColor_Txt">{{ brand.name }}</a>
