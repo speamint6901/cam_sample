@@ -54,6 +54,24 @@
             <a href="{{ $gear->site_url }}" target="_blank">{{ $gear->site_url }}</a>
           </div>
         </div>
+        <div class="form-group" style="padding-bottom:15px;">
+          <div class="col-md-2">アマゾンURL</div>
+          <div class="col-md-10">
+            <a href="{{ $gear->amazon_url }}" target="_blank">{{ $gear->amazon_url }}</a>
+          </div>
+        </div>
+        <div class="form-group" style="padding-bottom:15px;">
+          <div class="col-md-2">ヤフーURL</div>
+          <div class="col-md-10">
+            <a href="{{ $gear->yahoo_url }}" target="_blank">{{ $gear->yahoo_url }}</a>
+          </div>
+        </div>
+        <div class="form-group" style="padding-bottom:15px;">
+          <div class="col-md-2">楽天URL</div>
+          <div class="col-md-10">
+            <a href="{{ $gear->rakuten_url }}" target="_blank">{{ $gear->rakuten_url }}</a>
+          </div>
+        </div>
     </div>
     <div class="box-footer">
       <a href="{{ route('gears.index') }}" class="btn btn-default">戻る</a>
