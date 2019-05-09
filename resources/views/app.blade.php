@@ -28,12 +28,12 @@
   <meta property="og:locale" content="ja_JP" />
   <meta property="fb:app_id" content="658430184592123" />
 
-
   <meta name="msapplication-square150x150logo" content="{{ asset('img/favicon/site-tile-150x150.png') }}">
   <meta name="msapplication-square310x310logo" content="{{ asset('img/favicon/site-tile-310x310.png') }}">
   <meta name="msapplication-TileImage" content="画像のURL" />
   <meta name="msapplication-TileColor" content="#FCFBF9">
   <meta name="theme-color" content="#FCFBF9">
+
   <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon/favicon.ico') }}">
   <link rel="apple-touch-icon-precomposed" sizes="180x180" href="{{ asset('img/favicon/apple-touch-icon-180x180.png') }}" />
   <link rel="mask-icon" href="{{ asset('img/favicon/safari-icon.svg') }}" color="#FCFBF9" />

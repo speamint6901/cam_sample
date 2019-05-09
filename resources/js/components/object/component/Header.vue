@@ -44,7 +44,7 @@
 
     </form>
 
-    <div class="c-Sort_Btn">
+    <div class="c-Sort_Wrap">
      <select name="Sort_type"  id="" class="c-Sort-Select">
       <option value="0">SORT</option>
       <option value="1">NEWEST</option>
@@ -53,7 +53,7 @@
       <option value="4">FAVORITE</option>
       <option value="5">RATING</option>
      </select>
-    </div><!--//.c-Sort_Btn-->
+    </div><!--//.c-Sort_Wrap-->
 
 
 

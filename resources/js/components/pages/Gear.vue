@@ -109,7 +109,7 @@
      <div class="c-MasterItem_ProductLink">
       <a href="" class="c-MasterItem_ProductLink_Btn -Amazon">Amazon</a>
       <a href="" class="c-MasterItem_ProductLink_Btn -Rakuten">楽天市場</a>
-      <a href="" class="c-MasterItem_ProductLink_Btn -Yahoo">Yahooショッピング</a>
+      <a href="" class="c-MasterItem_ProductLink_Btn -Yahoo">Yahoo</a>
      </div><!-- /.c-MasterItem_ProductLink -->
 
     </div><!-- /.c-MasterItem_MainOverview -->

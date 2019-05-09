@@ -3,7 +3,7 @@
 
  position: fixed;
  right: $ContentsPadding;
- top: 24px;
+ top: 15px;
  z-index: z(HamburgerMenuBtn);
 
  @include mq(S, max){
