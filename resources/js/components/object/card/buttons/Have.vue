@@ -1,5 +1,5 @@
 <template>
- <div class="c-ArticleCard_Status_Item -Active" @click="showHaveModal({gear: gear})">
+ <div class="c-ArticleCard_Status_Item" :class="{_Active : isHave}" @click="showHaveModal({gear: gear})">
   <i class="c-ArticleCard_Status-Icon">H<span class="p-MasterItem-Only">AVE</span>.</i>
   <span class="c-ArticleCard_Status-Count">{{ updateHaveCount }}</span>
  </div>
@@ -12,7 +12,8 @@ export default {
     props: ['gear'],
     data: function() {
         return {
-            have_count: null
+            have_count: null,
+            isHave: this.gear.have_users_count,
         }
     },
     created () {
