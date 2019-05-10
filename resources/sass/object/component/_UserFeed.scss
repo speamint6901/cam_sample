@@ -28,7 +28,7 @@
    //margin-bottom: $Common_MarginBottom;
 
    @include mq(S, max){
-    margin-right: 1em;
+    margin:0 1em 1em 0;
     justify-content: flex-start;
     flex-direction: unset;
    }//mq S
@@ -55,7 +55,7 @@
 
     @include mq(S, max){
      width: 100%;
-     display: flex;
+     //display: flex;
      margin-bottom: $base_grid *2;
     }//mq S
 
