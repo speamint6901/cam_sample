@@ -7,10 +7,10 @@
      <div class="c-UserFeed-Comment_UserIcon">
       <div class="c-UserIcon_Thumb">
        <a href="">
-        <img class="c-UserIcon_Thumb-Img u-ObjectFitImg" src="/img/user01.png" alt="UserName" />
+        <img class="c-UserIcon_Thumb-CommentImg u-ObjectFitImg" src="/img/user_default.svg" alt="UserName" />
        </a>
       </div><!--//.c-UserIcon_Thumb-->
-      <p class="c-UserIcon_Name u-Text_Main-XS">UserName</p><!--//.c-UserIcon_Name-->
+      <p class="c-UserIcon_Name-Comment u-Text_Main-XS">UserName</p><!--//.c-UserIcon_Name-->
      </div><!--//.Comment_UserIcon-->
 
      <div class="c-UserFeed-Comment_Rating">

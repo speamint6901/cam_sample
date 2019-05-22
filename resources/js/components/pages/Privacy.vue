@@ -142,7 +142,8 @@
      <h3 class="u-Hedding_Legal c-Legal_Hedding">お問い合わせ先</h3>
      <p>
       本ポリシーに関するお問い合わせは，下記までお願いいたします。<br>
-      Campbug運営者：菅沼秀隆<br>
+      運営：菅沼電子建設<br>
+      Campbug責任者：菅沼秀隆<br>
       メールアドレス：contact★campbug.net（★を@に置き換えて下さい）
      </p>
     </section><!-- /.c-Legal_Block -->

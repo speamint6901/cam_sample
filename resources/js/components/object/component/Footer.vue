@@ -8,7 +8,9 @@
   <div class="c-Footer_Block u-Fill">
    <div class="u-Flex _AlignItem-Center">
    <img class="c-Footer_Branding" src="/img/logo.svg" alt="Campbug" />
-   <nav class="c-Footer_Navi" role="navigation">
+
+
+    <nav class="c-Footer_Navi u-Desktop-Only" role="navigation">
     <ul class="c-Footer_Navi_Menu">
      <li class="c-Footer_Navi_Menu_Item">
       <router-link to="/privacy" class="c-Footer_Navi_Menu_Item-Link">PRIVACY POLICY</router-link>
@@ -18,6 +20,20 @@
      </li>
     </ul>
    </nav>
+
+
+    <nav class="c-Footer_Navi u-Tablet-Only" role="navigation">
+     <ul class="c-Footer_Navi_Menu">
+      <li class="c-Footer_Navi_Menu_Item c-Modal_OpenBtn" @click="setBrandList">
+       BRAND
+      </li>
+      <li class="c-Footer_Navi_Menu_Item c-Modal_OpenBtn" @click="setCategoryList">
+       CATEGORY
+      </li>
+     </ul>
+    </nav>
+
+
    </div>
   </div><!-- /.c-Footer_Block -->
 
