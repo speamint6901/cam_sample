@@ -1,13 +1,47 @@
 .c-Sort{
  &_Btn{
   @include MainTxt-S;
+  line-height: initial;
   border-bottom: 1px solid;
   padding: 0.5em 1em;
   margin-right: 1em;
 
   @include mq(M, max){ flex-basis: 60px;  }
 
+
   &-Link{color:palettes(link,text) }
  }//_Btn
+
+ &_Wrap{
+  position: relative;
+  border-bottom: 1px solid;
+  margin-right: 0.5em;
+
+  @include mq(S, max){ width: 30%; }
+
+  &:before {
+   position: absolute;
+   top: 50%;
+   transform: translateY(50%);
+   right: 0.9em;
+   padding: 0;
+   content: '';
+   pointer-events: none;
+   width: 0.5em;
+   height: 0.5em;
+   border: 1px solid;
+   border-color:  transparent transparent palettes(text,base) palettes(text,base);
+   transform:translateY(-75%) rotate(-45deg);
+  }
+ }//_Wrap
+
+ &-Select{
+  width: 9em;
+  @include MainTxt-S;
+  line-height: initial;
+  &:focus{ background-color: transparent; }
+ }//_Select
+
+
 }//.c-Sort
 

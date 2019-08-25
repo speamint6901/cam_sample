@@ -9,7 +9,7 @@
    <header class="c-ArticleCard_Header">
     <router-link v-bind:to="{ name: 'Gear', params : { id: gear.id }}" class="c-GlobalNavi_Menu_Item-Link">
      <figure>
-      <img class="c-ArticleCard_Heading-Img u-ObjectFitImg" v-bind:src="'storage/' + gear.gear_image" alt="GearName" />
+      <img class="c-ArticleCard_Heading-Img u-ObjectFitImg" v-bind:src="'storage/' + gear.gear_image" loading="lazy" alt="GearName" />
      </figure>
     </router-link>
    </header>
@@ -86,7 +86,7 @@ export default {
     methods: {
         replaceThander(val) {
            var a = String(val);
-           return a.replace('.', '-'); 
+           return a.replace('.', '-');
         },
         ...mapActions('Search', ['getInitialGears', 'infinite']),
         ...mapActions('MultiModal', ['showHaveModal']),

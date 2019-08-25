@@ -8,6 +8,8 @@
   padding: $base_grid*3;
   margin-bottom: $Common_MarginBottom;
 
+  @include mq(S, max){     flex-direction: column; }
+
   &_Header{
    width: 220px;
   }//_Header
@@ -23,13 +25,24 @@
    justify-content: center;
    align-items: center;
    flex-direction: column;
-   margin-bottom: $Common_MarginBottom;
+   //margin-bottom: $Common_MarginBottom;
+
+   @include mq(S, max){
+    margin:0 1em 1em 0;
+    justify-content: flex-start;
+    flex-direction: unset;
+   }//mq S
+
   }//_UserIcon
 
   &_Rating{
    display: flex;
    justify-content: center;
    align-items: center;
+
+   @include mq(S, max){     justify-content: flex-start; }
+
+
    &-Thunder{
    width: 25%;
    }//-Thunder
@@ -37,8 +50,20 @@
 
 
   &_Block{
-   &-UserInfo{width: 25%;}
-   &-Text{width: 75%;}
+   &-UserInfo{
+    width: 25%;
+
+    @include mq(S, max){
+     width: 100%;
+     //display: flex;
+     margin-bottom: $base_grid *2;
+    }//mq S
+
+   }//-UserInfo
+   &-Text{
+    width: 75%;
+    @include mq(S, max){ width: 100%; }
+   }//-Text
   }
 
  }//-Comment
