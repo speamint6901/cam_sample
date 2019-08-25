@@ -45,13 +45,23 @@
       </p>
      </div><!--//.c-MasterItem_MainInfo-->
      <ul class="c-MasterItem_Category" v-if="this.gear_detail.genre != null">
-      <li class="c-MasterItem_Category_Label"><a href="" class="u-TxtColor_Main">{{ gear_detail.genre.category.big_category.name }}</a></li>
-      <li class="c-MasterItem_Category_Label"><a href="" class="u-TxtColor_Main">{{ gear_detail.genre.category.name }}</a></li>
-      <li class="c-MasterItem_Category_Label"><a href="" class="u-TxtColor_Main">{{ gear_detail.genre.name }}</a></li>
+      <li class="c-MasterItem_Category_Label"><a href="#" @click.prevent.stop="doCategorySearch({ category_type: 1, category_id: gear_detail.genre.category.big_category.id })" class="u-TxtColor_Main">
+      {{ gear_detail.genre.category.big_category.name }}
+      </a></li>
+      <li class="c-MasterItem_Category_Label"><a href="#" @click.prevent.stop="doCategorySearch({ category_type: 2, category_id: gear_detail.genre.category.id })" class="u-TxtColor_Main">
+      {{ gear_detail.genre.category.name }}
+      </a></li>
+      <li class="c-MasterItem_Category_Label"><a href="#" @click.prevent.stop="doCategorySearch({ category_type: 3, category_id: gear_detail.genre.id })" class="u-TxtColor_Main">
+      {{ gear_detail.genre.name }}
+      </a></li>
      </ul><!-- /.c-MasterItem_Category -->
      <ul v-else class="c-MasterItem_Category">
-      <li class="c-MasterItem_Category_Label"><a href="" class="u-TxtColor_Main">{{ gear_detail.category[0].big_category.name }}</a></li>
-      <li class="c-MasterItem_Category_Label"><a href="" class="u-TxtColor_Main">{{ gear_detail.category[0].name }}</a></li>
+      <li class="c-MasterItem_Category_Label"><a href="#" @click.prevent.stop="doCategorySearch({ category_type: 1, category_id: gear_detail.category[0].big_category.id })" class="u-TxtColor_Main">
+      {{ gear_detail.category[0].big_category.name }}
+      </a></li>
+      <li class="c-MasterItem_Category_Label"><a href="#" @click.prevent.stop="doCategorySearch({ category_type: 2, category_id: gear_detail.category[0].id })" class="u-TxtColor_Main">
+      {{ gear_detail.category[0].name }}
+      </a></li>
      </ul>
 
      <ul class="c-MasterItem_SNSshare">
@@ -128,7 +138,8 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import router from './../../router';
+import { mapState, mapMutations, mapActions } from 'vuex'
 import * as config from './../../config';
 import HaveComment from '../object/card/HaveComment.vue';
 import Have from '../object/card/buttons/Have.vue';
@@ -161,10 +172,19 @@ export default {
         this.$store.dispatch('showGearDetail', this.id)
     },
     methods: {
+        ...mapActions('Search', ['getInitialGears']),
         replaceThander(val) {
            var a = String(val);
            return a.replace('.', '-');
         },
+        doCategorySearch(category_info) {
+            console.log(category_info)
+            this.$store.commit('setLoading', true)
+            this.$store.commit('Search/setOnFilter', 1)
+            this.$store.commit('Search/setCategoryInfo', category_info)
+            this.getInitialGears();
+            router.push({'path': '/'});
+        }
     }
 }
 </script>
