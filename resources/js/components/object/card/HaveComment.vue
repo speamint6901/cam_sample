@@ -10,15 +10,15 @@
         <img class="c-UserIcon_Thumb-CommentImg u-ObjectFitImg" src="/img/user_default.svg" alt="UserName" />
        </a>
       </div><!--//.c-UserIcon_Thumb-->
-      <p class="c-UserIcon_Name-Comment u-Text_Main-XS">UserName</p><!--//.c-UserIcon_Name-->
+      <p class="c-UserIcon_Name-Comment u-Text_Main-XS">{{ have_comment.name }}</p><!--//.c-UserIcon_Name-->
      </div><!--//.Comment_UserIcon-->
 
      <div class="c-UserFeed-Comment_Rating">
       <div class="c-UserFeed-Comment_Rating-Thunder">
-       <img class="" src="/img/Dummt_Thunder.svg" alt="UserName" />
+       <img class="" :src="'/img/rating/thunder-' + have_comment.point + '.svg'" alt="UserName" />
       </div><!-- /.c-UserFeed-Comment_Rating-Thunder -->
       <p class="c-ArticleCard_Rating-Score u-Text_Main-S">
-       3.4 THUNDER
+       {{ have_comment.point }} THUNDER
       </p><!--//.c-ArticleCard_Rating-Score-->
      </div><!--//Comment_Rating-->
 
