@@ -56,7 +56,7 @@
   <script type="text/javascript">
     window.Laravel = window.Laravel || {};
     window.Laravel.csrfToken = "{{csrf_token()}}";
-    window.Laravel.domain = "{{ url('/', $is_production) }}";
+    window.Laravel.domain = "{{ url('/') }}";
   </script>
   @yield('p-css')
   @yield('p-js')
