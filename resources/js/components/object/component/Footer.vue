@@ -7,8 +7,9 @@
 
   <div class="c-Footer_Block u-Fill">
    <div class="u-Flex _AlignItem-Center">
-   <img class="c-Footer_Branding" src="/img/logo.svg" alt="Campbug" />
-
+    <router-link to="/">
+     <img class="c-Footer_Branding" src="/img/logo.svg" alt="Campbug" />
+    </router-link>
 
     <nav class="c-Footer_Navi u-Desktop-Only" role="navigation">
     <ul class="c-Footer_Navi_Menu">
