@@ -61,6 +61,7 @@
   </script>
   @yield('p-css')
   @yield('p-js')
+  <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
   <meta name="csrf-token" content="{{ csrf_token() }}">
  </head>
 
