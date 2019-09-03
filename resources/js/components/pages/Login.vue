@@ -21,7 +21,7 @@
     </div>
 
     <div class="c-Form_Parts u-Flex _Justify-Center u-Margin _mgBottom-base05">
-     <button type="submit" class="c-Form_Submit">Login</button>
+     <button type="submit" class="c-Form_Submit">Camp in</button>
     </div>
 
 

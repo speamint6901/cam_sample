@@ -23,3 +23,25 @@
 .u-UnderLine{
 text-decoration: underline;
 }
+
+
+.u-Button{
+ &_Main{
+  display: block;
+  text-align: center;
+  border: 1px solid;
+  padding: 0.25em 4em;
+  max-width: 200px;
+  margin: auto;
+  &-Inline{display: inline-block;}
+ }//_Main
+ &_Sub{
+  display: block;
+  text-align: center;
+  border: 1px solid;
+  padding: 0.25em 2em;
+  max-width: 200px;
+  margin: auto;
+  &-Inline{display: inline-block;}
+ }//_Main
+}//.u-Button

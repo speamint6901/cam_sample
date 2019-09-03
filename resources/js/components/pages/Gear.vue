@@ -21,7 +21,7 @@
      </figcaption>
     </figure><!-- /.c-MasterItem_MainVisual -->
     <div class="c-MasterItem_MainOverview">
-     <a class="c-MasterItem_MainOverview_SubTtile">{{ gear_detail.brand.name }}</a><!--//.c-MasterItem_MainOverview_SubTtile-->
+     <a class="c-MasterItem_MainOverview_SubTtile u-TxtColor_Txt">{{ gear_detail.brand.name }}</a><!--//.c-MasterItem_MainOverview_SubTtile-->
      <h1 class="c-MasterItem_MainOverview_Title u-Text_MasterItem-Title">{{ gear_detail.name }}</h1><!--//.c-MasterItem_MainOverview_Title-->
 
     <div class="c-ArticleCard_Status">
@@ -73,16 +73,16 @@
        </a>
       </li>
       <li class="c-MasterItem_SNSshare_Item">
-       <a :href="'https://twitter.com/share?url=' + asset_domain + 'gear/' + gear_detail.id + '&via=Campbug_Outdoor&text=Campbug:' + gear_detail.name" rel="nofollow" target="_blank">
+       <a :href="'https://twitter.com/share?url=' + asset_domain + 'gear/' + gear_detail.id + '&via=Campbug_Outdoor&text=Campbug:['+ gear_detail.brand.name + '] '+ gear_detail.name" rel="nofollow" target="_blank">
         <i class="c-MasterItem_SNSshare_Item-Icon">
          <img class="c-MasterItem_SNSshare_Item-Icon_Img" src="/img/sns_icon-Twitter.svg" alt="Twitter" />
         </i>
        </a>
       </li>
       <li class="c-MasterItem_SNSshare_Item">
-       <a data-pin-do="buttonBookmark" data-pin-lang="ja" href="https://jp.pinterest.com/pin/create/button/" class="c-MasterItem_SNSshare_Item-Link" target="_blank">
+       <a :href="'https://jp.pinterest.com/pin/create/button/?url=' + asset_domain + 'gear/' + gear_detail.id + '&media=' + asset_domain + 'storage/' + gear_detail.gear_image + '&description=' +'[' + gear_detail.brand.name + '] ' + gear_detail.name" class="c-MasterItem_SNSshare_Item-Link" data-pin-do="buttonPin" data-pin-lang="ja" target="_blank">
         <i class="c-MasterItem_SNSshare_Item-Icon">
-         <img class="c-MasterItem_SNSshare_Item-Icon_Img" src="/img/sns_icon-pintarest.svg" alt="pintarest" />
+         <img class="c-MasterItem_SNSshare_Item-Icon_Img" src="/img/sns_icon-pintarest.svg" alt="pinterest" />
         </i>
        </a>
       </li>
@@ -111,8 +111,8 @@
 
      <div class="c-MasterItem_ProductLink">
       <a v-if="gear_detail.amazon_url" :href="gear_detail.amazon_url" class="c-MasterItem_ProductLink_Btn -Amazon">Amazon</a>
-      <a v-if="gear_detail.rakuten_url" :href="gear_detail.rakuten_url" href="" class="c-MasterItem_ProductLink_Btn -Rakuten">楽天市場</a>
-      <a v-if="gear_detail.yahoo_url" :href="gear_detail.yahoo_url" href="" class="c-MasterItem_ProductLink_Btn -Yahoo">Yahooショッピング</a>
+      <a v-if="gear_detail.rakuten_url" :href="gear_detail.rakuten_url" class="c-MasterItem_ProductLink_Btn -Rakuten">楽天市場</a>
+      <a v-if="gear_detail.yahoo_url" :href="gear_detail.yahoo_url" class="c-MasterItem_ProductLink_Btn -Yahoo">Yahooショッピング</a>
      </div><!-- /.c-MasterItem_ProductLink -->
 
     </div><!-- /.c-MasterItem_MainOverview -->

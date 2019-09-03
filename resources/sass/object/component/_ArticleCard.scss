@@ -54,6 +54,7 @@
 
  &_Status{
   display: flex;
+  margin-bottom: $base_grid;
   &_Wrap{
    display: flex;
    justify-content: flex-start;
@@ -61,6 +62,11 @@
   &_Item{
    margin-right: $base_grid;
    cursor: pointer;
+   &._Active{
+    color: palettes(text,White);
+    background-color: palettes(Theme,Main);
+    padding: 0em 1em;
+   }//._Active
   }//_Item
   &-Icon{@include MainTxt-L;}//-Icon
   &-Count{@include MainTxt-S;}

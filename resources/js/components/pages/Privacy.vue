@@ -144,7 +144,7 @@
       本ポリシーに関するお問い合わせは，下記までお願いいたします。<br>
       運営：菅沼電子建設<br>
       Campbug責任者：菅沼秀隆<br>
-      メールアドレス：contact★campbug.net（★を@に置き換えて下さい）
+      メールアドレス：letter★campbug.net（★を@に置き換えて下さい）
      </p>
     </section><!-- /.c-Legal_Block -->
 
