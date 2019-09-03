@@ -8,7 +8,7 @@
      <ul class="c-GlobalNavi_Menu">
 
       <li class="c-GlobalNavi_Menu_Item">
-       <a href="#" @click.prevent.stop="goToHome()" class="c-GlobalNavi_Menu_Item-Link">HOME</a>
+       <a href="/" @click.prevent.stop="goToHome()" class="c-GlobalNavi_Menu_Item-Link">HOME</a>
       </li>
       <li class="c-GlobalNavi_Menu_Item c-Modal_OpenBtn" @click="setBrandList">
        BRAND

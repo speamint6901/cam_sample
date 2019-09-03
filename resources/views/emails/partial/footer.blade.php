@@ -33,9 +33,9 @@
      <tr>
       <td align="center">
        <p class="footermenu">
-        <a href="#">利用規約</a>
-        <a href="#">プライバシーポリシー</a>
-        <a href="#">お問い合わせ</a>
+        <a href="https://www.campbug.net/terms">利用規約</a>
+        <a href="https://www.campbug.net/privacy">プライバシーポリシー</a>
+        <a href="mailto:letter@campbug.net">お問い合わせ</a>
        </p>
       </td>
      </tr>
