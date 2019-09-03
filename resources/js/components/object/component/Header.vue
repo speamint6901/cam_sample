@@ -47,11 +47,11 @@
     <div class="c-Sort_Wrap">
      <select name="Sort_type"  id="" class="c-Sort-Select">
       <option value="0">SORT</option>
-      <option value="1">NEWEST</option>
-      <option value="2">HAVE</option>
-      <option value="3">WANT</option>
-      <option value="4">FAVORITE</option>
-      <option value="5">RATING</option>
+      <option value="1">新着順</option>
+      <option value="2">HAVE多い順</option>
+      <option value="3">WANT多い順</option>
+      <option value="4">FAVORITE多い順</option>
+      <option value="5">評価高い順</option>
      </select>
     </div><!--//.c-Sort_Wrap-->
 
@@ -86,16 +86,32 @@
 
      <ul class="p-HamburgerMenu_List">
       <li class="p-HamburgerMenu_Item"><router-link to="/" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">HOME</router-link></li>
-
-      <li class="p-HamburgerMenu_Item"><router-link to="/register" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">ユーザー登録</router-link></li>
-      <li class="p-HamburgerMenu_Item">My Page(Soon)</li>
-      <li class="p-HamburgerMenu_Item">Gear登録申請(Soon)</li>
-      <li class="p-HamburgerMenu_Item">User検索(Soon)</li>
-      <li class="p-HamburgerMenu_Item" v-show="auth"><router-link to="/logout" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">Logout</router-link></li>
-      <li class="p-HamburgerMenu_Item" v-show="!auth"><router-link to="/login" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">Login</router-link></li>
+      <li class="p-HamburgerMenu_Item">My Page (Soon)</li>
+      <li class="p-HamburgerMenu_Item">Gear登録申請 (Soon)</li>
+      <li class="p-HamburgerMenu_Item">ユーザー検索 (Soon)</li>
       <li class="p-HamburgerMenu_Item"><router-link to="/terms" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">利用規約</router-link></li>
       <li class="p-HamburgerMenu_Item"><router-link to="/privacy" @click.native="menuToggle" class="p-HamburgerMenu_Item-Link">プライバシーポリシー</router-link></li>
      </ul><!--//.p-HamburgerMenu_List-->
+
+     <div class="p-HamburgerMenu_Block">
+      <div v-show="!auth">
+       <router-link to="/register" @click.native="menuToggle" class="u-Button_Sub p-HamburgerMenu_Button p-HamburgerMenu_Item-Link">ユーザー登録</router-link>
+      </div>
+      <div>
+
+      <div class="" v-show="auth">
+       <router-link to="/logout" @click.native="menuToggle" class="u-Button_Sub p-HamburgerMenu_Button p-HamburgerMenu_Item-Link">
+        ログアウト
+       </router-link>
+      </div>
+      <div class="" v-show="!auth">
+       <router-link to="/login" @click.native="menuToggle" class="u-Button_Sub p-HamburgerMenu_Button p-HamburgerMenu_Item-Link">
+        Camp in
+       </router-link>
+      </div>
+      </div>
+
+     </div><!--//p-HamburgerMenu_Block-->
 
      <div class="p-HamburgerMenu_SNS">
       <div class="p-HamburgerMenu_SNS_Item">
