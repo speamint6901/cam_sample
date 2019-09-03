@@ -39,7 +39,7 @@
      <div class="c-Form_Parts">
       <input type="checkbox" name="policy" id="idch01" v-model="policy" value="1" class="c-Form_Input -Checkbox">
       <label class="c-Form_Label -CheckBox u-Text_Main-S" for="idch01">
-       <a href="" class="u-TxtColor_Main">利用規約</a>と<a href="" class="u-TxtColor_Main">プライバシーポリシー</a>に同意する
+       <a href="https://www.campbug.net/terms" target="_blank" class="u-TxtColor_Main">利用規約</a>と<a href="https://www.campbug.net/privacy" target="_blank" class="u-TxtColor_Main">プライバシーポリシー</a>に同意する
       </label>
       <span class="c-Form_Validation" v-if="ur_errors && ur_errors.policy">{{ ur_errors.policy }}</span>
      </div>
