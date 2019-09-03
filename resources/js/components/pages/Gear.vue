@@ -107,13 +107,6 @@
         </i>
        </a>
       </li>
-      <li class="c-MasterItem_SNSshare_Item">
-       <a :href="'https://feedly.com/i/subscription/feed/' + asset_domain + 'gear/' + gear_detail.id" target="_blank" rel="nofollow" class="c-MasterItem_SNSshare_Item-Link">
-        <i class="c-MasterItem_SNSshare_Item-Icon">
-         <img class="c-MasterItem_SNSshare_Item-Icon_Img" src="/img/sns_icon-feedly.svg" alt="feedly" />
-        </i>
-       </a>
-      </li>
      </ul><!-- /.c-MasterItem_SNSshare -->
 
      <div class="c-MasterItem_ProductLink">

@@ -28,8 +28,12 @@ class GearController extends Controller
         if (isset($params['onFilter']) && $params['onFilter']) {
             $this->filterQueries($query, json_decode($params['filter'], true));
         }
+        if (isset($params['onSort']) && $params['onSort']) {
+            $this->sortQueries($query, json_decode($params['sort'], true));
+        }
         $query->orderBy('created_at', 'DESC');
         $gears = $query->paginate(self::PER_PAGE);
+        $gears->setPath('api/gears');
 
         return response()->json($gears);
     }
@@ -57,7 +61,8 @@ class GearController extends Controller
 
     public function comments(Request $request) {
         $params = $request->input();
-        $comments = \App\Models\GearUser::where('gear_id', $params['gear_id'])
+        $comments = \App\Models\GearUser::join('users', 'users.id', '=', 'gear_users.user_id')
+                                       ->where('gear_id', $params['gear_id'])
                                        ->whereNotNull('have_comment')
                                        ->paginate(self::PER_PAGE);
         return response()->json($comments);
