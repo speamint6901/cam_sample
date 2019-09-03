@@ -29,7 +29,7 @@
     </div><!-- /.c-UserFeed-Comment_Block-Text -->
    </article><!--//.c-UserFeed-Comment-->
    <infinite-loading v-if="!initLoadFlag" @infinite="onInfinite" ref="infiniteLoading" :distance="1">
-    <span slot="no-more">All products loaded.</span>
+    <span slot="no-more">All comments loaded.</span>
    </infinite-loading>
   </div><!-- /.l-Contents_Block -->
 
