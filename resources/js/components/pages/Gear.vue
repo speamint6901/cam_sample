@@ -82,7 +82,7 @@
       <li class="c-MasterItem_SNSshare_Item">
        <a :href="'https://jp.pinterest.com/pin/create/button/?url=' + asset_domain + 'gear/' + gear_detail.id + '&media=' + asset_domain + 'storage/' + gear_detail.gear_image + '&description=' +'[' + gear_detail.brand.name + '] ' + gear_detail.name" class="c-MasterItem_SNSshare_Item-Link" data-pin-do="buttonPin" data-pin-lang="ja" target="_blank">
         <i class="c-MasterItem_SNSshare_Item-Icon">
-         <img class="c-MasterItem_SNSshare_Item-Icon_Img" src="/img/sns_icon-pintarest.svg" alt="pintarest" />
+         <img class="c-MasterItem_SNSshare_Item-Icon_Img" src="/img/sns_icon-pintarest.svg" alt="pinterest" />
         </i>
        </a>
       </li>
