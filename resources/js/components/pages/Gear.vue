@@ -21,7 +21,7 @@
      </figcaption>
     </figure><!-- /.c-MasterItem_MainVisual -->
     <div class="c-MasterItem_MainOverview">
-     <a class="c-MasterItem_MainOverview_SubTtile">{{ gear_detail.brand.name }}</a><!--//.c-MasterItem_MainOverview_SubTtile-->
+     <a class="c-MasterItem_MainOverview_SubTtile u-TxtColor_Txt">{{ gear_detail.brand.name }}</a><!--//.c-MasterItem_MainOverview_SubTtile-->
      <h1 class="c-MasterItem_MainOverview_Title u-Text_MasterItem-Title">{{ gear_detail.name }}</h1><!--//.c-MasterItem_MainOverview_Title-->
 
     <div class="c-ArticleCard_Status">
@@ -111,8 +111,8 @@
 
      <div class="c-MasterItem_ProductLink">
       <a v-if="gear_detail.amazon_url" :href="gear_detail.amazon_url" class="c-MasterItem_ProductLink_Btn -Amazon">Amazon</a>
-      <a v-if="gear_detail.rakuten_url" :href="gear_detail.rakuten_url" href="" class="c-MasterItem_ProductLink_Btn -Rakuten">楽天市場</a>
-      <a v-if="gear_detail.yahoo_url" :href="gear_detail.yahoo_url" href="" class="c-MasterItem_ProductLink_Btn -Yahoo">Yahooショッピング</a>
+      <a v-if="gear_detail.rakuten_url" :href="gear_detail.rakuten_url" class="c-MasterItem_ProductLink_Btn -Rakuten">楽天市場</a>
+      <a v-if="gear_detail.yahoo_url" :href="gear_detail.yahoo_url" class="c-MasterItem_ProductLink_Btn -Yahoo">Yahooショッピング</a>
      </div><!-- /.c-MasterItem_ProductLink -->
 
     </div><!-- /.c-MasterItem_MainOverview -->
