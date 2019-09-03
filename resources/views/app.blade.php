@@ -6,7 +6,7 @@
   <title>アウトドアギア大百科 Campbug｜{$BrandName} {$GearName}</title>
   <meta content="" name="description">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-  <meta name="format-detection" content="telephone=no">
+  <meta name="format-detection" content="telephone=no,email=no,address=no">
   <meta name="date" content="{date}">
 
   <!-- Google Tag Manager -->
@@ -33,14 +33,14 @@
   <meta name="msapplication-square310x310logo" content="{{ asset('img/favicon/site-tile-310x310.png') }}">
   <meta name="msapplication-TileImage" content="{{ asset('img/favicon/site-tile-310x310.png') }}" />
   <meta name="msapplication-TileColor" content="#FCFBF9">
-  <meta name="theme-color" content="#FCFBF9">
+  <meta name="theme-color" content="#727C60">
+
 
   <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon/favicon.ico') }}">
   <link rel="apple-touch-icon-precomposed" sizes="180x180" href="{{ asset('img/favicon/apple-touch-icon-180x180.png') }}" />
   <link rel="mask-icon" href="{{ asset('img/favicon/safari-icon.svg') }}" color="#FCFBF9" />
   <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('img/favicon/android-chrome-192x192.png') }}">
   <link rel="manifest" href="{{ asset('img/favicon/manifest.json') }}">
-
 
   <script>
 (function(d) {
