@@ -9,7 +9,11 @@
    <div class="content">
     <table>
      <tr>
-      <td align="center" class="footerbrand"><img src="{{ asset('img/mail/brand.png') }}" alt="campbug" width="124px"></td>
+      <td align="center" class="footerbrand">
+       <a href="https://www.campbug.net">
+        <img src="{{ asset('img/mail/brand.png') }}" alt="campbug" width="124px">
+       </a>
+      </td>
      </tr>
 
      <tr>
