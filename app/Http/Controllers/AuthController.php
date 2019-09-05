@@ -69,7 +69,7 @@ class AuthController extends Controller
             return response()->json(['message' => 'エラーが発生しました']);
         }
         $this->guard()->login($user);
-        return redirect('/');
+        return redirect('/login');
     }
 
     public function create(array $data) {
