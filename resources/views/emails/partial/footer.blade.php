@@ -9,7 +9,11 @@
    <div class="content">
     <table>
      <tr>
-      <td align="center" class="footerbrand"><img src="{{ asset('img/mail/brand.png') }}" alt="campbug" width="124px"></td>
+      <td align="center" class="footerbrand">
+       <a href="https://www.campbug.net">
+        <img src="{{ asset('img/mail/brand.png') }}" alt="campbug" width="124px">
+       </a>
+      </td>
      </tr>
 
      <tr>
@@ -33,9 +37,9 @@
      <tr>
       <td align="center">
        <p class="footermenu">
-        <a href="#">利用規約</a>
-        <a href="#">プライバシーポリシー</a>
-        <a href="#">お問い合わせ</a>
+        <a href="https://www.campbug.net/terms">利用規約</a>
+        <a href="https://www.campbug.net/privacy">プライバシーポリシー</a>
+        <a href="mailto:letter@campbug.net">お問い合わせ</a>
        </p>
       </td>
      </tr>

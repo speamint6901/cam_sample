@@ -80,7 +80,7 @@ body{
  &_Card{
   @include MainTxt;
   line-height: 1em;
-  @include mq(S,max){  }//Media(S)
+  @include mq(S,max){   @include fontsize(15); }//Media(S)
   &_Sub{
    @include MainTxt-S;
    line-height: 1em;
