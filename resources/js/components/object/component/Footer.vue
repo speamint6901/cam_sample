@@ -21,19 +21,6 @@
     </ul>
    </nav>
 
-
-    <nav class="c-Footer_Navi u-Tablet-Only" role="navigation">
-     <ul class="c-Footer_Navi_Menu">
-      <li class="c-Footer_Navi_Menu_Item c-Modal_OpenBtn" @click="setBrandList">
-       BRAND
-      </li>
-      <li class="c-Footer_Navi_Menu_Item c-Modal_OpenBtn" @click="setCategoryList">
-       CATEGORY
-      </li>
-     </ul>
-    </nav>
-
-
    </div>
   </div><!-- /.c-Footer_Block -->
 
