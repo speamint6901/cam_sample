@@ -97,6 +97,14 @@
   justify-content: center;
  }//_Wrap
 
+ &_Block{
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  width: 240px;
+  margin-bottom: $base_grid *10;
+ }//_Block
+
  &_List{
  margin-bottom: $base_grid *10;
  }//_List
@@ -124,4 +132,9 @@
 
  }//_SNS
 
+
+ &_Button{
+  background-color: palettes(Theme,Light);
+  color: palettes(text,base);
+ }//_Button
 }//.p-HamburgerMenu

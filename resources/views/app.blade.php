@@ -4,8 +4,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
   <title>アウトドアギア大百科 Campbug｜{$BrandName} {$GearName}</title>
+  <meta content="" name="description">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-  <meta name="format-detection" content="telephone=no">
+  <meta name="format-detection" content="telephone=no,email=no,address=no">
+  <meta name="date" content="{date}">
 
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -14,32 +16,31 @@
      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
                               })(window,document,'script','dataLayer','GTM-KL362DC');</script>
   <!-- End Google Tag Manager -->
-
-  <meta property="og:url" content="{ページのURL}" />
+  <meta property="og:site_name" content="Campbug" />
   <meta property="og:title" content="{ページのタイトル}" />
-  <meta property="og:type" content="website">
   <meta property="og:description" content="{記事の抜粋}" />
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{ページのURL}" />
   <meta property="og:image" content="(画像のURL}" />
+  <meta property="og:locale" content="ja_JP" />
 
-  <meta name="twitter:card" content="summarylargeimage" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@Campbug_Outdoor" />
 
-  <meta property="og:site_name" content="Campbug" />
-  <meta property="og:locale" content="ja_JP" />
   <meta property="fb:app_id" content="658430184592123" />
 
   <meta name="msapplication-square150x150logo" content="{{ asset('img/favicon/site-tile-150x150.png') }}">
   <meta name="msapplication-square310x310logo" content="{{ asset('img/favicon/site-tile-310x310.png') }}">
-  <meta name="msapplication-TileImage" content="画像のURL" />
+  <meta name="msapplication-TileImage" content="{{ asset('img/favicon/site-tile-310x310.png') }}" />
   <meta name="msapplication-TileColor" content="#FCFBF9">
-  <meta name="theme-color" content="#FCFBF9">
+  <meta name="theme-color" content="#727C60">
+
 
   <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon/favicon.ico') }}">
   <link rel="apple-touch-icon-precomposed" sizes="180x180" href="{{ asset('img/favicon/apple-touch-icon-180x180.png') }}" />
   <link rel="mask-icon" href="{{ asset('img/favicon/safari-icon.svg') }}" color="#FCFBF9" />
   <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('img/favicon/android-chrome-192x192.png') }}">
   <link rel="manifest" href="{{ asset('img/favicon/manifest.json') }}">
-
 
   <script>
 (function(d) {
@@ -60,6 +61,7 @@
   </script>
   @yield('p-css')
   @yield('p-js')
+  <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
   <meta name="csrf-token" content="{{ csrf_token() }}">
  </head>
 

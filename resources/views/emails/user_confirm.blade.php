@@ -9,17 +9,18 @@
 
    <h2>ユーザー登録確認</h2>
 
+
+
    <p style="text-align: center;">
     ようこそ、<span class="important">{{ $user->name }}</span> さん
    </p>
+   <br>
+   <p style="text-align: center;">{{ $user->email }}</p>
    <br>
    <p style="text-align: center;">
     ユーザー登録を完了する為に<br>
     下の写真をクリックしてcampbugに"camp in"してください。
    </p>
-
-
-{{ $user->email }}
 
   </td>
  </tr>
