@@ -13,6 +13,7 @@
   <div class="l-Contents_Block">
 
    <div class="c-MasterItem_MainBlock">
+    <multi-modal-view :val="gear_detail"></multi-modal-view>
     <figure class="c-MasterItem_MainVisual">
      <img class="c-MasterItem_MainVisual-Img u-ObjectFitImg" v-bind:src="asset_domain + 'storage/' + gear_detail.gear_image" alt="GearName" loading="lazy" />
      <figcaption class="u-Flex u-Text_Main-XS u-TextOverflow c-MasterItem_MainVisual-Img_Caption">
@@ -134,6 +135,7 @@
 import router from './../../router';
 import { mapState, mapMutations, mapActions } from 'vuex'
 import * as config from './../../config';
+import MultiModalView from '../object/modal/MultiModalView.vue'
 import HaveComment from '../object/card/HaveComment.vue';
 import Have from '../object/card/buttons/Have.vue';
 import Want from '../object/card/buttons/Want.vue';
@@ -142,6 +144,7 @@ import Fav from '../object/card/buttons/Fav.vue';
 export default {
     components: {
         'have-comment': HaveComment,
+        MultiModalView,
         have: Have,
         want: Want,
         fav: Fav
@@ -153,6 +156,7 @@ export default {
         }
     },
     computed: {
+        ...mapState('MultiModal', ['gear']),
         gear_detail: {
             get () { return this.$store.state.Gear.gear_detail }
         },
@@ -166,6 +170,7 @@ export default {
     },
     methods: {
         ...mapActions('Search', ['getInitialGears']),
+        ...mapActions('MultiModal', ['showHaveModal']),
         replaceThander(val) {
            var a = String(val);
            return a.replace('.', '-');
