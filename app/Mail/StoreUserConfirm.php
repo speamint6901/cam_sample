@@ -34,7 +34,7 @@ class StoreUserConfirm extends Mailable
     {
         return $this->view('emails.user_confirm')
                     ->subject("[Campbug] ユーザー登録認証メール")
-                    ->from("noreply@campbug.net", "[Campbug運営]")
+                    //->from("noreply@campbug.net")
                     ->with([
                         "user" => $this->user,
                     ]);
