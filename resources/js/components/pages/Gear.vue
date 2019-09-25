@@ -111,9 +111,9 @@
      </ul><!-- /.c-MasterItem_SNSshare -->
 
      <div class="c-MasterItem_ProductLink">
-      <a v-if="gear_detail.amazon_url" :href="gear_detail.amazon_url" class="c-MasterItem_ProductLink_Btn -Amazon">Amazon</a>
-      <a v-if="gear_detail.rakuten_url" :href="gear_detail.rakuten_url" class="c-MasterItem_ProductLink_Btn -Rakuten">楽天市場</a>
-      <a v-if="gear_detail.yahoo_url" :href="gear_detail.yahoo_url" class="c-MasterItem_ProductLink_Btn -Yahoo">Yahooショッピング</a>
+      <a v-if="gear_detail.amazon_url" :href="gear_detail.amazon_url" class="c-MasterItem_ProductLink_Btn -Amazon" onClick="ga('send', 'event', 'affiliate', 'click', 'Amazon_Link');">Amazon</a>
+      <a v-if="gear_detail.rakuten_url" :href="gear_detail.rakuten_url" class="c-MasterItem_ProductLink_Btn -Rakuten" onClick="ga('send', 'event', 'affiliate', 'click', 'Rakuten_Link');">楽天市場</a>
+      <a v-if="gear_detail.yahoo_url" :href="gear_detail.yahoo_url" class="c-MasterItem_ProductLink_Btn -Yahoo" onClick="ga('send', 'event', 'affiliate', 'click', 'Yahoo_Link');">Yahooショッピング</a>
      </div><!-- /.c-MasterItem_ProductLink -->
 
     </div><!-- /.c-MasterItem_MainOverview -->
