@@ -29,39 +29,39 @@ export default {
             get: function () { return this.$store.getters.isLoading }
         }
     },
-	mounted : function(){
-	  var to = this.$route;
-	  this.createPageTitle(to);
-	},
-	watch: { 
-	  '$route' (to, from) {
-		  this.createPageTitle(to);
-	  }
-	},
+ mounted : function(){
+   var to = this.$route;
+   this.createPageTitle(to);
+ },
+ watch: {
+   '$route' (to, from) {
+    this.createPageTitle(to);
+   }
+ },
     methods : {
-		createPageTitle : function(to){
-			 // タイトルを設定
-			if(to.meta.title){
-				var setTitle = 'アウトドアギア大百科 Campbug | ' + to.meta.title;
-				document.title = setTitle;
+  createPageTitle : function(to){
+    // タイトルを設定
+   if(to.meta.title){
+    var setTitle = 'アウトドアギア大百科 Campbug | ' + to.meta.title;
+    document.title = setTitle;
                 document.querySelector("meta[name='description']").setAttribute('content', "")
                 document.querySelector("meta[name='date']").setAttribute('content', "")
                 document.querySelector("meta[property='og:title']").setAttribute('content', setTitle)
                 document.querySelector("meta[property='og:description']").setAttribute('content', "")
                 document.querySelector("meta[property='og:url']").setAttribute('content', config.assetDomain + to.path)
-                document.querySelector("meta[property='og:image']").setAttribute('content', "")
-			} else {
-				document.title = 'アウトドアギア大百科 Campbug | '
-			}
+    document.querySelector("meta[property='og:image']").setAttribute('content', config.assetDomain + "img/ogimg.jpg")
+   } else {
+    document.title = 'アウトドアギア大百科 Campbug | '
+   }
 
-			// メタタグdescription設定
-			if(to.meta.desc){
-				var setDesc = to.meta.desc + ' | SourceAcademy';
-				document.querySelector("meta[name='description']").setAttribute('content', setDesc)
-			} else {
-				document.querySelector("meta[name='description']").setAttribute('content', 'SourceAcademy')
-			}
-		} 
-  } 
+   // メタタグdescription設定
+   if(to.meta.desc){
+    var setDesc = to.meta.desc + ' | SourceAcademy';
+    document.querySelector("meta[name='description']").setAttribute('content', setDesc)
+   } else {
+    document.querySelector("meta[name='description']").setAttribute('content', 'SourceAcademy')
+   }
+  }
+  }
 }
 </script>
