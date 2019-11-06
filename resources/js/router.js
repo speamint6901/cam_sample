@@ -17,12 +17,12 @@ import Terms from './components/pages/Terms.vue'
 Vue.use(VueRouter);
  
 const routes = [
-    { path: '/', component: Home },
-    { path: '/privacy', component: Privacy },
-    { path: '/terms', component: Terms },
-    { path: '/register', component: UserRegister },
-    { path: '/register/complete', component: UserRegisterComp },
-    { path: '/login', component: Login },
+    { path: '/', component: Home, meta: {title: 'Home'}},
+    { path: '/privacy', component: Privacy, meta: {title: 'プライバシーポリシー'} },
+    { path: '/terms', component: Terms, meta: {title: '利用規約'} },
+    { path: '/register', component: UserRegister, meta: {title: '新規登録'} },
+    { path: '/register/complete', component: UserRegisterComp, meta: {title: '新規登録'} },
+    { path: '/login', component: Login, meta: {title: 'ログイン'} },
     { path: '/gear/:id', name: 'Gear', component: Gear, props: true },
     { path: '/logout', name: 'logout', component: Logout },
     { path: '/user', component: User, meta: { requiresAuth: true } }
