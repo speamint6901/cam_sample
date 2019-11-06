@@ -25,6 +25,14 @@ const actions = {
         commit('setLoading', true);
         var url = config.getDetail + '?id=' + id;
         axios.get(url, {}).then(res => {
+            var title = document.title + res.data.gear.brand.name + ' ' + res.data.gear.name;
+		    document.title = title;
+            document.querySelector("meta[name='description']").setAttribute('content', res.data.gear.discription)
+            document.querySelector("meta[name='date']").setAttribute('content', res.data.gear.updated_at)
+            document.querySelector("meta[property='og:title']").setAttribute('content', title)
+            document.querySelector("meta[property='og:description']").setAttribute('content', res.data.gear.discription)
+            document.querySelector("meta[property='og:url']").setAttribute('content', url)
+            document.querySelector("meta[property='og:image']").setAttribute('content', config.assetDomain + res.data.gear.gear_image)
             commit('setGearDetail', res.data.gear);
             commit('setCommentCount', res.data.comment_count);
             commit('setLoading', false);
