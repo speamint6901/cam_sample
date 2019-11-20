@@ -142,13 +142,23 @@
 
  &_ProductLink{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   &_Btn{
-   width: 33%;
+   $width-val:100% / 3;
+   $margin-val:1%;
+   width: $width-val - $margin-val;
+   margin-right: $margin-val;
    text-align: center;
    padding: 1em 1em;
    color: palettes(text,white);
    border-radius: 4px;
+   &:last-child{margin-right: 0;}
+   @include mq(M, max){
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: $base_grid *2;
+    &:last-child{margin-bottom: 0;}
+   }//mq(M, max)
    &.-Amazon{background-color: #FFAF52;}//Amazon
    &.-Rakuten{background-color: #FF6C6C;}//Rakuten
    &.-Yahoo{background-color: #6CA5FF;}//Yahoo
