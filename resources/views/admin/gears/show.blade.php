@@ -72,6 +72,24 @@
             <a href="{{ $gear->rakuten_url }}" target="_blank">{{ $gear->rakuten_url }}</a>
           </div>
         </div>
+        <div class="form-group" style="padding-bottom:15px;">
+          <div class="col-md-2">アマゾンimg</div>
+          <div class="col-md-10">
+            <img src="{{ $gear->amazon_img }}" />
+          </div>
+        </div>
+        <div class="form-group" style="padding-bottom:15px;">
+          <div class="col-md-2">ヤフーimg</div>
+          <div class="col-md-10">
+            <img src="{{ $gear->yahoo_img }}" />
+          </div>
+        </div>
+        <div class="form-group" style="padding-bottom:15px;">
+          <div class="col-md-2">楽天img</div>
+          <div class="col-md-10">
+            <img src="{{ $gear->rakuten_img }}" />
+          </div>
+        </div>
     </div>
     <div class="box-footer">
       <a href="{{ route('gears.index') }}" class="btn btn-default">戻る</a>

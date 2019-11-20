@@ -20,6 +20,9 @@ class Gear extends Model
         'amazon_url',
         'yahoo_url',
         'rakuten_url',
+        'amazon_img',
+        'yahoo_img',
+        'rakuten_img',
     ];
 
 
