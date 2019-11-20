@@ -35,6 +35,9 @@ class StoreGearPost extends FormRequest
             'amazon_url' => 'nullable',
             'yahoo_url' => 'nullable',
             'rakuten_url' => 'nullable',
+            'amazon_img' => 'nullable',
+            'yahoo_img' => 'nullable',
+            'rakuten_img' => 'nullable',
         ];
     }
 }
