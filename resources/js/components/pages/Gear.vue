@@ -111,9 +111,9 @@
      </ul><!-- /.c-MasterItem_SNSshare -->
 
      <div class="c-MasterItem_ProductLink">
-      <a v-if="gear_detail.amazon_url" :href="gear_detail.amazon_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Amazon" onClick="ga('send', 'event', 'affiliate', 'click', 'Amazon_Link');">{{ gear_detail.amazon_img }}Amazon</a>
-      <a v-if="gear_detail.rakuten_url" :href="gear_detail.rakuten_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Rakuten" onClick="ga('send', 'event', 'affiliate', 'click', 'Rakuten_Link');">{{ gear_detail.rakuten_img }}楽天市場</a>
-      <a v-if="gear_detail.yahoo_url" :href="gear_detail.yahoo_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Yahoo" onClick="ga('send', 'event', 'affiliate', 'click', 'Yahoo_Link');">{{ gear_detail.yahoo_img }}Yahooショッピング</a>
+      <a v-if="gear_detail.amazon_url" :href="gear_detail.amazon_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Amazon" onClick="ga('send', 'event', 'affiliate', 'click', 'Amazon_Link');"><span v-html="gear_detail.amazon_img"></span>Amazon</a>
+      <a v-if="gear_detail.rakuten_url" :href="gear_detail.rakuten_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Rakuten" onClick="ga('send', 'event', 'affiliate', 'click', 'Rakuten_Link');"><span v-html="gear_detail.rakuten_img"></span>楽天市場</a>
+      <a v-if="gear_detail.yahoo_url" :href="gear_detail.yahoo_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Yahoo" onClick="ga('send', 'event', 'affiliate', 'click', 'Yahoo_Link');"><span v-html="gear_detail.yahoo_img"></span>Yahooショッピング</a>
      </div><!-- /.c-MasterItem_ProductLink -->
 
     </div><!-- /.c-MasterItem_MainOverview -->
