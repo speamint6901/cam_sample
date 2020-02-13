@@ -66,7 +66,6 @@
  </head>
 
  <body>
-
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139547908-1"></script>
   <script>
@@ -85,4 +84,25 @@ gtag('config', 'UA-139547908-1');
   <script src="{{ mix('/js/app.js') }}?ver={{ time() }}"></script>
 
  </body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-analytics.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDvaRLLtyEduZ-SaHkJMFzoHDlQFEVq-Uc",
+    authDomain: "testcampbug.firebaseapp.com",
+    databaseURL: "https://testcampbug.firebaseio.com",
+    projectId: "testcampbug",
+    storageBucket: "testcampbug.appspot.com",
+    messagingSenderId: "468791072293",
+    appId: "1:468791072293:web:c2418682cee4f659c3d1cc",
+    measurementId: "G-XS2G82NS8N"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 </html>
