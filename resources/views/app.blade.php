@@ -3,7 +3,7 @@
  <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
-  <title>アウトドアギア大百科 Campbug｜{$BrandName} {$GearName}</title>
+  <title>Campbug | アウトドアギア大百科</title>
   <meta content="" name="description">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
   <meta name="format-detection" content="telephone=no,email=no,address=no">
@@ -17,11 +17,11 @@
                               })(window,document,'script','dataLayer','GTM-KL362DC');</script>
   <!-- End Google Tag Manager -->
   <meta property="og:site_name" content="Campbug" />
-  <meta property="og:title" content="{ページのタイトル}" />
-  <meta property="og:description" content="{記事の抜粋}" />
+  <meta property="og:title" content="Campbug | アウトドアギア大百科" />
+  <meta property="og:description" content="アウトドアギアの管理と評価をしながらアウトドアギアの大辞典になる事を目指して立ち上げたWebサービスです！" />
   <meta property="og:type" content="website">
-  <meta property="og:url" content="{ページのURL}" />
-  <meta property="og:image" content="(画像のURL}" />
+  <meta property="og:url" content="https://www.campbug.net/" />
+  <meta property="og:image" content="{{ asset('img/ogimg.jpg') }}" />
   <meta property="og:locale" content="ja_JP" />
 
   <meta name="twitter:card" content="summary_large_image" />
