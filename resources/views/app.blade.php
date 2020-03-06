@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
   <title>Campbug | アウトドアギア大百科</title>
-  <meta content="" name="description">
+  <meta name="description" content="アウトドアギアの管理と評価をしながらアウトドアギアの大辞典になる事を目指して立ち上げたWebサービスです！" >
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
   <meta name="format-detection" content="telephone=no,email=no,address=no">
   <meta name="date" content="{date}">
