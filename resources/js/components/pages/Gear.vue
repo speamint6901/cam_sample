@@ -67,42 +67,42 @@
 
      <ul class="c-MasterItem_SNSshare">
       <li class="c-MasterItem_SNSshare_Item">
-       <a :href="'http://www.facebook.com/share.php?u=' + asset_domain + 'gear/' + gear_detail.id" rel="nofollow" target="_blank" class="c-MasterItem_SNSshare_Item-Link" onClick="ga('send', 'event', 'SNSshare', 'click', 'Facebook');">
+       <a :href="'http://www.facebook.com/share.php?u=' + asset_domain + 'gear/' + gear_detail.id" rel="nofollow" target="_blank" class="c-MasterItem_SNSshare_Item-Link">
         <i class="c-MasterItem_SNSshare_Item-Icon">
          <img class="c-MasterItem_SNSshare_Item-Icon_Img" src="/img/sns_icon-Facebook.svg" alt="facebook" />
         </i>
        </a>
       </li>
       <li class="c-MasterItem_SNSshare_Item">
-       <a :href="'https://twitter.com/share?url=' + asset_domain + 'gear/' + gear_detail.id + '&via=Campbug_Outdoor&text=Campbug:['+ gear_detail.brand.name + '] '+ gear_detail.name" rel="nofollow" target="_blank" onClick="ga('send', 'event', 'SNSshare', 'click', 'twitter');">
+       <a :href="'https://twitter.com/share?url=' + asset_domain + 'gear/' + gear_detail.id + '&via=Campbug_Outdoor&text=Campbug:['+ gear_detail.brand.name + '] '+ gear_detail.name" rel="nofollow" target="_blank">
         <i class="c-MasterItem_SNSshare_Item-Icon">
          <img class="c-MasterItem_SNSshare_Item-Icon_Img" src="/img/sns_icon-Twitter.svg" alt="Twitter" />
         </i>
        </a>
       </li>
       <li class="c-MasterItem_SNSshare_Item">
-       <a :href="'https://jp.pinterest.com/pin/create/button/?url=' + asset_domain + 'gear/' + gear_detail.id + '&media=' + asset_domain + 'storage/' + gear_detail.gear_image + '&description=' +'[' + gear_detail.brand.name + '] ' + gear_detail.name" class="c-MasterItem_SNSshare_Item-Link" data-pin-do="buttonPin" data-pin-lang="ja" target="_blank" onClick="ga('send', 'event', 'SNSshare', 'click', 'pinterest');">
+       <a :href="'https://jp.pinterest.com/pin/create/button/?url=' + asset_domain + 'gear/' + gear_detail.id + '&media=' + asset_domain + 'storage/' + gear_detail.gear_image + '&description=' +'[' + gear_detail.brand.name + '] ' + gear_detail.name" class="c-MasterItem_SNSshare_Item-Link" data-pin-do="buttonPin" data-pin-lang="ja" target="_blank">
         <i class="c-MasterItem_SNSshare_Item-Icon">
          <img class="c-MasterItem_SNSshare_Item-Icon_Img" src="/img/sns_icon-pintarest.svg" alt="pinterest" />
         </i>
        </a>
       </li>
       <li class="c-MasterItem_SNSshare_Item">
-       <a :href="'http://getpocket.com/edit?url=' + asset_domain + 'gear/' + gear_detail.id + '&title=' + gear_detail.name" rel="nofollow" target="_blank" class="c-MasterItem_SNSshare_Item-Link" onClick="ga('send', 'event', 'SNSshare', 'click', 'pocket');">
+       <a :href="'http://getpocket.com/edit?url=' + asset_domain + 'gear/' + gear_detail.id + '&title=' + gear_detail.name" rel="nofollow" target="_blank" class="c-MasterItem_SNSshare_Item-Link">
         <i class="c-MasterItem_SNSshare_Item-Icon">
          <img class="c-MasterItem_SNSshare_Item-Icon_Img" src="/img/sns_icon-poket.svg" alt="poket" />
         </i>
        </a>
       </li>
       <li class="c-MasterItem_SNSshare_Item">
-       <a :href="'https://social-plugins.line.me/lineit/share?url=' + asset_domain + 'gear/' + gear_detail.id" target="_blank" rel="nofollow" class="c-MasterItem_SNSshare_Item-Link" onClick="ga('send', 'event', 'SNSshare', 'click', 'line');">
+       <a :href="'https://social-plugins.line.me/lineit/share?url=' + asset_domain + 'gear/' + gear_detail.id" target="_blank" rel="nofollow" class="c-MasterItem_SNSshare_Item-Link">
         <i class="c-MasterItem_SNSshare_Item-Icon">
          <img class="c-MasterItem_SNSshare_Item-Icon_Img" src="/img/sns_icon-line.svg" alt="LINE" />
         </i>
        </a>
       </li>
       <li class="c-MasterItem_SNSshare_Item">
-       <a :href="'http://b.hatena.ne.jp/add?mode=confirm&url=' + asset_domain + 'gear/' + gear_detail.id + '&title=' + gear_detail.name" target="_blank" rel="nofollow" class="c-MasterItem_SNSshare_Item-Link" onClick="ga('send', 'event', 'SNSshare', 'click', 'hatena');">
+       <a :href="'http://b.hatena.ne.jp/add?mode=confirm&url=' + asset_domain + 'gear/' + gear_detail.id + '&title=' + gear_detail.name" target="_blank" rel="nofollow" class="c-MasterItem_SNSshare_Item-Link">
         <i class="c-MasterItem_SNSshare_Item-Icon">
          <img class="c-MasterItem_SNSshare_Item-Icon_Img" src="/img/sns_icon-hatebu.svg" alt="hatebu" />
         </i>
@@ -111,9 +111,12 @@
      </ul><!-- /.c-MasterItem_SNSshare -->
 
      <div class="c-MasterItem_ProductLink">
-      <a v-if="gear_detail.amazon_url" :href="gear_detail.amazon_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Amazon" onClick="ga('send', 'event', 'affiliate', 'click', 'Amazon_Link');"><span v-html="gear_detail.amazon_img"></span>Amazon</a>
-      <a v-if="gear_detail.rakuten_url" :href="gear_detail.rakuten_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Rakuten" onClick="ga('send', 'event', 'affiliate', 'click', 'Rakuten_Link');"><span v-html="gear_detail.rakuten_img"></span>楽天市場</a>
-      <a v-if="gear_detail.yahoo_url" :href="gear_detail.yahoo_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Yahoo" onClick="ga('send', 'event', 'affiliate', 'click', 'Yahoo_Link');"><span v-html="gear_detail.yahoo_img"></span>Yahooショッピング</a>
+      <a v-if="gear_detail.amazon_url" :href="gear_detail.amazon_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Amazon">
+       <span v-html="gear_detail.amazon_img"></span>Amazon</a>
+      <a v-if="gear_detail.rakuten_url" :href="gear_detail.rakuten_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Rakuten">
+       <span v-html="gear_detail.rakuten_img"></span>楽天市場</a>
+      <a v-if="gear_detail.yahoo_url" :href="gear_detail.yahoo_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Yahoo">
+       <span v-html="gear_detail.yahoo_img"></span>Yahooショッピング</a>
      </div><!-- /.c-MasterItem_ProductLink -->
 
     </div><!-- /.c-MasterItem_MainOverview -->
