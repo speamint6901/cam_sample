@@ -16,6 +16,13 @@ class HomeController extends Controller
      */
     public function index($path = null)
     {
+        $sp = explode("/", $path);
+        if ($sp[0] == "gear") {
+            $id = explode("/", $path)[1];
+            $gear = \App\Models\Gear::With("brand")->find($id);
+            return view('ogp')->with("gear", $gear); 
+        }
+        /*
         if (isset($_SERVER["HTTP_USER_AGENT"])) {
             $user_agent = $_SERVER['HTTP_USER_AGENT'];
             if ($user_agent == self::TWITTER || $user_agent == self::FACEBOOK) {
@@ -27,6 +34,7 @@ class HomeController extends Controller
                 }
             }
         }
+        */
         return view('app');
     }
 }
