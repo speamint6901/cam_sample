@@ -112,11 +112,11 @@
 
      <div class="c-MasterItem_ProductLink">
       <a v-if="gear_detail.amazon_url" :href="gear_detail.amazon_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Amazon">
-       <span v-html="gear_detail.amazon_img"></span>Amazon</a>
+       <span v-html="gear_detail.amazon_img" class="c-MasterItem_ProductLink-AffiliateImg"></span>Amazon</a>
       <a v-if="gear_detail.rakuten_url" :href="gear_detail.rakuten_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Rakuten">
-       <span v-html="gear_detail.rakuten_img"></span>楽天市場</a>
+       <span v-html="gear_detail.rakuten_img" class="c-MasterItem_ProductLink-AffiliateImg"></span>楽天市場</a>
       <a v-if="gear_detail.yahoo_url" :href="gear_detail.yahoo_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Yahoo">
-       <span v-html="gear_detail.yahoo_img"></span>Yahooショッピング</a>
+       <span v-html="gear_detail.yahoo_img" class="c-MasterItem_ProductLink-AffiliateImg"></span>Yahooショッピング</a>
      </div><!-- /.c-MasterItem_ProductLink -->
 
     </div><!-- /.c-MasterItem_MainOverview -->
