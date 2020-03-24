@@ -37,4 +37,21 @@ class HomeController extends Controller
         */
         return view('app');
     }
+
+public function reset() {
+    return view('auth.passwords.reset');
+}
+
+public function send() {
+    return view('auth.passwords.send');
+}
+
+public function input() {
+    return view('auth.passwords.input');
+}
+
+public function complete() {
+    return view('auth.passwords.complete');
+}
+
 }

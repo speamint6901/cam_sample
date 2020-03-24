@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::any('password/reset', 'HomeController@reset');
+Route::any('password/reset/send', 'HomeController@send');
+Route::any('password/reset/input', 'HomeController@input');
+Route::any('password/reset/complete', 'HomeController@complete');
 Route::any('{all}', 'HomeController@index')->where(['all' => '.*']);
 /*
 Route::any('{all}', function () {
