@@ -15,7 +15,7 @@
    <div class="c-MasterItem_MainBlock">
     <multi-modal-view :val="gear_detail"></multi-modal-view>
     <figure class="c-MasterItem_MainVisual">
-     <img class="c-MasterItem_MainVisual-Img u-ObjectFitImg" v-bind:src="asset_domain + 'storage/' + gear_detail.gear_image" alt="GearName" loading="lazy" />
+     <img class="c-MasterItem_MainVisual-Img u-ObjectFitImg" v-bind:src="asset_domain + 'storage/' + gear_detail.gear_image" alt="{{ gear_detail.name }}" loading="lazy" />
      <figcaption class="u-Flex u-Text_Main-XS u-TextOverflow c-MasterItem_MainVisual-Img_Caption">
      Source:
       <blockquote class="u-Margin _mgLeft-base01" v-show="gear_detail.site_url">{{ gear_detail.site_url }}</blockquote>
@@ -111,11 +111,11 @@
      </ul><!-- /.c-MasterItem_SNSshare -->
 
      <div class="c-MasterItem_ProductLink">
-      <a v-if="gear_detail.amazon_url" :href="gear_detail.amazon_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Amazon">
+      <a v-if="gear_detail.amazon_url" :href="gear_detail.amazon_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Amazon" name="Amazon[{{ gear_detail.name }}]">
        <span v-html="gear_detail.amazon_img" class="c-MasterItem_ProductLink-AffiliateImg"></span>Amazon</a>
-      <a v-if="gear_detail.rakuten_url" :href="gear_detail.rakuten_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Rakuten">
+      <a v-if="gear_detail.rakuten_url" :href="gear_detail.rakuten_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Rakuten" name="楽天[{{ gear_detail.name }}]">
        <span v-html="gear_detail.rakuten_img" class="c-MasterItem_ProductLink-AffiliateImg"></span>楽天市場</a>
-      <a v-if="gear_detail.yahoo_url" :href="gear_detail.yahoo_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Yahoo">
+      <a v-if="gear_detail.yahoo_url" :href="gear_detail.yahoo_url" target="_blank" rel="nofollow" class="c-MasterItem_ProductLink_Btn -Yahoo" name="Yahoo[{{ gear_detail.name }}]">
        <span v-html="gear_detail.yahoo_img" class="c-MasterItem_ProductLink-AffiliateImg"></span>Yahooショッピング</a>
      </div><!-- /.c-MasterItem_ProductLink -->
 
